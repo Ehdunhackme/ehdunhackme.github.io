@@ -16,6 +16,55 @@
                 vertical-align: baseline;
             }
 
+            /* Sidebar Styles (Horizontal, right-aligned) */
+            #sidebar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: auto;
+                padding: 20px;
+                z-index: 1000;
+                transition: transform 0.5s ease; /* Smooth transition for showing/hiding */
+            }
+    
+            /* Initially hide the sidebar by translating it off the screen */
+            #sidebar.hidden {
+                transform: translateX(100%);
+            }
+            
+            #sidebar ul {
+                display: flex;
+                justify-content: flex-end;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            #sidebar ul li {
+                margin: 0 20px;
+            }
+            
+            #sidebar ul li a {
+                color: black;
+                text-decoration: none;
+                font-size: 23px; /* Match the font size of text13 */
+                font-family: "text13"; /* Apply the font style from text13 */
+                padding-bottom: 5px;
+                border-bottom: 2px solid transparent; /* Invisible line initially */
+                transition: border-bottom 0.3s ease;
+            }
+            
+            /* Hover effect with underline */
+            #sidebar ul li a:hover {
+                border-bottom: 2px solid black; /* Line appears on hover */
+            }
+            
+            /* Main content adjustment (so it's not under the menu) */
+            #main {
+                padding: 20px;
+                margin-top: 20px; /* Adjust the main content below the horizontal menu */
+            }
+
             article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
                 display: block;
             }
@@ -1581,6 +1630,8 @@
                 #icons01 {
                     gap: 0.75rem;
                 }
+                
+                
             }
         </style>
         <noscript>
@@ -1623,7 +1674,14 @@
             </symbol>
         </svg>
         <div id="wrapper">
-
+            <div id="sidebar" id="text14" class="style2">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="aboutme.html">Blogs</a></li>
+                    <li><a href="aboutme.html">About Me</a></li>
+                </ul>
+            </div>
             <div id="main">
                 <div class="inner">
                     <div id="container02" class="style3 container columns full screen">
@@ -1670,6 +1728,23 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        let lastScrollTop = 0;
+                        const sidebar = document.getElementById("sidebar");
+                
+                        window.addEventListener("scroll", function() {
+                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                            if (scrollTop > lastScrollTop) {
+                                // User is scrolling down, hide the sidebar
+                                sidebar.classList.add("hidden");
+                            } else {
+                                // User is scrolling up, show the sidebar
+                                sidebar.classList.remove("hidden");
+                            }
+                            lastScrollTop = scrollTop; // Update the last scroll position
+                        });
+                    </script>
                     <div id="container01" class="style1 container columns full screen">
                         <div class="wrapper">
                             <div class="inner" data-onvisible-trigger="1" data-reorder="0,1" data-reorder-breakpoint="medium">
@@ -1743,7 +1818,7 @@
                                         <a href="https://amiso.my/ioaa/" target="_blank" style="color: red;">MOAA</a>, 
                                         <a href="https://amiso.my/ioi/" target="_blank" style="color: red;">MCO</a>, and 
                                         <a href="https://amiso.my/ipho/" target="_blank" style="color: red;">OFM</a> 
-                                        (you may check this out on AMISO, they're a really cool organization!). Additionally, I'm also working on a project for 
+                                        (you may check these out on AMISO, they're a really cool organization!). Additionally, I'm also working on a project for 
                                         <a href="https://beamlineforschools.cern" target="_blank" style="color: red;">BL4S</a> with some of my Singaporean friends from Hwa Chong Institution, 
                                         hopefully we could get into the top 30 at least :P
                                     </p>
