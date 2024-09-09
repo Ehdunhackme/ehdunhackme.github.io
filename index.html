@@ -42,17 +42,54 @@
             
             #sidebar ul li {
                 margin: 0 20px;
+            } 
+            /* For screens smaller than 1920px */
+            @media (max-width: 1920px) {
+                #sidebar ul li a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 23px; /* Match the font size of text13 */
+                    font-family: "text13"; /* Apply the font style from text13 */
+                    padding-bottom: 5px;
+                    border-bottom: 2px solid transparent; /* Invisible line initially */
+                    transition: border-bottom 0.3s ease;
+                }
             }
             
-            #sidebar ul li a {
-                color: black;
-                text-decoration: none;
-                font-size: 23px; /* Match the font size of text13 */
-                font-family: "text13"; /* Apply the font style from text13 */
-                padding-bottom: 5px;
-                border-bottom: 2px solid transparent; /* Invisible line initially */
-                transition: border-bottom 0.3s ease;
+            /* For screens smaller than 1680px */
+            @media (max-width: 1680px) {
+                html {
+                    font-size: 12pt;
+                }
+                #sidebar ul li a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 21px; /* Slightly smaller font size */
+                    font-family: "text13";
+                    padding-bottom: 4px;
+                    border-bottom: 2px solid transparent;
+                    transition: border-bottom 0.3s ease;
+                }
             }
+            
+            /* For screens smaller than 1280px */
+            @media (max-width: 1280px) {
+                html {
+                    font-size: 12pt;
+                }
+                #sidebar ul li a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 19px; /* Smaller font size */
+                    font-family: "text13";
+                    padding-bottom: 3px;
+                    border-bottom: 2px solid transparent;
+                    transition: border-bottom 0.3s ease;
+                }
+            }
+             
+            
+            
             
             /* Hover effect with underline */
             #sidebar ul li a:hover {
