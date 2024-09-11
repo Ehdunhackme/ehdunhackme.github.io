@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <title>Dun Li Personal Website</title>
+        <title>About me</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <meta name="color-scheme" content="light only"/>
@@ -134,6 +134,54 @@
                 border-bottom: 2px solid black; /* Line appears on hover */
             }
             
+                    /* Centering the content */
+        #about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: "Crimson Text";
+            min-height: 0vh;
+            margin: 0; /* Ensure no extra margins push it down */
+        }
+
+        #about-container h1 {
+            font-size: 4rem;
+            font-family: "Crimson Text";
+            margin-bottom: 2rem;
+        }
+
+        #about-container p {
+            font-size: 1rem;
+            line-height: 2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            font-family: "Crimson Text";
+            text-align: justify;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            #about-container h1 {
+                font-size: 3rem;
+            }
+
+            #about-container p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #about-container h1 {
+                font-size: 2.5rem;
+            }
+
+            #about-container p {
+                font-size: 1rem;
+            }
+        }
+
             /* Main content adjustment (so it's not under the menu) */
             #main {
                 padding: 20px;
@@ -1759,223 +1807,34 @@
             </div>
             <div id="main">
                 <div class="inner">
-                    <div id="container02" class="style3 container columns full screen">
-                        <div class="wrapper">
-                            <div class="inner" data-onvisible-trigger="1">
-                                <div>
-                                    <h1 id="text13" class="style1">
-                                        <span id="greeting" class="p">
-                                            Hello!
-                                        </span>
-                                    </h1>
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function() {
-                                            var greetings = [
-                                                'Hello!',
-                                                '你好!',
-                                                'Apa Khabar!',
-                                                'Guten Tag!',
-                                                'こんにちは!'
-                                            ];
-                                    
-                                            var greetingElement = document.getElementById('greeting');
-                                            var index = 0;
-                                    
-                                            function changeGreeting() {
-                                                index = (index + 1) % greetings.length;
-                                                greetingElement.textContent = greetings[index];
-                                            }
-                                    
-                                            setInterval(changeGreeting, 700); // Change text every 0.7 seconds
-                                        });
-                                    </script>
-                                    <h1 id="text13" class="style1">
-                                        <span class="p">
-                                            I'm Dun Li. 
-                                        </span>
-                                    </h1>
-                                    <p id="text14" class="style2">
-                                        - A high school student who is interested in Deep Learning / Astrophysics / Physics Simulation / Competitive Programming<br/>
-                                        - Based in Georgetown, Penang, Malaysia
-                                    </p>
-                                </div>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        let lastScrollTop = 0;
-                        const sidebar = document.getElementById("sidebar");
-                
-                        window.addEventListener("scroll", function() {
-                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                            if (scrollTop > lastScrollTop) {
-                                // User is scrolling down, hide the sidebar
-                                sidebar.classList.add("hidden");
-                            } else {
-                                // User is scrolling up, show the sidebar
-                                sidebar.classList.remove("hidden");
-                            }
-                            lastScrollTop = scrollTop; // Update the last scroll position
-                        });
-                    </script>
-                    <div id="container01" class="style1 container columns full screen">
-                        <div class="wrapper">
-                            <div class="inner" data-onvisible-trigger="1" data-reorder="0,1" data-reorder-breakpoint="medium">
-                                <div id="canvasholder">
-                                    <div class="style1">
-                                    <span class="frame">
-                                        <div id="doublePendulumCanvas"></div>
-                                    </span>
-                                    </div>
-                                    <script src="doublePendulum.js"></script>
-                                </div>
-                                <div>
-                                   <h2 id="text07" class="style3">Self Introduction</h2>
-                                    <p id="text04" class="style2">Hello! I'm Dun Li Chan from Penang, Malaysia. I'm a dedicated high school student researcher with a keen interest in astronomy, deep learning and competitive programming, as well as showcasing exemplary skills in holistic involvement in various activities and adeptly balancing academics and extra-curricular pursuits, alongside demonstrating outstanding management of clubs and events.</p>
-                                    <ul id="buttons13" class="style1 buttons">
-                                        <li>
-                                            <a href="https://drive.google.com/file/d/1LIv8uyiSkDUefeHVrNlTRIBL7XV1z70R/view?usp=sharing" class="button n01">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">Arrow Right (Light)</title>
-                                                    <use xlink:href="#icon-67ad41ecc66a1b1cd00d0d3b20c00017"></use>
-                                                </svg>
-                                                <span class="label">Check out my CV!</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container06" class="style1 container columns full screen">
-                        <div class="wrapper">
-                            <div class="inner" data-onvisible-trigger="1" data-reorder="1,0" data-reorder-breakpoint="medium">
-                                <div>
-                                    <h2 id="text11" class="style3">My Research Experience</h2>
-                                    <p id="text12" class="style2">My current research topic solely focus on small bodies (e.g. asteroid & comets) and deep learning. In parallel, I do physics simulation during my free time by numerically solving different phenomena using different methods and I also created a novel oil-in-water nanopesticide using the combination of rosemary and coconut leaf essential oil to eradicate Red Flour Beetle infestation in Malaysia.</p>
-                                    <ul id="buttons06" class="style1 buttons">
-                                        <li>
-                                            <a href="Project.html" class="button n01">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">Arrow Right (Light)</title>
-                                                    <use xlink:href="#icon-67ad41ecc66a1b1cd00d0d3b20c00017"></use>
-                                                </svg>
-                                                <span class="label">View all my projects</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <div id="image06" class="style1 image">
-                                        <span class="frame">
-                                            <img src="network.svg" alt=""/>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container04" class="style1 container columns full screen">
-                        <div class="wrapper">
-                            <div class="inner" data-onvisible-trigger="1" data-reorder="0,1" data-reorder-breakpoint="medium">
-                                <div>
-                                    <div id="image02" class="style1 image">
-                                        <span class="frame">
-                                            <img src="assets/images/image02.jpg?v=ea8f0bca" alt=""/>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h2 id="text09" class="style3">Current Goals in Life</h2>
-                                    <p id="text10" class="style2">I'm planning to publish a paper before I enter University and also get myself involved in different science olympiads such as 
-                                        <a href="https://amiso.my/ioaa/" target="_blank" style="color: red;">MOAA</a>, 
-                                        <a href="https://amiso.my/ioi/" target="_blank" style="color: red;">MCO</a>, and 
-                                        <a href="https://amiso.my/ipho/" target="_blank" style="color: red;">OFM</a> 
-                                        (you may check these out on AMISO, they're a really cool organization!). Additionally, I'm also working on a project for 
-                                        <a href="https://beamlineforschools.cern" target="_blank" style="color: red;">BL4S</a> with some of my Singaporean friends from Hwa Chong Institution, 
-                                        hopefully we could get into the top 30 at least :P
-                                    </p>
-                                    <ul id="buttons02" class="style1 buttons">
-                                        <li>
-                                            <a href="" class="button n01">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">Arrow Right (Light)</title>
-                                                    <use xlink:href="#icon-67ad41ecc66a1b1cd00d0d3b20c00017"></use>
-                                                </svg>
-                                                <span class="label">Just an extra button :)
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="container07" class="style3 container columns full screen">
-                        <div class="wrapper">
-                            <div class="inner" data-onvisible-trigger="1">
-                                <div>
-                                    <h2 id="text03" class="style1">Contact</h2>
-                                    <p id="text08" class="style2">Feel free to discuss any topics & project idea with me :) <br>
-                                    Email: dunlinmy88@gmail.com
-                                    </p>
-                                    <ul id="icons01" class="icons">
-                                        <li>
-                                            <a class="n01" href="https://www.instagram.com/dunli_5107">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">Instagram</title>
-                                                    <use xlink:href="#icon-85976685de3e4af37529a1ce5d57d2a7"></use>
-                                                </svg>
-                                                <span class="label">Instagram</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="n02" href="https://github.com/Ehdunhackme">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">GitHub</title>
-                                                    <use xlink:href="#icon-8c4b37645de3c276d895d87df51ba614"></use>
-                                                </svg>
-                                                <span class="label">GitHub</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="n02" href="https://www.linkedin.com/in/dun-li-chan-6b3095269/">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">LinkedIn</title>
-                                                    <use xlink:href="#icon-bf393d6ea48a4e69e1ed58a3563b94a5"></use>
-                                                </svg>
-                                                <span class="label">LinkedIn</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="n02" href="dunlinmy88@gmail.com">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">Email</title>
-                                                    <use xlink:href="#icon-bf3123123""></use>
-                                                </svg>
-                                                <span class="label">Email</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <!-- <a class="n03" href="#">
-                                                <svg aria-labelledby="icon-title">
-                                                    <title id="icon-title">LinkedIn</title>
-                                                    <use xlink:href="#icon-bf393d6ea48a4e69e1ed58a3563b94a5"></use>
-                                                </svg>
-                                                <span class="label">LinkedIn</span>
-                                            </a> -->
-                                        </li>
-                                    </ul>
-                                </div>
-                                <span></span>
-                            </div>
-                        </div>
+                    <div id="about-container" class="style3 container">
+                        
+                        <!-- Space for about text in the center -->
+                        <h1>About Me</h1>
+
+                        <p>
+                            Hello world! I'm Dun Li Chan. Whether you know me as Dun Li, Chan, or Jaff, I'm excited to meet you all and see what we can build together.
+                        </p>
+                        
+                        <p>
+                            Just in case you didn’t know, I’m just a regular kid from Penang who grew up in a small town, spending way too much time playing The Legend of Zelda. My all-time favorite foods? Definitely Nasi Kandar and Ramly Burger! (Shoutout to my fellow Penangites)
+                        </p>
+                        
+                        <p>
+                            Maybe you ended up here by chance, searching for buttons, or you found me through my Instagram story, or maybe you’re here to stalk me—who knows? I've met a lot of cool people from different places and regions through Internet (you know who you are).
+                        </p>
+                        
+                        <p>
+                            This is where I post <a href="project.html" style="color: red;">my projects</a> or any <a href="blog.html" style="color: red;">interesting topics</a> I come across on my blog. Feel free to explore and mess around with them, and if you have any questions or new ideas, hit me up on Discord (raxc_5107).
+                        </p>
+                        
+                        <p>
+                            Don’t forget to give me a like or follow on any social media. See ya!
+                        </p>
+
                     </div>
                 </div>
             </div>
-        </div>
         <script>
             (function() {
                 var on = addEventListener
