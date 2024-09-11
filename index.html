@@ -43,6 +43,33 @@
             #sidebar ul li {
                 margin: 0 20px;
             } 
+            /* Media query for mobile screens */
+            @media (max-width: 768px) {
+                #sidebar {
+                    position: fixed;
+                    top: 10px; /* Adjust the top position as needed */
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: auto; /* Maintain auto width */
+                    padding: 10px; /* Adjust padding */
+                }
+            
+                #sidebar ul {
+                    display: flex;
+                    justify-content: center; /* Center the list horizontally */
+                    flex-direction: row; /* Keep the items in a horizontal row */
+                    width: auto;
+                }
+            
+                #sidebar ul li {
+                    margin: 0 10px; /* Add horizontal spacing between menu items */
+                }
+            
+                #sidebar ul li a {
+                    font-size: 16px; /* Adjust the font size for mobile */
+                }
+            }
+           
             /* For screens smaller than 1920px */
             @media (max-width: 1920px) {
                 #sidebar ul li a {
@@ -65,7 +92,7 @@
                     color: black;
                     text-decoration: none;
                     font-size: 21px; /* Slightly smaller font size */
-                    font-family: "text13";
+                    font-family: "Crimson Text";
                     padding-bottom: 4px;
                     border-bottom: 2px solid transparent;
                     transition: border-bottom 0.3s ease;
@@ -81,14 +108,25 @@
                     color: black;
                     text-decoration: none;
                     font-size: 19px; /* Smaller font size */
-                    font-family: "text13";
+                    font-family: "Crimson Text";
                     padding-bottom: 3px;
                     border-bottom: 2px solid transparent;
                     transition: border-bottom 0.3s ease;
                 }
             }
              
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
             
+            #main > .inner {
+                margin: 0 auto;
+                max-width: 100%;
+                padding: 20px;
+            }
             
             
             /* Hover effect with underline */
