@@ -1761,6 +1761,23 @@
                     <li><a href="aboutme.html">About Me</a></li>
                 </ul>
             </div>
+            <script>
+                const sidebar = document.getElementById("sidebar");
+            
+                window.addEventListener("scroll", function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+                    // Hide the sidebar when scrolling down
+                    if (scrollTop > 0) {
+                        sidebar.classList.add("hidden");
+                    } 
+                    
+                    // Show the sidebar when at the top of the page
+                    if (scrollTop === 0) {
+                        sidebar.classList.remove("hidden");
+                    }
+                });
+            </script>
             <div id="main">
                 <div class="inner">
                     <div id="container02" class="style3 container columns full screen">

@@ -1808,6 +1808,23 @@
                 </ul>
             </div>
             <script>
+                const sidebar = document.getElementById("sidebar");
+            
+                window.addEventListener("scroll", function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+                    // Hide the sidebar when scrolling down
+                    if (scrollTop > 0) {
+                        sidebar.classList.add("hidden");
+                    } 
+                    
+                    // Show the sidebar when at the top of the page
+                    if (scrollTop === 0) {
+                        sidebar.classList.remove("hidden");
+                    }
+                });
+            </script>
+            <script>
                 let lastScrollTop = 0;
                 const sidebar = document.getElementById("sidebar");
         
@@ -1833,7 +1850,7 @@
                         <h1>About Me</h1>
 
                         <p>
-                            Hello world! I'm Dun Li Chan. Whether you know me as Dun Li, Chan, or Jaff, I'm excited to meet you all and see what we can build together.
+                            Hello world! I'm Dun Li Chan. Whether you know me as Dun Li, Chan, or Jeff, I'm excited to meet you all and see what we can build together.
                         </p>
                         
                         <p>
