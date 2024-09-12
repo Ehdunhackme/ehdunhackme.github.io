@@ -25,11 +25,12 @@
                 padding: 20px;
                 z-index: 1000;
                 transition: transform 0.5s ease; /* Smooth transition for showing/hiding */
+                transform: translateY(0); /* Default position */
             }
-    
-            /* Initially hide the sidebar by translating it off the screen */
+            
+            /* Initially hide the sidebar by translating it off the screen upwards */
             #sidebar.hidden {
-                transform: translateX(100%);
+                transform: translateY(-100%); /* Moves the sidebar off the screen upwards */
             }
             
             #sidebar ul {
@@ -42,7 +43,8 @@
             
             #sidebar ul li {
                 margin: 0 20px;
-            } 
+            }
+            
             /* Media query for mobile screens */
             @media (max-width: 768px) {
                 #sidebar {
@@ -69,7 +71,7 @@
                     font-size: 16px; /* Adjust the font size for mobile */
                 }
             }
-           
+            
             /* For screens smaller than 1920px */
             @media (max-width: 1920px) {
                 #sidebar ul li a {
@@ -113,7 +115,7 @@
                     border-bottom: 2px solid transparent;
                     transition: border-bottom 0.3s ease;
                 }
-            } 
+            }
              
             body {
                 display: flex;
@@ -1805,6 +1807,24 @@
                     <li><a href="aboutme.html">About Me</a></li>
                 </ul>
             </div>
+            <script>
+                let lastScrollTop = 0;
+                const sidebar = document.getElementById("sidebar");
+        
+                window.addEventListener("scroll", function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+                    // If scrolling down, hide the sidebar
+                    if (scrollTop > lastScrollTop) {
+                        sidebar.classList.add("hidden");
+                    } else {
+                        // If scrolling up, show the sidebar
+                        sidebar.classList.remove("hidden");
+                    }
+        
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+                });
+            </script>
             <div id="main">
                 <div class="inner">
                     <div id="about-container" class="style3 container">

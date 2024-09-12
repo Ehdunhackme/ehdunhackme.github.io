@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <title>Dun Li Personal Website</title>
+        <title>Dun Li's Website</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <meta name="color-scheme" content="light only"/>
@@ -14,8 +14,8 @@
                 font-size: 100%;
                 font: inherit;
                 vertical-align: baseline;
-            }
-
+            } 
+            
             /* Sidebar Styles (Horizontal, right-aligned) */
             #sidebar {
                 position: fixed;
@@ -25,11 +25,12 @@
                 padding: 20px;
                 z-index: 1000;
                 transition: transform 0.5s ease; /* Smooth transition for showing/hiding */
+                transform: translateY(0); /* Default position */
             }
-    
-            /* Initially hide the sidebar by translating it off the screen */
+            
+            /* Initially hide the sidebar by translating it off the screen upwards */
             #sidebar.hidden {
-                transform: translateX(100%);
+                transform: translateY(-100%); /* Moves the sidebar off the screen upwards */
             }
             
             #sidebar ul {
@@ -42,7 +43,8 @@
             
             #sidebar ul li {
                 margin: 0 20px;
-            } 
+            }
+            
             /* Media query for mobile screens */
             @media (max-width: 768px) {
                 #sidebar {
@@ -69,7 +71,7 @@
                     font-size: 16px; /* Adjust the font size for mobile */
                 }
             }
-           
+            
             /* For screens smaller than 1920px */
             @media (max-width: 1920px) {
                 #sidebar ul li a {
@@ -113,7 +115,9 @@
                     border-bottom: 2px solid transparent;
                     transition: border-bottom 0.3s ease;
                 }
-            } 
+            }
+
+    
              
             body {
                 display: flex;
