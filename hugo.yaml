@@ -3,8 +3,6 @@ languageCode: 'en-us'
 title: 'Dun Li Chan'
 theme: 'PaperMod'
 
-googleAnalytics = false
-
 # Fill out when there's more stuff
 menu:
   main:
