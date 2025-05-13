@@ -1,28 +1,35 @@
-name: Github Pages
+name: GitHub Pages
 
 on:
   push:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-24.04
+
     steps:
-      - uses: actions/checkout@v2
+      # Checkout the repository
+      - uses: actions/checkout@v3
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      # Setup Hugo
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.133.1'
+          hugo-version: '0.146.0'  # Ensure compatibility with PaperMod theme
 
+      # Build the site
       - name: Build
         run: hugo --minify
 
+      # Deploy to GitHub Pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
