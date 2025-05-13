@@ -1,0 +1,61 @@
+baseURL: 'https://tnwei.github.io/'
+languageCode: 'en-us'
+title: 'Dun Li Chan'
+theme: 'PaperMod'
+
+# Fill out when there's more stuff
+menu:
+  main:
+    - identifier: Resume
+      name: Resume
+      url: https://drive.google.com/file/d/1h3F5VGgyrUTUJxdEjhlrGdc7KRM4tqyG/view?usp=sharing      
+      weight: 10
+    - identifier: Blogs
+      name: Blogs
+      url: /blogs/ # using the archives feature for this allows showing timeline
+      weight: 10 # Higher weight is on the right
+      weight: 50
+    - identifier: About Me
+      name: About Me
+      url: /about/
+      weight: 60
+
+
+params:
+  env: 'production'
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: false
+  ShowShareButtons: false
+  DateFormat: 'Jan 2, 2006 Mon'
+  disableSpecial1stPost: true
+  disableThemeToggle: true  
+  comments: true # edit in layouts/partial/comments.html
+  assets:
+    disableHLJS: true # use chroma instead
+
+  homeInfoParams:
+    Title: Hi, I'm Dun Li
+    Content: |
+      ~ 18y/o college student based in Penang, Malaysia.  
+      ~ Independent student researcher (supervisor: Prof. Yuan-Sen Ting) & developer.  
+      ~ Currently working on small bodies (e.g. comet & asteroid) and Machine Learning/LLM research.
+
+
+  socialIcons:
+    - name: email
+      url: mailto:dunlinmy88@gmail.com
+    - name: github
+      url: "https://github.com/Ehdunhackme"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/dun-li-chan-6b3095269/"
+  
+markup:
+  highlight:
+    # anchorLineNos: true   # underline line nos, looks nice actually
+    codeFences: true
+    guessSyntax: true
+    # lineNos: true         # not useful most of the time, leave off
+    # noClasses: false      # this checks language, leave true
+    style: monokai
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Abouts on Dun Li&#39;s Portfolio</title>
+    <link>http://localhost:1313/about/</link>
+    <description>Recent content in Abouts on Dun Li&#39;s Portfolio</description>
+    <generator>Hugo -- 0.147.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/about/about/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/about/</guid>
+      <description>&lt;h1 id=&#34;about-dun-li&#34;&gt;About Dun Li&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;m a college student based in Penang, Malaysia. I am passionate about research and technology, and I am currently exploring small bodies research such as comets and asteroids.&lt;/p&gt;
+&lt;p&gt;I also enjoy coding and developing applications in various domains.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
