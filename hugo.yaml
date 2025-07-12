@@ -6,9 +6,9 @@ theme: 'PaperMod'
 # Fill out when there's more stuff
 menu:
   main:
-    - identifier: Resume
-      name: Resume (As of July 2025)
-      url: https://drive.google.com/file/d/1lUA7hryLcQM_S7TRHWxqQA7KhkZKFdM1/view?usp=sharing
+    - identifier: CV
+      name: CV (As of July 2025)
+      url: https://drive.google.com/file/d/1m43OUWGXHKsmuLzVrCBgVKL4fc06k2Al/view?usp=sharing
       weight: 10
     - identifier: Blogs
       name: Blogs
