@@ -1,0 +1,23 @@
+{% if page.tikzjax %}
+  <!-- Tikzjax -->
+  <script defer src="{{ '/assets/js/tikzjax.min.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+{% endif %}
+
+{% if site.enable_math %}
+  <!-- MathJax -->
+  <script
+    defer
+    type="text/javascript"
+    id="MathJax-script"
+    src="{{ site.third_party_libraries.mathjax.url.js }}"
+    integrity="{{ site.third_party_libraries.mathjax.integrity.js }}"
+    crossorigin="anonymous"
+  ></script>
+  <script src="{{ '/assets/js/mathjax-setup.js' | relative_url | bust_file_cache }}"></script>
+  <script
+    defer
+    src="{{ site.third_party_libraries.polyfill.url.js }}"
+    crossorigin="anonymous"
+  ></script>
+  <!-- Pseudocode is not supported in distill posts -->
+{% endif %}
