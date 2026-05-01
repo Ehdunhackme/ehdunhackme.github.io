@@ -1,0 +1,17 @@
+{% comment %}
+  Unified references entry renderer for both formats
+{% endcomment %}
+
+<ul class="card-text fw-light list-group list-group-flush">
+  {% for entry in entries %}
+    <li class="list-group-item">
+      {% if entry.icon %}
+        <i class="{{ entry.icon }} iconreference"></i>
+      {% else %}
+        <i class="fa-solid fa-user iconreference"></i>
+      {% endif %}
+      <strong>{{ entry.name }}</strong>
+      <p>{{ entry.reference | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+    </li>
+  {% endfor %}
+</ul>
