@@ -359,10 +359,6 @@ In `_sass/_themes.scss`:
 In `_data/socials.yml`:
 
 ```yaml
-- name: Twitter
-  link: https://twitter.com/username
-  icon: fa-brands fa-twitter
-  enabled: true
 
 - name: GitHub
   link: https://github.com/username
@@ -370,7 +366,7 @@ In `_data/socials.yml`:
   enabled: true
 
 - name: LinkedIn
-  link: https://linkedin.com/in/username
+  link: https://www.linkedin.com/in/dun-li-chan
   icon: fa-brands fa-linkedin
   enabled: true
 ```
