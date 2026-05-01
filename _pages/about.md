@@ -36,8 +36,3 @@ Currently a GCE A-Levels student at **INTI International College Penang**, mainl
 - **Dept. of Astronomy, SJTU** — Faint asteroid streak detection with novel dataset strategy via Deep Learning, identified 5 new asteroid candidates with **Yiyang Guo**
 - **EleutherAI SOAR Fellow** — Publish in symbolic piano music continuation (**MIREX @ ISMIR 2025**)
 - **Independent Research** - Published in low-resource NLP (**LoResMT @ EACL 2026**) and culturally-aligned vision-language models (**ECCV 2026**)
-
-
-
-
-

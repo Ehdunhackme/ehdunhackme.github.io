@@ -359,7 +359,6 @@ In `_sass/_themes.scss`:
 In `_data/socials.yml`:
 
 ```yaml
-
 - name: GitHub
   link: https://github.com/username
   icon: fa-brands fa-github
