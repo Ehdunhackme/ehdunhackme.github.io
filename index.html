@@ -314,7 +314,27 @@
         }
       }
 
+      function idlePulse() {
+        if (reducedMotion || document.hidden) return;
+        var pulses = 1 + Math.floor(Math.random() * 2);
+        for (var i = 0; i < pulses; i++) {
+          (function (delay) {
+            setTimeout(function () {
+              if (document.hidden) return;
+              var cell = cells[Math.floor(Math.random() * cells.length)];
+              var parts = cell.dataset.k.split('-');
+              var r = parseInt(parts[0], 10);
+              var c = parseInt(parts[1], 10);
+              scrambleCluster(r, c);
+              activate(r, c, 460);
+            }, delay);
+          })(Math.random() * 260);
+        }
+        setTimeout(idlePulse, 2800 + Math.random() * 2400);
+      }
+
       boot();
+      if (logo) setTimeout(idlePulse, 1800);
     })();
   </script>
 </body>
