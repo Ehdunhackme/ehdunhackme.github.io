@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Dun Li Chan</title>
     <meta name="description" content="Contact Dun Li Chan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Labil+Grotesk:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = stored || prefers;
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body>
+    <header class="site-header">
+      <div class="header-actions">
+        <button type="button" class="header-btn theme-toggle" aria-label="Switch color scheme">
+          <span class="icon" aria-hidden="true">&#9680;</span>
+          <span class="label">Dark</span>
+        </button>
+      </div>
+    </header>
     <main class="page">
       <section class="page-shell">
         <h1>Contact</h1>
@@ -43,5 +62,23 @@
         </nav>
       </section>
     </main>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.querySelector('.theme-toggle');
+        var label = toggle.querySelector('.label');
+        function update() {
+          var dark = root.classList.contains('dark');
+          label.textContent = dark ? 'Light' : 'Dark';
+          toggle.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
+        }
+        toggle.addEventListener('click', function () {
+          root.classList.toggle('dark');
+          localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+          update();
+        });
+        update();
+      })();
+    </script>
   </body>
 </html>

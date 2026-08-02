@@ -1,0 +1,138 @@
+- generic [active] [ref=f28e1]:
+  - banner [ref=f28e2]:
+    - button "Switch to light mode" [ref=f28e4] [cursor=pointer]:
+      - generic [ref=f28e5]: ◐
+      - generic [ref=f28e6]: Light
+  - main [ref=f28e7]:
+    - generic [ref=f28e8]:
+      - img "DUN LI CHAN" [ref=f28e9]: "`7MM\"\"\"Yb. `7MMF' `7MF'`7MN. `7MF' `7MMF' `7MMF' .g8\"\"\"bgd `7MMF' `7MMF' db `7MN. `7MF' MM `Yb. MM M MMN. M MM MM .dP' `M MM MM ;MM: MMN. M MM `Mb MM M M YMb M MM MM dM' ` MM MM ,V^MM. M YMb M MM MM MM M M `MN. M MM MM MM MMmmmmmmMM ,M `MM M `MN. M MM ,MP MM M M `MM.M MM , MM MM. MM MM AbmmmqMA M `MM.M MM ,dP' YM. ,M M YMM MM ,M MM `Mb. ,' MM MM A' VML M YMM .JMMmmmdP' `bmmmmd\"' .JML. YM .JMMmmmmMMM .JMML. `\"bmmmd' .JMML. .JMML..AMA. .AMMA..JML. YM"
+      - paragraph [ref=f28e10]: I work on the frontier of AI to uncover what lies within the latent space.
+      - generic [ref=f28e11]:
+        - link "Research papers" [ref=f28e12] [cursor=pointer]:
+          - /url: "#research"
+          - generic [ref=f28e13]: ◆
+          - generic [ref=f28e14]: Research
+          - generic [ref=f28e15]: papers
+        - link "Resume july 2026" [ref=f28e16] [cursor=pointer]:
+          - /url: https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing
+          - generic [ref=f28e17]: ◆
+          - generic [ref=f28e18]: Resume
+          - generic [ref=f28e19]: july 2026
+        - link "GitHub code" [ref=f28e20] [cursor=pointer]:
+          - /url: https://github.com/ehdunhackme
+          - generic [ref=f28e21]: ◆
+          - generic [ref=f28e22]: GitHub
+          - generic [ref=f28e23]: code
+        - link "LinkedIn profile" [ref=f28e24] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/dun-li-chan
+          - generic [ref=f28e25]: ◆
+          - generic [ref=f28e26]: LinkedIn
+          - generic [ref=f28e27]: profile
+        - link "Scholar citations" [ref=f28e28] [cursor=pointer]:
+          - /url: https://scholar.google.com/citations?user=UOYqiG4AAAAJ
+          - generic [ref=f28e29]: ◆
+          - generic [ref=f28e30]: Scholar
+          - generic [ref=f28e31]: citations
+        - link "Contact email" [ref=f28e32] [cursor=pointer]:
+          - /url: mailto:dunlinmy88@gmail.com
+          - generic [ref=f28e33]: ◆
+          - generic [ref=f28e34]: Contact
+          - generic [ref=f28e35]: email
+  - generic [ref=f28e36]:
+    - heading "About" [level=2] [ref=f28e37]
+    - generic [ref=f28e38]:
+      - paragraph [ref=f28e39]:
+        - text: Currently working on AI/Astronomy research across the
+        - link "University of Maryland Astronomy Department" [ref=f28e40] [cursor=pointer]:
+          - /url: https://www.astro.umd.edu/people/quanzhi-ye
+        - text: ","
+        - link "SFU Metacreation Lab" [ref=f28e41] [cursor=pointer]:
+          - /url: https://metacreation.net/
+        - text: ", and"
+        - link "UniverseTBD" [ref=f28e42] [cursor=pointer]:
+          - /url: https://universetbd.org/
+        - text: .
+      - paragraph [ref=f28e43]:
+        - text: I'm currently still a high schooler completing my A-Levels at INTI College Penang. Previously, I represented Malaysia at the International Olympiad on Astronomy and Astrophysics (IOAA) 2025 and the International Astronomy Olympiad (IAO) 2025; I also founded
+        - link "MYResearchGuide" [ref=f28e44] [cursor=pointer]:
+          - /url: https://myresearchguide.org
+        - text: ", a non-profit initiative to democratise science research opportunities for Malaysian youth."
+  - generic [ref=f28e45]:
+    - heading "Working Papers" [level=2] [ref=f28e46]
+    - list [ref=f28e47]:
+      - listitem [ref=f28e48]:
+        - generic [ref=f28e49]:
+          - generic [ref=f28e50]:
+            - strong [ref=f28e51]: Extended work of "Beyond Linearity in Attention Projections".
+            - emphasis [ref=f28e52]: ICLR/ICML Workshop; Accepted
+            - generic [ref=f28e53]: with Marko Karbevski et al.
+          - generic [ref=f28e54]: ongoing
+      - listitem [ref=f28e55]:
+        - generic [ref=f28e56]:
+          - generic [ref=f28e57]:
+            - strong [ref=f28e58]: Discovering Faint Near-Earth Asteroid Streaks with Three-Channel Deep Learning Pipeline.
+            - emphasis [ref=f28e59]: Drafting for journal submission; Dept. of Astronomy, SJTU & University of Maryland
+            - generic [ref=f28e60]: with Yiyang Guo, Dr. Quanzhi Ye
+          - generic [ref=f28e61]: ongoing
+      - listitem [ref=f28e62]:
+        - generic [ref=f28e63]:
+          - generic [ref=f28e64]:
+            - strong [ref=f28e65]: Comet Identification using Autoencoders Approach.
+            - emphasis [ref=f28e66]: Dept. of Astronomy, University of Maryland
+            - generic [ref=f28e67]: with Dr. Quanzhi Ye et al.
+          - generic [ref=f28e68]: ongoing
+      - listitem [ref=f28e69]:
+        - generic [ref=f28e70]:
+          - generic [ref=f28e71]:
+            - strong [ref=f28e72]: Do Foundation Models See The Same Sky?
+            - emphasis [ref=f28e73]: UniverseTBD
+            - generic [ref=f28e74]: with Kshitij Duraphe et al.
+          - generic [ref=f28e75]: ongoing
+    - heading "Publications" [level=2] [ref=f28e76]
+    - list [ref=f28e77]:
+      - listitem [ref=f28e78]:
+        - generic [ref=f28e79]:
+          - generic [ref=f28e80]:
+            - strong [ref=f28e81]: Do All LLMs Know When They're Being Harmful? A Reproducibility Study of Latent-Space Safety Probes Across Model Families.
+            - emphasis [ref=f28e82]: "EMNLP 9th BlackboxNLP Workshop Special Track: Reproducibility and Reliability in Interpretability Analyses (submitted)"
+            - generic [ref=f28e83]: with Alizishaan Khatri
+          - generic [ref=f28e84]: 08/2026
+      - listitem [ref=f28e85]:
+        - generic [ref=f28e86]:
+          - generic [ref=f28e87]:
+            - strong [ref=f28e88]: Large-Scale Symbolic Music Genre Classification under Class Imbalance using Graph-Based MIDI Embeddings.
+            - emphasis [ref=f28e89]: ISMIR 2026 (submitted)
+            - generic [ref=f28e90]: with Keon Ju Maverick Lee, Philippe Pasquier et al., Metacreation Lab, SFU
+          - generic [ref=f28e91]: July 2026
+      - listitem [ref=f28e92]:
+        - generic [ref=f28e93]:
+          - generic [ref=f28e94]:
+            - strong [ref=f28e95]: Anthropogenic Regional Adaptation in Multimodal Vision-Language Models.
+            - link "[arxiv]" [ref=f28e97] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2604.11490
+            - emphasis [ref=f28e98]: ECCV 2026
+            - generic [ref=f28e99]: with Samuel Cahyawijaya, Peerat Limkonchotiwat et al., SEACrowd
+          - generic [ref=f28e100]: 04/2026
+      - listitem [ref=f28e101]:
+        - generic [ref=f28e102]:
+          - generic [ref=f28e103]:
+            - strong [ref=f28e104]: Can Linguistically Related Languages Guide LLM Translation in Low-Resource Settings?
+            - generic [ref=f28e105]:
+              - link "[official]" [ref=f28e106] [cursor=pointer]:
+                - /url: https://aclanthology.org/2026.loresmt-1.14.pdf
+              - link "[arxiv]" [ref=f28e107] [cursor=pointer]:
+                - /url: https://arxiv.org/abs/2603.16660
+            - emphasis [ref=f28e108]: LoResMT @ EACL 2026
+            - generic [ref=f28e109]: with Aishwarya Ramasethu, Niyathi Allu, Rohin Garg, Harshwardhan Fartale
+          - generic [ref=f28e110]: 03/2026
+      - listitem [ref=f28e111]:
+        - generic [ref=f28e112]:
+          - generic [ref=f28e113]:
+            - strong [ref=f28e114]: A Traditional Approach to Symbolic Piano Continuation.
+            - link "[arxiv]" [ref=f28e116] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2509.12267
+            - emphasis [ref=f28e117]: ISMIR-MIREX 2025
+            - generic [ref=f28e118]: with Christian Zhou-Zheng, John Backsund, Alex Coventry, Avid Eslami, Jyotin Goel, Xingwen Han, Danysh Soomro, Galen Wei
+          - generic [ref=f28e119]: 09/2025
+  - contentinfo [ref=f28e120]:
+    - generic [ref=f28e121]: © 2026 Dun Li Chan · Online

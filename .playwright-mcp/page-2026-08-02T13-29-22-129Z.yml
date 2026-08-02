@@ -1,0 +1,143 @@
+- generic [active] [ref=f32e1]:
+  - banner [ref=f32e2]:
+    - button "Switch to light mode" [ref=f32e4] [cursor=pointer]:
+      - generic [ref=f32e5]: ◐
+      - generic [ref=f32e6]: Light
+  - main [ref=f32e7]:
+    - generic [ref=f32e8]:
+      - img "DUN LI CHAN" [ref=f32e9]: "`7MM\"\"\"Yb. `7MMF' `7MF'`7MN. `7MF' `7MMF' `7MMF' .g8\"\"\"bgd `7MMF' `7MMF' db `7MN. `7MF' MM `Yb. MM M MMN. M MM MM .dP' `M MM MM ;MM: MMN. M MM `Mb MM M M YMb M MM MM dM' ` MM MM ,V^MM. M YMb M MM MM MM M M `MN. M MM MM MM MMmmmmmmMM ,M `MM M `MN. M MM ,MP MM M M `MM.M MM , MM MM. MM MM AbmmmqMA M `MM.M MM ,dP' YM. ,M M YMM MM ,M MM `Mb. ,' MM MM A' VML M YMM .JMMmmmdP' `bmmmmd\"' .JML. YM .JMMmmmmMMM .JMML. `\"bmmmd' .JMML. .JMML..AMA. .AMMA..JML. YM"
+      - paragraph [ref=f32e10]: I work on the frontier of AI to uncover what lies within the latent space.
+      - generic [ref=f32e11]:
+        - link "About Me bio" [ref=f32e12] [cursor=pointer]:
+          - /url: "#about"
+          - generic [ref=f32e13]: ◆
+          - generic [ref=f32e14]: About Me
+          - generic [ref=f32e15]: bio
+        - link "Research papers" [ref=f32e16] [cursor=pointer]:
+          - /url: "#research"
+          - generic [ref=f32e17]: ◆
+          - generic [ref=f32e18]: Research
+          - generic [ref=f32e19]: papers
+        - link "Resume july 2026" [ref=f32e20] [cursor=pointer]:
+          - /url: https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing
+          - generic [ref=f32e21]: ◆
+          - generic [ref=f32e22]: Resume
+          - generic [ref=f32e23]: july 2026
+        - link "GitHub code" [ref=f32e24] [cursor=pointer]:
+          - /url: https://github.com/ehdunhackme
+          - generic [ref=f32e25]: ◆
+          - generic [ref=f32e26]: GitHub
+          - generic [ref=f32e27]: code
+        - link "LinkedIn profile" [ref=f32e28] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/dun-li-chan
+          - generic [ref=f32e29]: ◆
+          - generic [ref=f32e30]: LinkedIn
+          - generic [ref=f32e31]: profile
+        - link "Scholar citations" [ref=f32e32] [cursor=pointer]:
+          - /url: https://scholar.google.com/citations?user=UOYqiG4AAAAJ
+          - generic [ref=f32e33]: ◆
+          - generic [ref=f32e34]: Scholar
+          - generic [ref=f32e35]: citations
+        - link "Contact email" [ref=f32e36] [cursor=pointer]:
+          - /url: mailto:dunlinmy88@gmail.com
+          - generic [ref=f32e37]: ◆
+          - generic [ref=f32e38]: Contact
+          - generic [ref=f32e39]: email
+  - generic [ref=f32e40]:
+    - heading "About Me" [level=2] [ref=f32e41]
+    - generic [ref=f32e42]:
+      - paragraph [ref=f32e43]:
+        - text: Currently working on AI/Astronomy research across the
+        - link "University of Maryland Astronomy Department" [ref=f32e44] [cursor=pointer]:
+          - /url: https://www.astro.umd.edu/people/quanzhi-ye
+        - text: ","
+        - link "Simon Fraser University (SFU) Metacreation Lab" [ref=f32e45] [cursor=pointer]:
+          - /url: https://metacreation.net/
+        - text: ", and"
+        - link "UniverseTBD" [ref=f32e46] [cursor=pointer]:
+          - /url: https://universetbd.org/
+        - text: .
+      - paragraph [ref=f32e47]:
+        - text: I'm currently still a high schooler completing my A-Levels at INTI College Penang. Previously, I represented Malaysia at the International Olympiad on Astronomy and Astrophysics (IOAA) 2025 and the International Astronomy Olympiad (IAO) 2025; I also founded
+        - link "MYResearchGuide" [ref=f32e48] [cursor=pointer]:
+          - /url: https://myresearchguide.org
+        - text: ", a non-profit initiative to democratise science research opportunities for Malaysian youth."
+  - generic [ref=f32e49]:
+    - heading "Working Papers" [level=2] [ref=f32e50]
+    - list [ref=f32e51]:
+      - listitem [ref=f32e52]:
+        - generic [ref=f32e53]:
+          - generic [ref=f32e54]:
+            - strong [ref=f32e55]: Extended work of "Beyond Linearity in Attention Projections".
+            - emphasis [ref=f32e56]: International Conference on Learning Representations (ICLR) / International Conference on Machine Learning (ICML) Workshop; Accepted
+            - generic [ref=f32e57]: with Marko Karbevski et al.
+          - generic [ref=f32e58]: ongoing
+      - listitem [ref=f32e59]:
+        - generic [ref=f32e60]:
+          - generic [ref=f32e61]:
+            - strong [ref=f32e62]: Identification of Faint Near-Earth Asteroid Streak Candidates Using a Three-Channel Deep-Learning Pipeline.
+            - emphasis [ref=f32e63]: Drafting for journal submission; Dept. of Astronomy, Shanghai Jiao Tong University (SJTU) & University of Maryland
+            - generic [ref=f32e64]: with Yiyang Guo, Dr. Quanzhi Ye
+          - generic [ref=f32e65]: ongoing
+      - listitem [ref=f32e66]:
+        - generic [ref=f32e67]:
+          - generic [ref=f32e68]:
+            - strong [ref=f32e69]: Feature-Based Comet Classification Pipeline for Zwicky Transient Facility (ZTF) Alert Image Streams.
+            - emphasis [ref=f32e70]: Dept. of Astronomy, University of Maryland
+            - generic [ref=f32e71]: with Dr. Quanzhi Ye et al.
+          - generic [ref=f32e72]: ongoing
+      - listitem [ref=f32e73]:
+        - generic [ref=f32e74]:
+          - generic [ref=f32e75]:
+            - strong [ref=f32e76]: "Same Object, Different Telescope: A Layer-Wise Guide to Instrument and Physics Information."
+            - emphasis [ref=f32e77]: UniverseTBD
+            - generic [ref=f32e78]: with Kshitij Duraphe et al.
+          - generic [ref=f32e79]: ongoing
+    - heading "Publications" [level=2] [ref=f32e80]
+    - list [ref=f32e81]:
+      - listitem [ref=f32e82]:
+        - generic [ref=f32e83]:
+          - generic [ref=f32e84]:
+            - strong [ref=f32e85]: Do All LLMs Know When They're Being Harmful? A Reproducibility Study of Latent-Space Safety Probes Across Model Families.
+            - emphasis [ref=f32e86]: "Conference on Empirical Methods in Natural Language Processing (EMNLP) 9th BlackboxNLP Workshop Special Track: Reproducibility and Reliability in Interpretability Analyses (submitted)"
+            - generic [ref=f32e87]: with Alizishaan Khatri
+          - generic [ref=f32e88]: 08/2026
+      - listitem [ref=f32e89]:
+        - generic [ref=f32e90]:
+          - generic [ref=f32e91]:
+            - strong [ref=f32e92]: Large-Scale Symbolic Music Genre Classification under Class Imbalance using Graph-Based MIDI Embeddings.
+            - emphasis [ref=f32e93]: Drafting for the Transactions of the International Society for Music Information Retrieval (TISMIR)
+            - generic [ref=f32e94]: with Keon Ju Maverick Lee, Philippe Pasquier et al., Metacreation Lab, Simon Fraser University (SFU)
+          - generic [ref=f32e95]: July 2026
+      - listitem [ref=f32e96]:
+        - generic [ref=f32e97]:
+          - generic [ref=f32e98]:
+            - strong [ref=f32e99]: Anthropogenic Regional Adaptation in Multimodal Vision-Language Models.
+            - link "[arxiv]" [ref=f32e101] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2604.11490
+            - emphasis [ref=f32e102]: European Conference on Computer Vision (ECCV) 2026
+            - generic [ref=f32e103]: with Samuel Cahyawijaya, Peerat Limkonchotiwat et al., SEACrowd
+          - generic [ref=f32e104]: 04/2026
+      - listitem [ref=f32e105]:
+        - generic [ref=f32e106]:
+          - generic [ref=f32e107]:
+            - strong [ref=f32e108]: Can Linguistically Related Languages Guide LLM Translation in Low-Resource Settings?
+            - generic [ref=f32e109]:
+              - link "[official]" [ref=f32e110] [cursor=pointer]:
+                - /url: https://aclanthology.org/2026.loresmt-1.14.pdf
+              - link "[arxiv]" [ref=f32e111] [cursor=pointer]:
+                - /url: https://arxiv.org/abs/2603.16660
+            - emphasis [ref=f32e112]: Low-Resource Machine Translation (LoResMT) Workshop @ European Chapter of the Association for Computational Linguistics (EACL) 2026
+            - generic [ref=f32e113]: with Aishwarya Ramasethu, Niyathi Allu, Rohin Garg, Harshwardhan Fartale
+          - generic [ref=f32e114]: 03/2026
+      - listitem [ref=f32e115]:
+        - generic [ref=f32e116]:
+          - generic [ref=f32e117]:
+            - strong [ref=f32e118]: A Traditional Approach to Symbolic Piano Continuation.
+            - link "[arxiv]" [ref=f32e120] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2509.12267
+            - emphasis [ref=f32e121]: International Society for Music Information Retrieval (ISMIR) - Music Information Retrieval Evaluation eXchange (MIREX) 2025
+            - generic [ref=f32e122]: with Christian Zhou-Zheng, John Backsund, Alex Coventry, Avid Eslami, Jyotin Goel, Xingwen Han, Danysh Soomro, Galen Wei
+          - generic [ref=f32e123]: 09/2025
+  - contentinfo [ref=f32e124]:
+    - generic [ref=f32e125]: © 2026 Dun Li Chan · Online

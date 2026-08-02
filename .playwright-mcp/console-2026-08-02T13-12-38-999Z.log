@@ -1,0 +1,4 @@
+[      15ms] [ERROR] Failed to load resource: net::ERR_FILE_NOT_FOUND @ filesystem:https://docs.google.com/persistent/docs/fonts/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gfQ8gbw.woff2:0
+[      15ms] [ERROR] Failed to load resource: net::ERR_FILE_NOT_FOUND @ filesystem:https://docs.google.com/persistent/docs/fonts/rP2up3q65FkAtHfwd-eIS2brbDN6gxP34F9jRRCe4W3gmgggbw.woff2:0
+[      15ms] [ERROR] Failed to load resource: net::ERR_FILE_NOT_FOUND @ filesystem:https://docs.google.com/persistent/docs/fonts/XoHg2Y_-T6Oo88RDZSQPp2sstj8.woff2:0
+[      15ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
