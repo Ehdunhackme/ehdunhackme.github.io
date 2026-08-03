@@ -72,6 +72,34 @@ button { font-family: inherit; cursor: pointer; }
   .header-actions { gap: 1.25rem; }
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+.lang-btn {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+@media (min-width: 768px) {
+  .lang-btn { font-size: 11px; }
+}
+.lang-btn:hover { color: var(--fg-strong); }
+.lang-btn.is-active { background: var(--fg); color: var(--bg); }
+
 .header-btn {
   display: flex;
   align-items: center;
@@ -127,6 +155,9 @@ button { font-family: inherit; cursor: pointer; }
   user-select: none;
   cursor: crosshair;
 }
+#logo-wrap.ascii-logo { width: 100%; }
+#logo-wrap .ascii-logo { margin: 0; }
+.ascii-logo[hidden] { display: none; }
 .ascii-char { display: inline; transition: color 0.14s ease-out; will-change: color; }
 .ascii-char.is-active { color: var(--logo-active); }
 

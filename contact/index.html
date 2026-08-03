@@ -21,6 +21,10 @@
   <body>
     <header class="site-header">
       <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="zh">中文</button>
+        </div>
         <button type="button" class="header-btn theme-toggle" aria-label="Switch color scheme">
           <span class="icon" aria-hidden="true">&#9680;</span>
           <span class="label">Dark</span>
@@ -29,10 +33,10 @@
     </header>
     <main class="page">
       <section class="page-shell">
-        <h1>Contact</h1>
-        <p class="page-intro">Reach out for research collaborations or academic queries.</p>
+        <h1 data-i18n="contact">Contact</h1>
+        <p class="page-intro" data-i18n="intro">Reach out for research collaborations or academic queries.</p>
         <div class="contact-list">
-          <p><strong>Email:</strong> <a href="mailto:dunlinmy88@gmail.com">dunlinmy88@gmail.com</a></p>
+          <p><strong data-i18n="lbl.email">Email:</strong> <a href="mailto:dunlinmy88@gmail.com">dunlinmy88@gmail.com</a></p>
           <p>
             <strong>GitHub:</strong>
             <a href="https://github.com/ehdunhackme" target="_blank" rel="noopener">
@@ -46,7 +50,7 @@
             </a>
           </p>
           <p>
-            <strong>Google Scholar:</strong>
+            <strong data-i18n="lbl.scholar">Google Scholar:</strong>
             <a
               href="https://scholar.google.com/citations?user=UOYqiG4AAAAJ"
               target="_blank"
@@ -57,27 +61,53 @@
           </p>
         </div>
         <nav class="page-links">
-          <a href="/">Home</a>
-          <a href="/writings/">Writings</a>
+          <a href="/" data-i18n="home">Home</a>
+          <a href="/writings/" data-i18n="writings">Writings</a>
         </nav>
       </section>
     </main>
     <script>
       (function () {
+        var I18N = {
+          en: { title: 'Contact - Dun Li Chan', meta: 'Contact Dun Li Chan.', contact: 'Contact', intro: 'Reach out for research collaborations or academic queries.', 'lbl.email': 'Email:', 'lbl.scholar': 'Google Scholar:', home: 'Home', writings: 'Writings', dark: 'Dark', light: 'Light' },
+          zh: { title: '联系 - 曾敦礼', meta: '联系曾敦礼。', contact: '联系', intro: '欢迎就研究合作或学术问题与我联系。', 'lbl.email': '邮箱：', 'lbl.scholar': '谷歌学术：', home: '首页', writings: '文章', dark: '深色', light: '浅色' }
+        };
         var root = document.documentElement;
+        var lang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';
         var toggle = document.querySelector('.theme-toggle');
-        var label = toggle.querySelector('.label');
-        function update() {
+        var label = toggle ? toggle.querySelector('.label') : null;
+        function updateTheme() {
           var dark = root.classList.contains('dark');
-          label.textContent = dark ? 'Light' : 'Dark';
-          toggle.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' mode');
+          if (label) label.textContent = dark ? I18N[lang].light : I18N[lang].dark;
         }
-        toggle.addEventListener('click', function () {
+        function apply() {
+          var d = I18N[lang];
+          root.lang = lang;
+          document.title = d.title;
+          var meta = document.querySelector('meta[name="description"]');
+          if (meta) meta.setAttribute('content', d.meta);
+          document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            var k = el.getAttribute('data-i18n');
+            if (d[k] !== undefined) el.textContent = d[k];
+          });
+          document.querySelectorAll('.lang-btn').forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-lang') === lang);
+          });
+          updateTheme();
+        }
+        if (toggle) toggle.addEventListener('click', function () {
           root.classList.toggle('dark');
           localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-          update();
+          updateTheme();
         });
-        update();
+        document.querySelectorAll('.lang-btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            lang = b.getAttribute('data-lang');
+            localStorage.setItem('lang', lang);
+            apply();
+          });
+        });
+        apply();
       })();
     </script>
   </body>
