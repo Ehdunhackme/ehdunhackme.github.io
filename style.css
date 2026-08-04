@@ -132,13 +132,13 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 1.25rem;
+  padding: 4.5rem 1.25rem;
 }
 @media (min-width: 768px) {
-  .hero { padding: 7rem 1.25rem; }
+  .hero { padding: 5.5rem 1.25rem; }
 }
 @media (max-width: 640px) {
-  .hero { padding: 4.5rem 1rem 3rem; }
+  .hero { padding: 3.5rem 1rem 2.5rem; }
 }
 
 .hero-inner { width: 100%; max-width: 64rem; }
@@ -171,7 +171,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .tagline {
-  margin: 2.5rem auto 0;
+  margin: 1.25rem auto 0;
   max-width: 42ch;
   text-align: center;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -185,14 +185,14 @@ button { font-family: inherit; cursor: pointer; }
   .tagline { font-size: 17px; }
 }
 @media (min-width: 768px) {
-  .tagline { margin-top: 3.5rem; font-size: 18px; }
+  .tagline { margin-top: 2rem; font-size: 18px; }
 }
 @media (max-width: 640px) {
-  .tagline { margin-top: 1.5rem; font-size: 14px; }
+  .tagline { margin-top: 0.75rem; font-size: 14px; }
 }
 
 .link-row {
-  margin: 3rem auto 0;
+  margin: 2.5rem auto 0;
   max-width: 52rem;
   display: grid;
   grid-template-columns: repeat(4, auto);
@@ -204,7 +204,7 @@ button { font-family: inherit; cursor: pointer; }
   .link-row { gap: 1rem 2.5rem; }
 }
 @media (max-width: 640px) {
-  .link-row { margin-top: 1.75rem; gap: 0.5rem 0.75rem; }
+  .link-row { margin-top: 1.5rem; gap: 0.5rem 0.75rem; }
   .link-item { font-size: 10px; }
   .link-tag { display: none; }
 }
@@ -250,9 +250,9 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ---------- Sections ---------- */
 
-.section { max-width: 64rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+.section { max-width: 64rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
 @media (min-width: 768px) {
-  .section { padding: 2rem 2rem 4rem; }
+  .section { padding: 1.5rem 2rem 3rem; }
 }
 
 .section-title {
@@ -262,7 +262,7 @@ button { font-family: inherit; cursor: pointer; }
   text-transform: uppercase;
   font-weight: 500;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .about { text-align: justify; }
@@ -270,19 +270,19 @@ button { font-family: inherit; cursor: pointer; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
 
-.paper-list { list-style: none; margin-bottom: 2.5rem; }
+.paper-list { list-style: none; margin-bottom: 2rem; }
 .paper-row {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  padding: 0.85rem 0;
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--line);
 }
 .paper-info { flex: 1; font-size: 0.95rem; line-height: 1.5; }
-.paper-info strong { font-weight: 600; color: var(--fg-secondary); }
-.paper-info em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.82rem; color: var(--muted); }
+.paper-info strong { font-weight: 600; font-size: 1rem; color: var(--fg-secondary); }
+.paper-info em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.78rem; color: var(--muted); }
 .paper-date { flex-shrink: 0; color: var(--faint); font-size: 0.85rem; white-space: nowrap; }
-.coauthors { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+.coauthors { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
 .paper-links { margin-left: 0.2rem; }
 .paper-links a { font-size: 0.82rem; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; margin-right: 0.15rem; }
 .paper-links a:hover { color: var(--fg-strong); }

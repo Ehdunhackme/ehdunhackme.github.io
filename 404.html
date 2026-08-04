@@ -27,7 +27,6 @@
         </div>
         <button type="button" class="header-btn theme-toggle" aria-label="Switch color scheme">
           <span class="icon" aria-hidden="true">&#9680;</span>
-          <span class="label">Dark</span>
         </button>
       </div>
     </header>
@@ -49,10 +48,8 @@
         var root = document.documentElement;
         var lang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';
         var toggle = document.querySelector('.theme-toggle');
-        var label = toggle ? toggle.querySelector('.label') : null;
         function updateTheme() {
           var dark = root.classList.contains('dark');
-          if (label) label.textContent = dark ? I18N[lang].light : I18N[lang].dark;
         }
         function apply() {
           var d = I18N[lang];

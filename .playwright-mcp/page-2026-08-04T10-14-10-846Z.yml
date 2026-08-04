@@ -1,0 +1,142 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - group "Language" [ref=e4]:
+        - button "EN" [ref=e5] [cursor=pointer]
+        - button "中文" [ref=e6] [cursor=pointer]
+      - button "Switch to light mode" [ref=e7] [cursor=pointer]:
+        - generic [ref=e8]: ◐
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - img "DUN LI CHAN" [ref=e11]:
+        - generic [ref=e12]: "`7MM\"\"\"Yb. `7MMF' `7MF'`7MN. `7MF' `7MMF' `7MMF' .g8\"\"\"bgd `7MMF' `7MMF' db `7MN. `7MF' MM `Yb. MM M MMN. M MM MM .dP' `M MM MM ;MM: MMN. M MM `Mb MM M M YMb M MM MM dM' ` MM MM ,V^MM. M YMb M MM MM MM M M `MN. M MM MM MM MMmmmmmmMM ,M `MM M `MN. M MM ,MP MM M M `MM.M MM , MM MM. MM MM AbmmmqMA M `MM.M MM ,dP' YM. ,M M YMM MM ,M MM `Mb. ,' MM MM A' VML M YMM .JMMmmmdP' `bmmmmd\"' .JML. YM .JMMmmmmMMM .JMML. `\"bmmmd' .JMML. .JMML..AMA. .AMMA..JML. YM"
+      - paragraph [ref=e13]: I work on the frontier of AI to uncover what lies within the latent space.
+      - generic [ref=e14]:
+        - link "About Me bio" [ref=e15] [cursor=pointer]:
+          - /url: "#about"
+          - generic [ref=e16]: ◆
+          - generic [ref=e17]: About Me
+          - generic [ref=e18]: bio
+        - link "Research papers" [ref=e19] [cursor=pointer]:
+          - /url: "#research"
+          - generic [ref=e20]: ◆
+          - generic [ref=e21]: Research
+          - generic [ref=e22]: papers
+        - link "Resume july 2026" [ref=e23] [cursor=pointer]:
+          - /url: https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing
+          - generic [ref=e24]: ◆
+          - generic [ref=e25]: Resume
+          - generic [ref=e26]: july 2026
+        - link "GitHub code" [ref=e27] [cursor=pointer]:
+          - /url: https://github.com/ehdunhackme
+          - generic [ref=e28]: ◆
+          - generic [ref=e29]: GitHub
+          - generic [ref=e30]: code
+        - link "LinkedIn profile" [ref=e31] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/dun-li-chan-6b3095269/
+          - generic [ref=e32]: ◆
+          - generic [ref=e33]: LinkedIn
+          - generic [ref=e34]: profile
+        - link "Scholar citations" [ref=e35] [cursor=pointer]:
+          - /url: https://scholar.google.com/citations?user=UOYqiG4AAAAJ
+          - generic [ref=e36]: ◆
+          - generic [ref=e37]: Scholar
+          - generic [ref=e38]: citations
+        - link "Contact email" [ref=e39] [cursor=pointer]:
+          - /url: mailto:dunlinmy88@gmail.com
+          - generic [ref=e40]: ◆
+          - generic [ref=e41]: Contact
+          - generic [ref=e42]: email
+  - generic [ref=e43]:
+    - heading "About Me" [level=2] [ref=e44]
+    - generic [ref=e45]:
+      - paragraph [ref=e46]: I'm currently building across AI safety evaluation in LLMs, mechanistic interpretability, and AI4Astro. My research interest lies in understanding how models work internally (layer-wise) and how this information can advance our progress in AI, while making sure they're safe to deploy in real-world settings.
+      - paragraph [ref=e47]:
+        - text: Before that, I represented Malaysia at the International Olympiad on Astronomy and Astrophysics (IOAA) 2025 and the International Astronomy Olympiad (IAO) 2025; I also founded
+        - link "MYResearchGuide" [ref=e48] [cursor=pointer]:
+          - /url: https://myresearchguide.org
+        - text: ", a non-profit initiative to democratise science research opportunities for Malaysian youth."
+  - generic [ref=e49]:
+    - heading "Working Papers" [level=2] [ref=e50]
+    - list [ref=e51]:
+      - listitem [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - strong [ref=e55]: "Same Object, Different Telescope: A Layer-Wise Guide to Instrument and Physics Information."
+            - emphasis [ref=e56]: UniverseTBD
+            - generic [ref=e57]: with Kshitij Duraphe et al.
+          - generic [ref=e58]: ongoing
+      - listitem [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - strong [ref=e62]: "Input Perturbations Propagate Differently: A Mechanistic Analysis of GPT-2 Robustness."
+            - generic [ref=e63]: with Emily Liu et al.
+          - generic [ref=e64]: ongoing
+      - listitem [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - strong [ref=e68]: Extended work of "Beyond Linearity in Attention Projections".
+            - generic [ref=e69]: with Marko Karbevski et al.
+          - generic [ref=e70]: ongoing
+      - listitem [ref=e71]:
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - strong [ref=e74]: Identification of Faint Near-Earth Asteroid Streak Candidates Using a Three-Channel Deep-Learning Pipeline.
+            - emphasis [ref=e75]: Drafting for journal submission; Dept. of Astronomy, Shanghai Jiao Tong University (SJTU) & University of Maryland
+            - generic [ref=e76]: with Yiyang Guo, Dr. Quanzhi Ye
+          - generic [ref=e77]: ongoing
+      - listitem [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - strong [ref=e81]: Feature-Based Comet Classification Pipeline for Zwicky Transient Facility (ZTF) Alert Image Streams.
+            - emphasis [ref=e82]: Dept. of Astronomy, University of Maryland
+            - generic [ref=e83]: with Dr. Quanzhi Ye et al.
+          - generic [ref=e84]: ongoing
+    - heading "Publications (preprints/peer-reviewed papers)" [level=2] [ref=e85]
+    - list [ref=e86]:
+      - listitem [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - strong [ref=e90]: Do All LLMs Know When They're Being Harmful? A Reproducibility Study of Latent-Space Safety Probes Across Model Families.
+            - emphasis [ref=e91]: "EMNLP 9th BlackboxNLP Workshop Special Track: Reproducibility and Reliability in Interpretability Analyses (submitted)"
+            - generic [ref=e92]: with Alizishaan Khatri
+          - generic [ref=e93]: 08/2026
+      - listitem [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - strong [ref=e97]: Large-Scale Symbolic Music Genre Classification under Class Imbalance using Graph-Based MIDI Embeddings (part of GigaMIDI projects).
+            - emphasis [ref=e98]: Drafting for TISMIR
+            - generic [ref=e99]: with Keon Ju Maverick Lee, Philippe Pasquier et al., Metacreation Lab, Simon Fraser University (SFU)
+          - generic [ref=e100]: 07/2026
+      - listitem [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - strong [ref=e104]: Anthropogenic Regional Adaptation in Multimodal Vision-Language Models.
+            - link "[arxiv]" [ref=e106] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2604.11490
+            - emphasis [ref=e107]: ACL ARR 2026
+            - generic [ref=e108]: with Samuel Cahyawijaya, Peerat Limkonchotiwat et al., SEACrowd
+          - generic [ref=e109]: 04/2026
+      - listitem [ref=e110]:
+        - generic [ref=e111]:
+          - generic [ref=e112]:
+            - strong [ref=e113]: Can Linguistically Related Languages Guide LLM Translation in Low-Resource Settings?
+            - generic [ref=e114]:
+              - link "[official]" [ref=e115] [cursor=pointer]:
+                - /url: https://aclanthology.org/2026.loresmt-1.14.pdf
+              - link "[arxiv]" [ref=e116] [cursor=pointer]:
+                - /url: https://arxiv.org/abs/2603.16660
+            - emphasis [ref=e117]: EACL 2026 - LoResMT Workshop
+            - generic [ref=e118]: with Aishwarya Ramasethu, Niyathi Allu, Rohin Garg, Harshwardhan Fartale
+          - generic [ref=e119]: 03/2026
+      - listitem [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - strong [ref=e123]: A Traditional Approach to Symbolic Piano Continuation.
+            - link "[arxiv]" [ref=e125] [cursor=pointer]:
+              - /url: https://arxiv.org/abs/2509.12267
+            - emphasis [ref=e126]: ISMIR 2025 - MIREX
+            - generic [ref=e127]: with Christian Zhou-Zheng, John Backsund, Alex Coventry, Avid Eslami, Jyotin Goel, Xingwen Han, Danysh Soomro, Galen Wei
+          - generic [ref=e128]: 09/2025
+  - contentinfo [ref=e129]:
+    - generic [ref=e130]: © 2026 Dun Li Chan · Online
