@@ -429,7 +429,7 @@
 
       function idlePulse() {
         if (reducedMotion || document.hidden) return;
-        var pulses = 1 + Math.floor(Math.random() * 2);
+        var pulses = 1 + Math.floor(Math.random() * 3);
         for (var i = 0; i < pulses; i++) {
           (function (delay) {
             setTimeout(function () {
@@ -443,7 +443,7 @@
             }, delay);
           })(Math.random() * 260);
         }
-        setTimeout(idlePulse, 2800 + Math.random() * 2400);
+        setTimeout(idlePulse, 900 + Math.random() * 900);
       }
 
       showLogo();
