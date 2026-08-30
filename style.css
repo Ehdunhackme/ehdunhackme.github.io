@@ -242,7 +242,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--fg-secondary);
+  color: var(--fg-strong);
   transition: color 0.15s ease;
   white-space: nowrap;
 }
