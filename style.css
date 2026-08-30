@@ -204,7 +204,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.6;
   letter-spacing: 0;
   font-weight: 400;
-  color: var(--fg-secondary);
+  color: var(--fg-strong);
 }
 @media (min-width: 640px) {
   .tagline { font-size: 17px; }
