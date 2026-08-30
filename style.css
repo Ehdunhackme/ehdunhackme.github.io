@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Labil";
+  src: url("https://www.nozomio.com/_next/static/media/c2d3cd013966adbb-s.p.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 450;
+}
+@font-face {
+  font-family: "Labil";
+  src: url("https://www.nozomio.com/_next/static/media/5b4771a0efa2e7aa-s.p.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 451 650;
+}
+@font-face {
+  font-family: "Labil";
+  src: url("https://www.nozomio.com/_next/static/media/18d10c943607261c-s.p.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 651 750;
+}
+@font-face {
+  font-family: "Labil";
+  src: url("https://www.nozomio.com/_next/static/media/a72d7d50b83ea43f-s.p.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 751 900;
+}
+
 :root {
   --bg: #f7f3f0;
   --fg: #171717;
@@ -12,11 +37,11 @@
 
 html.dark {
   --bg: #1a1a1a;
-  --fg: #e5e5e5;
-  --fg-strong: #ffffff;
-  --fg-secondary: #f5f5f5;
-  --muted: #a3a3a3;
-  --faint: #737373;
+  --fg: #c2c2c2;
+  --fg-strong: #f5f5f5;
+  --fg-secondary: #b8b8b8;
+  --muted: #969696;
+  --faint: #707070;
   --line: rgba(255, 255, 255, 0.08);
   --logo-color: #e5e5e5;
   --logo-active: #ffffff;
@@ -27,7 +52,7 @@ html.dark {
 html { line-height: 1.5; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Labil Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Labil", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
@@ -55,7 +80,7 @@ button { font-family: inherit; cursor: pointer; }
   .site-header { padding: 2rem; }
 }
 
-.brand { display: flex; flex-direction: column; gap: 0.375rem; font-family: "Labil Grotesk", system-ui, sans-serif; font-size: 10px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; }
+.brand { display: flex; flex-direction: column; gap: 0.375rem; font-family: "Labil", system-ui, sans-serif; font-size: 10px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; }
 @media (min-width: 768px) {
   .brand { font-size: 11px; }
 }
@@ -67,7 +92,7 @@ button { font-family: inherit; cursor: pointer; }
 .brand-line.first { color: var(--fg-strong); }
 .brand-line.second { color: var(--muted); padding-left: 14px; }
 
-.header-actions { display: flex; align-items: center; gap: 1rem; font-family: "Labil Grotesk", system-ui, sans-serif; }
+.header-actions { display: flex; align-items: center; gap: 1rem; font-family: "Labil", system-ui, sans-serif; }
 @media (min-width: 768px) {
   .header-actions { gap: 1.25rem; }
 }
@@ -213,7 +238,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Labil Grotesk", system-ui, sans-serif;
+  font-family: "Labil", system-ui, sans-serif;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -256,7 +281,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .section-title {
-  font-family: "Labil Grotesk", system-ui, sans-serif;
+  font-family: "Labil", system-ui, sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -279,7 +304,7 @@ button { font-family: inherit; cursor: pointer; }
   border-bottom: 1px solid var(--line);
 }
 .paper-info { flex: 1; font-size: 0.95rem; line-height: 1.5; }
-.paper-info strong { font-weight: 600; font-size: 1rem; color: var(--fg-secondary); }
+.paper-info strong { font-weight: 600; font-size: 1rem; color: var(--fg-strong); }
 .paper-info em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.78rem; color: var(--muted); }
 .paper-date { flex-shrink: 0; color: var(--faint); font-size: 0.85rem; white-space: nowrap; }
 .coauthors { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
@@ -293,7 +318,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 2rem 1.25rem 3rem;
   display: flex;
   justify-content: center;
-  font-family: "Labil Grotesk", system-ui, sans-serif;
+  font-family: "Labil", system-ui, sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
