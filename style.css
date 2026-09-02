@@ -144,6 +144,9 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 0.25rem 0.55rem;
+  width: 2.75rem;
+  text-align: center;
+  white-space: nowrap;
   border-radius: 999px;
   cursor: pointer;
   transition: color 0.15s ease, background-color 0.15s ease;
