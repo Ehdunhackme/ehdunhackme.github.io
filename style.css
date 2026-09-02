@@ -73,9 +73,10 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 50;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 1.25rem;
 }
+.site-header:has(.site-wordmark) { justify-content: space-between; }
 
 .site-wordmark {
   display: inline-flex;
