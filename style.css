@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #f7f3f0;
@@ -297,7 +297,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .section-title {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -306,7 +306,7 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 1.25rem;
 }
 
-.about { text-align: justify; }
+.about { text-align: justify; font-family: "IBM Plex Sans", system-ui, sans-serif; }
 .about p { max-width: 64rem; margin: 0 auto 1rem; font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
@@ -318,6 +318,7 @@ button { font-family: inherit; cursor: pointer; }
   gap: 2rem;
   padding: 0.7rem 0;
   border-bottom: 1px solid var(--line);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
 }
 .paper-info { flex: 1; font-size: 0.95rem; line-height: 1.5; }
 .paper-info strong { font-weight: 600; font-size: 1rem; color: var(--fg-strong); }
