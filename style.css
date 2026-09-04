@@ -324,9 +324,11 @@ button { font-family: inherit; cursor: pointer; }
 .paper-info em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.78rem; color: var(--muted); }
 .paper-date { flex-shrink: 0; color: var(--faint); font-size: 0.85rem; white-space: nowrap; }
 .coauthors { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
-.paper-links { margin-left: 0.2rem; }
-.paper-links a { font-size: 0.82rem; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; margin-right: 0.15rem; }
-.paper-links a:hover { color: var(--fg-strong); }
+.paper-links { display: block; margin: 0.45rem 0 0.3rem; }
+.paper-links a { font-size: 0.82rem; color: #2563eb; text-decoration: underline; text-underline-offset: 2px; margin-right: 0.5rem; }
+.paper-links a:hover { color: #1d4ed8; }
+html.dark .paper-links a { color: #8ab4ff; }
+html.dark .paper-links a:hover { color: #b8d2ff; }
 
 /* ---------- Paper cards ---------- */
 
