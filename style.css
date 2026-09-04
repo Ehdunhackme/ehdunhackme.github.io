@@ -1,27 +1,4 @@
-@font-face {
-  font-family: "Labil";
-  src: url("https://www.nozomio.com/_next/static/media/c2d3cd013966adbb-s.p.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 100 450;
-}
-@font-face {
-  font-family: "Labil";
-  src: url("https://www.nozomio.com/_next/static/media/5b4771a0efa2e7aa-s.p.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 451 650;
-}
-@font-face {
-  font-family: "Labil";
-  src: url("https://www.nozomio.com/_next/static/media/18d10c943607261c-s.p.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 651 750;
-}
-@font-face {
-  font-family: "Labil";
-  src: url("https://www.nozomio.com/_next/static/media/a72d7d50b83ea43f-s.p.woff2") format("woff2");
-  font-display: swap;
-  font-weight: 751 900;
-}
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #f7f3f0;
@@ -52,7 +29,7 @@ html.dark {
 html { line-height: 1.5; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Labil", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   background: var(--bg);
   color: var(--fg);
   -webkit-font-smoothing: antialiased;
@@ -82,7 +59,7 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   gap: 0.08em;
   color: var(--fg-strong);
-  font-family: "Labil", system-ui, sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -109,7 +86,7 @@ button { font-family: inherit; cursor: pointer; }
   .site-wordmark { font-size: 11px; }
 }
 
-.brand { display: flex; flex-direction: column; gap: 0.375rem; font-family: "Labil", system-ui, sans-serif; font-size: 10px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; }
+.brand { display: flex; flex-direction: column; gap: 0.375rem; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 10px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; }
 @media (min-width: 768px) {
   .brand { font-size: 11px; }
 }
@@ -121,7 +98,7 @@ button { font-family: inherit; cursor: pointer; }
 .brand-line.first { color: var(--fg-strong); }
 .brand-line.second { color: var(--muted); padding-left: 14px; }
 
-.header-actions { display: flex; align-items: center; gap: 1rem; font-family: "Labil", system-ui, sans-serif; }
+.header-actions { display: flex; align-items: center; gap: 1rem; font-family: "JetBrains Mono", ui-monospace, monospace; }
 @media (min-width: 768px) {
   .header-actions { gap: 1.25rem; }
 }
@@ -130,6 +107,8 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 0.125rem;
+  width: 6rem;
+  height: 1.7rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0.2rem;
@@ -143,8 +122,13 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.25rem 0.55rem;
+  flex: 0 0 2.75rem;
   width: 2.75rem;
+  height: 1.25rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   white-space: nowrap;
   border-radius: 999px;
@@ -270,7 +254,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Labil", system-ui, sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -313,7 +297,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .section-title {
-  font-family: "Labil", system-ui, sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -353,18 +337,18 @@ button { font-family: inherit; cursor: pointer; }
 .sort-btn { border: 1px solid transparent; background: transparent; color: var(--muted); font: inherit; font-size: 0.68rem; padding: 0.25rem 0.4rem; cursor: pointer; }
 .sort-btn:hover, .sort-btn.is-active { border-color: var(--line); color: var(--fg-strong); }
 .paper-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 3rem; }
-.paper-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 88%, var(--fg-strong)); box-shadow: 0.4rem 0.4rem 0 var(--line); transition: border-color 0.2s ease, transform 0.2s ease; }
+.paper-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 88%, var(--fg-strong)); transition: border-color 0.2s ease, transform 0.2s ease; }
 .paper-card:hover { border-color: var(--muted); transform: translateY(-2px); }
-.paper-preview { position: relative; height: 18rem; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.25rem; overflow: hidden; background: var(--fg-strong); color: var(--bg); text-decoration: none; }
+.paper-preview { position: relative; height: 12rem; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.25rem; overflow: hidden; background: var(--fg-strong); color: var(--bg); text-decoration: none; }
 .paper-preview--paper { padding: 0; background: var(--fg-strong); }
 .paper-preview--paper::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), transparent 70%, rgba(0, 0, 0, 0.48)); pointer-events: none; }
 .paper-preview--paper img { position: absolute; inset: 0 auto auto 0; width: 100%; height: auto; max-width: none; object-fit: initial; object-position: top center; background: #fff; }
 .paper-preview-badge { position: absolute; z-index: 1; right: 0.8rem; bottom: 0.7rem; color: #fff; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.paper-preview--empty { background: color-mix(in srgb, var(--bg) 94%, var(--fg-strong)); color: var(--muted); }
+.paper-preview--empty { display: flex; background: inherit; color: var(--muted); }
 .paper-preview span, .paper-preview small { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
 .paper-preview strong { max-width: 18ch; font-size: clamp(1.15rem, 2.1vw, 1.8rem); line-height: 1.05; letter-spacing: -0.04em; }
 .paper-preview--empty small { color: var(--faint); }
-.paper-card-body { padding: 1rem 1.1rem 1.15rem; background: color-mix(in srgb, var(--bg) 92%, var(--fg-strong)); }
+.paper-card-body { padding: 1rem 1.1rem 1.15rem; background: transparent; }
 .paper-card-body .paper-date { display: block; margin-bottom: 0.7rem; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.68rem; color: var(--muted); }
 .paper-card-body h3 { margin: 0; font-size: 1.03rem; line-height: 1.25; font-weight: 600; color: var(--fg-strong); }
 .paper-card-body em { display: block; margin-top: 0.6rem; font-style: normal; font-size: 0.78rem; line-height: 1.45; color: var(--muted); }
@@ -376,7 +360,7 @@ button { font-family: inherit; cursor: pointer; }
   .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
   .paper-sort { align-self: flex-end; }
   .paper-grid { grid-template-columns: 1fr; }
-  .paper-preview { height: 14rem; }
+  .paper-preview { height: 10rem; }
 }
 
 /* ---------- Footer ---------- */
@@ -385,7 +369,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 2rem 1.25rem 3rem;
   display: flex;
   justify-content: center;
-  font-family: "Labil", system-ui, sans-serif;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
