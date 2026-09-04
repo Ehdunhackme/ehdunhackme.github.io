@@ -358,7 +358,7 @@ button { font-family: inherit; cursor: pointer; }
 .paper-preview { position: relative; height: 14rem; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.25rem; overflow: hidden; background: var(--fg-strong); color: var(--bg); text-decoration: none; }
 .paper-preview--paper { padding: 0; background: var(--fg-strong); }
 .paper-preview--paper::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), transparent 48%, rgba(0, 0, 0, 0.55)); pointer-events: none; }
-.paper-preview--paper img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; background: #fff; }
+.paper-preview--paper img { position: absolute; inset: 0 auto auto 0; width: 100%; height: auto; max-width: none; object-fit: initial; object-position: top center; background: #fff; }
 .paper-preview-badge { position: absolute; z-index: 1; right: 0.8rem; bottom: 0.7rem; color: #fff; font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
 .paper-preview--empty { background: color-mix(in srgb, var(--bg) 94%, var(--fg-strong)); color: var(--muted); }
 .paper-preview span, .paper-preview small { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
