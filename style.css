@@ -355,7 +355,7 @@ button { font-family: inherit; cursor: pointer; }
 .paper-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-bottom: 3rem; }
 .paper-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 88%, var(--fg-strong)); transition: border-color 0.2s ease, transform 0.2s ease; }
 .paper-card:hover { border-color: var(--muted); transform: translateY(-2px); }
-.paper-preview { position: relative; min-height: 13rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.25rem; overflow: hidden; background: var(--fg-strong); color: var(--bg); text-decoration: none; }
+.paper-preview { position: relative; height: 14rem; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.25rem; overflow: hidden; background: var(--fg-strong); color: var(--bg); text-decoration: none; }
 .paper-preview--paper { padding: 0; background: var(--fg-strong); }
 .paper-preview--paper::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), transparent 48%, rgba(0, 0, 0, 0.55)); pointer-events: none; }
 .paper-preview--paper img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; background: #fff; }
@@ -376,7 +376,7 @@ button { font-family: inherit; cursor: pointer; }
   .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
   .paper-sort { align-self: flex-end; }
   .paper-grid { grid-template-columns: 1fr; }
-  .paper-preview { min-height: 10rem; }
+  .paper-preview { height: 10rem; }
 }
 
 /* ---------- Footer ---------- */

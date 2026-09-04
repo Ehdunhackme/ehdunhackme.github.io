@@ -130,9 +130,9 @@
       <h2 class="section-title" data-i18n="section.working">Working Papers</h2>
       <div class="paper-sort" data-sort-target="working-grid">
         <span class="sort-label" data-i18n="sort.label">Sort</span>
-        <button type="button" class="sort-btn is-active" data-sort="date" data-i18n="sort.date">Date</button>
+        <button type="button" class="sort-btn" data-sort="date" data-i18n="sort.date">Date</button>
         <button type="button" class="sort-btn" data-sort="title" data-i18n="sort.title">Title</button>
-        <button type="button" class="sort-btn" data-sort="paper" data-i18n="sort.paper">Paper</button>
+        <button type="button" class="sort-btn is-active" data-sort="paper" data-i18n="sort.paper">Paper</button>
       </div>
     </div>
     <div id="working-grid" class="paper-grid">
@@ -150,9 +150,9 @@
       <h2 class="section-title" data-i18n="section.publications">Publications (preprints/peer-reviewed papers)</h2>
       <div class="paper-sort" data-sort-target="publication-grid">
         <span class="sort-label" data-i18n="sort.label">Sort</span>
-        <button type="button" class="sort-btn is-active" data-sort="date" data-i18n="sort.date">Date</button>
+        <button type="button" class="sort-btn" data-sort="date" data-i18n="sort.date">Date</button>
         <button type="button" class="sort-btn" data-sort="title" data-i18n="sort.title">Title</button>
-        <button type="button" class="sort-btn" data-sort="paper" data-i18n="sort.paper">Paper</button>
+        <button type="button" class="sort-btn is-active" data-sort="paper" data-i18n="sort.paper">Paper</button>
       </div>
     </div>
     <div id="publication-grid" class="paper-grid">
@@ -272,7 +272,7 @@
         var cards = Array.from(container.children);
         cards.sort(function (a, b) {
           if (mode === 'title') return a.dataset.title.localeCompare(b.dataset.title);
-          if (mode === 'paper') return Number(b.dataset.paper) - Number(a.dataset.paper) || a.dataset.title.localeCompare(b.dataset.title);
+          if (mode === 'paper') return Number(b.dataset.paper) - Number(a.dataset.paper) || b.dataset.date.localeCompare(a.dataset.date) || a.dataset.title.localeCompare(b.dataset.title);
           return b.dataset.date.localeCompare(a.dataset.date) || a.dataset.title.localeCompare(b.dataset.title);
         });
         cards.forEach(function (card) { container.appendChild(card); });
@@ -286,7 +286,7 @@
             sortPapers(container, button.dataset.sort);
           });
         });
-        sortPapers(container, 'date');
+        sortPapers(container, 'paper');
       });
 
       // ---------- logo ----------
