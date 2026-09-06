@@ -311,6 +311,75 @@ button { font-family: inherit; cursor: pointer; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
 
+.timeline-title {
+  margin: 2.25rem 0 1.25rem;
+  color: var(--muted);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.timeline {
+  margin: 0 0 0 0.35rem;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8.75rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 0 0 2rem 1.5rem;
+  border-left: 1px solid var(--line);
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg-strong);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.timeline-date {
+  color: var(--muted);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.timeline-entry { min-width: 0; }
+.timeline-entry h3 {
+  margin: 0;
+  color: var(--fg-strong);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.timeline-entry ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+}
+.timeline-entry li {
+  margin: 0.25rem 0;
+  color: var(--fg-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.timeline-entry a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.timeline-entry a:hover { color: #1d4ed8; }
+html.dark .timeline-entry a { color: #8ab4ff; }
+html.dark .timeline-entry a:hover { color: #b8d2ff; }
+
 .paper-list { list-style: none; margin-bottom: 2rem; }
 .paper-row {
   display: flex;
@@ -360,6 +429,18 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
 .paper-card-body .paper-links a { font-size: 0.68rem; }
 
 @media (max-width: 700px) {
+  .timeline {
+    margin-top: 2rem;
+    margin-left: 0.15rem;
+  }
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding-left: 1.15rem;
+    padding-bottom: 1.6rem;
+  }
+  .timeline-date { font-size: 0.68rem; }
+  .timeline-entry h3 { font-size: 1rem; }
   .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
   .paper-sort { align-self: flex-end; }
   .paper-grid { grid-template-columns: 1fr; }
