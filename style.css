@@ -64,7 +64,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .site-wordmark span {
   display: inline-block;
@@ -173,16 +173,10 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4.5rem 1.25rem;
-}
-@media (min-width: 768px) {
-  .hero { padding: 5.5rem 1.25rem; }
-}
-@media (max-width: 640px) {
-  .hero { padding: 3.5rem 1rem 2.5rem; }
+  padding: clamp(3.5rem, 8vh, 5.5rem) clamp(1rem, 4vw, 2rem);
 }
 
-.hero-inner { width: 100%; max-width: 64rem; }
+.hero-inner { width: min(100%, 64rem); }
 
 .ascii-logo {
   margin: 0 auto;
@@ -197,7 +191,8 @@ button { font-family: inherit; cursor: pointer; }
   cursor: crosshair;
 }
 #logo-wrap.ascii-logo { width: 100%; }
-#logo-wrap .ascii-logo { margin: 0; }
+#logo-wrap .ascii-logo { display: block; width: 100%; margin: 0; }
+#logo-wrap { max-width: 100%; overflow: hidden; }
 .ascii-logo[hidden] { display: none; }
 .ascii-char { display: inline; transition: color 0.14s ease-out; will-change: color; }
 .ascii-char.is-active { color: var(--logo-active); }
@@ -212,7 +207,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .tagline {
-  margin: 1.25rem auto 0;
+  margin: clamp(0.4rem, 1vw, 0.9rem) auto 0;
   max-width: 42ch;
   text-align: center;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -226,23 +221,21 @@ button { font-family: inherit; cursor: pointer; }
   .tagline { font-size: 17px; }
 }
 @media (min-width: 768px) {
-  .tagline { margin-top: 2rem; font-size: 18px; }
-}
-@media (max-width: 640px) {
-  .tagline { margin-top: 0.75rem; font-size: 14px; }
+  .tagline { font-size: 18px; }
 }
 
 .link-row {
-  margin: 2.5rem auto 0;
+  width: 100%;
+  margin: 2.25rem auto 0;
   max-width: 52rem;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
   justify-content: center;
   align-items: center;
-  gap: 0.75rem 2rem;
+  gap: 0.75rem clamp(0.75rem, 3vw, 2rem);
 }
 @media (min-width: 640px) {
-  .link-row { gap: 1rem 2.5rem; }
+  .link-row { gap: 1rem clamp(1rem, 3vw, 2.5rem); }
 }
 @media (max-width: 640px) {
   .link-row { margin-top: 1.5rem; gap: 0.5rem 0.75rem; }
