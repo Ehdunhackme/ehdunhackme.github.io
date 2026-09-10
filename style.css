@@ -64,7 +64,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1;
-  text-transform: none;
+  text-transform: uppercase;
 }
 .site-wordmark span {
   display: inline-block;
@@ -198,7 +198,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 #logo-wrap.ascii-logo { width: 100%; }
 #logo-wrap .ascii-logo { margin: 0; }
-#logo-wrap .ascii-logo[hidden] { display: none; }
+.ascii-logo[hidden] { display: none; }
 .ascii-char { display: inline; transition: color 0.08s ease-out; will-change: color; }
 .ascii-char.is-active { color: var(--logo-active); }
 
