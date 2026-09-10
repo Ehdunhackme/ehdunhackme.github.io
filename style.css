@@ -64,7 +64,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .site-wordmark span {
   display: inline-block;
@@ -198,8 +198,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 #logo-wrap.ascii-logo { width: 100%; }
 #logo-wrap .ascii-logo { margin: 0; }
-.ascii-logo[hidden] { display: none; }
-.ascii-char { display: inline; transition: color 0.14s ease-out; will-change: color; }
+#logo-wrap .ascii-logo[hidden] { display: none; }
+.ascii-char { display: inline; transition: color 0.08s ease-out; will-change: color; }
 .ascii-char.is-active { color: var(--logo-active); }
 
 .ascii-boot { animation: asciiFadeIn 0.5s ease-out both; }
@@ -212,7 +212,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .tagline {
-  margin: 1.25rem auto 0;
+  margin: 0.75rem auto 0;
   max-width: 42ch;
   text-align: center;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -226,10 +226,10 @@ button { font-family: inherit; cursor: pointer; }
   .tagline { font-size: 17px; }
 }
 @media (min-width: 768px) {
-  .tagline { margin-top: 2rem; font-size: 18px; }
+  .tagline { margin-top: 0.75rem; font-size: 18px; }
 }
 @media (max-width: 640px) {
-  .tagline { margin-top: 0.75rem; font-size: 14px; }
+  .tagline { margin-top: 0.5rem; font-size: 14px; }
 }
 
 .link-row {
