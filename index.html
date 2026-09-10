@@ -497,7 +497,7 @@
       var idleTimer = null;
       var idleRun = 0;
 
-      function scrambleCell(r, c, startDelay) {
+      function scrambleCell(r, c, startDelay, idle) {
         if (reducedMotion) return;
         var key = r + '-' + c;
         var logo = activeLogo();
@@ -515,20 +515,20 @@
             if (count >= steps) { cell.textContent = original; return; }
             cell.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
             count++;
-            setTimeout(tick, 45 + Math.random() * 35);
+            setTimeout(tick, idle ? 80 + Math.random() * 50 : 45 + Math.random() * 35);
           })();
         }, startDelay || 0);
       }
 
-      function scrambleCluster(r, c) {
+      function scrambleCluster(r, c, idle) {
         for (var dr = -2; dr <= 2; dr++) {
           for (var dc = -2; dc <= 2; dc++) {
             var rr = r + dr, cc = c + dc;
             if (!grid[rr] || grid[rr][cc] === undefined) continue;
             if (Math.abs(dr) <= 1 && Math.abs(dc) <= 1) {
-              scrambleCell(rr, cc, Math.random() * 30);
+              scrambleCell(rr, cc, idle ? Math.random() * 80 : Math.random() * 30, idle);
             } else if (Math.random() < 0.45) {
-              scrambleCell(rr, cc, 25 + Math.random() * 35);
+              scrambleCell(rr, cc, idle ? 60 + Math.random() * 80 : 25 + Math.random() * 35, idle);
             }
           }
         }
@@ -607,7 +607,7 @@
               var parts = cell.dataset.k.split('-');
               var r = parseInt(parts[0], 10);
               var c = parseInt(parts[1], 10);
-              scrambleCluster(r, c);
+              scrambleCluster(r, c, true);
               activate(r, c, 520);
             }, delay);
           })(Math.random() * 260);
