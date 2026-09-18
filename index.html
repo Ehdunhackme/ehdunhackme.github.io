@@ -104,17 +104,16 @@
                                                     
 </pre>
       </div>
-      <p class="tagline" data-i18n="tagline">I work on the frontier of AI to uncover what lies within the latent space.</p>
-      <div class="link-row">
+      <nav class="link-row" aria-label="Primary navigation">
         <a class="link-item" href="#about"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.about">About Me</span><span class="link-tag" data-i18n="link.about.tag">bio</span></a>
         <a class="link-item" href="#research"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.research">Research</span><span class="link-tag" data-i18n="link.research.tag">papers</span></a>
-        <a class="link-item" href="https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.resume">Resume</span><span class="link-tag" data-i18n="link.resume.tag">july 2026</span></a>
+        <a class="link-item" href="https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.resume">Resume</span><span class="link-tag" data-i18n="link.resume.tag">up to date</span></a>
         <a class="link-item" href="https://github.com/ehdunhackme" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name">GitHub</span><span class="link-tag" data-i18n="link.github.tag">code</span></a>
         <a class="link-item" href="https://www.linkedin.com/in/dun-li-chan-6b3095269/" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name">LinkedIn</span><span class="link-tag" data-i18n="link.linkedin.tag">profile</span></a>
         <a class="link-item" href="https://scholar.google.com/citations?user=UOYqiG4AAAAJ" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name">Scholar</span><span class="link-tag" data-i18n="link.scholar.tag">citations</span></a>
         <a class="link-item" href="mailto:dunlinmy88@gmail.com"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.contact">Contact</span><span class="link-tag" data-i18n="link.contact.tag">email</span></a>
         <a class="link-item" href="https://calendly.com/dunlinmy88/30min" target="_blank" rel="noopener"><span class="link-marker" aria-hidden="true">&#9670;</span><span class="link-name" data-i18n="link.call">Book a Call</span><span class="link-tag" data-i18n="link.call.tag">calendly</span></a>
-      </div>
+      </nav>
     </div>
   </main>
 
@@ -123,8 +122,10 @@
     <div class="about">
       <p data-i18n-html="about.p1">I'm currently building across AI safety evaluation in LLMs and physical AIs, mechanistic interpretability, and AI4Astro. My research interest lies in understanding how models work internally (layer-wise) and how this information can advance our progress in AI, while making sure they're safe to deploy in real-world settings. And most of the time, I'm very obsessive and competitive about learning and solving things that I really enjoy (especially in research).</p>
     </div>
-    <h3 class="timeline-title" data-i18n="timeline.heading">Timeline</h3>
-    <div class="timeline" aria-label="Timeline">
+    <button class="section-expand about-timeline-toggle" id="timeline-toggle" type="button" aria-controls="about-timeline" aria-expanded="false">Show more: Timeline +</button>
+    <div class="about-timeline" id="about-timeline" hidden>
+      <h3 class="timeline-title" data-i18n="timeline.heading">Timeline</h3>
+      <div class="timeline" id="timeline-entries" aria-label="Timeline">
       <article class="timeline-item">
         <time class="timeline-date" data-i18n="timeline.present.date">Present</time>
         <div class="timeline-entry">
@@ -182,12 +183,23 @@
           </ul>
         </div>
       </article>
+      </div>
     </div>
   </section>
 
   <section class="section" id="research">
-    <h2 class="section-title" data-i18n="section.working">Working Papers</h2>
-    <ul class="paper-list">
+    <div class="research-toolbar">
+      <div class="research-filters" role="group" aria-label="Filter research">
+        <button class="research-filter is-active" type="button" data-filter="all" aria-pressed="true" data-i18n="filter.all">All</button>
+        <button class="research-filter" type="button" data-filter="working" aria-pressed="false" data-i18n="filter.working">Working Papers / Projects</button>
+        <button class="research-filter" type="button" data-filter="publications" aria-pressed="false" data-i18n="filter.publications">Publications</button>
+        <button class="research-filter" type="button" data-filter="projects" aria-pressed="false" data-i18n="filter.projects">Projects</button>
+      </div>
+    </div>
+
+    <div class="research-group" data-research-group="working">
+      <h2 class="section-title" data-i18n="section.working">Working Papers / Projects</h2>
+    <ul class="paper-list preview-list" id="working-entries" data-preview-label="section.working">
       <li>
         <div class="paper-row">
           <div class="paper-info">
@@ -209,9 +221,11 @@
         </div>
       </li>
     </ul>
+    </div>
 
+    <div class="research-group" data-research-group="publications">
     <h2 class="section-title" data-i18n="section.publications">Publications (preprints/peer-reviewed papers)</h2>
-    <ul class="paper-list">
+    <ul class="paper-list preview-list" id="publication-entries" data-preview-label="section.publications">
       <li>
         <div class="paper-row">
           <div class="paper-info">
@@ -301,10 +315,66 @@
         </div>
       </li>
     </ul>
+    </div>
+    <div class="research-group" data-research-group="projects">
+      <h2 class="section-title" data-i18n="section.projects">Projects</h2>
+      <ul class="paper-list project-list preview-list" id="project-entries" data-preview-label="section.projects">
+        <li>
+          <div class="paper-row project-row">
+            <div class="paper-info">
+              <strong data-i18n="project.permittivity.title">Finding the complex permittivity as a function of energy using angular straggling</strong>
+              <em data-i18n="project.permittivity.venue">Experimental proposal · CERN Beamline for Schools 2026</em>
+              <span class="project-description" data-i18n="project.permittivity.description">A Geant4 simulation project for studying particle interactions and analysis workflows for the proposed beam experiment.</span>
+              <span class="paper-links">
+                <a href="https://drive.google.com/file/d/1BrebBET4nnph5qcTX73HPzpekXX5UH98/view?usp=sharing" target="_blank" rel="noopener" data-i18n="project.link.proposal">[Proposal]</a>
+                <a href="https://github.com/bunchofcellulose/bl4s2026" target="_blank" rel="noopener" data-i18n="project.link.code">[GitHub]</a>
+              </span>
+            </div>
+            <span class="paper-date" data-i18n="project.permittivity.date">2026</span>
+          </div>
+        </li>
+        <li>
+          <div class="paper-row project-row">
+            <div class="paper-info">
+              <strong data-i18n="project.magnetic.title">Magnetic Field of Cylindrical Axially Magnetized Ring</strong>
+              <em data-i18n="project.magnetic.description">Simulates and visualizes the magnetic field of an axially magnetized cylindrical ring using the Biot–Savart law.</em>
+              <span class="paper-links"><a href="https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring" target="_blank" rel="noopener" data-i18n="project.link.github">[GitHub]</a></span>
+            </div>
+            <span class="paper-date" data-i18n="project.date.2024">2024</span>
+          </div>
+        </li>
+        <li>
+          <div class="paper-row project-row">
+            <div class="paper-info">
+              <strong data-i18n="project.pendulum.title">Chaotic Behavior of Double Pendulum</strong>
+              <em data-i18n="project.pendulum.description">Numerically simulates double-pendulum dynamics with coupled nonlinear equations and Runge–Kutta integration.</em>
+              <span class="paper-links"><a href="https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum" target="_blank" rel="noopener" data-i18n="project.link.github">[GitHub]</a></span>
+            </div>
+            <span class="paper-date" data-i18n="project.date.2024">2024</span>
+          </div>
+        </li>
+        <li>
+          <div class="paper-row project-row">
+            <div class="paper-info">
+              <strong data-i18n="project.epecscan.title">EPECscan</strong>
+              <em data-i18n="project.epecscan.description">A deep-learning screening model that detects EPEC bacteria and classifies their growth stage from microscopic water samples.</em>
+              <span class="paper-links"><a href="https://github.com/Ehdunhackme/EPECscan" target="_blank" rel="noopener" data-i18n="project.link.github">[GitHub]</a></span>
+            </div>
+            <span class="paper-date" data-i18n="project.date.2024">2024</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 
   <footer class="site-footer">
     <span data-i18n="footer">&copy; 2026 Dun Li Chan &middot; Online</span>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="mailto:dunlinmy88@gmail.com">email</a>
+      <a href="https://github.com/ehdunhackme" target="_blank" rel="noopener">github</a>
+      <a href="https://scholar.google.com/citations?user=UOYqiG4AAAAJ" target="_blank" rel="noopener">scholar</a>
+      <a href="https://calendly.com/dunlinmy88/30min" target="_blank" rel="noopener">calendly</a>
+    </nav>
   </footer>
 
   <script>
@@ -328,6 +398,55 @@
       I18N.en["link.call.tag"] = "calendly";
       I18N.zh["link.call"] = "预约通话";
       I18N.zh["link.call.tag"] = "Calendly";
+      I18N.en["section.projects"] = "Projects";
+      I18N.en["project.permittivity.title"] = "Finding the complex permittivity as a function of energy using angular straggling";
+      I18N.en["project.permittivity.venue"] = "Experimental proposal · CERN Beamline for Schools 2026";
+      I18N.en["project.permittivity.description"] = "A Geant4 simulation project for studying particle interactions and analysis workflows for the proposed beam experiment.";
+      I18N.en["project.permittivity.date"] = "2026";
+      I18N.en["project.magnetic.title"] = "Magnetic Field of Cylindrical Axially Magnetized Ring";
+      I18N.en["project.magnetic.description"] = "Simulates and visualizes the magnetic field of an axially magnetized cylindrical ring using the Biot–Savart law.";
+      I18N.en["project.pendulum.title"] = "Chaotic Behavior of Double Pendulum";
+      I18N.en["project.pendulum.description"] = "Numerically simulates double-pendulum dynamics with coupled nonlinear equations and Runge–Kutta integration.";
+      I18N.en["project.epecscan.title"] = "EPECscan";
+      I18N.en["project.epecscan.description"] = "A deep-learning screening model that detects EPEC bacteria and classifies their growth stage from microscopic water samples.";
+      I18N.en["project.date.2024"] = "2024";
+      I18N.en["project.link.proposal"] = "[Proposal]";
+      I18N.en["project.link.code"] = "[GitHub]";
+      I18N.en["project.link.github"] = "[GitHub]";
+      I18N.zh["section.projects"] = "项目";
+      I18N.zh["project.permittivity.title"] = "利用角散射测定随能量变化的复介电常数";
+      I18N.zh["project.permittivity.venue"] = "实验提案 · CERN Beamline for Schools 2026";
+      I18N.zh["project.permittivity.description"] = "使用 Geant4 模拟粒子相互作用，并为该束流实验的分析流程提供支持。";
+      I18N.zh["project.permittivity.date"] = "2026";
+      I18N.zh["project.magnetic.title"] = "圆柱形轴向磁化环的磁场";
+      I18N.zh["project.magnetic.description"] = "使用毕奥–萨伐尔定律模拟并可视化轴向磁化圆柱环产生的磁场。";
+      I18N.zh["project.pendulum.title"] = "双摆的混沌行为";
+      I18N.zh["project.pendulum.description"] = "通过耦合的非线性方程和龙格–库塔积分，数值模拟双摆动力学。";
+      I18N.zh["project.epecscan.title"] = "EPECscan";
+      I18N.zh["project.epecscan.description"] = "一个从显微水样图像中检测 EPEC 细菌并分类其生长阶段的深度学习筛查模型。";
+      I18N.zh["project.date.2024"] = "2024";
+      I18N.zh["project.link.proposal"] = "[提案]";
+      I18N.zh["project.link.code"] = "[GitHub]";
+      I18N.zh["project.link.github"] = "[GitHub]";
+      I18N.en["disclosure.expand"] = "Show more";
+      I18N.en["disclosure.collapse"] = "Show less";
+      I18N.zh["disclosure.expand"] = "展开更多";
+      I18N.zh["disclosure.collapse"] = "收起";
+      I18N.en["timeline.expand"] = "Show more: Timeline";
+      I18N.en["timeline.collapse"] = "Show less: Timeline";
+      I18N.zh["timeline.expand"] = "展开时间线";
+      I18N.zh["timeline.collapse"] = "收起时间线";
+      I18N.en["filter.all"] = "All";
+      I18N.en["link.resume.tag"] = "up to date";
+      I18N.zh["link.resume.tag"] = "已更新";
+      I18N.en["filter.working"] = "Working Papers / Projects";
+      I18N.en["section.working"] = "Working Papers / Projects";
+      I18N.en["filter.publications"] = "Publications";
+      I18N.en["filter.projects"] = "Projects";
+      I18N.zh["filter.all"] = "全部";
+      I18N.zh["filter.working"] = "工作论文";
+      I18N.zh["filter.publications"] = "已发表论文";
+      I18N.zh["filter.projects"] = "项目";
       I18N.en["about.p1"] = "I'm currently building across AI safety evaluation in LLMs and physical AIs, mechanistic interpretability, and AI4Astro. My research interest lies in understanding how models work internally (layer-wise) and how this information can advance our progress in AI, while making sure they're safe to deploy in real-world settings. And most of the time, I'm very obsessive and competitive about learning and solving things that I really enjoy (especially in research).";
       I18N.zh["about.p1"] = "我目前正投身于大语言模型安全评估与物理人工智能（Physical AI）方向的研究。我的研究兴趣在于理解模型如何在内部（逐层地）运作，以及这些信息如何推动我们在人工智能领域的进展，同时确保它们能够安全地部署在现实世界中。大多数时候，我对学习和解决自己真正感兴趣的问题（尤其是研究）都非常投入且好胜。";
       I18N.en["timeline.heading"] = "Timeline";
@@ -410,6 +529,8 @@
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
           btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
         });
+        updatePreviewControls();
+        updateTimelineToggle();
         updateThemeLabel();
         showLogo();
         rebuild();
@@ -422,6 +543,87 @@
           applyLang();
         });
       });
+
+      // ---------- navigation and research filters ----------
+      var navLinks = document.querySelectorAll('.link-row .link-item[href^="#"]');
+      function syncActiveNav() {
+        var hash = window.location.hash;
+        navLinks.forEach(function (link) {
+          link.classList.toggle('is-active', Boolean(hash && link.getAttribute('href') === hash));
+        });
+      }
+      window.addEventListener('hashchange', syncActiveNav);
+      syncActiveNav();
+
+      var researchFilters = document.querySelectorAll('.research-filter');
+      var researchGroups = document.querySelectorAll('.research-group');
+      function applyResearchFilter(filter) {
+        researchFilters.forEach(function (button) {
+          var active = button.getAttribute('data-filter') === filter;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        researchGroups.forEach(function (group) {
+          var groupName = group.getAttribute('data-research-group');
+          group.hidden = filter !== 'all' && groupName !== filter;
+        });
+      }
+      researchFilters.forEach(function (button) {
+        button.addEventListener('click', function () {
+          applyResearchFilter(button.getAttribute('data-filter'));
+        });
+      });
+      applyResearchFilter('all');
+
+      // Show three entries initially, with independent expansion for each list.
+      var previewSections = [];
+      function updatePreviewControls() {
+        (previewSections || []).forEach(function (section) {
+          section.entries.forEach(function (entry, index) {
+            entry.hidden = !section.expanded && index >= 3;
+          });
+          section.list.classList.toggle('is-truncated', !section.expanded);
+          var label = I18N[state.lang][section.expanded ? 'disclosure.collapse' : 'disclosure.expand'];
+          section.button.textContent = label + (section.expanded ? ' −' : ' (' + (section.entries.length - 3) + ') +');
+          section.button.setAttribute('aria-expanded', String(section.expanded));
+          section.button.setAttribute('aria-label', label + ': ' + I18N[state.lang][section.list.getAttribute('data-preview-label')]);
+        });
+      }
+      document.querySelectorAll('.preview-list').forEach(function (list) {
+        var entries = Array.from(list.children);
+        if (entries.length <= 3) return;
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'section-expand';
+        button.setAttribute('aria-controls', list.id);
+        list.classList.add('has-more');
+        list.insertAdjacentElement('afterend', button);
+        var section = { list: list, entries: entries, button: button, expanded: false };
+        previewSections.push(section);
+        button.addEventListener('click', function () {
+          section.expanded = !section.expanded;
+          updatePreviewControls();
+        });
+      });
+      updatePreviewControls();
+
+      // Keep the longer timeline within the About Me section until it is requested.
+      var timelineToggle = document.getElementById('timeline-toggle');
+      var timelinePanel = document.getElementById('about-timeline');
+      function updateTimelineToggle() {
+        if (!timelineToggle || !timelinePanel) return;
+        var expanded = !timelinePanel.hidden;
+        var label = I18N[state.lang][expanded ? 'timeline.collapse' : 'timeline.expand'];
+        timelineToggle.textContent = label + (expanded ? ' −' : ' +');
+        timelineToggle.setAttribute('aria-expanded', String(expanded));
+      }
+      if (timelineToggle && timelinePanel) {
+        timelineToggle.addEventListener('click', function () {
+          timelinePanel.hidden = !timelinePanel.hidden;
+          updateTimelineToggle();
+        });
+      }
+      updateTimelineToggle();
 
       // ---------- logo ----------
       var logoWrap = document.getElementById('logo-wrap');
