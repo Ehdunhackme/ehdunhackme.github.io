@@ -182,18 +182,21 @@ button { font-family: inherit; cursor: pointer; }
   .site-header { padding: 1rem; }
   .header-actions { gap: 0.6rem; }
   .hero {
-    min-height: 0;
-    display: block;
-    padding: 5rem 1.25rem 2.75rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: 4.25rem 1.25rem 2.5rem;
   }
   .hero-inner { max-width: 28rem; }
   .link-row {
     width: 100%;
-    margin-top: 1.5rem;
-    gap: 0.35rem 0.75rem;
+    margin-top: 0.75rem;
+    gap: 0.4rem 0.75rem;
   }
   .link-item {
-    min-height: 2.25rem;
+    min-height: 0;
+    padding: 0.25rem 0;
     gap: 0.45rem;
   }
 }
@@ -212,8 +215,8 @@ button { font-family: inherit; cursor: pointer; }
   user-select: none;
   cursor: crosshair;
 }
-#logo-wrap.ascii-logo { width: 100%; }
-#logo-wrap .ascii-logo { margin: 0; }
+#logo-wrap.ascii-logo { width: 100%; font-size: 0; line-height: 0; }
+#logo-wrap .ascii-logo { margin: 0; line-height: 1; }
 .ascii-logo[hidden] { display: none; }
 .ascii-char { display: inline; transition: color 0.08s ease-out; will-change: color; }
 .ascii-char.is-active { color: var(--logo-active); }
