@@ -336,6 +336,50 @@ button { font-family: inherit; cursor: pointer; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
 
+#about > .section-title,
+[data-research-group] > .section-title {
+  font-size: 16px;
+  letter-spacing: 0;
+  font-weight: 600;
+  color: var(--fg-secondary);
+}
+
+.workplaces {
+  max-width: 64rem;
+  margin: 1.15rem 0 1.75rem;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  color: var(--fg-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.workplaces a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--faint);
+  white-space: nowrap;
+}
+.workplaces a:hover { color: var(--fg-strong); text-decoration-color: var(--fg-strong); }
+.workplaces a:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 3px; }
+.workplaces img {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  object-fit: contain;
+  vertical-align: middle;
+}
+.logo-sjtu { filter: brightness(0) saturate(100%); }
+html.dark .logo-sjtu { filter: none; }
+html.dark .logo-eleutherai,
+html.dark .logo-metacreation { filter: none; }
+@media (max-width: 600px) {
+  .workplaces { line-height: 1.9; }
+}
+
 .preview-list > [hidden] { display: none; }
 .preview-list.has-more { margin-bottom: 0.75rem; }
 .timeline.is-truncated > .timeline-item:nth-child(3) { padding-bottom: 0; }
@@ -355,7 +399,8 @@ button { font-family: inherit; cursor: pointer; }
 .section-expand:hover { color: var(--fg-strong); border-color: var(--muted); }
 .section-expand:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 4px; }
 .about-timeline-toggle { margin: 0; }
-.about-timeline { margin-top: 2.25rem; }
+.about-timeline { display: flow-root; }
+.about-timeline[hidden] { display: none; }
 
 .timeline-title {
   margin: 2.25rem 0 1.25rem;

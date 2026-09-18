@@ -122,6 +122,7 @@
     <div class="about">
       <p data-i18n-html="about.p1">I'm currently building across AI safety evaluation in LLMs and physical AIs, mechanistic interpretability, and AI4Astro. My research interest lies in understanding how models work internally (layer-wise) and how this information can advance our progress in AI, while making sure they're safe to deploy in real-world settings. And most of the time, I'm very obsessive and competitive about learning and solving things that I really enjoy (especially in research).</p>
     </div>
+    <p class="workplaces" data-i18n-html="about.workplaces">Places I've worked in: <a href="https://www.eleuther.ai/" target="_blank" rel="noopener"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</a>, <a href="https://universetbd.org/" target="_blank" rel="noopener"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</a>, <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noopener"><img class="logo-sjtu" src="assets/logos/sjtu-square.ico" alt="">Shanghai Jiao Tong Uni.</a>, <a href="https://www.umd.edu/" target="_blank" rel="noopener"><img class="logo-maryland" src="assets/logos/maryland-square.png" alt="">Uni. of Maryland</a>, <a href="https://metacreation.net/" target="_blank" rel="noopener"><img class="logo-metacreation" src="assets/logos/metacreation-square.ico" alt="">Metacreation Lab</a>, <a href="https://seacrowd.github.io/" target="_blank" rel="noopener"><img src="assets/logos/seacrowd-square.png" alt="">SEACrowd</a>.</p>
     <button class="section-expand about-timeline-toggle" id="timeline-toggle" type="button" aria-controls="about-timeline" aria-expanded="false">Show more: Timeline +</button>
     <div class="about-timeline" id="about-timeline" hidden>
       <h3 class="timeline-title" data-i18n="timeline.heading">Timeline</h3>
@@ -429,6 +430,8 @@
       I18N.zh["project.link.code"] = "[GitHub]";
       I18N.zh["project.link.github"] = "[GitHub]";
       I18N.en["disclosure.expand"] = "Show more";
+      I18N.en["about.workplaces"] = "Places I've worked in: <a href=\"https://www.eleuther.ai/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-eleutherai\" src=\"assets/logos/eleutherai-square.ico\" alt=\"\">EleutherAI</a>, <a href=\"https://universetbd.org/\" target=\"_blank\" rel=\"noopener\"><img src=\"assets/logos/universetbd-square.png\" alt=\"\">UniverseTBD</a>, <a href=\"https://en.sjtu.edu.cn/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-sjtu\" src=\"assets/logos/sjtu-square.ico\" alt=\"\">Shanghai Jiao Tong Uni.</a>, <a href=\"https://www.umd.edu/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-maryland\" src=\"assets/logos/maryland-square.png\" alt=\"\">Uni. of Maryland</a>, <a href=\"https://metacreation.net/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-metacreation\" src=\"assets/logos/metacreation-square.ico\" alt=\"\">Metacreation Lab</a>, <a href=\"https://seacrowd.github.io/\" target=\"_blank\" rel=\"noopener\"><img src=\"assets/logos/seacrowd-square.png\" alt=\"\">SEACrowd</a>.";
+      I18N.zh["about.workplaces"] = "曾工作过的机构：<a href=\"https://www.eleuther.ai/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-eleutherai\" src=\"assets/logos/eleutherai-square.ico\" alt=\"\">EleutherAI</a>、<a href=\"https://universetbd.org/\" target=\"_blank\" rel=\"noopener\"><img src=\"assets/logos/universetbd-square.png\" alt=\"\">UniverseTBD</a>、<a href=\"https://en.sjtu.edu.cn/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-sjtu\" src=\"assets/logos/sjtu-square.ico\" alt=\"\">上海交通大学</a>、<a href=\"https://www.umd.edu/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-maryland\" src=\"assets/logos/maryland-square.png\" alt=\"\">马里兰大学</a>、<a href=\"https://metacreation.net/\" target=\"_blank\" rel=\"noopener\"><img class=\"logo-metacreation\" src=\"assets/logos/metacreation-square.ico\" alt=\"\">Metacreation Lab</a>、<a href=\"https://seacrowd.github.io/\" target=\"_blank\" rel=\"noopener\"><img src=\"assets/logos/seacrowd-square.png\" alt=\"\">SEACrowd</a>。";
       I18N.en["disclosure.collapse"] = "Show less";
       I18N.zh["disclosure.expand"] = "展开更多";
       I18N.zh["disclosure.collapse"] = "收起";
@@ -575,13 +578,39 @@
       });
       applyResearchFilter('all');
 
+      // Measure natural heights so disclosures stay responsive and can reverse mid-slide.
+      function slideContent(panel, applyContent) {
+        var startHeight = panel.getBoundingClientRect().height;
+        if (panel.disclosureAnimation) panel.disclosureAnimation.cancel();
+        var wasHidden = panel.hidden;
+        var childVisibility = Array.from(panel.children).map(function (child) { return child.hidden; });
+        applyContent();
+        var endHeight = panel.getBoundingClientRect().height;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || startHeight === endHeight) return;
+        if (endHeight < startHeight) {
+          panel.hidden = wasHidden;
+          Array.from(panel.children).forEach(function (child, index) { child.hidden = childVisibility[index]; });
+        }
+        var animation = panel.animate([
+          { height: startHeight + 'px', overflow: 'clip' },
+          { height: endHeight + 'px', overflow: 'clip' }
+        ], { duration: 360, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' });
+        panel.disclosureAnimation = animation;
+        animation.onfinish = function () {
+          applyContent();
+          panel.disclosureAnimation = null;
+        };
+      }
+
       // Show three entries initially, with independent expansion for each list.
       var previewSections = [];
+      function updatePreviewEntries(section) {
+        section.entries.forEach(function (entry, index) {
+          entry.hidden = !section.expanded && index >= 3;
+        });
+      }
       function updatePreviewControls() {
         (previewSections || []).forEach(function (section) {
-          section.entries.forEach(function (entry, index) {
-            entry.hidden = !section.expanded && index >= 3;
-          });
           section.list.classList.toggle('is-truncated', !section.expanded);
           var label = I18N[state.lang][section.expanded ? 'disclosure.collapse' : 'disclosure.expand'];
           section.button.textContent = label + (section.expanded ? ' −' : ' (' + (section.entries.length - 3) + ') +');
@@ -600,9 +629,11 @@
         list.insertAdjacentElement('afterend', button);
         var section = { list: list, entries: entries, button: button, expanded: false };
         previewSections.push(section);
+        updatePreviewEntries(section);
         button.addEventListener('click', function () {
           section.expanded = !section.expanded;
           updatePreviewControls();
+          slideContent(list, function () { updatePreviewEntries(section); });
         });
       });
       updatePreviewControls();
@@ -610,17 +641,20 @@
       // Keep the longer timeline within the About Me section until it is requested.
       var timelineToggle = document.getElementById('timeline-toggle');
       var timelinePanel = document.getElementById('about-timeline');
+      var timelineExpanded = false;
       function updateTimelineToggle() {
         if (!timelineToggle || !timelinePanel) return;
-        var expanded = !timelinePanel.hidden;
+        var expanded = timelineExpanded;
         var label = I18N[state.lang][expanded ? 'timeline.collapse' : 'timeline.expand'];
         timelineToggle.textContent = label + (expanded ? ' −' : ' +');
         timelineToggle.setAttribute('aria-expanded', String(expanded));
       }
       if (timelineToggle && timelinePanel) {
         timelineToggle.addEventListener('click', function () {
-          timelinePanel.hidden = !timelinePanel.hidden;
+          timelineExpanded = !timelineExpanded;
+          timelinePanel.inert = !timelineExpanded;
           updateTimelineToggle();
+          slideContent(timelinePanel, function () { timelinePanel.hidden = !timelineExpanded; });
         });
       }
       updateTimelineToggle();
