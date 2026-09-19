@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
       (function () {
         var stored = localStorage.getItem('theme');
@@ -45,44 +45,32 @@
     </header>
     <main class="page">
       <section class="page-shell">
-        <h1 data-i18n="heading">Writings &amp; Lists</h1>
-        <p class="page-intro" data-i18n="intro">
-          Selected posts from the current site archive. More writing will be added here over
-          time.
-        </p>
-        <ul class="writing-list">
+        <h1 data-i18n="heading">Writings</h1>
+        <ul class="writing-list writing-posts">
           <li>
-            <span class="writing-title" data-i18n="w1">a post with plotly.js</span>
-            <span class="writing-date">2025-03-26</span>
-          </li>
-          <li>
-            <span class="writing-title" data-i18n="w2">a post with image galleries</span>
-            <span class="writing-date">2024-12-04</span>
-          </li>
-          <li>
-            <span class="writing-title" data-i18n="w3">a post with tabs</span>
-            <span class="writing-date">2024-05-01</span>
-          </li>
-          <li>
-            <span class="writing-title" data-i18n="w4">a post with typograms</span>
-            <span class="writing-date">2024-04-29</span>
-          </li>
-          <li>
-            <span class="writing-title" data-i18n="w5">a post that can be cited</span>
-            <span class="writing-date">2024-04-28</span>
+            <a class="writing-section-link" href="research-in-high-school-malaysia/">
+              <span>
+                <span class="writing-section-title" data-i18n="post.research.title">My opinionated guide to starting research early</span>
+                <span class="writing-section-description" data-i18n="post.research.description">An opinionated guide for high schoolers in Malaysia who want to work on cool research projects early.</span>
+              </span>
+              <span class="writing-section-side">
+                <time class="writing-date" datetime="2026-09-19">19 Sep 2026</time>
+                <span class="writing-section-arrow" aria-hidden="true">&#8599;</span>
+              </span>
+            </a>
           </li>
         </ul>
         <nav class="page-links">
-          <a href="/" data-i18n="home">Home</a>
-          <a href="/contact/" data-i18n="contact">Contact</a>
+          <a href="../" data-i18n="home">Home</a>
+          <a href="../contact/" data-i18n="contact">Contact</a>
         </nav>
       </section>
     </main>
     <script>
       (function () {
         var I18N = {
-          en: { title: 'Writings - Dun Li Chan', meta: 'Selected writings and lists by Dun Li Chan.', heading: 'Writings & Lists', intro: 'Selected posts from the current site archive. More writing will be added here over time.', w1: 'a post with plotly.js', w2: 'a post with image galleries', w3: 'a post with tabs', w4: 'a post with typograms', w5: 'a post that can be cited', home: 'Home', contact: 'Contact', dark: 'Dark', light: 'Light' },
-          zh: { title: '文章 - 曾敦礼', meta: '曾敦礼精选文章与列表。', heading: '文章与列表', intro: '来自当前网站存档的精选文章。更多内容将陆续添加。', w1: '一篇使用 plotly.js 的文章', w2: '一篇带图片画廊的文章', w3: '一篇带标签页的文章', w4: '一篇带排印图例的文章', w5: '一篇可被引用的文章', home: '首页', contact: '联系', dark: '深色', light: '浅色' }
+          en: { title: 'Writings - Dun Li Chan', meta: 'Technical notes and research writing by Dun Li Chan.', heading: 'Writings', 'post.research.title': 'My opinionated guide to starting research early', 'post.research.description': 'An opinionated guide for high schoolers in Malaysia who want to work on cool research projects early.', home: 'Home', contact: 'Contact', dark: 'Dark', light: 'Light' },
+          zh: { title: '文章 - 曾敦礼', meta: '曾敦礼的技术笔记与研究文章。', heading: '文章', 'post.research.title': '我对尽早开始科研的个人观点指南', 'post.research.description': '一份为想及早参与酷炫科研项目的马来西亚高中生准备的个人观点指南。', home: '首页', contact: '联系', dark: '深色', light: '浅色' }
         };
         var root = document.documentElement;
         var lang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';

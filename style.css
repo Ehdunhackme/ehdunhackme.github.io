@@ -702,9 +702,67 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
 .page-intro { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; max-width: 46ch; }
 
 .writing-list { list-style: none; }
-.writing-list li { display: flex; justify-content: space-between; gap: 1.5rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
-.writing-title { color: var(--fg-secondary); }
-.writing-date { color: var(--faint); font-size: 0.82rem; white-space: nowrap; }
+.writing-list li { border-bottom: 1px solid var(--line); }
+.writing-section-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 0;
+  color: inherit;
+  text-decoration: none;
+  transition: padding 0.2s ease, color 0.2s ease;
+}
+.writing-section-link:hover,
+.writing-section-link:focus-visible { color: var(--fg-strong); padding-inline: 0.45rem; }
+.writing-section-link:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: -1px; }
+.writing-section-title { display: block; color: var(--fg-strong); font-size: 0.98rem; font-weight: 600; }
+.writing-section-description { display: block; max-width: 52ch; margin-top: 0.35rem; color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+.writing-section-side { display: flex; flex-direction: column; align-items: flex-end; gap: 0.45rem; }
+.writing-date,
+.writing-post-date { color: var(--faint); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.04em; white-space: nowrap; }
+.writing-section-arrow { color: var(--faint); font-size: 1rem; transition: transform 0.2s ease, color 0.2s ease; }
+.writing-section-link:hover .writing-section-arrow,
+.writing-section-link:focus-visible .writing-section-arrow { color: var(--fg-strong); transform: translate(2px, -2px); }
+.writing-empty { margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+.writing-page { align-items: flex-start; padding-top: 7rem; padding-bottom: 5rem; }
+.writing-post-shell { max-width: 720px; }
+.writing-content { color: var(--fg-secondary); font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 0.95rem; line-height: 1.7; }
+.writing-post-date { display: block; margin: -0.25rem 0 2.2rem; }
+.writing-content h2 { margin: 3rem 0 1rem; color: var(--fg-strong); font-size: 1.18rem; font-weight: 600; line-height: 1.35; }
+.writing-content h3 { margin: 2rem 0 0.75rem; color: var(--fg-strong); font-size: 1rem; font-weight: 600; }
+.writing-content p { margin: 0 0 1.1rem; }
+.writing-content ul,
+.writing-content ol { margin: 0 0 1.25rem 1.25rem; }
+.writing-content li { margin: 0.35rem 0; }
+.writing-content a { color: #2563eb; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 3px; }
+.writing-content a:hover { color: #1d4ed8; }
+.writing-content h1 a,
+.writing-content h2 a,
+.writing-content h3 a { color: inherit; }
+.writing-content h1 a:hover,
+.writing-content h2 a:hover,
+.writing-content h3 a:hover { color: inherit; }
+.writing-content strong { color: var(--fg-strong); font-weight: 600; }
+.writing-content pre { margin: 1.25rem 0; padding: 1rem 1.1rem; overflow-x: auto; border: 1px solid var(--line); background: color-mix(in srgb, var(--fg) 5%, var(--bg)); color: var(--fg-secondary); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.78rem; line-height: 1.65; }
+.writing-content code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.9em; }
+.writing-content .token.comment,
+.writing-content .token.prolog,
+.writing-content .token.doctype { color: var(--muted); }
+.writing-content .token.keyword,
+.writing-content .token.function,
+.writing-content .token.builtin,
+.writing-content .token.string,
+.writing-content .token.number { color: var(--fg-strong); }
+.writing-content .katex { color: inherit; }
+html.dark .writing-content a { color: #8ab4ff; }
+html.dark .writing-content a:hover { color: #b8d2ff; }
+
+@media (max-width: 520px) {
+  .writing-section-link { gap: 0.85rem; }
+  .writing-section-description { font-size: 0.78rem; }
+  .writing-page { padding-top: 5.5rem; }
+}
 
 .contact-list p { margin-bottom: 0.9rem; font-size: 0.95rem; color: var(--fg-secondary); }
 .contact-list strong { color: var(--fg-strong); font-weight: 600; }

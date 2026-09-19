@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My opinionated guide to starting research early - Dun Li Chan</title>
+    <meta name="description" content="My opinionated guide to starting research early.">
+    <link rel="canonical" href="https://dunlichan.com/writings/research-in-high-school-malaysia/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/katex.min.css" integrity="sha384-JctiRyLzXCrSoOOzFlSoWLdyzQl7OrrRnhyeBmzB6ZWtcjccUyc8lCQJqIbs3uQX" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/katex.min.js" integrity="sha384-+7Keh381hSkXmXqnjC0JBM/kzsN6TFj+wMKychSLjTvJ8/0ElMde2uKl8i6p6Buj" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if ((stored || prefers) === 'dark') document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-wordmark" href="../../" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
+      <div class="header-actions"><button type="button" class="header-btn theme-toggle" aria-label="Switch color scheme"><span class="icon" aria-hidden="true">&#9680;</span></button></div>
+    </header>
+    <main class="page writing-page">
+      <article class="page-shell writing-post-shell writing-content">
+        <h1>My opinionated guide to starting research early</h1>
+        <time class="writing-post-date" datetime="2026-09-19">19 Sep 2026</time>
+
+        <p>Most Malaysians only start doing research in their master's. I started way back in early secondary school, all thanks to<a href="http://linkedin.com/in/melwincheng" target="_blank" rel="noopener"> Melwin Cheng</a>, who got me into research early on.</p>
+
+        <p>This is an opinionated guide for high schoolers in Malaysia like me who want to work on cool research projects early. I only cover stuff I've experienced, from my own point of view, so take it with a grain of salt. If you want a more general guide, I wrote one that a lot of professors reviewed:<a href="https://myresearchguide.notion.site/MYResearchGuide-2ef8941036278000abe7de2f682a4414" target="_blank" rel="noopener"> MYResearchGuide Research Handbook</a>.</p>
+
+        <p>I also borrowed ideas from a few guides I like, mostly on how projects work and how to write. They're all in the reading list at the bottom.</p>
+
+        <h2>What research is</h2>
+        <p>Scientific research itself is to push what humans know a little further. You find something nobody has known yet, then present evidence so others can check/reproduce it.</p>
+
+        <p>Two words to remember: claim and evidence. A claim is something like "my method is better than the old one". Evidence is the experiment, numbers or proof that says whether that's true. A cool idea with no evidence is just an opinion.</p>
+
+        <p>Research also isn't a solo thing. A big part of research is collaborating with other people, getting feedback, and explaining your work so others can follow it. It’s totally different from what most science competitions (eg olympiads) we had in secondary school&nbsp; The genius alone in a room is mostly a myth.</p>
+
+        <h2>Starting early</h2>
+        <p>The usual route is undergrad, then a master's or PhD with a supervisor. The good thing about this is that you get a mentor, a lab, and people to ask when you're stuck. It has downsides too. Academics are under pressure to publish a lot, which pushes many of them toward quick, safe projects.</p>
+
+        <p>If you start early, you get none of that. No supervisor, no lab, and usually nobody at school who has done research before. That's the actual hard part, more than the maths.</p>
+
+        <p>But what I do is reach out to professors or researchers who are willing to mentor you; that helps a lot, especially if they can provide you with free compute credit, which you can save tons of money.</p>
+
+        <h2>What you need</h2>
+        <p>It depends on which field you want to work in. For me, I do AI research, so knowing some maths and coding with A LOT OF READING should be enough that you can run your own experiments without begging someone else to do it. Which maths depends on the field, but linear algebra and calculus come up a lot in ML.</p>
+
+        <p>You need to read a lot and keep notes. Every project sits on top of older work, and the more you've read, the easier it is to connect ideas.</p>
+
+        <p>You also need to learn to explain things clearly, in writing and out loud. This matters more than people think. And also, you need patience. Most things you try won't work. That's normal, not a sign you're bad at this.</p>
+
+        <p>And you need taste too, which basically means knowing which ideas are worth your time. Nobody has it at the start. It's not only about picking topics. It's also noticing which weird result is worth chasing, and choosing the experiment that actually tells you something. You build it by trying things and finding out you were wrong.</p>
+
+        <p>The good news is you don't need money (at least for the early stage). Papers are free on arXiv, Google Colab gives you free compute sufficient for the early stage (you need huge compute when you scale up over time), and most tools I list below cost nothing.</p>
+
+        <h2>How to read papers</h2>
+        <p>Papers are hard to read at first. Everyone struggles, so don't take it personally.</p>
+
+        <p>Don't read from top to bottom like a book. Read the abstract, then look at the figures and captions. A good paper can be understood roughly from those alone. Then read the intro, skim the method, and spend real time on the results and the limitations.</p>
+
+        <p>Then write down three things: what is the claim, what is the evidence, and what would make this claim wrong. Also find the one key experiment the main claim depends on, and ask yourself how you would have thought of it. That's how you slowly pick up taste.</p>
+
+        <p>Keep your notes somewhere you can search later; I always use Google Docs for the sake of convenience.</p>
+
+        <h2>Your first project</h2>
+        <p>If you have no mentor and no idea what to work on, reproduce a paper. It's a solid first project.</p>
+
+        <p>Pick a paper with public code and a small setup. Run it. Try to get the same numbers as the paper. If you can't, figure out why, because that's where you learn the most. Then change one small thing and see what happens. That's already a tiny research project.</p>
+
+        <h2>The four stages of a project</h2>
+        <p>I think of a project in four stages.</p>
+
+        <p>First you pick a problem. For your first project or two, lean on a mentor, or extend an existing paper. Don't worry about being original yet.</p>
+
+        <p>Then you explore. At the start, you don't even know the right questions. So mess around, plot your data, and follow whatever looks weird (but put a time limit on it, more on that below). A lot of beginners feel stuck here because they think they should already have a clear hypothesis. They don't. They're still exploring, and that's fine.</p>
+
+        <p>Then you try to understand. Now you've got a guess that you could prove wrong, so test it, and try to break it. The boring explanation you forgot to check is usually the one that ruins your result.</p>
+
+        <p>Finally you write it up. Squeeze everything into a few clear claims with Frankenstein merge and build a case that a sceptical stranger would accept.</p>
+
+        <p>P.s. Always keep a doc of interesting results as you go. It makes it easier to spot connections later.</p>
+
+        <h2>Evidence</h2>
+        <p>Not all evidence is equal.</p>
+
+        <p>Beating strong baselines is strong evidence. Beating a weak baseline you built yourself is weak. Working across many datasets is strong. Working on one toy example is weak. Numbers and statistical tests beat "the graph looks good".</p>
+
+        <p>A few habits that help:</p>
+        <ul>
+          <li>Try the simple baseline first. Simple methods are often hard to beat.</li>
+          <li>Change one thing at a time. If you change the method and the data together, you can't tell which one made the difference.</li>
+          <li>Look for the boring explanation before you get excited.</li>
+          <li>Write down where your method fails. Reviewers will find the limits anyway, so it's better if you say it first.</li>
+        </ul>
+
+        <p>Be sceptical of your own results. Most findings are wrong by default. Being careful has to be part of your process, not just a feeling you have.</p>
+
+        <h2>How to work without getting lost</h2>
+        <p>Prioritise. You don't have infinite time. Write down your goal, check regularly if you're still working on the most important thing, and drop weak directions. But don't switch so often that you never learn anything.</p>
+
+        <p>Move fast. Shorten the time between having an idea and seeing a result. Run quick and dirty experiments on small data first. Try to find out as early as possible if a direction is doomed. Just don't go so fast that you get sloppy.</p>
+
+        <p>Don't dive too deep into rabbit holes. Curiosity is good, but one interesting side question can eat weeks. Give it a time limit, like a few hours or a day. Then ask yourself if it helps your main goal. If not, write it in your highlights doc and come back later. Just don't overcorrect and switch topics every two days either.</p>
+
+        <p>Also, you'll often not know the right next step. Pick your best guess and go. When you're starting out, what you learn matters more than whether the choice was perfect.</p>
+
+        <h2>Novelty</h2>
+        <p>Novel just means nobody has published it yet. Not "nobody I know did it".</p>
+
+        <p>Everyone worries about this, especially beginners. Check the obvious papers, see who cites them, then start. If you accidentally redo something, you still learned how to do research. And if you can mostly solve a problem without knowing it had been solved, that's a good sign.</p>
+
+        <p>Also read older papers, not only the last few years. Lots of "we're the first to do this" claims only cite recent work.</p>
+
+        <h2>Research communities</h2>
+        <p>This is where most of my papers came from.</p>
+
+        <p>Communities like EleutherAI are groups of researchers and volunteers who work on projects in public, usually on Discord and GitHub. You don't need a degree or a connection. You just need to be useful.</p>
+
+        <p>How to do it: lurk for a week or two first and read what people are working on. Then pick a small task. Fix a bug, add an evaluation, improve the docs, reproduce a result. Look at what's already open instead of asking "what can I do?" with nothing in hand. Finish what you say you'll finish. A small thing done properly beats a big thing dropped halfway. Expect boring work at first, and ask about authorship early, because norms differ between projects.</p>
+
+        <p>It's not a favour to you either. These communities are busy. The deal is you help them, and they help you back.</p>
+
+        <p>Cohere Labs has a community too, and Roads to Research is one of its programs. There are others, so find one that matches what you like.</p>
+
+        <h2>Emailing researchers</h2>
+        <p>Researchers get a lot of emails. Yours has to make the decision easy.</p>
+
+        <h3>What gets ignored</h3>
+        <ul>
+          <li>"Can you mentor me?" and nothing else</li>
+          <li>The same email sent to twenty people</li>
+          <li>Asking them to give you a topic</li>
+          <li>Expecting to be walked through everything</li>
+        </ul>
+
+        <p>What usually works is a short email that shows you read their work, mentions something small you already tried, and asks one clear question. Show them you can move without being pushed. Here's a<a href="https://www.jakobfoerster.com/jakobs-cold-email-to-nando" target="_blank" rel="noopener"> real example of a student cold email</a> if you want to see one.</p>
+
+        <p>Even after you get a mentor, don't send them a messy pile and ask them to fix it. Give them something polished so they can help with the big picture.</p>
+
+        <h2>Writing and publishing</h2>
+        <p>Writing forces you to see what you actually understand. You'll spot missing experiments while doing it. Results alone don't count; you need the paper.</p>
+
+        <ul>
+          <li>Start with an ugly first draft, early. Fix grammar later.</li>
+          <li>Explain the project to a friend first. If you can't do it in a few sentences, the paper will be confusing too.</li>
+          <li>Tell one story, not three.</li>
+          <li>Use fewer words. Cut filler.</li>
+          <li>Don't oversell, don't undersell. Say clearly what's new.</li>
+          <li>Say what your work can't do.</li>
+          <li>Read good papers to see how strong writing works.</li>
+          <li>Don't leave it to the last night before a deadline.</li>
+        </ul>
+
+        <p>A preprint on arXiv lets people read your work early and stops you getting scooped. It isn't a formal publication though.</p>
+
+        <p>Blog posts are great for small results, explanations, and negative results that would never fit a paper.</p>
+
+        <p>Peer-reviewed venues (journals, conferences) are still the gold standard, but they're slow and hard to do alone (I mean you can, but it’s relatively harder with no resources and feedback).</p>
+
+        <p>Open source code is valuable too, even if it doesn't count as much as a paper.</p>
+
+        <h2>Using AI</h2>
+        <p>I think AI is fine for things you could do yourself, just slower. Boilerplate code, LaTeX templates, grammar checks, a first pass at literature, or brainstorming other explanations for a result.</p>
+
+        <p>It's a problem when you use it to skip the parts that make you better. If you can't check what it gave you, don't use it. It can sound confident and be wrong, and it can flatter bad ideas. Some tools replace your effort, and some help you grow. You want the second kind.</p>
+
+        <p>Writing is the other trap. AI text reads smoothly but often says nothing, and people can tell. Let it fix your grammar, but write the argument yourself.</p>
+
+        <p>TL;DR: use it to go faster at things you understand. Do the hard thinking yourself.</p>
+
+        <h2>Useful tools</h2>
+        <p>Nobody needs all of these. Pick a few and stick with them.</p>
+
+        <h3>Finding papers</h3>
+
+        <p>Searching for papers isn't only for reading. It's also how you check if your idea was already done. Find the papers anyone doing your idea would have to cite, then look at who cites them.</p>
+
+        <ul>
+          <li><a href="https://www.semanticscholar.org/" target="_blank" rel="noopener">Semantic Scholar</a>: search papers, see what a paper cites and who cites it, find PDFs, save papers into libraries, and get email alerts for new papers or specific authors.</li>
+          <li><a href="https://citrus-search.com/#/" target="_blank" rel="noopener">Citrus Search</a>: start from a few papers and get a visual map of related work.</li>
+          <li><a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity</a>: describe what you're looking for in normal words when keywords fail. Always open the sources and check them yourself.</li>
+        </ul>
+
+        <h3>Managing and checking references</h3>
+        <ul>
+          <li><a href="https://www.zotero.org/start" target="_blank" rel="noopener">Zotero</a>: free and open source. It exports BibTeX for LaTeX, and tries to find free PDFs from a paper's DOI.</li>
+          <li><a href="https://citetrue.com/" target="_blank" rel="noopener">CiteTrue</a>: good for citation checking but with free limit per day</li>
+        </ul>
+
+        <h3>Writing papers</h3>
+
+        <p>I always use pdflatex + VS Code. It takes a bit more setup than an online editor, but it works offline, and you keep everything on your own computer.<a href="https://www.youtube.com/watch?v=Mty0vHb0knI" target="_blank" rel="noopener"> This video</a> makes the setup easy.</p>
+
+        <p>If you'd rather not install anything,<a href="https://www.overleaf.com/" target="_blank" rel="noopener"> Overleaf</a> is the standard online LaTeX editor. Several people can edit the same document, which is great with collaborators. The free plan has limits, so check what you get.</p>
+
+        <p>There's also <a href="https://openai.com/prism/" target="_blank" rel="noopener">Prism</a>, a free workspace for scientists with GPT built in (but it always crashes, so I don’t really like it)</p>
+
+        <h3>Notes</h3>
+        <ul>
+          <li><a href="https://obsidian.md/" target="_blank" rel="noopener">Obsidian</a> or<a href="https://logseq.com/" target="_blank" rel="noopener"> Logseq</a>: note apps where you link notes together. Notes are Markdown, and math works too. Good for paper notes and your highlights doc.</li>
+        </ul>
+
+        <h3>Blogging</h3>
+        <ul>
+          <li><a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> is the easiest free option, and supports LaTeX through Markdown. You can build the site with<a href="https://jekyllrb.com/" target="_blank" rel="noopener"> Jekyll</a> or<a href="https://gohugo.io/" target="_blank" rel="noopener"> Hugo</a>. Pick one and don't overthink it.</li>
+        </ul>
+
+        <h2>Do and don't</h2>
+        <h3>Do</h3>
+        <ul>
+          <li>Work on something you actually care about. You'll need that when it gets boring.</li>
+          <li>Understand the terms before you use them. If you can't explain it simply, you don't get it yet.</li>
+          <li>Try to break your own results before someone else does.</li>
+          <li>Show your work early, even when it's ugly.</li>
+          <li>Write down everything you try, including what failed.</li>
+          <li>Say what your work can't do.</li>
+          <li>Cite the people whose work you built on.</li>
+          <li>Finish what you commit to.&nbsp;</li>
+        </ul>
+
+        <h3>Don't</h3>
+        <ul>
+          <li>Don't chase ideas on vibes. Make them precise first.</li>
+          <li>Don't spend days on a side question without checking if it helps your main goal.</li>
+          <li>Don't sound like a LinkedIn post. Plain words beat hype.</li>
+          <li>Don't oversell your results.</li>
+          <li>Don't send the same email to 20 professors.</li>
+          <li>Don't get upset when experts ignore you. Check if you gave them a reason to reply.</li>
+          <li>Don't pay to get published or to get feedback.</li>
+          <li>Don't let AI do your thinking or writing.</li>
+          <li>Don't wait until it's perfect to show someone.</li>
+        </ul>
+
+        <h2>When it gets hard</h2>
+        <p>It will. You'll hit dead ends, fail hypotheses, and have weeks when nothing works. Feeling shit is really common, even for experienced researchers. Your standards are probably too high.</p>
+
+        <p>Also, don't wreck your life for this. Other stuff in your life still matters, and a project that survives one bad month is better than one that burns you out.</p>
+
+        <h2>Reading list</h2>
+        <p>Most of the ideas in this post were shaped by these:</p>
+
+        <ul>
+          <li><a href="https://myresearchguide.notion.site/MYResearchGuide-2ef8941036278000abe7de2f682a4414" target="_blank" rel="noopener">MYResearchGuide Research Handbook</a>: my longer, more general version.</li>
+          <li><a href="https://irregular-rhomboid.github.io/2025/08/15/hitchhikers-guide-to-research.html" target="_blank" rel="noopener">The Hitchhiker's Guide to Research</a>: doing research outside academia, plus evidence, novelty and AI.</li>
+          <li><a href="https://www.alignmentforum.org/s/5GT3yoYM9gRmMEKqL" target="_blank" rel="noopener">Neel Nanda's research process sequence</a>: how to think about a project and prioritise.</li>
+          <li><a href="https://perceiving-systems.blog/en/post/writing-a-good-scientific-paper" target="_blank" rel="noopener">Writing a good scientific paper, Michael Black</a>: paper writing and storytelling.</li>
+          <li><a href="https://www.jakobfoerster.com/how-to-ml-paper" target="_blank" rel="noopener">How to write ML papers, Jakob Foerster</a>: a short guide on the same topic.</li>
+          <li><a href="https://users.aalto.fi/~jsaramak/HowToWriteCommsCoffee.pdf" target="_blank" rel="noopener">How to write a scientific paper, Jari Saramaki</a> and<a href="https://web.stanford.edu/~jfries/assets/slides/BIOMEDIN-212_scientific-writing.pdf" target="_blank" rel="noopener"> The Art and Arcana of Scientific Writing, Jason Alan Fries</a>: more writing help.</li>
+          <li><a href="https://sites.google.com/cohere.com/coherelabs-community/community-programs/roads-to-research" target="_blank" rel="noopener">Roads to Research, Cohere</a>: a community program with regular sessions on how ML research really works.</li>
+        </ul>
+
+        <p>You don't need permission, a lab, or a PhD to start. Start small, be useful to people, and write down what you learn.</p>
+
+        <nav class="page-links"><a href="../">All writings</a><a href="../../">Home</a></nav>
+      </article>
+    </main>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var toggle = document.querySelector('.theme-toggle');
+        if (toggle) toggle.addEventListener('click', function () {
+          root.classList.toggle('dark');
+          localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+          if (window.Prism) Prism.highlightAll();
+          if (window.renderMathInElement) renderMathInElement(document.body, { throwOnError: false });
+        });
+      })();
+    </script>
+  </body>
+</html>
