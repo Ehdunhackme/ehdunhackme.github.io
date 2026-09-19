@@ -179,7 +179,13 @@ button { font-family: inherit; cursor: pointer; }
   .hero { padding: 5.5rem 1.25rem; }
 }
 @media (max-width: 640px) {
-  .site-header { padding: 1rem; }
+  .site-header {
+    position: fixed;
+    align-items: center;
+    padding: 1.75rem 1.5rem 1.1rem;
+    background: linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 94%, transparent) 76%, transparent 100%);
+  }
+  .site-header:has(.site-wordmark) .header-actions { margin-left: auto; }
   .header-actions { gap: 0.6rem; }
   .hero {
     min-height: 100vh;
