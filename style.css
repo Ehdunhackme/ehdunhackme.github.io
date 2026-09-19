@@ -404,12 +404,12 @@ html.dark .logo-metacreation { filter: none; }
 
 .timeline-title {
   margin: 2.25rem 0 1.25rem;
-  color: var(--muted);
   font-family: "IBM Plex Sans", system-ui, sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-secondary);
 }
 .timeline {
   margin: 0 0 0 0.35rem;
