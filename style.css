@@ -180,10 +180,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 640px) {
   .site-header {
-    position: fixed;
+    position: absolute;
     align-items: center;
     padding: 1.75rem 1.5rem 1.1rem;
-    background: linear-gradient(to bottom, var(--bg) 0%, color-mix(in srgb, var(--bg) 94%, transparent) 76%, transparent 100%);
   }
   .site-header:has(.site-wordmark) .header-actions { margin-left: auto; }
   .header-actions { gap: 0.6rem; }
