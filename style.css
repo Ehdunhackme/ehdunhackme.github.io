@@ -26,7 +26,7 @@ html.dark {
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { line-height: 1.5; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+html { line-height: 1.5; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -475,6 +475,7 @@ html.dark .logo-metacreation { filter: none; }
 .timeline-entry a:hover { color: #1d4ed8; }
 html.dark .timeline-entry a { color: #8ab4ff; }
 html.dark .timeline-entry a:hover { color: #b8d2ff; }
+.timeline-post-link { display: inline-block; margin-top: 0.75rem; font-size: 0.84rem; }
 
 .timeline-gallery {
   margin-top: 1rem;
@@ -695,6 +696,7 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
 .footer-links a:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 0.25rem; }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .paper-card:hover, .timeline-gallery-item:hover { transform: none; }
   .link-item, .footer-links a, .research-filter, .timeline-gallery-item, .gallery-lightbox, .gallery-lightbox-image { transition: none; }
 }
