@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../draft/style.css">
     <script>
       (function () {
         var stored = localStorage.getItem('theme');
@@ -35,13 +35,7 @@
     <header class="site-header">
       <a class="site-wordmark" href="/" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
       <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="zh">中文</button>
-        </div>
-        <button type="button" class="header-btn theme-toggle" aria-label="Switch color scheme">
-          <span class="icon" aria-hidden="true">&#9680;</span>
-        </button>
+        <button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button>
       </div>
     </header>
     <main class="page">
@@ -74,7 +68,7 @@
           zh: { title: '文章 - 曾敦礼', meta: '曾敦礼的技术笔记与研究文章。', heading: '文章', 'post.research.title': '我对尽早开始科研的个人观点指南', 'post.research.description': '一份为想及早参与酷炫科研项目的马来西亚高中生准备的个人观点指南。', home: '首页', contact: '联系', dark: '深色', light: '浅色' }
         };
         var root = document.documentElement;
-        var lang = localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';
+        var lang = 'en';
         var toggle = document.querySelector('.theme-toggle');
         function updateTheme() {
           var dark = root.classList.contains('dark');

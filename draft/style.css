@@ -18,6 +18,30 @@ button { font: inherit; }
 .theme-toggle { width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
 .theme-toggle:hover { color: var(--strong); border-color: var(--muted); }
 .profile { width: min(100% - 2.5rem, 42rem); margin: 0 auto; padding: 5rem 0 6rem; }
+.page { width: min(100% - 2.5rem, 42rem); margin: 0 auto; padding: 4rem 0 5rem; }
+.page-shell { width: 100%; }
+.page-shell > h1 { margin: 0 0 1.5rem; color: var(--strong); font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
+.writing-page { padding-top: 4rem; }
+.writing-post-shell { max-width: 42rem; }
+.writing-content { color: var(--secondary); font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: .95rem; line-height: 1.7; }
+.writing-content > h1 { margin: 0 0 .8rem; color: var(--strong); font: 600 clamp(2rem, 5vw, 3rem)/1.2 "JetBrains Mono", monospace; letter-spacing: -.04em; }
+.writing-post-date { display: block; margin: 0 0 2.5rem; color: var(--muted); font: .7rem/1.5 "JetBrains Mono", monospace; letter-spacing: .04em; }
+.writing-list { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
+.writing-list li { border-bottom: 1px solid var(--line); }
+.writing-content h2 { margin: 3rem 0 1rem; color: var(--strong); font: 600 1.18rem/1.35 "JetBrains Mono", monospace; }
+.writing-content h3 { margin: 2rem 0 .75rem; color: var(--strong); font: 600 1rem/1.35 "JetBrains Mono", monospace; }
+.writing-content p { margin: 0 0 1.1rem; }
+.writing-content ul, .writing-content ol { margin: 0 0 1.25rem 1.25rem; }
+.writing-content li { margin: .35rem 0; }
+.writing-content a { color: #2563eb; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 3px; }
+html.dark .writing-content a { color: #8ab4ff; }
+.writing-content strong { color: var(--strong); font-weight: 600; }
+.writing-content pre { margin: 1.25rem 0; padding: 1rem 1.1rem; overflow-x: auto; border: 1px solid var(--line); background: color-mix(in srgb, var(--fg) 5%, var(--bg)); color: var(--secondary); font: .78rem/1.65 "JetBrains Mono", monospace; }
+.writing-content code { font-family: "JetBrains Mono", monospace; font-size: .9em; }
+.writing-content .katex { color: inherit; }
+.page-links { display: flex; gap: 1.25rem; margin-top: 2.5rem; }
+.page-links a { color: var(--muted); font: 10px/1.4 "JetBrains Mono", monospace; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; }
+.page-links a:hover { color: var(--strong); }
 .intro-block { padding-bottom: 1.5rem; }
 .eyebrow { margin: 0 0 1rem; color: var(--muted); font: 10px "JetBrains Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "JetBrains Mono", monospace; }
