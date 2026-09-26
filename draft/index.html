@@ -26,7 +26,7 @@
 
   <main class="profile">
     <section class="intro-block" aria-labelledby="profile-title">
-      <h1 id="profile-title" class="hero-name" data-alt="dunl1chan">Dun Li Chan</h1>
+      <h1 id="profile-title" class="hero-name" data-alt="dunl1chan" data-chinese="曾敦礼">Dun Li Chan</h1>
       <p class="role">Grokking &amp; Hillclimbing · Based in Malaysia</p>
       <nav class="quick-links" aria-label="External links">
         <a href="https://github.com/ehdunhackme" target="_blank" rel="noopener"><svg class="quick-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.51c.48.09.65-.2.65-.46v-1.67c-2.65.58-3.2-1.13-3.2-1.13-.43-1.1-1.06-1.4-1.06-1.4-.87-.6.07-.59.07-.59.96.07 1.47.99 1.47.99.86 1.47 2.25 1.05 2.8.8.09-.62.34-1.05.62-1.29-2.12-.24-4.35-1.06-4.35-4.72 0-1.04.37-1.89.98-2.56-.1-.24-.42-1.21.09-2.52 0 0 .8-.26 2.62.98A9.1 9.1 0 0 1 12 7.61a9.1 9.1 0 0 1 2.39.32c1.82-1.24 2.62-.98 2.62-.98.51 1.31.19 2.28.09 2.52.61.67.98 1.52.98 2.56 0 3.67-2.23 4.47-4.36 4.71.34.29.65.84.65 1.69v2.5c0 .26.17.55.66.46A9.5 9.5 0 0 0 12 2.5Z"/></svg>GitHub</a>
@@ -189,10 +189,14 @@
       function setupNameMorph(element) {
         var from = element.textContent;
         var to = element.getAttribute('data-alt');
-        var pool = (from + to).replace(/ /g, '').split('');
-        var span = Math.max(from.length, to.length);
+        var chinese = element.getAttribute('data-chinese') || from;
+        var pool = (from + to + chinese).replace(/ /g, '').split('');
+        var span = Math.max(from.length, to.length, chinese.length);
         var timer = null;
         var settleAt = 0;
+        var nextTarget = to;
+        var lastRunAt = 0;
+        var morphCooldown = 180;
 
         function measure(text) {
           var previous = element.textContent;
@@ -216,23 +220,36 @@
           element.textContent = output;
         }
 
-        function run(target) {
+        function run(target, stepDuration) {
           clearInterval(timer);
+          element.classList.add('is-morphing');
+          element.classList.toggle('is-chinese', target === chinese);
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             element.textContent = target;
+            element.classList.remove('is-morphing');
             return;
           }
           settleAt = 0;
           var started = Date.now();
           timer = setInterval(function () {
-            settleAt = Math.floor((Date.now() - started) / 38);
+            settleAt = Math.floor((Date.now() - started) / (stepDuration || 38));
             if (settleAt > span) {
               clearInterval(timer);
               element.textContent = target;
+              element.classList.remove('is-morphing');
               return;
             }
             render(target);
           }, 65);
+        }
+
+        function runNext() {
+          var now = Date.now();
+          if (now - lastRunAt < morphCooldown) return;
+          lastRunAt = now;
+          var target = nextTarget;
+          nextTarget = target === to ? chinese : to;
+          run(target);
         }
 
         pinWidth();
@@ -240,21 +257,27 @@
         window.addEventListener('resize', pinWidth);
 
         element.textContent = to;
-        window.setTimeout(function () { run(from); }, 250);
+        element.classList.add('is-morphing');
+        window.setTimeout(function () { run(from, 180); }, 150);
 
         if (window.matchMedia('(hover: hover)').matches) {
-          element.addEventListener('pointerenter', function () { run(to); });
+          element.addEventListener('pointerenter', runNext);
           element.addEventListener('pointerleave', function () { run(from); });
         }
+        element.addEventListener('click', runNext);
 
         var lastScrollY = window.scrollY;
         var lastTriggerY = window.scrollY;
         var resetTimer = null;
         function handleScroll() {
           var currentScrollY = window.scrollY;
+          if (window.matchMedia('(max-width: 600px)').matches) {
+            lastScrollY = currentScrollY;
+            return;
+          }
           if (currentScrollY - lastTriggerY >= 5 && currentScrollY > lastScrollY) {
             lastTriggerY = currentScrollY;
-            run(to);
+            runNext();
             clearTimeout(resetTimer);
             resetTimer = window.setTimeout(function () {
               if (!element.matches(':hover')) run(from);

@@ -46,7 +46,12 @@ html.dark .writing-content a { color: #8ab4ff; }
 .eyebrow { margin: 0 0 1rem; color: var(--muted); font: 10px "JetBrains Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "JetBrains Mono", monospace; }
 h1 { margin: 0; color: var(--strong); font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.15; letter-spacing: -.04em; }
-.hero-name { display: inline-block; white-space: pre; }
+.hero-name { display: inline-block; white-space: pre; cursor: pointer; transition: color .2s ease, text-shadow .2s ease; }
+.hero-name:active { color: #8ab4ff; }
+.hero-name.is-morphing { text-shadow: .035em 0 rgba(138,180,255,.6), -.035em 0 rgba(255,120,120,.35); animation: nameGlitch .18s steps(2, end) infinite; }
+.hero-name.is-chinese { color: #8ab4ff; }
+@keyframes nameGlitch { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(.02em); } }
+@media (prefers-reduced-motion: reduce) { .hero-name.is-morphing { animation: none; } }
 .role { margin: .65rem 0 1.5rem; color: var(--muted); font-size: 1.05rem; }
 .quick-links { display: flex; flex-wrap: wrap; gap: .55rem; }
 .quick-links a { display: inline-flex; align-items: center; gap: .38rem; padding: .32rem .62rem; border: 1px solid var(--line); background: var(--button); color: var(--secondary); font-size: 10px; text-decoration: none; }
