@@ -977,9 +977,8 @@ body { font-family: "Geist", Arial, sans-serif; }
   text-decoration: none;
   transition: color .18s ease;
 }
-.board-view-all::after { content: "↗︎"; display: inline-block; margin-left: .3em; transition: transform .18s cubic-bezier(.2, .7, .2, 1); }
+.board-view-all::after { content: "↗︎"; display: inline-block; margin-left: .3em; }
 .board-view-all:hover, .board-view-all:focus-visible { color: var(--fg-strong); }
-.board-view-all:hover::after, .board-view-all:focus-visible::after { transform: translateX(2px); }
 #about-heading, #research-heading, #writings-heading {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 1.1rem;
