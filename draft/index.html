@@ -229,6 +229,9 @@
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(pinWidth);
         window.addEventListener('resize', pinWidth);
 
+        element.textContent = to;
+        window.setTimeout(function () { run(from); }, 250);
+
         if (window.matchMedia('(hover: hover)').matches) {
           element.addEventListener('pointerenter', function () { run(to); });
           element.addEventListener('pointerleave', function () { run(from); });
