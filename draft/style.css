@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root { --bg: #f7f3f0; --fg: #171717; --strong: #0a0a0a; --secondary: #303030; --muted: #737373; --line: rgba(0,0,0,.11); --button: #f1ece8; }
 html.dark { --bg: #1a1a1a; --fg: #c2c2c2; --strong: #f5f5f5; --secondary: #c0c0c0; --muted: #969696; --line: rgba(255,255,255,.11); --button: #232323; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; line-height: 1.7; transition: background-color .25s ease, color .25s ease; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Geist", Arial, sans-serif; line-height: 1.7; transition: background-color .25s ease, color .25s ease; }
 a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover, a:focus-visible { color: var(--strong); text-decoration-color: var(--strong); }
 button { font: inherit; }
@@ -24,7 +24,7 @@ button { font: inherit; }
 .page-shell > h1 { margin: 0 0 1.5rem; color: var(--strong); font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
 .writing-page { padding-top: 4rem; }
 .writing-post-shell { max-width: 42rem; }
-.writing-content { color: var(--secondary); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; font-size: .95rem; line-height: 1.7; }
+.writing-content { color: var(--secondary); font-family: "Geist", Arial, sans-serif; font-size: .95rem; line-height: 1.7; }
 .writing-content > h1 { margin: 0 0 .8rem; color: var(--strong); font: 600 clamp(2rem, 5vw, 3rem)/1.2 "JetBrains Mono", monospace; letter-spacing: -.04em; }
 .writing-post-date { display: block; margin: 0 0 2.5rem; color: var(--muted); font: .7rem/1.5 "JetBrains Mono", monospace; letter-spacing: .04em; }
 .writing-list { margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
@@ -92,7 +92,7 @@ summary::before { content: "+"; display: inline-block; width: 1.5rem; color: var
 .workplaces img { width: 1em; height: 1em; object-fit: contain; vertical-align: middle; }
 .logo-sjtu { filter: brightness(0) saturate(100%); }
 html.dark .logo-sjtu, html.dark .logo-eleutherai, html.dark .logo-metacreation { filter: none; }
-.timeline { display: flow-root; margin: 0 0 0 .35rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; }
+.timeline { display: flow-root; margin: 0 0 0 .35rem; font-family: "Geist", Arial, sans-serif; }
 .timeline-panel { padding-bottom: 1.5rem; }
 .timeline-item { position: relative; display: grid; grid-template-columns: 8.75rem minmax(0, 1fr); gap: 1.5rem; padding: 0 0 2rem 1.5rem; border-left: 1px solid var(--line); }
 .timeline-item:last-child { padding-bottom: 0; }
@@ -120,24 +120,35 @@ html.dark .timeline-entry a { color: #8ab4ff; }
 .timeline-gallery-control:focus-visible { outline: 1px solid var(--strong); outline-offset: 3px; }
 .timeline-gallery-position { min-width: 4.5rem; color: var(--muted); font: .68rem/1 "JetBrains Mono", monospace; letter-spacing: .04em; text-align: center; font-variant-numeric: tabular-nums; }
 .research-section { padding-top: 2.5rem; }
-.research-title { margin: 0 0 1.25rem; color: var(--strong); font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
-.research-toolbar { display: flex; justify-content: flex-start; margin: 0 0 1.25rem; }
+.research-board { padding: clamp(1.25rem, 4vw, 3rem); border: 1px solid var(--line); background: color-mix(in srgb, var(--strong) 3%, var(--bg)); }
+.research-board-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.research-eyebrow { margin: 0 0 .55rem; color: var(--muted); font: .62rem/1.4 "JetBrains Mono", monospace; letter-spacing: .16em; text-transform: uppercase; }
+.research-title { margin: 0; color: var(--strong); font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
+.research-board-note { padding-bottom: .15rem; color: var(--muted); font: .66rem/1.5 "JetBrains Mono", monospace; letter-spacing: .04em; }
+.research-toolbar { display: flex; justify-content: flex-start; margin: 1rem 0 2rem; }
 .research-filters { display: inline-flex; flex-wrap: wrap; gap: .3rem; }
-.research-filter { border: 1px solid transparent; background: transparent; color: var(--muted); font: .68rem "JetBrains Mono", monospace; letter-spacing: .04em; padding: .3rem .45rem; cursor: pointer; transition: color .15s ease, border-color .15s ease, background-color .15s ease; }
+.research-filter { border: 1px solid var(--line); background: transparent; color: var(--muted); font: .68rem "JetBrains Mono", monospace; letter-spacing: .04em; padding: .45rem .7rem; cursor: pointer; transition: color .15s ease, border-color .15s ease, background-color .15s ease; }
 .research-filter:hover, .research-filter:focus-visible, .research-filter.is-active { color: var(--strong); border-color: var(--line); }
 .research-filter.is-active { background: color-mix(in srgb, var(--fg) 7%, transparent); }
 .research-filter:focus-visible { outline: 1px solid var(--strong); outline-offset: .15rem; }
 .research-group[hidden] { display: none; }
-.research-group { margin-top: 2rem; }
-.research-group h2 { margin: 0 0 1.25rem; color: var(--secondary); font: 600 16px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; letter-spacing: 0; text-transform: none; }
-.paper-list { margin: 0; padding: 0; list-style: none; }
-.paper-row { display: flex; justify-content: space-between; gap: 2rem; padding: .7rem 0; border-bottom: 1px solid var(--line); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; }
+.research-group { margin-top: 2.25rem; }
+.research-group h2 { margin: 0 0 .8rem; color: var(--muted); font: 500 .66rem/1.5 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; }
+.paper-list { margin: 0 0 1.5rem; padding: 0; list-style: none; }
+.paper-row { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1rem 1.1rem; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 72%, transparent); font-family: "Geist", Arial, sans-serif; }
+.paper-list li:first-child .paper-row { border-top: 1px solid var(--line); }
 .paper-info { min-width: 0; flex: 1; font-size: .95rem; line-height: 1.5; }
-.paper-info strong { display: block; font-size: 1rem; font-weight: 600; color: var(--strong); }
-.paper-info em { display: block; margin-top: .2rem; color: var(--muted); font-size: .78rem; font-style: normal; }
+.paper-info strong { display: block; font-size: 1rem; line-height: 1.4; font-weight: 600; color: var(--strong); }
+.paper-info em { display: block; margin-top: .3rem; color: var(--muted); font-size: .76rem; line-height: 1.5; font-style: normal; }
 .coauthors { display: block; margin-top: .15rem; color: var(--muted); font-size: .76rem; }
 .project-description { display: block; margin-top: .3rem; color: var(--muted); font-size: .78rem; line-height: 1.55; }
-.paper-date { flex-shrink: 0; padding-top: .05rem; color: var(--muted); font: .78rem "JetBrains Mono", monospace; white-space: nowrap; }
+.paper-date { flex-shrink: 0; align-self: flex-start; padding: .28rem .45rem; border: 1px solid var(--line); color: var(--muted); font: .62rem/1.2 "JetBrains Mono", monospace; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+.paper-extra { margin-top: .5rem; color: var(--muted); font: .72rem/1.5 "Geist", Arial, sans-serif; }
+.paper-extra summary { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); font: .62rem/1.5 "JetBrains Mono", monospace; cursor: pointer; list-style: none; }
+.paper-extra summary::-webkit-details-marker { display: none; }
+.paper-extra summary::before { content: "+"; color: var(--muted); }
+.paper-extra[open] summary::before { content: "−"; }
+.paper-extra .coauthors, .paper-extra .project-description { margin-top: .45rem; }
 .paper-links { display: block; margin: .45rem 0 .3rem; }
 .paper-links a { margin-right: .5rem; color: #2563eb; font-size: .82rem; }
 html.dark .paper-links a { color: #8ab4ff; }
@@ -150,13 +161,13 @@ html.dark .paper-links a { color: #8ab4ff; }
 .writing-section-link { display: grid; grid-template-columns: minmax(0, 1fr) max-content; align-items: center; gap: 1.25rem; padding: 1rem 0; color: inherit; transition: padding .2s ease, color .2s ease; }
 .writing-section-link:hover, .writing-section-link:focus-visible { padding-inline: .45rem; color: var(--strong); }
 .writing-section-link:focus-visible { outline: 1px solid var(--strong); outline-offset: -1px; }
-.writing-section-title { display: block; color: var(--strong); font: 600 .98rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", monospace; }
+.writing-section-title { display: block; color: var(--strong); font: 600 .98rem/1.5 "Geist", Arial, sans-serif; }
 .writing-section-description { display: block; max-width: 52ch; margin-top: .35rem; color: var(--muted); font-size: .82rem; line-height: 1.6; }
 .writing-section-side { display: flex; flex-direction: column; align-items: flex-end; gap: .45rem; }
 .writing-date { color: var(--muted); font: .7rem/1.5 "JetBrains Mono", monospace; letter-spacing: .04em; white-space: nowrap; }
 .writing-section-arrow { color: var(--muted); font-size: 1rem; transition: transform .2s ease, color .2s ease; }
 .writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { color: var(--strong); transform: translate(2px, -2px); }
-.site-footer { display: flex; justify-content: space-between; gap: 1rem; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-family: "Geist Mono", monospace; font-size: .7rem; letter-spacing: .04em; }
 .site-footer a { text-decoration: none; }
 body.lightbox-open { overflow: hidden; }
 .gallery-lightbox[hidden] { display: none; }
@@ -182,10 +193,14 @@ body.lightbox-open { overflow: hidden; }
   .gallery-lightbox-image { width: 100%; max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 5rem); }
   .gallery-lightbox-image img { max-width: 100%; max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 5rem); }
   .lightbox-close { top: max(.75rem, env(safe-area-inset-top)); right: max(.75rem, env(safe-area-inset-right)); width: 4rem; height: 4rem; font-size: 2.8rem; }
-  .research-toolbar { justify-content: flex-start; margin: 0 0 1rem; }
-  .research-filters { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
-  .research-filter { display: flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .35rem .45rem; text-align: center; font-size: .62rem; line-height: 1.3; }
-  .paper-row { flex-direction: column; gap: .25rem; padding: 1rem 0; }
+  .research-board { padding: 1.1rem; }
+  .research-board-header { align-items: flex-start; padding-bottom: 1rem; }
+  .research-board-note { display: none; }
+  .research-toolbar { justify-content: flex-start; margin: 1rem 0 1.5rem; }
+  .research-filters { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .3rem; }
+  .research-filter { display: flex; align-items: center; justify-content: center; min-height: 2.35rem; padding: .3rem .25rem; text-align: center; font-size: .58rem; line-height: 1.2; }
+  .research-group { margin-top: 1.75rem; }
+  .paper-row { flex-direction: column; gap: .6rem; padding: .85rem .75rem; }
   .paper-date { order: -1; }
   .paper-info strong { font-size: .98rem; line-height: 1.45; }
   .paper-info em, .project-description { font-size: .8rem; line-height: 1.55; }
@@ -195,3 +210,144 @@ body.lightbox-open { overflow: hidden; }
   .site-footer span { display: block; margin-top: .5rem; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; } }
+
+/* Geist / editorial portfolio refresh */
+body { font-family: "Geist", Arial, sans-serif; }
+.site-header { position: relative; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.25rem 0; gap: 1rem; }
+.site-wordmark { display: inline-block; flex: 0 0 auto; font: 600 .68rem/1 "Geist Mono", monospace; letter-spacing: .12em; }
+.main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(.65rem, 2.2vw, 1.5rem); margin: 0 auto; }
+.main-nav a { color: var(--muted); font: 400 .84rem/1.3 "Geist", Arial, sans-serif; text-decoration: none; white-space: nowrap; transition: color .18s ease; }
+.main-nav a:hover, .main-nav a:focus-visible, .main-nav a[aria-current="page"] { color: var(--strong); }
+.main-nav a:focus-visible { outline: 1px solid var(--strong); outline-offset: 4px; }
+.section-link { font: 400 .78rem/1.4 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
+.header-actions { flex: 0 0 auto; margin-left: 0; }
+.theme-toggle { width: 2rem; height: 2rem; font-family: "Geist", Arial, sans-serif; }
+.profile { width: min(calc(100% - 2.5rem), 42rem); padding-top: 2.1rem; }
+.page { width: min(calc(100% - 2.5rem), 42rem); padding-top: 2.5rem; }
+.page-shell > h1, .directory-page h1 { margin-bottom: .45rem; color: var(--strong); font: italic 400 clamp(2rem, 5vw, 2.6rem)/1.1 "Instrument Serif", Georgia, serif; letter-spacing: -.025em; }
+.directory-page { width: min(calc(100% - 2.5rem), 42rem); min-height: 60vh; margin: 0 auto; padding: 2.5rem 0 4rem; }
+.directory-page .eyebrow { margin-bottom: .45rem; font: 500 .68rem/1.4 "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.page-intro { max-width: 54ch; margin: .65rem 0 2rem; color: var(--muted); font: 400 .92rem/1.6 "Geist", Arial, sans-serif; }
+.directory-group { margin-top: 2.5rem; }
+.directory-group h2 { margin: 0 0 .65rem; color: var(--strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; }
+.page-shell > h1 { font-size: 2rem; }
+.intro-block { padding-bottom: 1.5rem; }
+h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "Geist", Arial, sans-serif; }
+h1 { font-weight: 500; }
+.eyebrow, .timeline-date, .writing-date, .writing-post-date { font-family: "Geist Mono", monospace; }
+.writing-content { font-family: "Geist", Arial, sans-serif; font-size: .96rem; line-height: 1.75; }
+.writing-content > h1 { font: 500 clamp(2.1rem, 5vw, 3.1rem)/1.12 "Geist", Arial, sans-serif; letter-spacing: -.045em; }
+.writing-content h2, .writing-content h3 { font-family: "Geist", Arial, sans-serif; }
+.about { text-align: left; }
+.about p { font-size: .88rem; line-height: 1.7; }
+.workplaces { font-size: .88rem; }
+.workplaces img { width: 1.15em; height: 1.15em; vertical-align: -0.15em; }
+.about-section h2, .section-heading-row h2, .content-section > h2 { color: var(--strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; letter-spacing: 0; }
+.honors-group h3 { font-family: "Geist", Arial, sans-serif; }
+.timeline { font-family: "Geist", Arial, sans-serif; }
+.timeline-entry h3 { font: 500 .96rem/1.45 "Geist", Arial, sans-serif; }
+.timeline-entry li { font: 400 .88rem/1.65 "Geist", Arial, sans-serif; }
+.research-section { padding-top: 2.5rem; }
+.research-board { padding: 0; border: 0; background: transparent; }
+.research-board-header { align-items: baseline; padding: 0; border: 0; }
+.research-title { margin: 0; color: var(--strong); font: italic 400 1.55rem/1.2 "Instrument Serif", Georgia, serif; letter-spacing: 0; }
+.research-eyebrow, .research-board-note, .research-toolbar, .research-group, .paper-extra, .show-more { display: none; }
+.featured-papers { margin: 1rem 0 0; }
+.paper-list { margin: 0; padding: 0; border-top: 0; list-style: none; }
+.paper-list li { border-bottom: 1px solid var(--line); }
+.paper-row { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.05rem 0; border: 0; background: transparent; font-family: "Geist", Arial, sans-serif; transition: opacity .2s ease, color .2s ease; }
+.paper-info { min-width: 0; flex: 1 1 auto; font: 400 .92rem/1.55 "Geist", Arial, sans-serif; }
+.paper-info strong { display: block; color: var(--strong); font: 500 1rem/1.4 "Geist", Arial, sans-serif; }
+.paper-date { display: block; margin: 0 0 .42rem; padding: 0; border: 0; color: var(--muted); font: 500 .64rem/1.3 "Geist Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+.paper-info em, .project-description, .coauthors { display: block; margin-top: .32rem; color: var(--muted); font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
+.paper-links { display: flex; flex: 0 0 auto; align-items: center; gap: .9rem; margin: .15rem 0 0; white-space: nowrap; }
+.paper-links a { color: var(--muted); font: 400 .76rem/1.4 "Geist", Arial, sans-serif; text-decoration: none; }
+.paper-links a::after { content: " ↗"; }
+.paper-links a:hover, .paper-links a:focus-visible { color: var(--strong); }
+.writing-list { font-family: "Geist", Arial, sans-serif; }
+.writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
+.writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
+.page-links a { font: 400 .78rem/1.5 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
+.site-footer { width: min(calc(100% - 2.5rem), 42rem); margin-inline: auto; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
+.paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
+.writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover), .writing-posts:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: .24; }
+@media (max-width: 600px) {
+  .site-header { width: calc(100% - 2rem); gap: .6rem; padding: 1rem 0; }
+  .header-actions { gap: .5rem; }
+  .site-wordmark { display: none; }
+  .main-nav { justify-content: flex-start; gap: clamp(.65rem, 4vw, 1.2rem); margin: 0 auto 0 0; }
+  .main-nav a { font-size: .78rem; }
+  .header-actions { margin-left: auto; }
+  .profile, .directory-page, .page, .site-footer { width: calc(100% - 2rem); }
+  .profile { padding-top: 1.5rem; }
+  .about p { font-size: .86rem; }
+  .workplaces { font-size: .86rem; }
+  .paper-row { flex-wrap: wrap; gap: .35rem 1rem; padding: .95rem 0; }
+  .paper-info { flex-basis: 100%; }
+  .paper-links { margin: 0 0 .15rem auto; }
+  .paper-info strong { font-size: .96rem; }
+  .paper-info em, .coauthors, .project-description { font-size: .81rem; }
+  .directory-group { margin-top: 2rem; }
+  .site-footer { display: flex; }
+}
+@media (hover: none) {
+  .timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
+  .paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
+  .writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover) { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .paper-row, .main-nav a { transition: none; } }
+
+/* Unified project board typography and quiet view-all link */
+.research-title,
+.about-section h2,
+.section-heading-row h2,
+.content-section > h2,
+.page-shell h1,
+.directory-page > .editorial-heading,
+.directory-page .directory-group h2 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -.03em;
+}
+.research-title { font-size: 1rem; font-weight: 600; line-height: 1.45; }
+.about-section h2, .section-heading-row h2, .content-section > h2 { font-size: 1rem; line-height: 1.45; }
+.page-shell h1 { font-size: 1.35rem; line-height: 1.4; }
+.directory-page > .editorial-heading { font-size: clamp(1.25rem, 3vw, 1.55rem); font-weight: 600; }
+.directory-page .directory-group h2 { font-size: .9rem; font-weight: 600; line-height: 1.5; }
+.board-view-all {
+  display: flex;
+  justify-content: flex-end;
+  width: max-content;
+  margin: 1rem auto 0;
+  padding: .38rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: color-mix(in srgb, var(--fg) 9%, var(--bg));
+  color: var(--strong);
+  font: 600 .74rem/1.4 "Geist", Arial, sans-serif;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.board-view-all::after { content: "↗"; display: inline-block; margin-left: .3em; transition: transform .18s cubic-bezier(.2, .7, .2, 1); }
+.board-view-all:hover, .board-view-all:focus-visible { color: var(--strong); }
+.board-view-all:hover::after, .board-view-all:focus-visible::after { transform: translateX(2px); }
+#about-heading, #research-heading, #writings-heading {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -.03em;
+}
+.writing-section-link { transition: none; }
+.writing-section-link:hover, .writing-section-link:focus-visible { padding-inline: 0; }
+.writing-section-arrow { transition: none; }
+.writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { transform: none; }
+.writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
+.writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: .24; }
+@media (hover: none) {
+  .writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
+  .writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: 1; }
+}

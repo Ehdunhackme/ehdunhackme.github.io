@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #f7f3f0;
@@ -344,7 +344,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .section-title {
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Geist", Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -353,7 +353,7 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 1.25rem;
 }
 
-.about { text-align: justify; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+.about { text-align: justify; font-family: "Geist", Arial, sans-serif; }
 .about p { max-width: 64rem; margin: 0 auto 1rem; font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
@@ -369,7 +369,7 @@ button { font-family: inherit; cursor: pointer; }
 .workplaces {
   max-width: 64rem;
   margin: 1.15rem 0 1.75rem;
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Geist", Arial, sans-serif;
   color: var(--fg-secondary);
   font-size: 0.95rem;
   line-height: 1.8;
@@ -388,11 +388,11 @@ button { font-family: inherit; cursor: pointer; }
 .workplaces a:hover { color: var(--fg-strong); text-decoration-color: var(--fg-strong); }
 .workplaces a:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 3px; }
 .workplaces img {
-  width: 1em;
-  height: 1em;
+  width: 1.15em;
+  height: 1.15em;
   padding: 0;
   object-fit: contain;
-  vertical-align: middle;
+  vertical-align: -0.15em;
 }
 .logo-sjtu { filter: brightness(0) saturate(100%); }
 html.dark .logo-sjtu { filter: none; }
@@ -426,7 +426,7 @@ html.dark .logo-metacreation { filter: none; }
 
 .timeline-title {
   margin: 2.25rem 0 1.25rem;
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Geist", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0;
@@ -435,7 +435,7 @@ html.dark .logo-metacreation { filter: none; }
 }
 .timeline {
   margin: 0 0 0 0.35rem;
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: "Geist", Arial, sans-serif;
 }
 .timeline-item {
   position: relative;
@@ -623,21 +623,26 @@ body.gallery-open { overflow: hidden; }
   .lightbox-close { top: max(0.75rem, env(safe-area-inset-top)); right: max(0.75rem, env(safe-area-inset-right)); width: 4rem; height: 4rem; font-size: 2.8rem; }
 }
 
-.paper-list { list-style: none; margin-bottom: 2rem; }
+.research-section { max-width: 72rem; }
+.research-board { padding: clamp(1.25rem, 4vw, 3rem); border: 1px solid var(--line); background: color-mix(in srgb, var(--fg-strong) 3%, var(--bg)); }
+.research-board-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.research-eyebrow { margin-bottom: .55rem; color: var(--muted); font: .62rem/1.4 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; }
+.research-board-note { padding-bottom: .15rem; color: var(--faint); font: .66rem/1.5 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .04em; }
+.paper-list { list-style: none; margin-bottom: 1.5rem; }
 .research-toolbar {
   display: flex;
-  justify-content: flex-end;
-  margin: -0.25rem 0 1.25rem;
+  justify-content: flex-start;
+  margin: 1rem 0 2rem;
 }
 .research-filters { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; }
 .research-filter {
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   background: transparent;
   color: var(--muted);
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  padding: 0.3rem 0.45rem;
+  padding: 0.45rem 0.7rem;
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
 }
@@ -650,20 +655,30 @@ body.gallery-open { overflow: hidden; }
 .research-filter.is-active { background: color-mix(in srgb, var(--fg) 7%, transparent); }
 .research-filter:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 0.15rem; }
 .research-group[hidden] { display: none; }
+.research-group { margin-top: 2.25rem; }
+.research-group h2 { margin: 0 0 .8rem; color: var(--muted); font: 500 .66rem/1.5 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
 .paper-row {
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
-  padding: 0.7rem 0;
+  gap: 1.5rem;
+  padding: 1rem 1.1rem;
   border-bottom: 1px solid var(--line);
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  font-family: "Geist", Arial, sans-serif;
 }
+.paper-list li:first-child .paper-row { border-top: 1px solid var(--line); }
 .paper-info { flex: 1; font-size: 0.95rem; line-height: 1.5; }
-.paper-info strong { font-weight: 600; font-size: 1rem; color: var(--fg-strong); }
-.paper-info em { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.78rem; color: var(--muted); }
+.paper-info strong { display: block; font-weight: 600; font-size: 1rem; line-height: 1.4; color: var(--fg-strong); }
+.paper-info em { display: block; margin-top: 0.3rem; font-style: normal; font-size: 0.76rem; line-height: 1.5; color: var(--muted); }
 .project-description { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
-.paper-date { flex-shrink: 0; color: var(--faint); font-size: 0.85rem; white-space: nowrap; }
+.paper-date { flex-shrink: 0; align-self: flex-start; padding: .28rem .45rem; border: 1px solid var(--line); color: var(--muted); font: .62rem/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
 .coauthors { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
+.paper-extra { margin-top: .5rem; color: var(--muted); font: .72rem/1.5 "Geist", Arial, sans-serif; }
+.paper-extra summary { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); font: .62rem/1.5 "JetBrains Mono", ui-monospace, monospace; cursor: pointer; list-style: none; }
+.paper-extra summary::-webkit-details-marker { display: none; }
+.paper-extra summary::before { content: "+"; color: var(--faint); }
+.paper-extra[open] summary::before { content: "−"; }
+.paper-extra .coauthors, .paper-extra .project-description { margin-top: .45rem; }
 .paper-links { display: block; margin: 0.45rem 0 0.3rem; }
 .paper-links a { font-size: 0.82rem; color: #2563eb; text-decoration: underline; text-underline-offset: 2px; margin-right: 0.5rem; }
 .paper-links a:hover { color: #1d4ed8; }
@@ -721,11 +736,16 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
   .paper-info { min-width: 0; }
   .paper-grid { grid-template-columns: 1fr; }
   .paper-preview { height: 10rem; }
-  .research-toolbar { justify-content: flex-start; margin: 0 0 1rem; }
-  .research-filters { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem; }
-  .research-filter { display: flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: 0.35rem 0.45rem; text-align: center; font-size: 0.62rem; line-height: 1.3; }
-  .paper-list { margin-bottom: 1.5rem; }
-  .paper-row { padding: 1rem 0; }
+  .research-section { padding-inline: .75rem; }
+  .research-board { padding: 1.1rem; }
+  .research-board-header { align-items: flex-start; padding-bottom: 1rem; }
+  .research-board-note { display: none; }
+  .research-toolbar { justify-content: flex-start; margin: 1rem 0 1.5rem; }
+  .research-filters { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.3rem; }
+  .research-filter { display: flex; align-items: center; justify-content: center; min-height: 2.35rem; padding: 0.3rem 0.25rem; text-align: center; font-size: 0.58rem; line-height: 1.2; }
+  .research-group { margin-top: 1.75rem; }
+  .paper-list { margin-bottom: 1rem; }
+  .paper-row { padding: .85rem .75rem; gap: .6rem; }
   .paper-info strong { font-size: 0.98rem; line-height: 1.45; }
   .paper-info em, .project-description { font-size: 0.8rem; line-height: 1.55; }
 }
@@ -790,7 +810,7 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
 .writing-empty { margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
 .writing-page { align-items: flex-start; padding-top: 7rem; padding-bottom: 5rem; }
 .writing-post-shell { max-width: 720px; }
-.writing-content { color: var(--fg-secondary); font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 0.95rem; line-height: 1.7; }
+.writing-content { color: var(--fg-secondary); font-family: "Geist", Arial, sans-serif; font-size: 0.95rem; line-height: 1.7; }
 .writing-post-date { display: block; margin: -0.25rem 0 2.2rem; }
 .writing-content h2 { margin: 3rem 0 1rem; color: var(--fg-strong); font-size: 1.18rem; font-weight: 600; line-height: 1.35; }
 .writing-content h3 { margin: 2rem 0 0.75rem; color: var(--fg-strong); font-size: 1rem; font-weight: 600; }
@@ -835,6 +855,149 @@ html.dark .writing-content a:hover { color: #b8d2ff; }
 .page-links { margin-top: 2.5rem; display: flex; gap: 1.25rem; }
 .page-links a { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
 .page-links a:hover { color: var(--fg-strong); }
+
+/* Geist / editorial portfolio refresh */
+body { font-family: "Geist", Arial, sans-serif; }
+.main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(.65rem, 2.2vw, 1.5rem); margin-left: auto; margin-right: auto; }
+.main-nav a { color: var(--muted); font: 400 .84rem/1.3 "Geist", Arial, sans-serif; text-decoration: none; white-space: nowrap; transition: color .18s ease; }
+.main-nav a:hover, .main-nav a:focus-visible, .main-nav a[aria-current="page"] { color: var(--fg-strong); }
+.main-nav a:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 4px; }
+.section-link { font: 400 .78rem/1.4 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
+.site-header { position: relative; inset: auto; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.25rem 0; align-items: center; gap: 1rem; }
+.site-wordmark { display: inline-block; flex: 0 0 auto; font: 600 .68rem/1 "Geist Mono", monospace; letter-spacing: .12em; }
+.header-actions { flex: 0 0 auto; margin-left: 0; }
+.profile { width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 2.1rem 0 5rem; }
+.content-section { scroll-margin-top: 1.5rem; }
+.page { min-height: auto; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 2.5rem 0 4rem; }
+.page-shell { max-width: none; }
+.page-shell h1, .directory-page h1 { margin-bottom: .45rem; font: 400 clamp(2rem, 5vw, 2.6rem)/1.1 "Instrument Serif", Georgia, serif; font-style: italic; letter-spacing: -.025em; }
+.directory-page { width: min(calc(100% - 2.5rem), 42rem); min-height: 60vh; margin: 0 auto; padding: 2.5rem 0 4rem; }
+.directory-page .eyebrow { margin-bottom: .45rem; font: 500 .68rem/1.4 "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+.editorial-heading { color: var(--fg-strong); }
+.page-intro { max-width: 54ch; margin: .65rem 0 2rem; color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.directory-group { margin-top: 2.5rem; }
+.directory-group h2 { margin: 0 0 .65rem; color: var(--fg-strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; }
+.page-shell > h1 { font: italic 400 2rem/1.2 "Instrument Serif", Georgia, serif; }
+.page-intro, .contact-list p { font-family: "Geist", Arial, sans-serif; }
+.page-links a { font: 400 .78rem/1.5 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
+.writing-content { font-family: "Geist", Arial, sans-serif; font-size: .96rem; line-height: 1.75; }
+.writing-content > h1 { font: 500 clamp(2.1rem, 5vw, 3.1rem)/1.12 "Geist", Arial, sans-serif; letter-spacing: -.045em; }
+.writing-content h2, .writing-content h3 { font-family: "Geist", Arial, sans-serif; }
+.research-board { padding: 0; border: 0; background: transparent; }
+.research-board-header { align-items: baseline; padding: 0; border: 0; }
+.research-title { margin: 0; color: var(--fg-strong); font: italic 400 1.55rem/1.2 "Instrument Serif", Georgia, serif; letter-spacing: 0; }
+.research-eyebrow, .research-board-note, .research-toolbar, .research-group, .paper-extra, .show-more { display: none; }
+.featured-papers { margin: 1rem 0 0; }
+.paper-list { list-style: none; padding: 0; border-top: 0; }
+.paper-list li { border-bottom: 1px solid var(--line); }
+.paper-row { display: flex; align-items: flex-start; gap: 1.5rem; padding: 1.05rem 0; border: 0; background: transparent; font-family: "Geist", Arial, sans-serif; transition: opacity .2s ease, color .2s ease; }
+.paper-info { min-width: 0; flex: 1 1 auto; font-family: "Geist", Arial, sans-serif; font-size: .92rem; line-height: 1.55; }
+.paper-info strong { display: block; color: var(--fg-strong); font: 500 1rem/1.4 "Geist", Arial, sans-serif; }
+.paper-date { display: block; margin: 0 0 .42rem; padding: 0; border: 0; color: var(--muted); font: 500 .64rem/1.3 "Geist Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+.paper-info em, .project-description, .coauthors { display: block; margin-top: .32rem; color: var(--muted); font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
+.paper-links { display: flex; flex: 0 0 auto; align-items: center; gap: .9rem; margin: .15rem 0 0; white-space: nowrap; }
+.paper-links a { color: var(--muted); font: 400 .76rem/1.4 "Geist", Arial, sans-serif; text-decoration: none; }
+.paper-links a::after { content: " ↗"; }
+.paper-links a:hover, .paper-links a:focus-visible { color: var(--fg-strong); }
+.paper-card-body, .paper-card, .timeline, .about, .honors-panel, .quick-links, .contact-list { font-family: "Geist", Arial, sans-serif; }
+.about { text-align: left; }
+.about p { font-size: .88rem; line-height: 1.7; }
+.workplaces { font-size: .88rem; }
+.about-section h2, .section-heading-row h2, .content-section > h2 { color: var(--fg-strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; letter-spacing: 0; }
+.honors-group h3 { font-family: "Geist", Arial, sans-serif; }
+.timeline { font-family: "Geist", Arial, sans-serif; }
+.timeline-entry h3, .work-item h3 { font: 500 .96rem/1.45 "Geist", Arial, sans-serif; }
+.timeline-entry li, .work-item p { font: 400 .88rem/1.65 "Geist", Arial, sans-serif; }
+.timeline-date, .writing-date, .writing-post-date, .paper-card-body .paper-date { font-family: "Geist Mono", monospace; }
+.timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
+.paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
+.writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover), .writing-posts:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: .24; }
+.writing-section-link { font-family: "Geist", Arial, sans-serif; }
+.writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
+.writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
+.site-footer { width: min(calc(100% - 2.5rem), 42rem); margin-inline: auto; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.theme-toggle { width: 2rem; height: 2rem; font-family: "Geist", Arial, sans-serif; }
+@media (max-width: 600px) {
+  .site-header { width: calc(100% - 2rem); gap: .6rem; padding: 1rem 0; }
+  .header-actions { gap: .5rem; }
+  .site-wordmark { display: none; }
+  .main-nav { justify-content: flex-start; gap: clamp(.65rem, 4vw, 1.2rem); margin: 0 auto 0 0; }
+  .main-nav a { font-size: .78rem; }
+  .header-actions { margin-left: auto; }
+  .profile, .directory-page, .page, .site-footer { width: calc(100% - 2rem); }
+  .profile { padding-top: 1.5rem; }
+  .about p { font-size: .86rem; }
+  .workplaces { font-size: .86rem; }
+  .paper-row { flex-wrap: wrap; gap: .35rem 1rem; padding: .95rem 0; }
+  .paper-info { flex-basis: 100%; }
+  .paper-links { margin: 0 0 .15rem auto; padding-left: 0; }
+  .paper-info strong { font-size: .96rem; }
+  .paper-info em, .coauthors, .project-description { font-size: .81rem; }
+  .directory-group { margin-top: 2rem; }
+  .writing-section-link { gap: .75rem; }
+  .writing-section-description { font-size: .8rem; }
+  .site-footer { display: flex; }
+}
+@media (hover: none) {
+  .timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
+  .paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
+  .writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover) { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .paper-row, .main-nav a { transition: none; } }
+
+/* Unified project board typography and quiet view-all link */
+.research-title,
+.about-section h2,
+.section-heading-row h2,
+.content-section > h2,
+.page-shell h1,
+.directory-page > .editorial-heading,
+.directory-page .directory-group h2 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -.03em;
+}
+.research-title { font-size: 1rem; font-weight: 600; line-height: 1.45; }
+.about-section h2, .section-heading-row h2, .content-section > h2 { font-size: 1rem; line-height: 1.45; }
+.page-shell h1 { font-size: 1.35rem; line-height: 1.4; }
+.directory-page > .editorial-heading { font-size: clamp(1.25rem, 3vw, 1.55rem); font-weight: 600; }
+.directory-page .directory-group h2 { font-size: .9rem; font-weight: 600; line-height: 1.5; }
+.board-view-all {
+  display: flex;
+  justify-content: flex-end;
+  width: max-content;
+  margin: 1rem auto 0;
+  padding: .38rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  background: color-mix(in srgb, var(--fg) 9%, var(--bg));
+  color: var(--fg-strong);
+  font: 600 .74rem/1.4 "Geist", Arial, sans-serif;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.board-view-all::after { content: "↗"; display: inline-block; margin-left: .3em; transition: transform .18s cubic-bezier(.2, .7, .2, 1); }
+.board-view-all:hover, .board-view-all:focus-visible { color: var(--fg-strong); }
+.board-view-all:hover::after, .board-view-all:focus-visible::after { transform: translateX(2px); }
+#about-heading, #research-heading, #writings-heading {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -.03em;
+}
+.writing-section-link { transition: none; }
+.writing-section-link:hover, .writing-section-link:focus-visible { padding-inline: 0; }
+.writing-section-arrow { transition: none; }
+.writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { transform: none; }
+.writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
+.writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: .24; }
+@media (hover: none) {
+  .writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
+  .writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: 1; }
+}
 
 @media (max-width: 768px) {
   .page { padding: 3rem 1.5rem; }
