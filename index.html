@@ -85,6 +85,7 @@
         </div></div></div></article>
         <article class="timeline-item"><time class="timeline-date">2023–2024</time><div class="timeline-entry"><h3>Biochemistry research</h3><ul><li>Was part of my secondary school's science research team (under Universiti Sains Malaysia), where I developed a nanopesticide from biowaste materials to eradicate red flour beetles (<a href="https://drive.google.com/file/d/1Pxt9b19rViTJb3E08PNuuuw7LjDcir1u/view?usp=sharing" target="_blank" rel="noopener">Project abstract</a>) and competed in the Malaysia ISEF national selection finals (Top 25).</li><li>2x represented my secondary school as a delegate (2023, 2024) in <em>Science and Technology Symposium for Youths</em> (STSY), a joint symposium hosted annually by my school and top schools from Asia; presented my research at the <a href="https://mp.weixin.qq.com/s/koQULGjG_EFGKDeSVxVBnQ" target="_blank" rel="noopener">High School Affiliated to Xi'an Jiaotong University</a>.</li><li>Coached two junior teams, one of which won a <a href="https://www.moe.gov.my/syabas-paskan-inovasi-negara" target="_blank" rel="noopener">4th place grand award at ISEF</a>.</li></ul><div class="timeline-gallery"><div class="timeline-gallery-track" tabindex="0" aria-label="Biochemistry research gallery">
           <button class="timeline-gallery-item" type="button"><img src="assets/gallery/biochem-nreoc-team.jpg" alt="N-ReoC research poster with student researchers"></button>
+          <button class="timeline-gallery-item" type="button"><img src="assets/gallery/biochem-stsy-team-photo.png" alt="Science and Technology Symposium for Youths student delegates on stage"></button>
           <button class="timeline-gallery-item" type="button"><img src="assets/gallery/stsy-2023-awards.png" alt="Science and Technology Symposium for Youths 2023 award ceremony"></button>
           <button class="timeline-gallery-item" type="button"><img src="assets/gallery/stsy-presentation.png" alt="Student presenting research at the Science and Technology Symposium for Youths"></button>
           <button class="timeline-gallery-item" type="button"><img src="assets/gallery/stsy-auditorium.png" alt="Science and Technology Symposium for Youths auditorium audience"></button>
@@ -184,7 +185,7 @@
 
   <div class="gallery-lightbox" id="gallery-lightbox" hidden>
     <button type="button" class="lightbox-close" aria-label="Close image">×</button>
-    <img id="lightbox-image" alt="">
+    <div class="gallery-lightbox-image"><img id="lightbox-image" alt=""></div>
   </div>
 
   <script>
@@ -390,27 +391,30 @@
       var galleryTracks = Array.from(document.querySelectorAll('.timeline-gallery-track'));
       var gallerySpeed = 26;
       var galleryStates = new Map();
+      var activeGalleryTrack = null;
       function visibleGalleryItems() { return window.matchMedia('(max-width: 600px)').matches ? 2 : 5; }
       function originalGalleryItems(track) {
         return Array.from(track.children).filter(function (item) { return !item.hasAttribute('data-gallery-clone'); });
       }
       function allGalleryItems(track) { return Array.from(track.children); }
+      function galleryIndex(track) {
+        var state = galleryStates.get(track);
+        var originals = originalGalleryItems(track);
+        var items = allGalleryItems(track);
+        if (!state || !originals.length) return 0;
+        var step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : 0;
+        var loopWidth = state.loopWidth || (items[originals.length] && items[originals.length].offsetLeft) || 0;
+        var position = track.scrollLeft;
+        if (loopWidth > 0) position = ((position % loopWidth) + loopWidth) % loopWidth;
+        if (!step) return 0;
+        return Math.round(position / step) % originals.length;
+      }
       function updateGalleryPosition(track) {
         var state = galleryStates.get(track);
         if (!state || !state.positionLabel) return;
         var originals = originalGalleryItems(track);
-        var items = allGalleryItems(track);
         if (!originals.length) return;
-        var closestIndex = 0;
-        var closestDistance = Infinity;
-        items.forEach(function (item, index) {
-          var distance = Math.abs(item.offsetLeft - track.scrollLeft);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-          }
-        });
-        var currentIndex = closestIndex % originals.length;
+        var currentIndex = galleryIndex(track);
         if (state.currentIndex === currentIndex) return;
         state.currentIndex = currentIndex;
         state.positionLabel.textContent = (currentIndex + 1) + ' / ' + originals.length;
@@ -427,7 +431,7 @@
         state.resumeTimer = window.setTimeout(function () {
           state.resumeTimer = null;
           startGallery(track);
-        }, delay || 4500);
+        }, delay || 1800);
       }
       function moveGallery(track, direction) {
         var state = galleryStates.get(track);
@@ -435,27 +439,23 @@
         var items = allGalleryItems(track);
         if (!state || originals.length < 2) return;
         pauseGallery(track);
-        var closestIndex = 0;
-        var closestDistance = Infinity;
-        items.forEach(function (item, index) {
-          var distance = Math.abs(item.offsetLeft - track.scrollLeft);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-          }
-        });
-        var currentIndex = closestIndex % originals.length;
+        var currentIndex = galleryIndex(track);
         var targetIndex = currentIndex + direction;
+        var wrappedBackward = targetIndex < 0;
+        if (wrappedBackward && items[originals.length]) {
+          track.scrollLeft = state.loopWidth || items[originals.length].offsetLeft;
+        }
         if (targetIndex < 0) targetIndex = originals.length - 1;
         var wrappedForward = targetIndex >= originals.length;
-        var target = wrappedForward && items[originals.length] ? items[originals.length] : originals[targetIndex % originals.length];
+        var target = wrappedForward && items[originals.length] ? items[originals.length] : wrappedBackward && items[originals.length * 2 - 1] ? items[originals.length * 2 - 1] : originals[targetIndex % originals.length];
         scrollToGalleryItem(track, target, 'smooth');
         clearTimeout(state.wrapTimer);
         state.wrapTimer = window.setTimeout(function () {
           if (wrappedForward && items[originals.length]) scrollToGalleryItem(track, originals[0], 'auto');
+          if (wrappedBackward && items[originals.length * 2 - 1]) scrollToGalleryItem(track, originals[originals.length - 1], 'auto');
           updateGalleryPosition(track);
         }, 500);
-        updateGalleryPosition(track);
+        window.setTimeout(function () { updateGalleryPosition(track); }, 450);
         scheduleGalleryResume(track);
       }
       function setupGalleryControls(track) {
@@ -506,6 +506,8 @@
       function pauseGallery(track) {
         var state = galleryStates.get(track);
         if (!state) return;
+        clearTimeout(state.resumeTimer);
+        state.resumeTimer = null;
         if (state.frame) cancelAnimationFrame(state.frame);
         state.frame = null;
         state.last = 0;
@@ -513,7 +515,8 @@
         track.classList.remove('is-auto-scrolling');
       }
       function startGallery(track) {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || track.matches(':hover')) return;
+        var gallery = track.parentElement;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || gallery.matches(':hover')) return;
         var clone = track.querySelector('[data-gallery-clone="true"]');
         if (!clone || track.scrollWidth <= track.clientWidth + 1) return;
         var state = galleryStates.get(track);
@@ -536,14 +539,17 @@
         galleryStates.set(track, { frame: null, last: 0, position: 0, loopWidth: 0, currentIndex: -1, positionLabel: null, resumeTimer: null, wrapTimer: null });
         syncGalleryLoop(track);
         setupGalleryControls(track);
-        track.addEventListener('mouseenter', function () { pauseGallery(track); });
-        track.addEventListener('mouseleave', function () { startGallery(track); });
+        var gallery = track.parentElement;
+        gallery.addEventListener('mouseenter', function () { pauseGallery(track); });
+        gallery.addEventListener('mouseleave', function () { startGallery(track); });
         track.addEventListener('focusin', function () { pauseGallery(track); });
         track.addEventListener('focusout', function () { startGallery(track); });
-        track.addEventListener('pointerdown', function () { pauseGallery(track); clearTimeout(galleryStates.get(track).resumeTimer); });
-        track.addEventListener('pointerup', function () { scheduleGalleryResume(track); });
-        track.addEventListener('touchstart', function () { pauseGallery(track); clearTimeout(galleryStates.get(track).resumeTimer); }, { passive: true });
-        track.addEventListener('touchend', function () { scheduleGalleryResume(track); }, { passive: true });
+        track.addEventListener('pointerdown', function () { pauseGallery(track); });
+        track.addEventListener('pointerup', function (event) {
+          var item = event.target.closest('.timeline-gallery-item');
+          if (event.pointerType !== 'mouse' || !item) scheduleGalleryResume(track);
+        });
+        track.addEventListener('pointercancel', function () { scheduleGalleryResume(track); });
         track.addEventListener('wheel', function () { pauseGallery(track); scheduleGalleryResume(track); }, { passive: true });
         track.addEventListener('scroll', function () { updateGalleryPosition(track); }, { passive: true });
         track.addEventListener('click', function (event) {
@@ -552,7 +558,10 @@
           var image = button.querySelector('img');
           lightboxImage.src = image.src;
           lightboxImage.alt = image.alt;
+          activeGalleryTrack = track;
+          lightbox.classList.remove('is-closing');
           lightbox.hidden = false;
+          window.requestAnimationFrame(function () { lightbox.classList.add('is-open'); });
           document.body.classList.add('lightbox-open');
           pauseGallery(track);
         });
@@ -566,11 +575,17 @@
         startGallery(track);
       });
       function closeLightbox() {
-        if (lightbox.hidden) return;
-        lightbox.hidden = true;
-        lightboxImage.removeAttribute('src');
-        document.body.classList.remove('lightbox-open');
-        galleryTracks.forEach(startGallery);
+        if (lightbox.hidden || lightbox.classList.contains('is-closing')) return;
+        lightbox.classList.remove('is-open');
+        lightbox.classList.add('is-closing');
+        window.setTimeout(function () {
+          lightbox.hidden = true;
+          lightbox.classList.remove('is-closing');
+          lightboxImage.removeAttribute('src');
+          document.body.classList.remove('lightbox-open');
+          if (activeGalleryTrack) scheduleGalleryResume(activeGalleryTrack, 900);
+          activeGalleryTrack = null;
+        }, 240);
       }
       window.addEventListener('resize', function () {
         galleryTracks.forEach(function (track) { pauseGallery(track); syncGalleryLoop(track); startGallery(track); });

@@ -15,8 +15,9 @@ button { font: inherit; }
 @keyframes flicker { 0%,100% { opacity: .86; transform: translateY(0); } 48% { opacity: .58; transform: translateY(.5px); } 52% { opacity: 1; transform: translateY(-.5px); } }
 .header-actions { display: flex; align-items: center; gap: 1rem; font: 10px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 .header-link { color: var(--muted); text-decoration: none; }
-.theme-toggle { width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
-.theme-toggle:hover { color: var(--strong); border-color: var(--muted); }
+.theme-toggle { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border: 0; border-radius: 0; padding: 0; background: transparent; color: var(--muted); font-size: 1.2rem; line-height: 1; cursor: pointer; transition: color .15s ease, transform .15s ease; }
+.theme-toggle:hover { color: var(--strong); transform: scale(1.08); }
+.theme-toggle:focus-visible { outline: 1px solid var(--strong); outline-offset: 4px; }
 .profile { width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 3rem 0 6rem; }
 .page { width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 4rem 0 5rem; }
 .page-shell { width: 100%; }
@@ -113,11 +114,11 @@ html.dark .timeline-entry a { color: #8ab4ff; }
 .timeline-gallery-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
 .timeline-gallery-item:hover { transform: translateY(-2px); border-color: var(--muted); }
 .timeline-gallery-item:hover img { transform: scale(1.04); }
-.timeline-gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: .6rem; }
-.timeline-gallery-control { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; padding: 0; border: 1px solid var(--line); background: transparent; color: var(--muted); font: 1rem/1 "JetBrains Mono", monospace; cursor: pointer; transition: color .15s ease, border-color .15s ease, background-color .15s ease; }
+.timeline-gallery-controls { display: grid; grid-template-columns: 2.75rem 1fr 2.75rem; align-items: center; gap: .75rem; margin-top: .6rem; }
+.timeline-gallery-control { display: inline-grid; width: 2.75rem; height: 2.25rem; place-items: center; padding: 0; border: 1px solid var(--line); background: transparent; color: var(--muted); font: 1rem/1 "JetBrains Mono", monospace; cursor: pointer; transition: color .15s ease, border-color .15s ease, background-color .15s ease; }
 .timeline-gallery-control:hover, .timeline-gallery-control:focus-visible { color: var(--strong); border-color: var(--muted); background: color-mix(in srgb, var(--fg) 6%, transparent); }
-.timeline-gallery-control:focus-visible { outline: 1px solid var(--strong); outline-offset: .15rem; }
-.timeline-gallery-position { color: var(--muted); font: .68rem/1 "JetBrains Mono", monospace; letter-spacing: .04em; }
+.timeline-gallery-control:focus-visible { outline: 1px solid var(--strong); outline-offset: 3px; }
+.timeline-gallery-position { min-width: 4.5rem; color: var(--muted); font: .68rem/1 "JetBrains Mono", monospace; letter-spacing: .04em; text-align: center; font-variant-numeric: tabular-nums; }
 .research-section { padding-top: 2.5rem; }
 .research-title { margin: 0 0 1.25rem; color: var(--strong); font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
 .research-toolbar { display: flex; justify-content: flex-start; margin: 0 0 1.25rem; }
@@ -159,9 +160,14 @@ html.dark .paper-links a { color: #8ab4ff; }
 .site-footer a { text-decoration: none; }
 body.lightbox-open { overflow: hidden; }
 .gallery-lightbox[hidden] { display: none; }
-.gallery-lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: 3.5rem 2rem 2rem; background: rgba(0,0,0,.82); overscroll-behavior: contain; }
-.gallery-lightbox img { display: block; width: auto; height: auto; max-width: min(92vw, 72rem); max-height: calc(100dvh - 5.5rem); object-fit: contain; box-shadow: 0 1rem 4rem rgba(0,0,0,.35); }
-.lightbox-close { position: absolute; top: max(1rem, env(safe-area-inset-top)); right: max(1.25rem, env(safe-area-inset-right)); z-index: 1; display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(0,0,0,.35); color: #fff; font: 1.7rem/1 "JetBrains Mono", monospace; cursor: pointer; }
+.gallery-lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: 3.5rem 2rem 2rem; background: rgba(0,0,0,.82); overscroll-behavior: contain; opacity: 0; pointer-events: none; transition: opacity .22s ease; }
+.gallery-lightbox.is-open { opacity: 1; pointer-events: auto; }
+.gallery-lightbox-image { width: min(90vw, 54rem); max-height: calc(100dvh - 5rem); overflow: hidden; border: 1px solid rgba(255,255,255,.2); background: #000; transform: translateY(.75rem) scale(.985); transition: transform .22s ease; }
+.gallery-lightbox.is-open .gallery-lightbox-image { transform: translateY(0) scale(1); }
+.gallery-lightbox-image img { display: block; width: 100%; max-height: calc(100dvh - 5rem); object-fit: contain; }
+.lightbox-close { position: fixed; top: max(1rem, env(safe-area-inset-top)); right: max(1.25rem, env(safe-area-inset-right)); z-index: 1; display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border: 0; border-radius: 0; padding: 0; background: transparent; color: #fff; font: 2.5rem/1 "JetBrains Mono", monospace; cursor: pointer; transition: color .15s ease, transform .15s ease; }
+.lightbox-close:hover { color: rgba(255,255,255,.7); transform: scale(1.08); }
+.lightbox-close:focus-visible { outline: 1px solid #fff; outline-offset: 4px; }
 @media (max-width: 600px) {
   .site-header { padding: 1.75rem 1.25rem; }
   .header-link { display: none; }
@@ -171,9 +177,11 @@ body.lightbox-open { overflow: hidden; }
   .timeline-gallery { max-width: 19.75rem; }
   .timeline-gallery-track { grid-auto-columns: calc((100% - .75rem) / 2); }
   .timeline-gallery-controls { margin-top: .7rem; }
-  .timeline-gallery-control { width: 2.5rem; height: 2.5rem; }
+  .timeline-gallery-control { width: 3rem; height: 2.75rem; }
   .gallery-lightbox { padding: calc(env(safe-area-inset-top) + 4rem) calc(env(safe-area-inset-right) + 1rem) calc(env(safe-area-inset-bottom) + 1rem) calc(env(safe-area-inset-left) + 1rem); }
-  .gallery-lightbox img { max-width: 100%; max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 5rem); }
+  .gallery-lightbox-image { width: 100%; max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 5rem); }
+  .gallery-lightbox-image img { max-width: 100%; max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 5rem); }
+  .lightbox-close { top: max(.75rem, env(safe-area-inset-top)); right: max(.75rem, env(safe-area-inset-right)); width: 4rem; height: 4rem; font-size: 2.8rem; }
   .research-toolbar { justify-content: flex-start; margin: 0 0 1rem; }
   .research-filters { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
   .research-filter { display: flex; align-items: center; justify-content: center; min-height: 2.5rem; padding: .35rem .45rem; text-align: center; font-size: .62rem; line-height: 1.3; }
