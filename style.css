@@ -975,10 +975,13 @@ body { font-family: "Geist", Arial, sans-serif; }
   color: var(--fg-strong);
   font: 600 .74rem/1.4 "Geist", Arial, sans-serif;
   text-decoration: none;
-  transition: color .18s ease;
+  transition: color .18s ease, background-color .18s ease;
 }
 .board-view-all::after { content: "↗︎"; display: inline-block; margin-left: .3em; }
-.board-view-all:hover, .board-view-all:focus-visible { color: var(--fg-strong); }
+.board-view-all:hover, .board-view-all:focus-visible {
+  background-color: color-mix(in srgb, var(--bg) 88%, #000 12%);
+  color: var(--fg-strong);
+}
 #about-heading, #research-heading, #writings-heading {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 1.1rem;
