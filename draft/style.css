@@ -262,7 +262,7 @@ h1 { font-weight: 500; }
 .paper-info em, .project-description, .coauthors { display: block; margin-top: .32rem; color: var(--muted); font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
 .paper-links { display: flex; flex: 0 0 auto; align-items: center; gap: .9rem; margin: .15rem 0 0; white-space: nowrap; }
 .paper-links a { color: var(--muted); font: 400 .76rem/1.4 "Geist", Arial, sans-serif; text-decoration: none; }
-.paper-links a::after { content: " ↗"; }
+.paper-links a::after { content: " ↗︎"; }
 .paper-links a:hover, .paper-links a:focus-visible { color: var(--strong); }
 .writing-list { font-family: "Geist", Arial, sans-serif; }
 .writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
@@ -330,7 +330,7 @@ h1 { font-weight: 500; }
   text-decoration: none;
   transition: color .18s ease;
 }
-.board-view-all::after { content: "↗"; display: inline-block; margin-left: .3em; transition: transform .18s cubic-bezier(.2, .7, .2, 1); }
+.board-view-all::after { content: "↗︎"; display: inline-block; margin-left: .3em; transition: transform .18s cubic-bezier(.2, .7, .2, 1); }
 .board-view-all:hover, .board-view-all:focus-visible { color: var(--strong); }
 .board-view-all:hover::after, .board-view-all:focus-visible::after { transform: translateX(2px); }
 #about-heading, #research-heading, #writings-heading {
