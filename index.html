@@ -263,7 +263,7 @@
         var resetTimer = null;
         function handleScroll() {
           var currentScrollY = window.scrollY;
-          if (currentScrollY - lastTriggerY >= 15 && currentScrollY > lastScrollY) {
+          if (currentScrollY - lastTriggerY >= 5 && currentScrollY > lastScrollY) {
             lastTriggerY = currentScrollY;
             run(to);
             clearTimeout(resetTimer);
