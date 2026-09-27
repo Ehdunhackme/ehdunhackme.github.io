@@ -58,7 +58,12 @@ h1 { margin: 0; color: var(--strong); font-size: clamp(2.1rem, 6vw, 3.4rem); lin
 .quick-links a { display: inline-flex; align-items: center; gap: .38rem; padding: .32rem .62rem; border: 1px solid var(--line); background: var(--button); color: var(--secondary); font-size: 10px; text-decoration: none; }
 .quick-links a:hover, .quick-links a:focus-visible { border-color: var(--muted); color: var(--strong); }
 .quick-icon { width: .88rem; height: .88rem; flex: 0 0 auto; fill: currentColor; }
-.fold { overflow: hidden; }
+.fold { overflow: hidden; transition: opacity .18s ease; }
+@media (hover: hover) {
+  .profile:has(> .fold > summary:hover) > .fold:not(:hover),
+  .profile:has(> .fold > summary:focus-visible) > .fold:not(:focus-within) { opacity: .24; }
+}
+@media (prefers-reduced-motion: reduce) { .fold { transition: none; } }
 summary { padding: .65rem 0; color: var(--strong); cursor: pointer; font-size: 13px; font-weight: 600; list-style: none; }
 .fold > summary { display: flex; align-items: center; gap: .45rem; }
 .fold > summary::after { content: ""; order: 1; flex: 1 1 auto; min-width: 1rem; border-bottom: 1px dotted var(--line); }

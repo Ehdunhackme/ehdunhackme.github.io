@@ -496,6 +496,12 @@ html.dark .timeline-entry a { color: #8ab4ff; }
 html.dark .timeline-entry a:hover { color: #b8d2ff; }
 .timeline-post-link { display: inline-block; margin-top: 0.75rem; font-size: 0.84rem; }
 
+.fold { transition: opacity 0.18s ease; }
+@media (hover: hover) {
+  .profile:has(> .fold > summary:hover) > .fold:not(:hover),
+  .profile:has(> .fold > summary:focus-visible) > .fold:not(:focus-within) { opacity: 0.24; }
+}
+@media (prefers-reduced-motion: reduce) { .fold { transition: none; } }
 .motivation-panel { padding: 0 0 1.5rem 1.5rem; color: var(--fg-secondary); font-family: "Geist", Arial, sans-serif; font-size: 0.9rem; line-height: 1.75; }
 .motivation-intro { margin: 0 0 0.75rem; color: var(--fg-strong); font-weight: 500; }
 .motivation-priorities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1.8rem; padding: 0; list-style: none; }
