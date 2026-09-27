@@ -357,6 +357,8 @@ button { font-family: inherit; cursor: pointer; }
 .about p { max-width: 64rem; margin: 0 auto 1rem; font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
 .about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { text-decoration-color: var(--fg-strong); }
+.about-org { display: inline-flex; align-items: center; gap: 0.25em; white-space: nowrap; }
+.about-org img { width: 1em; height: 1em; object-fit: contain; }
 
 #about > .section-title,
 [data-research-group] > .section-title {
