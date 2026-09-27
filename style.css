@@ -915,7 +915,8 @@ body { font-family: "Geist", Arial, sans-serif; }
 .writing-section-link { font-family: "Geist", Arial, sans-serif; }
 .writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
 .writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
-.site-footer { width: min(calc(100% - 2.5rem), 42rem); margin-inline: auto; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer span { display: inline; margin: 0; }
 .theme-toggle { width: 2rem; height: 2rem; font-family: "Geist", Arial, sans-serif; }
 @media (max-width: 600px) {
   .site-header { width: calc(100% - 2rem); gap: .6rem; padding: 1rem 0; }

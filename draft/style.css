@@ -268,7 +268,8 @@ h1 { font-weight: 500; }
 .writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
 .writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
 .page-links a { font: 400 .78rem/1.5 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
-.site-footer { width: min(calc(100% - 2.5rem), 42rem); margin-inline: auto; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer span { display: inline; margin: 0; }
 .timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
 .paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
 .writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover), .writing-posts:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: .24; }
