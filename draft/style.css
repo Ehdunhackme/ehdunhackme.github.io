@@ -179,8 +179,7 @@ body.lightbox-open { overflow: hidden; }
 .gallery-lightbox[hidden] { display: none; }
 .gallery-lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: auto; padding: 3.5rem 2rem 2rem; background: rgba(0,0,0,.82); overscroll-behavior: contain; opacity: 0; pointer-events: none; transition: opacity .22s ease; }
 .gallery-lightbox.is-open { opacity: 1; pointer-events: auto; }
-.gallery-lightbox-image { width: min(90vw, 54rem); max-height: calc(100dvh - 5rem); overflow: hidden; border: 1px solid rgba(255,255,255,.2); background: #000; transform: translateY(.75rem) scale(.985); transition: transform .22s ease; }
-.gallery-lightbox.is-open .gallery-lightbox-image { transform: translateY(0) scale(1); }
+.gallery-lightbox-image { width: min(90vw, 54rem); max-height: calc(100dvh - 5rem); overflow: hidden; border: 1px solid rgba(255,255,255,.2); background: #000; }
 .gallery-lightbox-image img { display: block; width: 100%; max-height: calc(100dvh - 5rem); object-fit: contain; }
 .lightbox-close { position: fixed; top: max(1rem, env(safe-area-inset-top)); right: max(1.25rem, env(safe-area-inset-right)); z-index: 1; display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border: 0; border-radius: 0; padding: 0; background: transparent; color: #fff; font: 2.5rem/1 "JetBrains Mono", monospace; cursor: pointer; transition: color .15s ease, transform .15s ease; }
 .lightbox-close:hover { color: rgba(255,255,255,.7); transform: scale(1.08); }
