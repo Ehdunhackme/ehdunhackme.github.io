@@ -308,26 +308,16 @@
           if (opening) details.open = true;
           var end = opening ? details.scrollHeight : summary.getBoundingClientRect().height;
           if (details.detailsAnimation) details.detailsAnimation.cancel();
-          if (details.contentAnimation) details.contentAnimation.cancel();
           var animation = details.animate([
-            { height: start + 'px', overflow: 'clip' },
-            { height: end + 'px', overflow: 'clip' }
-          ], { duration: 420, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+            { height: start + 'px', overflow: 'hidden' },
+            { height: end + 'px', overflow: 'hidden' }
+          ], { duration: 360, easing: 'cubic-bezier(.2, .8, .2, 1)' });
           details.detailsAnimation = animation;
-          var panel = details.querySelector(':scope > :not(summary)');
-          if (panel) {
-            details.contentAnimation = panel.animate(
-              opening
-                ? [{ opacity: 0, transform: 'translateY(-5px)' }, { opacity: 1, transform: 'translateY(0)' }]
-                : [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-5px)' }],
-              { duration: opening ? 300 : 220, delay: opening ? 50 : 0, easing: 'ease-out' }
-            );
-          }
           animation.onfinish = function () {
+            if (details.detailsAnimation !== animation) return;
             if (!opening) details.open = false;
             details.style.height = '';
             details.detailsAnimation = null;
-            details.contentAnimation = null;
           };
         });
       });
