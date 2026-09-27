@@ -307,13 +307,11 @@
       document.querySelectorAll('details.fold').forEach(function (details) {
         var summary = details.querySelector('summary');
         var summaryHint = summary.querySelector('span');
-        details._targetOpen = details.open;
         summary.setAttribute('aria-expanded', String(details.open));
         if (summaryHint) summaryHint.textContent = details.open ? 'click to close' : 'click to expand';
         summary.addEventListener('click', function (event) {
           event.preventDefault();
-          var opening = !details._targetOpen;
-          details._targetOpen = opening;
+          var opening = !details.open;
           summary.setAttribute('aria-expanded', String(opening));
           if (summaryHint) summaryHint.textContent = opening ? 'click to close' : 'click to expand';
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { details.open = opening; return; }
@@ -325,7 +323,7 @@
           var animation = details.animate([
             { height: start + 'px', overflow: 'hidden' },
             { height: end + 'px', overflow: 'hidden' }
-          ], { duration: 360, easing: 'cubic-bezier(.2, .8, .2, 1)' });
+          ], { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
           details.detailsAnimation = animation;
           animation.onfinish = function () {
             if (details.detailsAnimation !== animation) return;
