@@ -496,6 +496,21 @@ html.dark .timeline-entry a { color: #8ab4ff; }
 html.dark .timeline-entry a:hover { color: #b8d2ff; }
 .timeline-post-link { display: inline-block; margin-top: 0.75rem; font-size: 0.84rem; }
 
+.motivation-panel { padding: 0 0 1.5rem 1.5rem; color: var(--fg-secondary); font-family: "Geist", Arial, sans-serif; font-size: 0.9rem; line-height: 1.75; }
+.motivation-intro { margin: 0 0 0.75rem; color: var(--fg-strong); font-weight: 500; }
+.motivation-priorities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; margin: 0 0 1.8rem; padding: 0; list-style: none; }
+.motivation-priorities li { display: grid; align-content: start; gap: 0.35rem; padding: 0.8rem 0.9rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--fg) 3%, transparent); }
+.motivation-priorities li span { color: var(--muted); font: 0.63rem/1.4 "JetBrains Mono", monospace; letter-spacing: 0.08em; }
+.motivation-priorities li strong, .motivation-panel strong { color: var(--fg-strong); font-weight: 600; }
+.motivation-topic + .motivation-topic { margin-top: 1.8rem; padding-top: 1.35rem; border-top: 1px solid var(--line); }
+.motivation-topic h3 { margin: 0 0 0.8rem; color: var(--fg-strong); font: 600 0.95rem/1.5 "JetBrains Mono", monospace; }
+.motivation-topic p { margin: 0 0 0.85rem; }
+.motivation-panel a { color: #2563eb; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 3px; }
+html.dark .motivation-panel a { color: #8ab4ff; }
+.motivation-quote { margin: 1.15rem 0 1.25rem; padding: 0.35rem 0 0.35rem 1rem; border-left: 3px solid var(--line); color: var(--fg-strong); font-size: 1rem; font-style: normal; line-height: 1.75; }
+.motivation-closing { margin-top: 1.1rem !important; color: var(--fg-strong); font-weight: 600; }
+@media (max-width: 700px) { .motivation-priorities { grid-template-columns: 1fr; } .motivation-panel { padding-left: 1.15rem; } }
+
 .timeline-gallery {
   margin-top: 1rem;
   max-width: 48rem;
