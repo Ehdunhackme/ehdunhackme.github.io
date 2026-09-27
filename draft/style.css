@@ -43,15 +43,15 @@ html.dark .writing-content a { color: #8ab4ff; }
 .page-links { display: flex; gap: 1.25rem; margin-top: 2.5rem; }
 .page-links a { color: var(--muted); font: 10px/1.4 "JetBrains Mono", monospace; letter-spacing: .18em; text-decoration: none; text-transform: uppercase; }
 .page-links a:hover { color: var(--strong); }
-.intro-block { padding-bottom: 1.5rem; }
+.intro-block { padding-bottom: 1.25rem; }
 .eyebrow { margin: 0 0 1rem; color: var(--muted); font: 10px "JetBrains Mono", monospace; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "JetBrains Mono", monospace; }
 h1 { margin: 0; color: var(--strong); font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.15; letter-spacing: -.04em; }
 .hero-name { display: inline-block; white-space: pre; cursor: pointer; transition: color .2s ease, text-shadow .2s ease; }
 .hero-name:active { color: #8ab4ff; }
-.hero-name.is-morphing { text-shadow: .035em 0 rgba(138,180,255,.6), -.035em 0 rgba(255,120,120,.35); animation: nameGlitch .18s steps(2, end) infinite; }
+.hero-name.is-morphing { text-shadow: 2px 0 rgba(138,180,255,.95), -2px 0 rgba(255,75,105,.8), 0 0 12px rgba(138,180,255,.28); filter: contrast(1.35); animation: nameGlitch .12s steps(2, end) infinite; will-change: transform; }
 .hero-name.is-chinese { color: #8ab4ff; }
-@keyframes nameGlitch { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(.02em); } }
+@keyframes nameGlitch { 0%, 100% { transform: translateX(0) skewX(0); } 25% { transform: translateX(-3px) skewX(-4deg); } 50% { transform: translateX(3px) skewX(4deg); } 75% { transform: translateX(-1px) skewX(-2deg); } }
 @media (prefers-reduced-motion: reduce) { .hero-name.is-morphing { animation: none; } }
 .role { margin: .65rem 0 1.5rem; color: var(--muted); font-size: 1.05rem; }
 .quick-links { display: flex; flex-wrap: wrap; gap: .55rem; }
@@ -79,6 +79,7 @@ summary::before { content: "+"; display: inline-block; width: 1.5rem; color: var
 .honors-list ul { margin: .15rem 0 0; padding-left: 1.1rem; }
 .honors-list ul li { margin: .1rem 0; }
 .content-section { padding: 2.5rem 0 0; }
+.about-section { padding-top: 2rem; }
 .content-section h2 { margin: 0 0 1.25rem; color: var(--strong); font-size: 1.2rem; letter-spacing: -.02em; }
 .content-section > p { margin: 0 0 1rem; color: var(--secondary); }
 .section-heading-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
@@ -236,7 +237,7 @@ body { font-family: "Geist", Arial, sans-serif; }
 .directory-group { margin-top: 2.5rem; }
 .directory-group h2 { margin: 0 0 .65rem; color: var(--strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; }
 .page-shell > h1 { font-size: 2rem; }
-.intro-block { padding-bottom: 1.5rem; }
+.intro-block { padding-bottom: 1.25rem; }
 h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "Geist", Arial, sans-serif; }
 h1 { font-weight: 500; }
 .eyebrow, .timeline-date, .writing-date, .writing-post-date { font-family: "Geist Mono", monospace; }

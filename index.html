@@ -222,7 +222,7 @@
           settleAt = 0;
           var started = Date.now();
           timer = setInterval(function () {
-            settleAt = Math.floor((Date.now() - started) / (stepDuration || 38));
+            settleAt = Math.floor((Date.now() - started) / (stepDuration || 58));
             if (settleAt > span) {
               clearInterval(timer);
               element.textContent = target;
@@ -306,24 +306,42 @@
 
       document.querySelectorAll('details.fold').forEach(function (details) {
         var summary = details.querySelector('summary');
+        var summaryHint = summary.querySelector('span');
+        details._targetOpen = details.open;
+        summary.setAttribute('aria-expanded', String(details.open));
+        if (summaryHint) summaryHint.textContent = details.open ? 'click to close' : 'click to expand';
         summary.addEventListener('click', function (event) {
           event.preventDefault();
-          var opening = !details.open;
+          var opening = !details._targetOpen;
+          details._targetOpen = opening;
+          summary.setAttribute('aria-expanded', String(opening));
+          if (summaryHint) summaryHint.textContent = opening ? 'click to close' : 'click to expand';
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { details.open = opening; return; }
           var start = details.getBoundingClientRect().height;
           details.style.height = start + 'px';
           if (opening) details.open = true;
           var end = opening ? details.scrollHeight : summary.getBoundingClientRect().height;
           if (details.detailsAnimation) details.detailsAnimation.cancel();
+          if (details.contentAnimation) details.contentAnimation.cancel();
           var animation = details.animate([
             { height: start + 'px', overflow: 'clip' },
             { height: end + 'px', overflow: 'clip' }
-          ], { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+          ], { duration: 420, easing: 'cubic-bezier(.22, 1, .36, 1)' });
           details.detailsAnimation = animation;
+          var panel = details.querySelector(':scope > :not(summary)');
+          if (panel) {
+            details.contentAnimation = panel.animate(
+              opening
+                ? [{ opacity: 0, transform: 'translateY(-5px)' }, { opacity: 1, transform: 'translateY(0)' }]
+                : [{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-5px)' }],
+              { duration: opening ? 300 : 220, delay: opening ? 50 : 0, easing: 'ease-out' }
+            );
+          }
           animation.onfinish = function () {
             if (!opening) details.open = false;
             details.style.height = '';
             details.detailsAnimation = null;
+            details.contentAnimation = null;
           };
         });
       });
