@@ -60,6 +60,9 @@ h1 { margin: 0; color: var(--strong); font-size: clamp(2.1rem, 6vw, 3.4rem); lin
 .quick-icon { width: .88rem; height: .88rem; flex: 0 0 auto; fill: currentColor; }
 .fold { overflow: hidden; }
 summary { padding: .65rem 0; color: var(--strong); cursor: pointer; font-size: 13px; font-weight: 600; list-style: none; }
+.fold > summary { display: flex; align-items: center; gap: .45rem; }
+.fold > summary::after { content: ""; order: 1; flex: 1 1 auto; min-width: 1rem; border-bottom: 1px dotted var(--line); }
+.fold > summary span { order: 2; margin-left: auto; white-space: nowrap; }
 summary::-webkit-details-marker { display: none; }
 summary::before { content: "+"; display: inline-block; width: 1.5rem; color: var(--muted); } details[open] summary::before { content: "−"; } summary span { color: var(--muted); font-size: 10px; font-weight: 400; }
 .fold-content { padding: 0 0 1.5rem 1.5rem; color: var(--secondary); }
