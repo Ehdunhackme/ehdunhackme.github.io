@@ -362,11 +362,6 @@
         summary.addEventListener('click', function (event) {
           event.preventDefault();
           var opening = !details.open;
-          if (opening) {
-            document.querySelectorAll('details.fold').forEach(function (other) {
-              if (other !== details && other.open) setFoldOpen(other, false);
-            });
-          }
           setFoldOpen(details, opening);
         });
       });
