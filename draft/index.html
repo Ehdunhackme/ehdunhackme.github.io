@@ -341,7 +341,7 @@
         if (!state || !state.positionLabel) return;
         var originals = originalGalleryItems(track);
         if (!originals.length) return;
-        var currentIndex = galleryIndex(track);
+        var currentIndex = state.navigationIndex === null ? galleryIndex(track) : state.navigationIndex;
         if (state.currentIndex === currentIndex) return;
         state.currentIndex = currentIndex;
         state.positionLabel.textContent = (currentIndex + 1) + ' / ' + originals.length;
@@ -366,7 +366,7 @@
         var items = allGalleryItems(track);
         if (!state || originals.length < 2) return;
         pauseGallery(track);
-        var currentIndex = galleryIndex(track);
+        var currentIndex = state.navigationIndex === null ? galleryIndex(track) : state.navigationIndex;
         var targetIndex = currentIndex + direction;
         var wrappedBackward = targetIndex < 0;
         if (wrappedBackward && items[originals.length]) {
@@ -375,6 +375,8 @@
         if (targetIndex < 0) targetIndex = originals.length - 1;
         var wrappedForward = targetIndex >= originals.length;
         var target = wrappedForward && items[originals.length] ? items[originals.length] : wrappedBackward && items[originals.length * 2 - 1] ? items[originals.length * 2 - 1] : originals[targetIndex % originals.length];
+        state.navigationIndex = ((targetIndex % originals.length) + originals.length) % originals.length;
+        updateGalleryPosition(track);
         scrollToGalleryItem(track, target, 'smooth');
         clearTimeout(state.wrapTimer);
         state.wrapTimer = window.setTimeout(function () {
@@ -409,6 +411,7 @@
         gallery.appendChild(controls);
         var state = galleryStates.get(track);
         state.positionLabel = position;
+        controls.addEventListener('pointerdown', function () { pauseGallery(track); });
         previous.addEventListener('click', function () { moveGallery(track, -1); });
         next.addEventListener('click', function () { moveGallery(track, 1); });
         updateGalleryPosition(track);
@@ -444,9 +447,12 @@
       function startGallery(track) {
         var gallery = track.parentElement;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || gallery.matches(':hover')) return;
+        var state = galleryStates.get(track);
+        if (!state || state.resumeTimer) return;
         var clone = track.querySelector('[data-gallery-clone="true"]');
         if (!clone || track.scrollWidth <= track.clientWidth + 1) return;
-        var state = galleryStates.get(track);
+        state.navigationIndex = null;
+        updateGalleryPosition(track);
         pauseGallery(track);
         state.loopWidth = clone.offsetLeft;
         state.position = track.scrollLeft >= state.loopWidth ? track.scrollLeft - state.loopWidth : track.scrollLeft;
@@ -463,7 +469,7 @@
         state.frame = requestAnimationFrame(drift);
       }
       galleryTracks.forEach(function (track) {
-        galleryStates.set(track, { frame: null, last: 0, position: 0, loopWidth: 0, currentIndex: -1, positionLabel: null, resumeTimer: null, wrapTimer: null });
+        galleryStates.set(track, { frame: null, last: 0, position: 0, loopWidth: 0, currentIndex: -1, navigationIndex: null, positionLabel: null, resumeTimer: null, wrapTimer: null });
         syncGalleryLoop(track);
         setupGalleryControls(track);
         var gallery = track.parentElement;
@@ -471,13 +477,20 @@
         gallery.addEventListener('mouseleave', function () { startGallery(track); });
         track.addEventListener('focusin', function () { pauseGallery(track); });
         track.addEventListener('focusout', function () { startGallery(track); });
-        track.addEventListener('pointerdown', function () { pauseGallery(track); });
+        track.addEventListener('pointerdown', function () {
+          galleryStates.get(track).navigationIndex = null;
+          pauseGallery(track);
+        });
         track.addEventListener('pointerup', function (event) {
           var item = event.target.closest('.timeline-gallery-item');
           if (event.pointerType !== 'mouse' || !item) scheduleGalleryResume(track);
         });
         track.addEventListener('pointercancel', function () { scheduleGalleryResume(track); });
-        track.addEventListener('wheel', function () { pauseGallery(track); scheduleGalleryResume(track); }, { passive: true });
+        track.addEventListener('wheel', function () {
+          galleryStates.get(track).navigationIndex = null;
+          pauseGallery(track);
+          scheduleGalleryResume(track);
+        }, { passive: true });
         track.addEventListener('scroll', function () { updateGalleryPosition(track); }, { passive: true });
         track.addEventListener('click', function (event) {
           var button = event.target.closest('.timeline-gallery-item');
