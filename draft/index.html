@@ -290,36 +290,52 @@
         }
       });
 
-      document.querySelectorAll('details.fold').forEach(function (details) {
+      function setFoldOpen(details, opening) {
         var summary = details.querySelector('summary');
         var summaryHint = summary.querySelector('span');
+        if (details.open === opening && !details.detailsAnimation) return;
+        summary.setAttribute('aria-expanded', String(opening));
+        if (summaryHint) summaryHint.textContent = opening ? 'click to close' : 'click to expand';
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          if (details.detailsAnimation) details.detailsAnimation.cancel();
+          details.detailsAnimation = null;
+          details.style.height = '';
+          details.open = opening;
+          return;
+        }
+        var start = details.getBoundingClientRect().height;
+        details.style.height = start + 'px';
+        if (opening) details.open = true;
+        var end = opening ? details.scrollHeight : summary.getBoundingClientRect().height;
+        if (details.detailsAnimation) details.detailsAnimation.cancel();
+        var animation = details.animate([
+          { height: start + 'px', overflow: 'hidden' },
+          { height: end + 'px', overflow: 'hidden' }
+        ], { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        details.detailsAnimation = animation;
+        animation.onfinish = function () {
+          if (details.detailsAnimation !== animation) return;
+          if (!opening) details.open = false;
+          details.style.height = '';
+          details.detailsAnimation = null;
+        };
+      }
+      document.querySelectorAll('details.fold').forEach(function (details) {
+        var summary = details.querySelector('summary');
         summary.setAttribute('aria-expanded', String(details.open));
+        var summaryHint = summary.querySelector('span');
         if (summaryHint) summaryHint.textContent = details.open ? 'click to close' : 'click to expand';
         summary.addEventListener('click', function (event) {
           event.preventDefault();
           var opening = !details.open;
-          summary.setAttribute('aria-expanded', String(opening));
-          if (summaryHint) summaryHint.textContent = opening ? 'click to close' : 'click to expand';
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { details.open = opening; return; }
-          var start = details.getBoundingClientRect().height;
-          details.style.height = start + 'px';
-          if (opening) details.open = true;
-          var end = opening ? details.scrollHeight : summary.getBoundingClientRect().height;
-          if (details.detailsAnimation) details.detailsAnimation.cancel();
-          var animation = details.animate([
-            { height: start + 'px', overflow: 'hidden' },
-            { height: end + 'px', overflow: 'hidden' }
-          ], { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
-          details.detailsAnimation = animation;
-          animation.onfinish = function () {
-            if (details.detailsAnimation !== animation) return;
-            if (!opening) details.open = false;
-            details.style.height = '';
-            details.detailsAnimation = null;
-          };
+          if (opening) {
+            document.querySelectorAll('details.fold').forEach(function (other) {
+              if (other !== details && other.open) setFoldOpen(other, false);
+            });
+          }
+          setFoldOpen(details, opening);
         });
       });
-
       var lightbox = document.getElementById('gallery-lightbox');
       var lightboxImage = document.getElementById('lightbox-image');
       var galleryTracks = Array.from(document.querySelectorAll('.timeline-gallery-track'));
