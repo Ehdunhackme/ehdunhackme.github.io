@@ -617,7 +617,7 @@ html.dark .timeline-entry a:hover { color: #b8d2ff; }
   transform: scale(1.08);
 }
 .lightbox-close:focus-visible { outline: 1px solid var(--fg-strong); outline-offset: 4px; }
-body.gallery-open { overflow: hidden; }
+body.lightbox-open { overflow: hidden; }
 
 @media (max-width: 700px) {
   .timeline-gallery-controls { margin-top: 0.7rem; }

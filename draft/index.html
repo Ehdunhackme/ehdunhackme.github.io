@@ -348,6 +348,7 @@
       function lockPageScroll() {
         var body = document.body;
         lightboxScrollY = window.scrollY || window.pageYOffset;
+        var pageWidth = document.documentElement.clientWidth;
         bodyLockStyles = {
           position: body.style.position,
           top: body.style.top,
@@ -358,8 +359,10 @@
         body.style.position = 'fixed';
         body.style.top = '-' + lightboxScrollY + 'px';
         body.style.left = '0';
-        body.style.right = '0';
-        body.style.width = '100%';
+        body.style.right = 'auto';
+        // Keep the pre-lock content width. A percentage width expands when the
+        // page scrollbar disappears, making the underlying layout jump sideways.
+        body.style.width = pageWidth + 'px';
         body.classList.add('lightbox-open');
       }
       function unlockPageScroll() {
