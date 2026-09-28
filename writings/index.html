@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../draft/style.css">
+    <link rel="stylesheet" href="../style.css">
     <script>
       (function () {
         var stored = localStorage.getItem('theme');
@@ -37,10 +37,9 @@
         <button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button>
       </div>
     </header>
-    <main class="page">
-      <section class="page-shell">
+    <main class="directory-page">
         <p class="eyebrow">Selected writing</p>
-        <h1 data-i18n="heading">Writings</h1>
+        <h1 class="editorial-heading" data-i18n="heading">Writings</h1>
         <p class="page-intro" data-i18n="intro">Some reflections I've picked up along the journey.</p>
         <ul class="writing-list writing-posts">
           <li>
@@ -59,7 +58,6 @@
         <nav class="page-links">
           <a href="../" data-i18n="home">Home</a>
         </nav>
-      </section>
     </main>
     <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
     <script>
