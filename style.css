@@ -481,8 +481,7 @@ html.dark .logo-metacreation { filter: none; }
   padding-left: 1.1rem;
 }
 .timeline-intro { margin: 0.45rem 0 0; color: var(--fg-secondary); font-size: 0.88rem; line-height: 1.65; }
-.research-experience { margin-top: 0.85rem; padding-top: 0.75rem; }
-.research-experience > h4 { margin: 0 0 0.45rem; color: var(--muted); font: 600 0.67rem/1.5 "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+.research-experience { margin-top: 0.85rem; }
 .research-role { padding: 0.7rem 0; }
 .research-role-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
 .research-role-heading h5 { margin: 0; color: var(--fg-strong); font: 600 0.86rem/1.5 "Geist", Arial, sans-serif; }
