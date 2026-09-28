@@ -107,7 +107,8 @@ html.dark .motivation-panel a { color: #8ab4ff; }
 .section-link:hover, .section-link:focus-visible { color: var(--strong); }
 .about { text-align: justify; }
 .about p { margin: 0 0 1rem; color: var(--secondary); font-size: .95rem; line-height: 1.7; }
-.about a { color: var(--strong); }
+.about a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.about a:hover { color: inherit; text-decoration-color: var(--strong); }
 .about-org { display: inline-flex; align-items: center; gap: .25em; white-space: nowrap; }
 .about-org img { width: 1em; height: 1em; object-fit: contain; }
 .about-section h2 { margin-bottom: 1.5rem; font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
@@ -126,6 +127,26 @@ html.dark .logo-sjtu, html.dark .logo-eleutherai, html.dark .logo-metacreation {
 .timeline-entry { min-width: 0; }
 .timeline-entry h3, .work-item h3 { margin: 0; color: var(--strong); font-size: 13px; line-height: 1.55; }
 .timeline-entry ul { margin: .55rem 0 0; padding-left: 1.1rem; }
+.timeline-intro { margin: .45rem 0 0; color: var(--secondary); font-size: .84rem; line-height: 1.65; }
+.research-experience { margin-top: .85rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+.research-experience > h4 { margin: 0 0 .45rem; color: var(--muted); font: 600 .67rem/1.5 "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
+.research-role + .research-role { border-top: 1px solid var(--line); }
+.research-role { padding: .7rem 0; }
+.research-role-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
+.research-role-heading h5 { margin: 0; color: var(--strong); font: 600 .86rem/1.5 "Geist", Arial, sans-serif; }
+.research-org-logo { display: inline-block; width: 1.15em; height: 1.15em; margin-right: .35em; object-fit: contain; vertical-align: -.18em; }
+.research-role-date { flex: 0 0 auto; color: var(--muted); font: .64rem/1.5 "JetBrains Mono", monospace; white-space: nowrap; }
+.timeline-entry .research-role ul { margin: .4rem 0 0; padding-left: 1rem; }
+.timeline-entry .research-role li { margin: .45rem 0; color: var(--secondary); font-size: .82rem; line-height: 1.65; }
+.timeline-entry .research-role li strong { color: var(--strong); font-weight: 600; }
+.timeline-entry .research-role li .research-project-link { color: var(--strong); text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: color 0.16s ease, text-decoration-color 0.16s ease; }
+.timeline-entry .research-role li .research-project-link strong { color: inherit; }
+.timeline-entry .research-role li .research-project-link:hover,
+.timeline-entry .research-role li .research-project-link:focus-visible { color: #2563eb; text-decoration-color: currentColor; }
+html.dark .timeline-entry .research-role li .research-project-link:hover,
+html.dark .timeline-entry .research-role li .research-project-link:focus-visible { color: #b8d2ff; }
+.research-project-status { margin-left: .25rem; color: var(--muted); font: .64rem/1.5 "JetBrains Mono", monospace; }
+.timeline-entry .research-role li p { margin: .22rem 0 0; color: var(--secondary); font: 400 .8rem/1.65 "Geist", Arial, sans-serif; }
 .timeline-entry li, .work-item p { margin: .25rem 0; color: var(--secondary); font-size: 13px; line-height: 1.7; }
 .timeline-entry a { color: #2563eb; }
 html.dark .timeline-entry a { color: #8ab4ff; }
@@ -209,6 +230,8 @@ body.lightbox-open { overflow: hidden; }
   .profile { width: min(calc(100% - 2.5rem), 42rem); padding-top: 3rem; }
   .timeline { margin-top: 1.25rem; margin-left: .15rem; }
   .timeline-item { grid-template-columns: 1fr; gap: .2rem; padding-left: 1.15rem; padding-bottom: 1.6rem; }
+  .research-role-heading { align-items: flex-start; flex-direction: column; gap: .12rem; }
+  .research-project-status { display: inline-block; margin-left: 0; }
   .timeline-gallery { max-width: 19.75rem; }
   .timeline-gallery-track { grid-auto-columns: calc((100% - .75rem) / 2); }
   .timeline-gallery-controls { margin-top: .7rem; }
@@ -284,6 +307,8 @@ h1 { font-weight: 500; }
 .paper-info strong { display: block; color: var(--strong); font: 500 1rem/1.4 "Geist", Arial, sans-serif; }
 .paper-date { display: block; margin: 0 0 .42rem; padding: 0; border: 0; color: var(--muted); font: 500 .64rem/1.3 "Geist Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
 .paper-info em, .project-description, .coauthors { display: block; margin-top: .32rem; color: var(--muted); font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
+.project-affiliation { display: flex; align-items: center; gap: .3rem; margin-top: .32rem; color: var(--muted); font: 400 .8rem/1.45 "Geist", Arial, sans-serif; }
+.project-affiliation img { width: 1rem; height: 1rem; flex: 0 0 auto; object-fit: contain; }
 .paper-links { display: flex; flex: 0 0 auto; align-items: center; gap: .9rem; margin: .15rem 0 0; white-space: nowrap; }
 .paper-links a { color: var(--muted); font: 400 .76rem/1.4 "Geist", Arial, sans-serif; text-decoration: none; }
 .paper-links a::after { content: " ↗︎"; }

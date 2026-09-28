@@ -355,8 +355,8 @@ button { font-family: inherit; cursor: pointer; }
 
 .about { text-align: justify; font-family: "Geist", Arial, sans-serif; }
 .about p { max-width: 64rem; margin: 0 auto 1rem; font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
-.about a { color: var(--fg-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
-.about a:hover { text-decoration-color: var(--fg-strong); }
+.about a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
+.about a:hover { color: inherit; text-decoration-color: var(--fg-strong); }
 .about-org { display: inline-flex; align-items: center; gap: 0.25em; white-space: nowrap; }
 .about-org img { width: 1em; height: 1em; object-fit: contain; }
 
@@ -480,6 +480,26 @@ html.dark .logo-metacreation { filter: none; }
   margin: 0.55rem 0 0;
   padding-left: 1.1rem;
 }
+.timeline-intro { margin: 0.45rem 0 0; color: var(--fg-secondary); font-size: 0.88rem; line-height: 1.65; }
+.research-experience { margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--line); }
+.research-experience > h4 { margin: 0 0 0.45rem; color: var(--muted); font: 600 0.67rem/1.5 "JetBrains Mono", monospace; letter-spacing: 0.1em; text-transform: uppercase; }
+.research-role + .research-role { border-top: 1px solid var(--line); }
+.research-role { padding: 0.7rem 0; }
+.research-role-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
+.research-role-heading h5 { margin: 0; color: var(--fg-strong); font: 600 0.86rem/1.5 "Geist", Arial, sans-serif; }
+.research-org-logo { display: inline-block; width: 1.15em; height: 1.15em; margin-right: 0.35em; object-fit: contain; vertical-align: -0.18em; }
+.research-role-date { flex: 0 0 auto; color: var(--muted); font: 0.64rem/1.5 "JetBrains Mono", monospace; white-space: nowrap; }
+.timeline-entry .research-role ul { margin: 0.4rem 0 0; padding-left: 1rem; }
+.timeline-entry .research-role li { margin: 0.45rem 0; color: var(--fg-secondary); font-size: 0.84rem; line-height: 1.65; }
+.timeline-entry .research-role li strong { color: var(--fg-strong); font-weight: 600; }
+.timeline-entry .research-role li .research-project-link { color: var(--fg-strong); text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: color 0.16s ease, text-decoration-color 0.16s ease; }
+.timeline-entry .research-role li .research-project-link strong { color: inherit; }
+.timeline-entry .research-role li .research-project-link:hover,
+.timeline-entry .research-role li .research-project-link:focus-visible { color: #2563eb; text-decoration-color: currentColor; }
+html.dark .timeline-entry .research-role li .research-project-link:hover,
+html.dark .timeline-entry .research-role li .research-project-link:focus-visible { color: #b8d2ff; }
+.research-project-status { margin-left: 0.25rem; color: var(--muted); font: 0.64rem/1.5 "JetBrains Mono", monospace; }
+.timeline-entry .research-role li p { margin: 0.22rem 0 0; color: var(--fg-secondary); font: 400 0.82rem/1.65 "Geist", Arial, sans-serif; }
 .timeline-entry li {
   margin: 0.25rem 0;
   color: var(--fg-secondary);
@@ -693,6 +713,8 @@ body.lightbox-open { overflow: hidden; }
 .paper-info { flex: 1; font-size: 0.95rem; line-height: 1.5; }
 .paper-info strong { display: block; font-weight: 600; font-size: 1rem; line-height: 1.4; color: var(--fg-strong); }
 .paper-info em { display: block; margin-top: 0.3rem; font-style: normal; font-size: 0.76rem; line-height: 1.5; color: var(--muted); }
+.project-affiliation { display: flex; align-items: center; gap: 0.3rem; margin-top: 0.3rem; color: var(--muted); font-size: 0.76rem; line-height: 1.4; }
+.project-affiliation img { width: 1rem; height: 1rem; flex: 0 0 auto; object-fit: contain; }
 .project-description { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
 .paper-date { flex-shrink: 0; align-self: flex-start; padding: .28rem .45rem; border: 1px solid var(--line); color: var(--muted); font: .62rem/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
 .coauthors { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.15rem; }
@@ -752,6 +774,8 @@ html.dark .paper-links a:hover { color: #b8d2ff; }
   }
   .timeline-date { font-size: 0.68rem; }
   .timeline-entry h3 { font-size: 1rem; }
+  .research-role-heading { align-items: flex-start; flex-direction: column; gap: 0.12rem; }
+  .research-project-status { display: inline-block; margin-left: 0; }
   .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
   .paper-sort { align-self: flex-end; }
   .paper-row { flex-direction: column; gap: 0.25rem; }
