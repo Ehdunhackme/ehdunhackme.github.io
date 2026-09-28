@@ -128,9 +128,8 @@ html.dark .logo-sjtu, html.dark .logo-eleutherai, html.dark .logo-metacreation {
 .timeline-entry h3, .work-item h3 { margin: 0; color: var(--strong); font-size: 13px; line-height: 1.55; }
 .timeline-entry ul { margin: .55rem 0 0; padding-left: 1.1rem; }
 .timeline-intro { margin: .45rem 0 0; color: var(--secondary); font-size: .84rem; line-height: 1.65; }
-.research-experience { margin-top: .85rem; padding-top: .75rem; border-top: 1px solid var(--line); }
+.research-experience { margin-top: .85rem; padding-top: .75rem; }
 .research-experience > h4 { margin: 0 0 .45rem; color: var(--muted); font: 600 .67rem/1.5 "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
-.research-role + .research-role { border-top: 1px solid var(--line); }
 .research-role { padding: .7rem 0; }
 .research-role-heading { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
 .research-role-heading h5 { margin: 0; color: var(--strong); font: 600 .86rem/1.5 "Geist", Arial, sans-serif; }
