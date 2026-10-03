@@ -26,7 +26,7 @@ html.dark {
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { line-height: 1.5; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+html { line-height: 1.5; scroll-behavior: smooth; scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
 
 body {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;

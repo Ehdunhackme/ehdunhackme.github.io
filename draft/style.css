@@ -3,7 +3,7 @@
 :root { --bg: #f7f3f0; --fg: #171717; --strong: #0a0a0a; --secondary: #303030; --muted: #737373; --line: rgba(0,0,0,.11); --button: #f1ece8; }
 html.dark { --bg: #1a1a1a; --fg: #c2c2c2; --strong: #f5f5f5; --secondary: #c0c0c0; --muted: #969696; --line: rgba(255,255,255,.11); --button: #232323; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Geist", Arial, sans-serif; line-height: 1.7; transition: background-color .25s ease, color .25s ease; }
 a { color: inherit; text-decoration: underline; text-decoration-color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover, a:focus-visible { color: var(--strong); text-decoration-color: var(--strong); }
