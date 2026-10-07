@@ -98,7 +98,7 @@ html.dark .motivation-panel a { color: #8ab4ff; }
 .motivation-closing { margin-top: 1.1rem !important; color: var(--strong, var(--fg-strong)); font-weight: 600; }
 @media (max-width: 600px) { .motivation-priorities { grid-template-columns: 1fr; } .motivation-panel { padding-left: 1.15rem; } }
 .content-section { padding: 2.5rem 0 0; }
-.about-section { padding-top: 2rem; }
+.about-section { padding-top: 1.5rem; }
 .content-section h2 { margin: 0 0 1.25rem; color: var(--strong); font-size: 1.2rem; letter-spacing: -.02em; }
 .content-section > p { margin: 0 0 1rem; color: var(--secondary); }
 .section-heading-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
@@ -111,7 +111,7 @@ html.dark .motivation-panel a { color: #8ab4ff; }
 .about a:hover { color: inherit; text-decoration-color: var(--strong); }
 .about-org { display: inline-flex; align-items: center; gap: .25em; white-space: nowrap; }
 .about-org img { width: 1em; height: 1em; object-fit: contain; }
-.about-section h2 { margin-bottom: 1.5rem; font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
+.about-section h2 { margin-bottom: 1.25rem; font: 600 1.2rem/1.35 "JetBrains Mono", monospace; letter-spacing: -.02em; }
 .workplaces { margin: 1.15rem 0 0; color: var(--secondary); font-size: .95rem; line-height: 1.8; }
 .workplaces a { display: inline-flex; align-items: center; gap: .35rem; color: var(--muted); white-space: nowrap; }
 .workplaces a:hover { color: var(--strong); }
@@ -267,7 +267,7 @@ body { font-family: "Geist", Arial, sans-serif; }
 .section-link { font: 400 .78rem/1.4 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
 .header-actions { flex: 0 0 auto; margin-left: 0; }
 .theme-toggle { width: 2rem; height: 2rem; font-family: "Geist", Arial, sans-serif; }
-.profile { width: min(calc(100% - 2.5rem), 42rem); padding-top: 2.1rem; }
+.profile { width: min(calc(100% - 2.5rem), 42rem); padding-top: 1.6rem; }
 .page { width: min(calc(100% - 2.5rem), 42rem); padding-top: 2.5rem; }
 .page-shell > h1, .directory-page h1 { margin-bottom: .45rem; color: var(--strong); font: italic 400 clamp(2rem, 5vw, 2.6rem)/1.1 "Instrument Serif", Georgia, serif; letter-spacing: -.025em; }
 .directory-page { width: min(calc(100% - 2.5rem), 42rem); min-height: 60vh; margin: 0 auto; padding: 2.5rem 0 4rem; }
@@ -276,7 +276,7 @@ body { font-family: "Geist", Arial, sans-serif; }
 .directory-group { margin-top: 2.5rem; }
 .directory-group h2 { margin: 0 0 .65rem; color: var(--strong); font: italic 400 1.5rem/1.2 "Instrument Serif", Georgia, serif; }
 .page-shell > h1 { font-size: 2rem; }
-.intro-block { padding-bottom: 1.25rem; }
+.intro-block { padding-bottom: .9rem; }
 h1, h2, h3, summary, .quick-links, time, .section-link, .site-footer { font-family: "Geist", Arial, sans-serif; }
 h1 { font-weight: 500; }
 .eyebrow, .timeline-date, .writing-date, .writing-post-date { font-family: "Geist Mono", monospace; }
