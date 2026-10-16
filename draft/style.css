@@ -401,3 +401,11 @@ h1 { font-weight: 500; }
   .writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
   .writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: 1; }
 }
+
+/* Keep every desktop page on the same slightly wider content grid. */
+@media (min-width: 601px) {
+  .site-header, .profile, .page, .directory-page, .site-footer {
+    width: min(calc(100% - 2.5rem), 46rem);
+  }
+  .writing-post-shell { max-width: none; }
+}

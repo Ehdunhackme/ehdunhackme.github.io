@@ -1050,3 +1050,11 @@ body { font-family: "Geist", Arial, sans-serif; }
 @media (max-width: 768px) {
   .page { padding: 3rem 1.5rem; }
 }
+
+/* Keep every desktop page on the same slightly wider content grid. */
+@media (min-width: 601px) {
+  .site-header, .profile, .page, .directory-page, .site-footer {
+    width: min(calc(100% - 2.5rem), 46rem);
+  }
+  .writing-post-shell { max-width: none; }
+}
