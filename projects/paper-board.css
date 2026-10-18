@@ -1,0 +1,176 @@
+/* Shared cards for the project board, selected papers, and writing lists. */
+.paper-showcase-scope .paper-list > .paper-showcase {
+  margin: 1rem 0;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+  scroll-margin-top: 1.5rem;
+}
+.paper-showcase-scope .paper-showcase > .paper-row {
+  display: grid;
+  grid-template-columns: 8.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem 1.4rem;
+  padding: 1.35rem;
+  border: 0;
+}
+.paper-showcase-scope .paper-list > .paper-showcase > .paper-row { border: 0; }
+.paper-showcase-scope .paper-thumbnail {
+  display: block;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .12);
+  box-shadow: 0 .25rem .9rem rgba(0, 0, 0, .12);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.paper-showcase-scope .paper-thumbnail:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .4rem 1rem rgba(0, 0, 0, .2);
+}
+.paper-showcase-scope .paper-thumbnail img { display: block; width: 100%; height: auto; }
+.paper-showcase-scope .project-thumbnail { box-shadow: none; }
+.paper-showcase-scope .project-thumbnail img { object-fit: contain; }
+.paper-showcase-scope .paper-showcase .paper-info { grid-column: 2; }
+.paper-showcase-scope .paper-showcase .paper-info > strong { font-size: .98rem; line-height: 1.5; }
+.paper-showcase-scope .paper-showcase .paper-links {
+  flex-wrap: wrap;
+  gap: .55rem 1rem;
+  margin: .85rem 0 0;
+  padding: 0;
+  white-space: normal;
+}
+.paper-showcase-scope .paper-showcase .paper-links a { margin: 0; color: #2563eb; }
+html.dark .paper-showcase-scope .paper-showcase .paper-links a { color: #8ab4ff; }
+.paper-showcase-scope .paper-explanation {
+  grid-column: 2;
+  min-width: 0;
+  margin: 0;
+}
+.paper-showcase-scope .paper-explanation.is-animating { overflow: hidden; }
+.paper-showcase-scope .paper-explanation > summary {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 2.5rem;
+  padding: .5rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: .25rem;
+  color: var(--fg-strong, var(--strong));
+  font: 500 .72rem/1.45 "Geist Mono", ui-monospace, monospace;
+  cursor: pointer;
+  list-style: none;
+}
+.paper-showcase-scope .paper-explanation > summary::-webkit-details-marker { display: none; }
+.paper-showcase-scope .paper-explanation > summary::before { content: none; }
+.paper-showcase-scope .paper-explanation > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1rem;
+  line-height: 1;
+}
+.paper-showcase-scope .paper-explanation[open] > summary::after { content: "−"; }
+.paper-showcase-scope .paper-explanation > summary:hover { border-color: var(--muted); }
+.paper-showcase-scope .paper-explanation > summary:focus-visible,
+.paper-showcase-scope .paper-thumbnail:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+.paper-showcase-scope .paper-explanation-body {
+  overflow: hidden;
+  margin-top: .9rem;
+  padding-top: .85rem;
+  border-top: 1px solid var(--line);
+  color: var(--fg-secondary, var(--secondary));
+  font: 400 .84rem/1.7 "Geist", Arial, sans-serif;
+}
+.paper-showcase-scope .paper-explanation-body dl { margin: 0; }
+.paper-showcase-scope .paper-explanation-body dt {
+  margin-top: .8rem;
+  color: var(--fg-strong, var(--strong));
+  font-weight: 600;
+}
+.paper-showcase-scope .paper-explanation-body dt:first-child { margin-top: 0; }
+.paper-showcase-scope .paper-explanation-body dd { margin: .15rem 0 0; }
+.paper-showcase-scope .paper-explanation-note {
+  margin: .9rem 0 0;
+  color: var(--muted);
+  font-size: .7rem;
+  line-height: 1.6;
+}
+.paper-showcase-scope .paper-explanation-note a { color: inherit; }
+.paper-showcase-scope .paper-showcase.paper-showcase--text > .paper-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+.paper-showcase-scope .paper-showcase.paper-showcase--text .paper-info { grid-column: 1; }
+/* Keep a card readable while its explanation is open or another card is hovered. */
+.paper-showcase-scope .paper-list:has(.paper-row:hover) .paper-row:not(:hover),
+.paper-showcase-scope .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within) { opacity: 1; }
+@media (max-width: 600px) {
+  .paper-showcase-scope .paper-showcase > .paper-row {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: .85rem;
+    padding: 1rem;
+  }
+  .paper-showcase-scope .paper-thumbnail { grid-row: 1; }
+  .paper-showcase-scope .paper-showcase .paper-info > strong { font-size: .9rem; }
+  .paper-showcase-scope .paper-showcase .project-affiliation { flex-wrap: wrap; font-size: .73rem; }
+  .paper-showcase-scope .paper-showcase .paper-info > em,
+  .paper-showcase-scope .paper-showcase .coauthors { font-size: .75rem; }
+  .paper-showcase-scope .paper-explanation { grid-column: 1 / -1; }
+  .paper-showcase-scope .paper-explanation > summary { min-height: 2.75rem; }
+}
+@media (max-width: 360px) {
+  .paper-showcase-scope .paper-showcase > .paper-row { grid-template-columns: 1fr; }
+  .paper-showcase-scope .paper-thumbnail { width: 5rem; }
+  .paper-showcase-scope .paper-showcase .paper-info { grid-column: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-showcase-scope .paper-thumbnail { transition: none; }
+  .paper-showcase-scope .paper-thumbnail:hover { transform: none; }
+}
+
+.writing-list.writing-card-list { margin: 0; padding: 0; border: 0; list-style: none; }
+.writing-card-list > li { margin: 1rem 0; border: 0; }
+.writing-card-list .writing-section-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  width: 100%;
+  gap: 1.25rem;
+  margin: 1rem 0;
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+  text-decoration: none;
+}
+.writing-card-list > li > .writing-section-link { margin: 0; }
+.writing-card-list .writing-section-link:hover,
+.writing-card-list .writing-section-link:focus-visible {
+  padding: 1.35rem;
+  border-color: var(--muted);
+}
+.writing-card-list .writing-section-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+.writing-card-list .writing-section-description { max-width: none; }
+@media (max-width: 600px) {
+  .writing-card-list .writing-section-link,
+  .writing-card-list .writing-section-link:hover,
+  .writing-card-list .writing-section-link:focus-visible {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .85rem;
+    padding: 1rem;
+  }
+  .writing-card-list .writing-section-side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

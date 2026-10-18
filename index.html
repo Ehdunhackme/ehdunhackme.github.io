@@ -21,6 +21,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23171717'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23f7f3f0'/%3E%3C/svg%3E">
   <title>Dun Li's Personal Site</title>
   <link rel="stylesheet" href="draft/style.css">
+  <link rel="stylesheet" href="projects/paper-board.css">
   <script>
     (function () {
       var stored = localStorage.getItem('theme');
@@ -206,15 +207,15 @@
       </div>
     </details>
 
-    <section class="content-section research-section" id="research" aria-labelledby="research-heading">
+    <section class="content-section research-section paper-showcase-scope" id="research" aria-labelledby="research-heading">
       <div class="research-board">
         <div class="research-board-header">
           <div><p class="research-eyebrow">Selected work</p><h2 class="research-title" id="research-heading">My Selected Projects</h2></div>
         </div>
         <ul class="paper-list featured-papers" aria-label="Selected papers and preprints">
-          <li><div class="paper-row"><div class="paper-info"><strong>Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy</strong><span class="project-affiliation"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</span><em>NeurIPS 2026 Interpretability for Discovery Workshop</em><span class="coauthors">with Kshitij Duraphe et al.</span><span class="paper-links"><a href="https://github.com/ksd3/layerwise-analysis" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=Xw72C0uPBw" target="_blank" rel="noopener">OpenReview</a><a href="https://arxiv.org/abs/2610.04130" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
-          <li><div class="paper-row"><div class="paper-info"><strong>How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 Interpscience Workshop</em><span class="coauthors">with Emily Liu et al.</span><span class="paper-links"><a href="https://github.com/emilyzfliu/decoding-robustness" target="_blank" rel="noopener">GitHub</a><a href="https://arxiv.org/abs/2609.03322" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
-          <li><div class="paper-row"><div class="paper-info"><strong>Beyond Query Linearity: The Case for Nonlinear Queries.</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 SLM-Agents Workshop · Poster</em><span class="coauthors">with Marko Karbevski et al.</span><span class="paper-links"><a href="https://github.com/MarkoKarbevski/beyond_query_linearity_community" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=M8z9uMfxk5" target="_blank" rel="noopener">OpenReview</a></span></div><span class="paper-date">2026</span></div></li>
+          <li data-paper-id="platonic-representation"><div class="paper-row"><div class="paper-info"><strong>Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy</strong><span class="project-affiliation"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</span><em>NeurIPS 2026 Interpretability for Discovery Workshop</em><span class="coauthors">with Kshitij Duraphe et al.</span><span class="paper-links"><a href="https://github.com/ksd3/layerwise-analysis" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=Xw72C0uPBw" target="_blank" rel="noopener">OpenReview</a><a href="https://arxiv.org/abs/2610.04130" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
+          <li data-paper-id="perturbation-robustness"><div class="paper-row"><div class="paper-info"><strong>How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 Interpscience Workshop</em><span class="coauthors">with Emily Liu et al.</span><span class="paper-links"><a href="https://github.com/emilyzfliu/decoding-robustness" target="_blank" rel="noopener">GitHub</a><a href="https://arxiv.org/abs/2609.03322" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
+          <li data-paper-id="nonlinear-queries"><div class="paper-row"><div class="paper-info"><strong>Beyond Query Linearity: The Case for Nonlinear Queries.</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 SLM-Agents Workshop · Poster</em><span class="coauthors">with Marko Karbevski et al.</span><span class="paper-links"><a href="https://github.com/MarkoKarbevski/beyond_query_linearity_community" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=M8z9uMfxk5" target="_blank" rel="noopener">OpenReview</a></span></div><span class="paper-date">2026</span></div></li>
         </ul>
         <a class="section-link board-view-all" href="projects/index.html">View all</a>
       </div>
@@ -222,7 +223,7 @@
 
     <section class="content-section" id="writings" aria-labelledby="writings-heading">
       <div class="section-heading-row"><h2 id="writings-heading">Writings</h2></div>
-      <div class="writing-list writing-posts">
+      <div class="writing-list writing-posts writing-card-list">
         <a class="writing-section-link" href="writings/my-opinionated-guide-to-starting-research-early/index.html"><span><span class="writing-section-title">My opinionated guide to starting research early</span><span class="writing-section-description">An opinionated guide for high schoolers in Malaysia who want to work on cool research projects early.</span></span><span class="writing-section-side"><time class="writing-date">19 Sep 2026</time><span class="writing-section-arrow" aria-hidden="true">↗︎</span></span></a>
       </div>
       <a class="section-link board-view-all" href="writings/index.html">View all</a>
@@ -230,6 +231,7 @@
   </main>
 
   <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
+  <script async src="projects/paper-board.js"></script>
 
   <div class="gallery-lightbox" id="gallery-lightbox" hidden>
     <button type="button" class="lightbox-close" aria-label="Close image">×</button>
