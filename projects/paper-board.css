@@ -159,6 +159,29 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a { color: #8ab4ff;
   outline-offset: 4px;
 }
 .writing-card-list .writing-section-description { max-width: none; }
+/* White outlines and hover focus shared by papers, projects, and writings. */
+:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
+  border-color: color-mix(in srgb, var(--fg) 28%, var(--bg));
+  transition: opacity .2s ease, border-color .2s ease;
+}
+html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
+  border-color: rgba(255, 255, 255, .3);
+}
+html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):is(:hover, :focus-within) {
+  border-color: rgba(255, 255, 255, .75);
+}
+html:not(.dark) :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):is(:hover, :focus-within) {
+  border-color: color-mix(in srgb, var(--fg) 50%, var(--bg));
+}
+@media (hover: hover) and (pointer: fine) {
+  body:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover)
+  :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:hover):not(:focus-within) { opacity: .28; }
+}
+body:has(.paper-showcase :focus-visible, .writing-card-list .writing-section-link:focus-visible)
+:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:focus-within):not(:hover) { opacity: .28; }
+@media (prefers-reduced-motion: reduce) {
+  :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) { transition: none; }
+}
 @media (max-width: 600px) {
   .writing-card-list .writing-section-link,
   .writing-card-list .writing-section-link:hover,
