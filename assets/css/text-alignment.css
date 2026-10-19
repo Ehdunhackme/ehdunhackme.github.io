@@ -1,0 +1,17 @@
+/* Justify prose site-wide; leave titles, controls, and short metadata alone. */
+main :is(
+  p:not(.eyebrow):not(.tagline):not(.paper-explanation-note),
+  dd,
+  blockquote,
+  .timeline-entry li,
+  .writing-content li,
+  .project-description,
+  .writing-section-description,
+  .paper-info > em,
+  .coauthors
+) {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  hyphens: auto;
+}
