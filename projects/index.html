@@ -11,25 +11,39 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23171717'/%3E%3Crect x='5' y='5' width='6' height='6' fill='%23f7f3f0'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="paper-board.css">
+  <link rel="stylesheet" href="../assets/css/directory-search.css">
   <script>if ((localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') document.documentElement.classList.add('dark');</script>
 </head>
-<body>
+<body class="directory-layout">
   <header class="site-header">
     <a class="site-wordmark" href="../" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
     <nav class="main-nav" aria-label="Main navigation"><a href="../index.html#about">About Me</a><a href="./index.html" aria-current="page">My Projects</a><a href="../writings/index.html">Writings</a></nav>
     <div class="header-actions"><button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button></div>
   </header>
-  <main class="directory-page project-board paper-showcase-scope">
+  <main class="directory-page project-board paper-showcase-scope" data-directory-search>
     <p class="eyebrow">Selected work</p>
     <h1 class="editorial-heading">my project board.</h1>
     <p class="page-intro">Research, papers, experiments, and things I've built.</p>
+    <form class="directory-search" role="search" aria-label="Search projects" hidden>
+      <label for="project-search">Search projects &amp; papers</label>
+      <div class="directory-search-field">
+        <svg class="directory-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="project-search" name="q" type="search" placeholder="Search by topic, title, collaborator, or year..." aria-controls="project-papers project-acknowledgements project-builds" autocomplete="off" spellcheck="false">
+        <button type="button" data-search-clear hidden>Clear</button>
+      </div>
+      <span class="directory-search-status" data-search-status role="status" aria-live="polite" aria-atomic="true"></span>
+    </form>
+    <div class="directory-search-empty" data-search-empty hidden>
+      <h2>No matching projects or papers</h2>
+      <p>Try a different topic, name, or year, or clear your search.</p>
+    </div>
 
-    <section class="directory-group" aria-labelledby="papers-heading">
+    <section class="directory-group" aria-labelledby="papers-heading" data-search-group>
       <h2 id="papers-heading">Papers &amp; preprints</h2>
-      <ul class="paper-list">
+      <ul class="paper-list" id="project-papers">
         <li id="asteroid-detection" class="paper-showcase paper-showcase--text"><article class="paper-row"><div class="paper-info"><time class="paper-date">Ongoing</time><strong>Identification of Faint Near-Earth Asteroid Streak Candidates Using a Three-Channel Deep-Learning Pipeline.</strong><span class="project-affiliation"><img class="logo-sjtu" src="../assets/logos/sjtu-square.ico" alt=""><img class="logo-maryland" src="../assets/logos/maryland-square.png" alt="">Shanghai Jiao Tong University · University of Maryland</span><em>Drafting for journal submission</em><span class="coauthors">Advised by Dr. Quanzhi Ye &amp; Yiyang Guo</span></div></article></li>
         <li id="comet-classification" class="paper-showcase paper-showcase--text"><article class="paper-row"><div class="paper-info"><time class="paper-date">Ongoing</time><strong>Feature-Based Comet Classification Pipeline for Zwicky Transient Facility (ZTF) Alert Image Streams.</strong><span class="project-affiliation"><img class="logo-maryland" src="../assets/logos/maryland-square.png" alt="">University of Maryland, Department of Astronomy</span><span class="coauthors">Advised by Dr. Quanzhi Ye</span></div></article></li>
         <li id="platonic-representation"><article class="paper-row"><div class="paper-info"><time class="paper-date">2026</time><strong>Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy</strong><span class="project-affiliation"><img src="../assets/logos/universetbd-square.png" alt="">UniverseTBD</span><em>NeurIPS 2026 Interpretability for Discovery Workshop</em><span class="coauthors">with Kshitij Duraphe et al.</span></div><div class="paper-links"><a href="https://github.com/ksd3/layerwise-analysis" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=Xw72C0uPBw" target="_blank" rel="noopener">OpenReview</a><a href="https://arxiv.org/abs/2610.04130" target="_blank" rel="noopener">arXiv</a></div></article></li>
@@ -43,16 +57,16 @@
       </ul>
     </section>
 
-    <section class="directory-group" aria-labelledby="acknowledgements-heading">
+    <section class="directory-group" aria-labelledby="acknowledgements-heading" data-search-group>
       <h2 id="acknowledgements-heading">Acknowledgements</h2>
-      <ul class="paper-list">
+      <ul class="paper-list" id="project-acknowledgements">
         <li id="platonic-universe-acknowledgement"><article class="paper-row"><div class="paper-info"><time class="paper-date">09/2025</time><strong>The Platonic Universe: Do Foundation Models See the Same Sky?</strong><span class="project-affiliation"><img src="../assets/logos/universetbd-square.png" alt=""><a href="https://universetbd.org/" target="_blank" rel="noopener">UniverseTBD</a></span><em>Machine Learning and the Physical Sciences Workshop · NeurIPS 2025</em><span class="project-description">Acknowledged for discussions and comments that improved the paper.</span></div><div class="paper-links"><a href="https://github.com/UniverseTBD/platonic-universe" target="_blank" rel="noopener">GitHub</a><a href="https://arxiv.org/abs/2509.19453" target="_blank" rel="noopener">arXiv</a></div></article></li>
       </ul>
     </section>
 
-    <section class="directory-group" aria-labelledby="projects-heading">
+    <section class="directory-group" aria-labelledby="projects-heading" data-search-group>
       <h2 id="projects-heading">Projects</h2>
-      <ul class="paper-list">
+      <ul class="paper-list" id="project-builds">
         <li id="beamline-straggling"><article class="paper-row"><div class="paper-info"><time class="paper-date">2026</time><strong>Finding the complex permittivity as a function of energy using angular straggling</strong><em>Experimental proposal · CERN Beamline for Schools 2026</em><span class="project-description">A Geant4 simulation project for studying particle interactions and analysis workflows for the proposed beam experiment.</span></div><div class="paper-links"><a href="https://drive.google.com/file/d/1BrebBET4nnph5qcTX73HPzpekXX5UH98/view?usp=sharing" target="_blank" rel="noopener">Proposal</a><a href="https://github.com/bunchofcellulose/bl4s2026" target="_blank" rel="noopener">GitHub</a></div></article></li>
         <li id="magnetic-ring"><article class="paper-row"><div class="paper-info"><time class="paper-date">2024</time><strong>Magnetic Field of Cylindrical Axially Magnetized Ring</strong><em>Simulates and visualizes the magnetic field of an axially magnetized cylindrical ring using the Biot–Savart law.</em></div><div class="paper-links"><a href="https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring" target="_blank" rel="noopener">GitHub</a></div></article></li>
         <li id="double-pendulum"><article class="paper-row"><div class="paper-info"><time class="paper-date">2024</time><strong>Chaotic Behavior of Double Pendulum</strong><em>Numerically simulates double-pendulum dynamics with coupled nonlinear equations and Runge–Kutta integration.</em></div><div class="paper-links"><a href="https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum" target="_blank" rel="noopener">GitHub</a></div></article></li>
@@ -63,6 +77,7 @@
   </main>
   <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
   <script async src="paper-board.js"></script>
+  <script async src="../assets/js/directory-search.js"></script>
   <script>document.querySelector('.theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });</script>
 </body>
 </html>

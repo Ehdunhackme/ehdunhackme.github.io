@@ -247,5 +247,6 @@
 
   boards.forEach(function (board) {
     Object.keys(entries).forEach(function (id) { enhanceEntry(board, id); });
+    board.dispatchEvent(new Event('directory-content-ready'));
   });
 })();

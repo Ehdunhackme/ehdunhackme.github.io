@@ -19,9 +19,10 @@
     <meta name="twitter:description" content="Selected writings and lists by Dun Li Chan.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../projects/paper-board.css">
+    <link rel="stylesheet" href="../assets/css/directory-search.css">
     <script>
       (function () {
         var stored = localStorage.getItem('theme');
@@ -31,7 +32,7 @@
 })();
     </script>
   </head>
-  <body>
+  <body class="directory-layout">
     <header class="site-header">
       <a class="site-wordmark" href="/" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="../index.html#about">About Me</a><a href="../projects/index.html">My Projects</a><a href="./index.html" aria-current="page">Writings</a></nav>
@@ -39,11 +40,24 @@
         <button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button>
       </div>
     </header>
-    <main class="directory-page">
+    <main class="directory-page" data-directory-search>
         <p class="eyebrow">Selected writing</p>
         <h1 class="editorial-heading" data-i18n="heading">Writings</h1>
         <p class="page-intro" data-i18n="intro">Some reflections I've picked up along the journey.</p>
-        <ul class="writing-list writing-posts writing-card-list">
+        <form class="directory-search" role="search" aria-label="Search writings" hidden>
+          <label for="writing-search">Search writings</label>
+          <div class="directory-search-field">
+            <svg class="directory-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+            <input id="writing-search" name="q" type="search" placeholder="Search by title, topic, or year..." aria-controls="writing-results" autocomplete="off" spellcheck="false">
+            <button type="button" data-search-clear hidden>Clear</button>
+          </div>
+          <span class="directory-search-status" data-search-status role="status" aria-live="polite" aria-atomic="true"></span>
+        </form>
+        <div class="directory-search-empty" data-search-empty hidden>
+          <h2>No matching writings</h2>
+          <p>Try a different title, topic, or year, or clear your search.</p>
+        </div>
+        <ul class="writing-list writing-posts writing-card-list" id="writing-results">
           <li>
             <a class="writing-section-link" href="my-opinionated-guide-to-starting-research-early/">
               <span>
@@ -62,6 +76,7 @@
         </nav>
     </main>
     <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
+    <script async src="../assets/js/directory-search.js"></script>
     <script>
       (function () {
         var I18N = {

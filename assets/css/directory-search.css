@@ -1,0 +1,66 @@
+/* Keep short result pages at viewport height without overlaying long lists. */
+body.directory-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.directory-layout > .site-header,
+.directory-layout > .site-footer { flex: 0 0 auto; }
+.directory-layout > .directory-page { flex: 1 0 auto; min-height: 0; }
+.directory-layout > .site-footer { margin-top: auto; }
+
+.directory-search { margin: 1.75rem 0 2rem; }
+.directory-search[hidden], [data-search-empty][hidden],
+[data-directory-search] [data-search-group][hidden],
+[data-directory-search] :is(.paper-list, .writing-card-list) > li[hidden] { display: none; }
+.directory-search label {
+  display: block;
+  margin-bottom: .55rem;
+  color: var(--fg-strong, var(--strong));
+  font: 500 .75rem/1.5 "Geist", Arial, sans-serif;
+}
+.directory-search-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+}
+.directory-search-field:focus-within { border-color: var(--muted); outline: 2px solid #8ab4ff; outline-offset: 3px; }
+.directory-search-icon { position: absolute; left: .9rem; width: 1rem; height: 1rem; color: var(--muted); pointer-events: none; }
+.directory-search input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.9rem;
+  padding: .75rem 4.5rem .75rem 2.6rem;
+  border: 0;
+  border-radius: inherit;
+  outline: none;
+  background: transparent;
+  color: var(--fg-strong, var(--strong));
+  font: 400 .85rem/1.5 "Geist", Arial, sans-serif;
+  appearance: none;
+}
+.directory-search input::placeholder { color: var(--muted); opacity: 1; }
+.directory-search input::-webkit-search-cancel-button { appearance: none; }
+.directory-search button {
+  position: absolute;
+  right: .4rem;
+  min-height: 2.2rem;
+  padding: .3rem .6rem;
+  border: 0;
+  border-radius: .2rem;
+  background: transparent;
+  color: var(--fg);
+  font: 500 .72rem/1.5 "Geist", Arial, sans-serif;
+  cursor: pointer;
+}
+.directory-search button:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+.directory-search button:focus-visible { outline: 2px solid #8ab4ff; }
+.directory-search button[hidden] { display: none; }
+.directory-search-status { display: block; margin-top: .65rem; color: var(--muted); font: 400 .68rem/1.5 "Geist Mono", monospace; }
+.directory-search-empty { margin: 0 0 2rem; padding: 2rem 1.35rem; border: 1px dashed var(--line); border-radius: .4rem; }
+.directory-search-empty h2 { margin: 0 0 .4rem; color: var(--fg-strong, var(--strong)); font: 600 .95rem/1.5 "Geist", Arial, sans-serif; }
+.directory-search-empty p { margin: 0; color: var(--muted); font: 400 .85rem/1.7 "Geist", Arial, sans-serif; }
