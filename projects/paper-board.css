@@ -152,23 +152,17 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a { color: #8ab4ff;
 .writing-card-list .writing-section-link:hover,
 .writing-card-list .writing-section-link:focus-visible {
   padding: 1.35rem;
-  border-color: var(--muted);
+  border-color: var(--line);
 }
 .writing-card-list .writing-section-link:focus-visible {
   outline: 2px solid #2563eb;
   outline-offset: 4px;
 }
 .writing-card-list .writing-section-description { max-width: none; }
-/* White outlines and hover focus shared by papers, projects, and writings. */
+/* Focus dims other cards without adding a bright outline to the active card. */
 :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
-  --card-idle-border: color-mix(in srgb, var(--fg) 28%, var(--bg));
-  --card-active-border: color-mix(in srgb, var(--fg) 50%, var(--bg));
-  border-color: var(--card-idle-border);
-  transition: opacity .14s ease-out, border-color .14s ease-out;
-}
-html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
-  --card-idle-border: rgba(255, 255, 255, .3);
-  --card-active-border: rgba(255, 255, 255, .75);
+  border-color: var(--line);
+  transition: opacity .14s ease-out;
 }
 /* Reset older writing-list dimming so it cannot compete with hover priority. */
 .writing-card-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
@@ -179,16 +173,9 @@ html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card
   :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:hover) { opacity: .28; }
   :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover {
     opacity: 1;
-    border-color: var(--card-active-border);
   }
 }
 /* Keyboard focus is the fallback, never a second active card beside hover. */
-body:not(:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover))
-:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):has(:focus-visible),
-body:not(:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover))
-.writing-card-list .writing-section-link:focus-visible {
-  border-color: var(--card-active-border);
-}
 body:not(:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover)):has(.paper-showcase :focus-visible, .writing-card-list .writing-section-link:focus-visible)
 :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:focus-within) { opacity: .28; }
 @media (prefers-reduced-motion: reduce) {
