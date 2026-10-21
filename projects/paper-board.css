@@ -159,10 +159,18 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a { color: #8ab4ff;
   outline-offset: 4px;
 }
 .writing-card-list .writing-section-description { max-width: none; }
-/* Focus dims other cards without adding a bright outline to the active card. */
+/* Keep the same subtle grey edge in every state; only other cards fade. */
 :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
-  border-color: var(--line);
+  --card-outline: var(--line);
+  border-color: var(--card-outline);
   transition: opacity .14s ease-out;
+}
+html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
+  --card-outline: rgba(255, 255, 255, .16);
+}
+:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):is(:hover, :focus, :focus-within) {
+  border-color: var(--card-outline);
+  box-shadow: none;
 }
 /* Reset older writing-list dimming so it cannot compete with hover priority. */
 .writing-card-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
