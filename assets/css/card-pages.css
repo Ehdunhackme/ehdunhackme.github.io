@@ -1,0 +1,56 @@
+/* The directory pages belong to the same deck as the homepage. */
+.card-subpage {
+  --page-suit: "♣";
+  --page-card-edge: color-mix(in srgb, var(--fg) 18%, transparent);
+  --page-card-surface: color-mix(in srgb, var(--accent) 4%, var(--bg));
+  overflow-x: clip;
+}
+.card-subpage--writing { --page-suit: "♦"; }
+
+.card-page-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0;
+}
+.card-page-heading > div { min-width: 0; }
+.card-page-heading h1 { font-family: "JetBrains Mono", monospace; font-style: normal; font-weight: 600; }
+.card-page-heading .editorial-heading { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.3; letter-spacing: -.035em; }
+.card-page-heading .page-intro { margin: .7rem 0 0; line-height: 1.65; }
+.card-page-emblem {
+  display: block;
+  flex: 0 0 3.5rem;
+  width: 3.5rem;
+  transform: rotate(7deg);
+}
+.card-page-emblem img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+
+.card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
+  position: relative;
+  background: var(--page-card-surface);
+  border-radius: .5rem;
+}
+.card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link)::before,
+.card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link)::after {
+  content: var(--page-suit);
+  position: absolute;
+  color: var(--accent);
+  opacity: .55;
+  font: .8rem/1 "Geist", sans-serif;
+  pointer-events: none;
+}
+.card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link)::before { top: .35rem; right: .45rem; }
+.card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link)::after { bottom: .35rem; left: .45rem; transform: rotate(180deg); }
+
+.card-post-heading { margin-bottom: 2rem; }
+.card-post-heading h1 { margin: 0; font-size: clamp(1.45rem, 3.5vw, 2rem); line-height: 1.3; }
+.card-post-heading .writing-post-date { display: block; margin: .8rem 0 0; }
+
+@media (max-width: 600px) {
+  .card-page-heading { gap: 1rem; }
+  .card-page-emblem { flex-basis: 2.75rem; width: 2.75rem; }
+  .card-page-heading .page-intro { font-size: .84rem; }
+  .card-post-heading { align-items: flex-start; }
+}

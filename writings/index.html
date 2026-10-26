@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../projects/paper-board.css?v=20261021-4">
     <link rel="stylesheet" href="../assets/css/directory-search.css">
   <link rel="stylesheet" href="../assets/css/refinements.css">
+  <link rel="stylesheet" href="../assets/css/card-pages.css">
     <script>
       (function () {
         var stored = localStorage.getItem('theme');
@@ -34,7 +35,7 @@
     </script>
   <script defer src="../assets/js/focus-cards.js"></script>
 </head>
-  <body class="directory-layout">
+  <body class="directory-layout card-subpage card-subpage--writing">
     <header class="site-header">
       <a class="site-wordmark" href="/" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
       <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../projects/index.html">Projects</a><a href="./index.html" aria-current="page">Writings</a></nav>
@@ -43,8 +44,10 @@
       </div>
     </header>
     <main class="directory-page" data-directory-search>
-        <h1 class="editorial-heading" data-i18n="heading">Writings</h1>
-        <p class="page-intro" data-i18n="intro">Some reflections I've picked up along the journey.</p>
+        <header class="card-page-heading">
+          <div><h1 class="editorial-heading" data-i18n="heading">Writings</h1><p class="page-intro" data-i18n="intro">Some reflections I've picked up along the journey.</p></div>
+          <span class="card-page-emblem" aria-hidden="true"><img src="../assets/cards/diamond.svg" alt="" width="120" height="168"></span>
+        </header>
         <form class="directory-search" role="search" aria-label="Search writings" hidden>
           <label for="writing-search">Search writings</label>
           <div class="directory-search-field">

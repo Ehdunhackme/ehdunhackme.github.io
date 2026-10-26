@@ -16,18 +16,21 @@
   <link rel="stylesheet" href="paper-board.css?v=20261021-4">
   <link rel="stylesheet" href="../assets/css/directory-search.css">
   <link rel="stylesheet" href="../assets/css/refinements.css">
+  <link rel="stylesheet" href="../assets/css/card-pages.css">
   <script>if ((localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') document.documentElement.classList.add('dark');</script>
   <script defer src="../assets/js/focus-cards.js"></script>
 </head>
-<body class="directory-layout">
+<body class="directory-layout card-subpage">
   <header class="site-header">
     <a class="site-wordmark" href="../" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
     <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="./index.html" aria-current="page">Projects</a><a href="../writings/index.html">Writings</a></nav>
     <div class="header-actions"><button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button></div>
   </header>
   <main class="directory-page project-board paper-showcase-scope" data-directory-search>
-    <h1 class="editorial-heading">my project board.</h1>
-    <p class="page-intro">Research, papers, experiments, and things I've built.</p>
+    <header class="card-page-heading">
+      <div><h1 class="editorial-heading">my project board.</h1><p class="page-intro">Research, papers, experiments, and things I've built.</p></div>
+      <span class="card-page-emblem" aria-hidden="true"><img src="../assets/cards/club.svg" alt="" width="120" height="168"></span>
+    </header>
     <form class="directory-search" role="search" aria-label="Search projects" hidden>
       <label for="project-search">Search projects &amp; papers</label>
       <div class="directory-search-field">
@@ -43,7 +46,7 @@
     </div>
 
     <section class="directory-group" aria-labelledby="papers-heading" data-search-group>
-      <h2 id="papers-heading">Papers &amp; preprints</h2>
+      <h2 id="papers-heading">Peer-reviewed publications &amp; preprints</h2>
       <ul class="paper-list" id="project-papers">
         <li id="asteroid-detection" class="paper-showcase paper-showcase--text"><article class="paper-row"><div class="paper-info"><time class="paper-date">Ongoing</time><strong>Identification of Faint Near-Earth Asteroid Streak Candidates Using a Three-Channel Deep-Learning Pipeline.</strong><span class="project-affiliation"><img class="logo-sjtu" src="../assets/logos/sjtu-square.ico" alt=""><img class="logo-maryland" src="../assets/logos/maryland-square.png" alt="">Shanghai Jiao Tong University · University of Maryland</span><em>Drafting for journal submission</em><span class="coauthors">Advised by Dr. Quanzhi Ye &amp; Yiyang Guo</span></div></article></li>
         <li id="comet-classification" class="paper-showcase paper-showcase--text"><article class="paper-row"><div class="paper-info"><time class="paper-date">Ongoing</time><strong>Feature-Based Comet Classification Pipeline for Zwicky Transient Facility (ZTF) Alert Image Streams.</strong><span class="project-affiliation"><img class="logo-maryland" src="../assets/logos/maryland-square.png" alt="">University of Maryland, Department of Astronomy</span><span class="coauthors">Advised by Dr. Quanzhi Ye</span></div></article></li>
