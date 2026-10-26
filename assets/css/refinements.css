@@ -149,10 +149,12 @@ html.dark #about-deck .deck-label { color: #fff; }
 @media (max-width: 600px) {
   :root { --page-top: 1.75rem; --section-gap: 2rem; }
   #about-deck .deck-quote { max-width: 34ch; white-space: normal; text-wrap: balance; }
+  #about.home-introduction > p:nth-of-type(-n + 2) { text-align: start; }
+  .intro-highlights { text-align: start; }
   .home-introduction p { font-size: .86rem; line-height: 1.85; }
   .intro-highlights { font-size: .86rem; }
   .home-introduction .workplaces { font-size: .8rem; }
-  main :is(p, dd, blockquote, .timeline-entry li, .writing-content li, .project-description) { text-align: justify; }
+  main :is(p, dd, blockquote, .timeline-entry li, .writing-content li, .project-description) { text-align: start; }
   .home-page .deck-label { font-size: .74rem; }
   .playing-card { filter: drop-shadow(3px 5px 0 rgba(0,0,0,.22)); }
 }

@@ -124,8 +124,8 @@
   });
   window.addEventListener('hashchange', function () {
     var id = sectionFromHash();
-    navigate(id, false, Boolean(id) || location.hash === '#about-deck',
-      Boolean(id) || location.hash === '#about-deck');
+    var animateTransition = Boolean(id) || Boolean(active);
+    navigate(id, false, animateTransition, animateTransition);
   });
   toolbar.hidden = false;
   show(sectionFromHash());
