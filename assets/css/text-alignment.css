@@ -1,4 +1,4 @@
-/* Natural prose alignment without stretched spacing or automatic word breaks. */
+/* Align prose evenly along both edges. */
 main :is(
   p:not(.eyebrow):not(.tagline):not(.paper-explanation-note),
   dd,
@@ -10,8 +10,8 @@ main :is(
   .paper-info > em,
   .coauthors
 ) {
-  text-align: start;
+  text-align: justify;
   text-align-last: auto;
-  text-justify: auto;
+  text-justify: inter-word;
   hyphens: none;
 }
