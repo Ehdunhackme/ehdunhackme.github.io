@@ -22,6 +22,10 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
 #about.home-introduction > p:nth-of-type(-n + 2) { text-align: justify; }
 .home-introduction .workplaces { margin-top: 1.6rem; font-size: .82rem; line-height: 1.9; }
 .home-introduction .intro-highlights-lead { margin-bottom: .65rem; }
+.site-header:has(.main-nav) { justify-content: space-between; }
+.site-header:has(.main-nav) > .site-wordmark { display: none; }
+.site-header:has(.main-nav) > .main-nav { justify-content: flex-start; margin: 0 auto 0 0; }
+.site-header:has(.main-nav) > .header-actions { margin-left: auto; }
 .intro-highlights {
   margin: 0 0 1.35rem;
   padding-left: 1.2rem;
@@ -64,7 +68,7 @@ html .writing-content a:is(:hover, :focus-visible) { text-decoration-color: var(
     -2px 0 rgba(255, 75, 105, .8),
     0 0 12px rgba(138, 180, 255, .28);
   filter: contrast(1.35);
-  animation: nameGlitch .12s steps(2, end) infinite;
+  animation: nameGlitch .09s steps(2, end) infinite;
   will-change: transform;
 }
 @keyframes nameGlitch {
