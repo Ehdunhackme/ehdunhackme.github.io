@@ -212,7 +212,7 @@
     image.alt = (entry.kind === 'project' ? 'Preview of ' : 'First page of ') + title.textContent;
     image.width = entry.image ? entry.image.width : 480;
     image.height = entry.image ? entry.image.height : (tallPages.indexOf(id) === -1 ? 622 : 679);
-    image.loading = 'eager';
+    image.loading = board.querySelector('.paper-thumbnail') ? 'lazy' : 'eager';
     thumbnail.appendChild(image);
     row.insertBefore(thumbnail, info);
     var date = row.querySelector('.paper-date');

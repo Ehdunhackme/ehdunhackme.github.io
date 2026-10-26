@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>document.documentElement.classList.add('page-loading');</script>
   <script defer src="../assets/js/page-urls.js"></script>
+  <script defer src="../assets/js/page-reveal.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Selected research and projects by Dun Li Chan.">
   <meta name="author" content="Dun Li Chan">
@@ -79,8 +81,8 @@
     </section>
   </main>
   <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
-  <script async src="paper-board.js"></script>
-  <script async src="../assets/js/directory-search.js"></script>
+  <script defer src="paper-board.js"></script>
+  <script defer src="../assets/js/directory-search.js"></script>
   <script>document.querySelector('.theme-toggle').addEventListener('click', function () { document.documentElement.classList.toggle('dark'); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); });</script>
 </body>
 </html>

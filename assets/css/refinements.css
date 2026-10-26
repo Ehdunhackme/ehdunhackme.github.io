@@ -10,6 +10,7 @@ html.dark {
   --accent-soft: rgba(195, 174, 223, .1);
 }
 body { font-kerning: normal; -webkit-font-smoothing: antialiased; }
+html.page-loading body > :is(main, .site-footer) { visibility: hidden; }
 @keyframes site-entry-reveal {
   from { opacity: 0; filter: blur(8px); transform: translateY(var(--entry-offset, 10px)); }
   to { opacity: 1; filter: blur(0); transform: translateY(0); }
