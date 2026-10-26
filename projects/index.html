@@ -15,16 +15,17 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="paper-board.css?v=20261021-4">
   <link rel="stylesheet" href="../assets/css/directory-search.css">
+  <link rel="stylesheet" href="../assets/css/refinements.css">
   <script>if ((localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') document.documentElement.classList.add('dark');</script>
+  <script defer src="../assets/js/focus-cards.js"></script>
 </head>
 <body class="directory-layout">
   <header class="site-header">
     <a class="site-wordmark" href="../" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
-    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html#about">About Me</a><a href="./index.html" aria-current="page">My Projects</a><a href="../writings/index.html">Writings</a></nav>
+    <nav class="main-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="./index.html" aria-current="page">Projects</a><a href="../writings/index.html">Writings</a></nav>
     <div class="header-actions"><button type="button" class="theme-toggle" aria-label="Switch color scheme"><span aria-hidden="true">◐</span></button></div>
   </header>
   <main class="directory-page project-board paper-showcase-scope" data-directory-search>
-    <p class="eyebrow">Selected work</p>
     <h1 class="editorial-heading">my project board.</h1>
     <p class="page-intro">Research, papers, experiments, and things I've built.</p>
     <form class="directory-search" role="search" aria-label="Search projects" hidden>
@@ -73,7 +74,6 @@
         <li id="epecscan"><article class="paper-row"><div class="paper-info"><time class="paper-date">2024</time><strong>EPECscan</strong><em>A deep-learning screening model that detects EPEC bacteria and classifies their growth stage from microscopic water samples.</em></div><div class="paper-links"><a href="https://github.com/Ehdunhackme/EPECscan" target="_blank" rel="noopener">GitHub</a></div></article></li>
       </ul>
     </section>
-    <nav class="page-links"><a href="../index.html">Home</a></nav>
   </main>
   <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
   <script async src="paper-board.js"></script>

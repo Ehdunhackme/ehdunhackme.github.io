@@ -105,7 +105,7 @@ html.dark .motivation-panel a { color: #8ab4ff; }
 .section-heading-row h2 { margin: 0; }
 .section-link { flex: 0 0 auto; color: var(--muted); font: 10px/1.4 "JetBrains Mono", monospace; text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
 .section-link:hover, .section-link:focus-visible { color: var(--strong); }
-.about { text-align: justify; }
+.about { text-align: start; }
 .about p { margin: 0 0 1rem; color: var(--secondary); font-size: .95rem; line-height: 1.7; }
 .about a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .about a:hover { color: inherit; text-decoration-color: var(--strong); }
@@ -211,7 +211,7 @@ html.dark .paper-links a { color: #8ab4ff; }
 .writing-date { color: var(--muted); font: .7rem/1.5 "JetBrains Mono", monospace; letter-spacing: .04em; white-space: nowrap; }
 .writing-section-arrow { color: var(--muted); font-size: 1rem; transition: transform .2s ease, color .2s ease; }
 .writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { color: var(--strong); transform: translate(2px, -2px); }
-.site-footer { display: flex; justify-content: space-between; gap: 1rem; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-family: "Geist Mono", monospace; font-size: .7rem; letter-spacing: .04em; }
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 0; color: var(--muted); font-family: "Geist Mono", monospace; font-size: .7rem; letter-spacing: .04em; }
 .site-footer a { text-decoration: none; }
 body.lightbox-open { overflow: hidden; }
 .gallery-lightbox[hidden] { display: none; }
@@ -315,11 +315,9 @@ h1 { font-weight: 500; }
 .writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
 .writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
 .page-links a { font: 400 .78rem/1.5 "Geist", Arial, sans-serif; letter-spacing: 0; text-transform: none; }
-.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 0; color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
 .site-footer span { display: inline; margin: 0; }
-.timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
-.paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
-.writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover), .writing-posts:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: .24; }
+
 @media (max-width: 600px) {
   .site-header { width: calc(100% - 2rem); gap: .6rem; padding: 1rem 0; }
   .header-actions { gap: .5rem; }
@@ -339,11 +337,7 @@ h1 { font-weight: 500; }
   .directory-group { margin-top: 2rem; }
   .site-footer { display: flex; }
 }
-@media (hover: none) {
-  .timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
-  .paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
-  .writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover) { opacity: 1; }
-}
+
 @media (prefers-reduced-motion: reduce) { .paper-row, .main-nav a { transition: none; } }
 
 /* Unified project board typography and quiet view-all link */
@@ -395,12 +389,8 @@ h1 { font-weight: 500; }
 .writing-section-link:hover, .writing-section-link:focus-visible { padding-inline: 0; }
 .writing-section-arrow { transition: none; }
 .writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { transform: none; }
-.writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
-.writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: .24; }
-@media (hover: none) {
-  .writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
-  .writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: 1; }
-}
+
+
 
 /* Keep every desktop page on the same slightly wider content grid. */
 @media (min-width: 601px) {

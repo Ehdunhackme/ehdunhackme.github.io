@@ -353,7 +353,7 @@ button { font-family: inherit; cursor: pointer; }
   margin-bottom: 1.25rem;
 }
 
-.about { text-align: justify; font-family: "Geist", Arial, sans-serif; }
+.about { text-align: start; font-family: "Geist", Arial, sans-serif; }
 .about p { max-width: 64rem; margin: 0 auto 1rem; font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
 .about a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; text-decoration-color: var(--faint); }
 .about a:hover { color: inherit; text-decoration-color: var(--fg-strong); }
@@ -954,13 +954,11 @@ body { font-family: "Geist", Arial, sans-serif; }
 .timeline-entry h3, .work-item h3 { font: 500 .96rem/1.45 "Geist", Arial, sans-serif; }
 .timeline-entry li, .work-item p { font: 400 .88rem/1.65 "Geist", Arial, sans-serif; }
 .timeline-date, .writing-date, .writing-post-date, .paper-card-body .paper-date { font-family: "Geist Mono", monospace; }
-.timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
-.paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
-.writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover), .writing-posts:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: .24; }
+
 .writing-section-link { font-family: "Geist", Arial, sans-serif; }
 .writing-section-title { font: 500 .98rem/1.45 "Geist", Arial, sans-serif; }
 .writing-section-description { font: 400 .84rem/1.55 "Geist", Arial, sans-serif; }
-.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
+.site-footer { display: flex; justify-content: center; align-items: center; gap: 0; width: min(calc(100% - 2.5rem), 42rem); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 0; color: var(--muted); text-align: center; font: 400 .7rem/1.5 "Geist Mono", monospace; letter-spacing: .04em; text-transform: none; }
 .site-footer span { display: inline; margin: 0; }
 .theme-toggle { width: 2rem; height: 2rem; font-family: "Geist", Arial, sans-serif; }
 @media (max-width: 600px) {
@@ -984,11 +982,7 @@ body { font-family: "Geist", Arial, sans-serif; }
   .writing-section-description { font-size: .8rem; }
   .site-footer { display: flex; }
 }
-@media (hover: none) {
-  .timeline:has(.timeline-item:hover) .timeline-item:not(:hover), .timeline:has(.timeline-item:focus-within) .timeline-item:not(:focus-within),
-  .paper-list:has(.paper-row:hover) .paper-row:not(:hover), .paper-list:has(.paper-row:focus-within) .paper-row:not(:focus-within),
-  .writing-posts:has(.writing-section-link:hover) .writing-section-link:not(:hover) { opacity: 1; }
-}
+
 @media (prefers-reduced-motion: reduce) { .paper-row, .main-nav a { transition: none; } }
 
 /* Unified project board typography and quiet view-all link */
@@ -1040,12 +1034,8 @@ body { font-family: "Geist", Arial, sans-serif; }
 .writing-section-link:hover, .writing-section-link:focus-visible { padding-inline: 0; }
 .writing-section-arrow { transition: none; }
 .writing-section-link:hover .writing-section-arrow, .writing-section-link:focus-visible .writing-section-arrow { transform: none; }
-.writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
-.writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: .24; }
-@media (hover: none) {
-  .writing-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
-  .writing-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within) { opacity: 1; }
-}
+
+
 
 @media (max-width: 768px) {
   .page { padding: 3rem 1.5rem; }

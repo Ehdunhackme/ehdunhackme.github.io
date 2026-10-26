@@ -1,0 +1,164 @@
+/* One restrained palette and spacing scale across the portfolio. */
+:root {
+  --accent: #73568f;
+  --accent-soft: rgba(115, 86, 143, .12);
+  --page-top: 2.25rem;
+  --section-gap: 2.5rem;
+}
+html.dark {
+  --accent: #c3aedf;
+  --accent-soft: rgba(195, 174, 223, .1);
+}
+body { font-kerning: normal; -webkit-font-smoothing: antialiased; }
+/* Neutral links keep their resting colours; hover and keyboard focus use purple. */
+a[href]:is(:hover, :focus-visible) { color: var(--accent) !important; text-decoration-color: var(--accent); }
+.writing-section-link:is(:hover, :focus-visible) .writing-section-title { color: var(--accent); }
+main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
+  hyphens: manual;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+.home-introduction p { margin-bottom: 1.35rem; font-size: .9rem; line-height: 1.85; }
+#about.home-introduction > p:nth-of-type(-n + 2) { text-align: start; }
+.home-introduction .workplaces { margin-top: 1.6rem; font-size: .82rem; line-height: 1.9; }
+.home-introduction .intro-highlights-lead { margin-bottom: .65rem; }
+.intro-highlights {
+  margin: 0 0 1.35rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--secondary, var(--fg-secondary));
+  font-size: .9rem;
+  line-height: 1.85;
+  text-align: start;
+}
+.intro-highlights li { padding-left: .25rem; margin-bottom: .5rem; text-wrap: pretty; }
+.intro-highlights li:last-child { margin-bottom: 0; }
+.intro-highlights a { color: inherit; }
+.intro-highlights li::marker { color: color-mix(in srgb, var(--accent) 70%, var(--muted)); font-size: .75em; }
+.home-introduction a, .about-reader :is(p, li, blockquote) a,
+.writing-content a, .workplaces a {
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: .22em;
+  transition: color .18s ease, text-decoration-color .18s ease;
+}
+.home-introduction a:is(:hover, :focus-visible),
+.about-reader :is(p, li, blockquote) a:is(:hover, :focus-visible),
+.writing-content a:is(:hover, :focus-visible), .workplaces a:is(:hover, :focus-visible) {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.about-org img, .workplaces img { opacity: .85; transition: opacity .18s ease; }
+html .writing-content a, html.dark .writing-content a,
+html .writing-content a:is(:hover, :focus-visible), html.dark .writing-content a:is(:hover, :focus-visible),
+html .about-reader :is(.timeline-entry, .motivation-panel) a,
+html.dark .about-reader :is(.timeline-entry, .motivation-panel) a {
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+}
+html .about-reader :is(.timeline-entry, .motivation-panel) a:is(:hover, :focus-visible),
+html .writing-content a:is(:hover, :focus-visible) { text-decoration-color: var(--accent); }
+.hero-name.is-chinese { color: var(--accent); }
+.hero-name.is-morphing {
+  text-shadow: 2px 0 rgba(138, 180, 255, .95),
+    -2px 0 rgba(255, 75, 105, .8),
+    0 0 12px rgba(138, 180, 255, .28);
+  filter: contrast(1.35);
+  animation: nameGlitch .12s steps(2, end) infinite;
+  will-change: transform;
+}
+@keyframes nameGlitch {
+  0%, 100% { transform: translateX(0) skewX(0); }
+  25% { transform: translateX(-3px) skewX(-4deg); }
+  50% { transform: translateX(3px) skewX(4deg); }
+  75% { transform: translateX(-1px) skewX(-2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-name.is-morphing { animation: none; }
+}
+.about-org:hover img, .workplaces a:hover img { opacity: 1; }
+.main-nav a[aria-current="page"],
+.main-nav a:is(:hover, :focus-visible),
+.deck-return:is(:hover, :focus-visible) { color: var(--accent); }
+.main-nav a:focus-visible, .quick-links a:focus-visible,
+.deck-return:focus-visible, .deck-choice:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.quick-links a { transition: color .18s ease, background-color .18s ease; }
+.quick-links a:is(:hover, :focus-visible) { color: var(--accent); background: var(--accent-soft); }
+.profile, .directory-page, .writing-page { padding-top: var(--page-top); }
+.home-page .profile:has(> .about-reader:not([hidden])) { padding-top: .75rem; }
+.home-page .about-reader { margin-top: .5rem; }
+.directory-page > .eyebrow { margin-bottom: .65rem; }
+.directory-page > .editorial-heading { margin-bottom: .6rem; line-height: 1.35; }
+.directory-page > .page-intro { margin: .6rem 0 0; line-height: 1.75; }
+.directory-page > .directory-search { margin: 1.75rem 0 var(--section-gap); }
+.directory-page > .directory-group { margin-top: var(--section-gap); }
+.directory-page > .directory-search + .directory-search-empty[hidden] + .directory-group { margin-top: 0; }
+.directory-page > .writing-card-list { margin-top: 0; }
+.directory-search-field {
+  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  transition: border-color .16s ease-out, outline-color .16s ease-out, background-color .16s ease-out;
+}
+.directory-search-field:focus-within {
+  border-color: var(--accent);
+  outline-color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 6%, var(--bg));
+}
+.directory-search button:focus-visible { outline-color: var(--accent); }
+.directory-search-status { min-height: 1.05rem; }
+html .paper-showcase-scope .paper-showcase .paper-links a,
+html.dark .paper-showcase-scope .paper-showcase .paper-links a,
+html .paper-links a, html.dark .paper-links a { color: var(--accent); }
+.paper-showcase-scope .paper-explanation > summary::after,
+.writing-card-list .writing-section-arrow { color: var(--accent); }
+.paper-showcase-scope .paper-explanation > summary:focus-visible,
+.paper-showcase-scope .paper-thumbnail:focus-visible,
+.writing-card-list .writing-section-link:focus-visible { outline-color: var(--accent); }
+.paper-showcase-scope .paper-explanation-body { line-height: 1.8; }
+.about-reader :is(.motivation-topic p, .timeline-entry li) { line-height: 1.8; }
+[data-focus-managed] [data-focus-item] { opacity: 1; transition: opacity .14s ease-out; }
+[data-focus-managed][data-focus-active] [data-focus-item]:not([data-focus-selected]) { opacity: .28; }
+.about-reader > .content-section > h2 { margin-bottom: 1.6rem; }
+.deck-choice { --tilt: -5deg; }
+.deck-choice:nth-child(2) { --tilt: 0deg; }
+.deck-choice:nth-child(3) { --tilt: 5deg; }
+.playing-card { filter: drop-shadow(4px 6px 0 rgba(0,0,0,.22)); transition: transform .24s cubic-bezier(.22,.7,.25,1); }
+.home-page .deck-label { color: var(--strong); font: 500 .82rem/1.5 "JetBrains Mono", monospace; letter-spacing: -.015em; }
+.deck-choice:focus-visible .playing-card { transform: translateY(-6px) rotate(0deg); }
+.deck-toolbar { padding-bottom: 1.15rem; margin-bottom: 1.75rem; }
+#about-deck .deck-quote {
+  max-width: none;
+  margin: 1.4rem auto 0;
+  padding: 0;
+  border: 0;
+  color: var(--fg, var(--secondary));
+  font: 400 clamp(.92rem, 2vw, 1rem)/1.7 "JetBrains Mono", monospace;
+  text-align: center;
+  text-align-last: auto;
+  white-space: nowrap;
+}
+#about-deck .deck-quote-ending { white-space: nowrap; }
+html.dark #about-deck .deck-label { color: #fff; }
+@media (hover: hover) {
+  .deck-choice:hover .playing-card { transform: translateY(-6px) rotate(0deg); }
+}
+@media (max-width: 600px) {
+  :root { --page-top: 1.75rem; --section-gap: 2rem; }
+  #about-deck .deck-quote { max-width: 34ch; white-space: normal; text-wrap: balance; }
+  .home-introduction p { font-size: .86rem; line-height: 1.85; }
+  .intro-highlights { font-size: .86rem; }
+  .home-introduction .workplaces { font-size: .8rem; }
+  main :is(p, dd, blockquote, .timeline-entry li, .writing-content li, .project-description) { text-align: start; }
+  .home-page .deck-label { font-size: .74rem; }
+  .playing-card { filter: drop-shadow(3px 5px 0 rgba(0,0,0,.22)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .playing-card, .quick-links a, .home-introduction a,
+  .about-reader a, [data-focus-managed] [data-focus-item], .writing-content a, .about-org img, .workplaces img, .directory-search-field { transition: none; }
+  .deck-choice:is(:hover, :focus-visible) .playing-card { transform: rotate(0deg); }
+}

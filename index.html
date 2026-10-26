@@ -22,7 +22,9 @@
   <title>Dun Li's Personal Site</title>
   <link rel="stylesheet" href="draft/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="projects/paper-board.css?v=20261021-4">
+  <link rel="stylesheet" href="assets/css/page-layout.css">
+  <link rel="stylesheet" href="assets/css/about-deck.css">
+  <link rel="stylesheet" href="assets/css/refinements.css">
   <script>
     (function () {
       var stored = localStorage.getItem('theme');
@@ -30,13 +32,14 @@
       if ((stored || prefers) === 'dark') document.documentElement.classList.add('dark');
     })();
   </script>
+  <script defer src="assets/js/focus-cards.js"></script>
 </head>
-<body>
+<body class="page-layout home-page">
   <header class="site-header">
     <a class="site-wordmark" href="./" aria-label="Dun Li Chan"><span>D</span><span>U</span><span>N</span><span>&nbsp;</span><span>L</span><span>I</span><span>&nbsp;</span><span>C</span><span>H</span><span>A</span><span>N</span></a>
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="#about">About Me</a>
-      <a href="projects/index.html">My Projects</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="projects/index.html">Projects</a>
       <a href="writings/index.html">Writings</a>
     </nav>
     <div class="header-actions">
@@ -60,19 +63,39 @@
       </nav>
     </section>
 
-    <section class="content-section about-section" id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About Me</h2>
-      <div class="about">
-        <p>I'm currently working on RSI agent for robotics manipulation at <a class="about-org" href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener"><img src="assets/logos/tsinghua-square.ico" alt="">Tsinghua</a>, World Action Model (WAM) interpretability research at <a class="about-org" href="https://eleuther.ai/soar/" target="_blank" rel="noopener"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</a>, and building video diffusion models for human-AI interaction at <a class="about-org" href="https://www.trychert.com/" target="_blank" rel="noopener"><img src="assets/logos/chert-square.png" width="16" height="16" alt="">Chert (YC P26)</a>. I'm also working on some side projects in robotics/model optimisation, and post-training eval &amp; mech interpretability research at <a class="about-org" href="https://universetbd.org/" target="_blank" rel="noopener"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</a>.</p>
-        <p>My research interests lie in understanding how models work internally layerwise, and how that understanding can push AI forward while keeping it safe and fast enough to deploy in real-world settings.</p>
-        <p>Growing up in an under-resourced background, I started my <a href="#more-about-me" class="journey-link">unconventional journey</a> at age 10 by teaching myself to hack a game website and jailbreak phones, eventually finding my way to frontier AI research, with <a href="projects/index.html#papers-heading">multiple publications in top conferences</a> (NeurIPS, AACL, EACL, etc.).</p>
-        <p>In 2025, I represented Malaysia in the <a href="https://ioaastrophysics.org/" target="_blank" rel="noopener">Intl. Olympiad of Astronomy &amp; Astrophysics (IOAA)</a> and the <a href="http://www.issp.ac.ru/iao/2025/" target="_blank" rel="noopener">Intl. Astronomy Olympiad (IAO)</a>. I also founded <a href="https://myresearchguide.org/" target="_blank" rel="noopener">MYResearchGuide</a>, Malaysia's first non-profit to democratise science research opportunities and access, and the nation's first research mentorship program, <a href="https://myssp.myresearchguide.org/" target="_blank" rel="noopener">Malaysia Science Scholar's Programme</a>.</p>
-      </div>
-      <p class="workplaces">Places I've worked in: <a href="https://en.sjtu.edu.cn/" target="_blank" rel="noopener"><img class="logo-sjtu" src="assets/logos/sjtu-square.ico" alt="">Shanghai Jiao Tong Uni.</a>, <a href="https://www.umd.edu/" target="_blank" rel="noopener"><img class="logo-maryland" src="assets/logos/maryland-square.png" alt="">Uni. of Maryland</a>, <a href="https://metacreation.net/" target="_blank" rel="noopener"><img class="logo-metacreation" src="assets/logos/metacreation-square.ico" alt="">Metacreation Lab</a>, <a href="https://seacrowd.github.io/" target="_blank" rel="noopener"><img src="assets/logos/seacrowd-square.png" alt="">SEACrowd</a>.</p>
+    <section class="home-introduction about" id="about" aria-label="Introduction">
+      <p>I'm currently working on RSI for robotics manipulation at <a class="about-org" href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener"><img src="assets/logos/tsinghua-square.ico" alt="">Tsinghua</a>, World Action Model (WAM) interpretability research at <a class="about-org" href="https://eleuther.ai/soar/" target="_blank" rel="noopener"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</a>, and building video diffusion models for human-AI interaction at <a class="about-org" href="https://www.trychert.com/" target="_blank" rel="noopener"><img src="assets/logos/chert-square.png" width="16" height="16" alt="">Chert (YC P26)</a>. I'm also working on some side projects in robotics/model optimisation, and post-training eval &amp; mech interpretability research at <a class="about-org" href="https://universetbd.org/" target="_blank" rel="noopener"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</a>.</p>
+      <p>Growing up in an under-resourced background, I started my <a href="#more-about-me" class="journey-link">unconventional journey</a> at age 10 by teaching myself to hack a game website and jailbreak phones, eventually finding my way to frontier AI research with <a href="projects/index.html">multiple publications in top conferences</a> (NeurIPS, AACL, EACL, etc.).</p>
+      <p class="intro-highlights-lead">Before that, I:</p>
+      <ul class="intro-highlights">
+        <li>Represented Malaysia in the <a href="https://ioaastrophysics.org/" target="_blank" rel="noopener">Intl. Olympiad of Astronomy &amp; Astrophysics (IOAA)</a> and the <a href="http://www.issp.ac.ru/iao/2025/" target="_blank" rel="noopener">Intl. Astronomy Olympiad (IAO)</a>.</li>
+        <li>Founded <a href="https://myresearchguide.org/" target="_blank" rel="noopener">MYResearchGuide</a>, Malaysia's first non-profit to democratise science research opportunities and the nation's first research mentorship program, <a href="https://myssp.myresearchguide.org/" target="_blank" rel="noopener">Malaysia Science Scholar's Programme</a>.</li>
+        <li>Worked at <a class="about-org" href="https://en.sjtu.edu.cn/" target="_blank" rel="noopener"><img class="logo-sjtu" src="assets/logos/sjtu-square.ico" alt="">Shanghai Jiao Tong Uni.</a>, <a class="about-org" href="https://www.umd.edu/" target="_blank" rel="noopener"><img class="logo-maryland" src="assets/logos/maryland-square.png" alt="">Uni. of Maryland</a>, <a class="about-org" href="https://metacreation.net/" target="_blank" rel="noopener"><img class="logo-metacreation" src="assets/logos/metacreation-square.ico" alt="">Metacreation Lab</a>, and <a class="about-org" href="https://seacrowd.github.io/" target="_blank" rel="noopener"><img src="assets/logos/seacrowd-square.png" alt="">SEACrowd</a>.</li>
+      </ul>
     </section>
+    <div class="about-deck" id="about-deck" hidden>
+      <div class="deck-hand" aria-label="Explore about me">
+        <button class="deck-choice" type="button" data-section="more-about-me" aria-controls="more-about-me" aria-expanded="false">
+          <span class="playing-card"><span class="card-turn"><span class="card-front"><img src="assets/cards/club.svg" alt="" width="120" height="168"></span><span class="card-back" aria-hidden="true"><span>DL</span></span></span></span>
+          <span class="deck-label">My journey timeline</span>
+        </button>
+        <button class="deck-choice" type="button" data-section="motivations" aria-controls="motivations" aria-expanded="false">
+          <span class="playing-card"><span class="card-turn"><span class="card-front"><img src="assets/cards/heart.svg" alt="" width="120" height="168"></span><span class="card-back" aria-hidden="true"><span>DL</span></span></span></span>
+          <span class="deck-label">My motivations</span>
+        </button>
+        <button class="deck-choice" type="button" data-section="honours" aria-controls="honours" aria-expanded="false">
+          <span class="playing-card"><span class="card-turn"><span class="card-front"><img src="assets/cards/diamond.svg" alt="" width="120" height="168"></span><span class="card-back" aria-hidden="true"><span>DL</span></span></span></span>
+          <span class="deck-label">Honours &amp; awards</span>
+        </button>
+      </div>
+      <blockquote class="deck-quote">&quot;Life is a deck of cards and this is how I’m playing <span class="deck-quote-ending">mine.&quot;</span></blockquote>
+    </div>
 
-    <details class="fold" id="more-about-me">
-      <summary>More about me <span>click to expand</span></summary>
+    <div class="about-reader" id="about-reader">
+      <div class="deck-toolbar" hidden><button type="button" class="deck-return">← Back to the cards</button></div>
+
+    <section class="content-section" id="more-about-me" aria-labelledby="journey-heading">
+      <h2 id="journey-heading">My journey timeline</h2>
       <div class="timeline-panel">
       <div class="timeline">
         <article class="timeline-item"><time class="timeline-date">Present</time><div class="timeline-entry"><h3>Exploring Physical AI &amp; AI safety</h3><ul><li>Currently working on RSI for robotics manipulation at <a class="about-org" href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener"><img src="assets/logos/tsinghua-square.ico" alt="">Tsinghua</a>, World Action Model (WAM) interpretability research at <a class="about-org" href="https://eleuther.ai/soar/" target="_blank" rel="noopener"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</a>, and building video diffusion models for human-AI interaction at <a class="about-org" href="https://www.trychert.com/" target="_blank" rel="noopener"><img src="assets/logos/chert-square.png" width="16" height="16" alt="">Chert (YC P26)</a>. I'm also working on some side projects in robotics/model optimisation, and post-training eval &amp; mech interpretability research at <a class="about-org" href="https://universetbd.org/" target="_blank" rel="noopener"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</a>.</li></ul></div></article>
@@ -116,10 +139,10 @@
         </div></div></div></article>
       </div>
       </div>
-    </details>
+    </section>
 
-    <details class="fold motivation-fold">
-      <summary>My Motivations <span>click to expand</span></summary>
+    <section class="content-section" id="motivations" aria-labelledby="motivations-heading">
+      <h2 id="motivations-heading">My motivations</h2>
       <section class="motivation-panel" aria-label="My Motivations">
         <p class="motivation-intro">There are two things I care most about solving:</p>
         <ul class="motivation-priorities">
@@ -150,13 +173,13 @@
           <p class="motivation-closing">That work has to start now, not later.</p>
         </section>
       </section>
-    </details>
+    </section>
 
-    <details class="fold honors-fold">
-      <summary>Honours &amp; Awards <span>click to expand</span></summary>
+    <section class="content-section" id="honours" aria-labelledby="awards-heading">
+      <h2 id="awards-heading">Honours &amp; awards</h2>
       <div class="honors-panel">
         <section class="honors-group" aria-labelledby="honours-heading">
-          <h3 id="honours-heading">Honours &amp; Awards</h3>
+          <h3 id="honours-heading">Academic &amp; research</h3>
           <ul class="honors-list">
             <li><strong>Malaysia Team — Intl. Olympiad on Astronomy and Astrophysics 2025 (IOAA)</strong><ul><li>Ranked 3rd nationally (with 3 months of preparation)</li></ul></li>
             <li><strong>Malaysia Team — Intl. Astronomy Olympiad 2025 (IAO)</strong><ul><li>Ranked 2nd nationally</li></ul></li>
@@ -174,505 +197,17 @@
           </ul>
         </section>
       </div>
-    </details>
-
-    <section class="content-section research-section paper-showcase-scope" id="research" aria-labelledby="research-heading">
-      <div class="research-board">
-        <div class="research-board-header">
-          <div><p class="research-eyebrow">Selected work</p><h2 class="research-title" id="research-heading">My Selected Projects</h2></div>
-        </div>
-        <ul class="paper-list featured-papers" aria-label="Selected papers and preprints">
-          <li data-paper-id="platonic-representation"><div class="paper-row"><div class="paper-info"><strong>Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy</strong><span class="project-affiliation"><img src="assets/logos/universetbd-square.png" alt="">UniverseTBD</span><em>NeurIPS 2026 Interpretability for Discovery Workshop</em><span class="coauthors">with Kshitij Duraphe et al.</span><span class="paper-links"><a href="https://github.com/ksd3/layerwise-analysis" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=Xw72C0uPBw" target="_blank" rel="noopener">OpenReview</a><a href="https://arxiv.org/abs/2610.04130" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
-          <li data-paper-id="perturbation-robustness"><div class="paper-row"><div class="paper-info"><strong>How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 Interpscience Workshop</em><span class="coauthors">with Emily Liu et al.</span><span class="paper-links"><a href="https://github.com/emilyzfliu/decoding-robustness" target="_blank" rel="noopener">GitHub</a><a href="https://arxiv.org/abs/2609.03322" target="_blank" rel="noopener">arXiv</a></span></div><span class="paper-date">2026</span></div></li>
-          <li data-paper-id="nonlinear-queries"><div class="paper-row"><div class="paper-info"><strong>Beyond Query Linearity: The Case for Nonlinear Queries.</strong><span class="project-affiliation"><img class="logo-eleutherai" src="assets/logos/eleutherai-square.ico" alt="">EleutherAI</span><em>NeurIPS 2026 SLM-Agents Workshop · Poster</em><span class="coauthors">with Marko Karbevski et al.</span><span class="paper-links"><a href="https://github.com/MarkoKarbevski/beyond_query_linearity_community" target="_blank" rel="noopener">GitHub</a><a href="https://openreview.net/forum?id=M8z9uMfxk5" target="_blank" rel="noopener">OpenReview</a></span></div><span class="paper-date">2026</span></div></li>
-        </ul>
-        <a class="section-link board-view-all" href="projects/index.html">View all</a>
-      </div>
     </section>
-
-    <section class="content-section" id="writings" aria-labelledby="writings-heading">
-      <div class="section-heading-row"><h2 id="writings-heading">Writings</h2></div>
-      <div class="writing-list writing-posts writing-card-list">
-        <a class="writing-section-link" href="writings/my-opinionated-guide-to-starting-research-early/index.html"><span><span class="writing-section-title">My opinionated guide to starting research early</span><span class="writing-section-description">An opinionated guide for high schoolers in Malaysia who want to work on cool research projects early.</span></span><span class="writing-section-side"><time class="writing-date">19 Sep 2026</time><span class="writing-section-arrow" aria-hidden="true">↗︎</span></span></a>
-      </div>
-      <a class="section-link board-view-all" href="writings/index.html">View all</a>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer"><span>© 2026 Dun Li Chan</span></footer>
-  <script async src="projects/paper-board.js"></script>
-
   <div class="gallery-lightbox" id="gallery-lightbox" hidden>
     <button type="button" class="lightbox-close" aria-label="Close image">×</button>
     <div class="gallery-lightbox-image"><img id="lightbox-image" alt=""></div>
   </div>
-
-  <script>
-    (function () {
-      var root = document.documentElement;
-      var toggle = document.getElementById('theme-toggle');
-      toggle.addEventListener('click', function () {
-        root.classList.toggle('dark');
-        localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-        toggle.setAttribute('aria-label', 'Switch to ' + (root.classList.contains('dark') ? 'light' : 'dark') + ' mode');
-      });
-      toggle.setAttribute('aria-label', 'Switch to ' + (root.classList.contains('dark') ? 'light' : 'dark') + ' mode');
-
-      var heroName = document.getElementById('profile-title');
-      function setupNameMorph(element) {
-        var from = element.textContent;
-        var to = element.getAttribute('data-alt');
-        var chinese = element.getAttribute('data-chinese') || from;
-        var pool = (from + to + chinese).replace(/ /g, '').split('');
-        var span = Math.max(from.length, to.length, chinese.length);
-        var timer = null;
-        var settleAt = 0;
-        var nextTarget = to;
-        var mobileTapIndex = 0;
-        var lastRunAt = 0;
-        var morphCooldown = 180;
-
-        function measure(text) {
-          var previous = element.textContent;
-          element.style.width = '';
-          element.textContent = text;
-          var width = element.getBoundingClientRect().width;
-          element.textContent = previous;
-          return width;
-        }
-
-        function pinWidth() {
-          element.style.width = Math.max(measure(from), measure(to)).toFixed(2) + 'px';
-        }
-
-        function render(target) {
-          var output = '';
-          for (var i = 0; i < span; i += 1) {
-            if (i < settleAt) output += target[i] || '';
-            else if (i < from.length || i < target.length) output += pool[Math.floor(Math.random() * pool.length)];
-          }
-          element.textContent = output;
-        }
-
-        function run(target, stepDuration) {
-          clearInterval(timer);
-          element.classList.add('is-morphing');
-          element.classList.toggle('is-chinese', target === chinese);
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            element.textContent = target;
-            element.classList.remove('is-morphing');
-            return;
-          }
-          settleAt = 0;
-          var started = Date.now();
-          timer = setInterval(function () {
-            settleAt = Math.floor((Date.now() - started) / (stepDuration || 58));
-            if (settleAt > span) {
-              clearInterval(timer);
-              element.textContent = target;
-              element.classList.remove('is-morphing');
-              return;
-            }
-            render(target);
-          }, 65);
-        }
-
-        function runNext() {
-          var now = Date.now();
-          if (now - lastRunAt < morphCooldown) return;
-          lastRunAt = now;
-          var target = nextTarget;
-          nextTarget = target === to ? chinese : to;
-          run(target);
-        }
-
-        function runMobileTapCycle() {
-          var targets = [to, chinese, from];
-          var target = targets[mobileTapIndex];
-          mobileTapIndex = (mobileTapIndex + 1) % targets.length;
-          run(target);
-        }
-
-        pinWidth();
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(pinWidth);
-        window.addEventListener('resize', pinWidth);
-
-        element.textContent = to;
-        element.classList.add('is-morphing');
-        window.setTimeout(function () { run(from, 180); }, 150);
-
-        if (window.matchMedia('(hover: hover)').matches) {
-          element.addEventListener('pointerenter', runNext);
-          element.addEventListener('pointerleave', function () { run(from); });
-        }
-        element.addEventListener('click', function () {
-          if (window.matchMedia('(max-width: 600px)').matches) runMobileTapCycle();
-          else runNext();
-        });
-
-        var lastScrollY = window.scrollY;
-        var lastTriggerY = window.scrollY;
-        var resetTimer = null;
-        function handleScroll() {
-          var currentScrollY = window.scrollY;
-          if (window.matchMedia('(max-width: 600px)').matches) {
-            lastScrollY = currentScrollY;
-            return;
-          }
-          if (currentScrollY - lastTriggerY >= 5 && currentScrollY > lastScrollY) {
-            lastTriggerY = currentScrollY;
-            runNext();
-            clearTimeout(resetTimer);
-            resetTimer = window.setTimeout(function () {
-              if (!element.matches(':hover')) run(from);
-            }, 1000);
-          }
-          lastScrollY = currentScrollY;
-        }
-        window.addEventListener('scroll', handleScroll, { passive: true });
-      }
-
-      if (heroName) setupNameMorph(heroName);
-
-      document.querySelectorAll('.paper-row').forEach(function (row) {
-        var info = row.querySelector('.paper-info');
-        if (!info) return;
-        var date = row.querySelector(':scope > .paper-date');
-        if (date) info.insertBefore(date, info.firstChild);
-        var links = info.querySelector(':scope > .paper-links');
-        if (links) {
-          links.querySelectorAll('a').forEach(function (link) {
-            link.textContent = link.textContent.replace(/^\[|\]$/g, '');
-          });
-          row.appendChild(links);
-        }
-      });
-
-      function setFoldOpen(details, opening) {
-        var summary = details.querySelector('summary');
-        var summaryHint = summary.querySelector('span');
-        if (details.open === opening && !details.detailsAnimation) return;
-        summary.setAttribute('aria-expanded', String(opening));
-        if (summaryHint) summaryHint.textContent = opening ? 'click to close' : 'click to expand';
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          if (details.detailsAnimation) details.detailsAnimation.cancel();
-          details.detailsAnimation = null;
-          details.style.height = '';
-          details.open = opening;
-          return;
-        }
-        var start = details.getBoundingClientRect().height;
-        details.style.height = start + 'px';
-        if (opening) details.open = true;
-        var end = opening ? details.scrollHeight : summary.getBoundingClientRect().height;
-        if (details.detailsAnimation) details.detailsAnimation.cancel();
-        var animation = details.animate([
-          { height: start + 'px', overflow: 'hidden' },
-          { height: end + 'px', overflow: 'hidden' }
-        ], { duration: 360, easing: 'cubic-bezier(.22, 1, .36, 1)' });
-        details.detailsAnimation = animation;
-        animation.onfinish = function () {
-          if (details.detailsAnimation !== animation) return;
-          if (!opening) details.open = false;
-          details.style.height = '';
-          details.detailsAnimation = null;
-        };
-      }
-      document.querySelectorAll('details.fold').forEach(function (details) {
-        var summary = details.querySelector('summary');
-        summary.setAttribute('aria-expanded', String(details.open));
-        var summaryHint = summary.querySelector('span');
-        if (summaryHint) summaryHint.textContent = details.open ? 'click to close' : 'click to expand';
-        summary.addEventListener('click', function (event) {
-          event.preventDefault();
-          var opening = !details.open;
-          setFoldOpen(details, opening);
-        });
-      });
-
-      var journeyLink = document.querySelector('.journey-link');
-      var moreAboutSection = document.getElementById('more-about-me');
-      if (journeyLink && moreAboutSection) {
-        journeyLink.addEventListener('click', function (event) {
-          event.preventDefault();
-          history.pushState(null, '', '#more-about-me');
-          setFoldOpen(moreAboutSection, true);
-          var openingAnimation = moreAboutSection.detailsAnimation;
-          var scrollToSection = function () { moreAboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
-          if (openingAnimation) openingAnimation.finished.then(scrollToSection).catch(function () {});
-          else scrollToSection();
-        });
-      }
-
-      var lightbox = document.getElementById('gallery-lightbox');
-      var lightboxImage = document.getElementById('lightbox-image');
-      var galleryTracks = Array.from(document.querySelectorAll('.timeline-gallery-track'));
-      var gallerySpeed = 26;
-      var galleryStates = new Map();
-      var activeGalleryTrack = null;
-      var lightboxCloseTimer = null;
-      var lightboxScrollY = 0;
-      var bodyLockStyles = null;
-      function lockPageScroll() {
-        var body = document.body;
-        lightboxScrollY = window.scrollY || window.pageYOffset;
-        var pageWidth = document.documentElement.clientWidth;
-        bodyLockStyles = {
-          position: body.style.position,
-          top: body.style.top,
-          left: body.style.left,
-          right: body.style.right,
-          width: body.style.width
-        };
-        body.style.position = 'fixed';
-        body.style.top = '-' + lightboxScrollY + 'px';
-        body.style.left = '0';
-        body.style.right = 'auto';
-        // Keep the pre-lock content width. A percentage width expands when the
-        // page scrollbar disappears, making the underlying layout jump sideways.
-        body.style.width = pageWidth + 'px';
-        body.classList.add('lightbox-open');
-      }
-      function unlockPageScroll() {
-        var body = document.body;
-        body.classList.remove('lightbox-open');
-        if (bodyLockStyles) {
-          body.style.position = bodyLockStyles.position;
-          body.style.top = bodyLockStyles.top;
-          body.style.left = bodyLockStyles.left;
-          body.style.right = bodyLockStyles.right;
-          body.style.width = bodyLockStyles.width;
-        }
-        var root = document.documentElement;
-        var previousScrollBehavior = root.style.scrollBehavior;
-        root.style.scrollBehavior = 'auto';
-        window.scrollTo(0, lightboxScrollY);
-        root.style.scrollBehavior = previousScrollBehavior;
-        bodyLockStyles = null;
-      }
-      function visibleGalleryItems() { return window.matchMedia('(max-width: 600px)').matches ? 2 : 5; }
-      function originalGalleryItems(track) {
-        return Array.from(track.children).filter(function (item) { return !item.hasAttribute('data-gallery-clone'); });
-      }
-      function allGalleryItems(track) { return Array.from(track.children); }
-      function galleryIndex(track) {
-        var state = galleryStates.get(track);
-        var originals = originalGalleryItems(track);
-        var items = allGalleryItems(track);
-        if (!state || !originals.length) return 0;
-        var step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : 0;
-        var loopWidth = state.loopWidth || (items[originals.length] && items[originals.length].offsetLeft) || 0;
-        var position = track.scrollLeft;
-        if (loopWidth > 0) position = ((position % loopWidth) + loopWidth) % loopWidth;
-        if (!step) return 0;
-        return Math.round(position / step) % originals.length;
-      }
-      function updateGalleryPosition(track) {
-        var state = galleryStates.get(track);
-        if (!state || !state.positionLabel) return;
-        var originals = originalGalleryItems(track);
-        if (!originals.length) return;
-        var currentIndex = state.navigationIndex === null ? galleryIndex(track) : state.navigationIndex;
-        if (state.currentIndex === currentIndex) return;
-        state.currentIndex = currentIndex;
-        state.positionLabel.textContent = (currentIndex + 1) + ' / ' + originals.length;
-      }
-      function scrollToGalleryItem(track, item, behavior) {
-        if (!item) return;
-        if (typeof track.scrollTo === 'function') track.scrollTo({ left: item.offsetLeft, behavior: behavior });
-        else track.scrollLeft = item.offsetLeft;
-      }
-      function scheduleGalleryResume(track, delay) {
-        var state = galleryStates.get(track);
-        if (!state) return;
-        clearTimeout(state.resumeTimer);
-        state.resumeTimer = window.setTimeout(function () {
-          state.resumeTimer = null;
-          startGallery(track);
-        }, delay || 1800);
-      }
-      function moveGallery(track, direction) {
-        var state = galleryStates.get(track);
-        var originals = originalGalleryItems(track);
-        var items = allGalleryItems(track);
-        if (!state || originals.length < 2) return;
-        pauseGallery(track);
-        var currentIndex = state.navigationIndex === null ? galleryIndex(track) : state.navigationIndex;
-        var targetIndex = currentIndex + direction;
-        var wrappedBackward = targetIndex < 0;
-        if (wrappedBackward && items[originals.length]) {
-          track.scrollLeft = state.loopWidth || items[originals.length].offsetLeft;
-        }
-        if (targetIndex < 0) targetIndex = originals.length - 1;
-        var wrappedForward = targetIndex >= originals.length;
-        var target = wrappedForward && items[originals.length] ? items[originals.length] : wrappedBackward && items[originals.length * 2 - 1] ? items[originals.length * 2 - 1] : originals[targetIndex % originals.length];
-        state.navigationIndex = ((targetIndex % originals.length) + originals.length) % originals.length;
-        updateGalleryPosition(track);
-        scrollToGalleryItem(track, target, 'smooth');
-        clearTimeout(state.wrapTimer);
-        state.wrapTimer = window.setTimeout(function () {
-          if (wrappedForward && items[originals.length]) scrollToGalleryItem(track, originals[0], 'auto');
-          if (wrappedBackward && items[originals.length * 2 - 1]) scrollToGalleryItem(track, originals[originals.length - 1], 'auto');
-          updateGalleryPosition(track);
-        }, 500);
-        window.setTimeout(function () { updateGalleryPosition(track); }, 450);
-        scheduleGalleryResume(track);
-      }
-      function setupGalleryControls(track) {
-        var gallery = track.parentElement;
-        var controls = gallery.querySelector('.timeline-gallery-controls');
-        if (controls) controls.remove();
-        controls = document.createElement('div');
-        controls.className = 'timeline-gallery-controls';
-        controls.setAttribute('aria-label', (track.getAttribute('aria-label') || 'Gallery') + ' controls');
-        var previous = document.createElement('button');
-        previous.className = 'timeline-gallery-control';
-        previous.type = 'button';
-        previous.setAttribute('aria-label', 'Previous image');
-        previous.textContent = '←';
-        var position = document.createElement('span');
-        position.className = 'timeline-gallery-position';
-        position.setAttribute('aria-live', 'polite');
-        var next = document.createElement('button');
-        next.className = 'timeline-gallery-control';
-        next.type = 'button';
-        next.setAttribute('aria-label', 'Next image');
-        next.textContent = '→';
-        controls.append(previous, position, next);
-        gallery.appendChild(controls);
-        var state = galleryStates.get(track);
-        state.positionLabel = position;
-        controls.addEventListener('pointerdown', function () { pauseGallery(track); });
-        previous.addEventListener('click', function () { moveGallery(track, -1); });
-        next.addEventListener('click', function () { moveGallery(track, 1); });
-        updateGalleryPosition(track);
-      }
-      function syncGalleryLoop(track) {
-        var originals = originalGalleryItems(track);
-        var clones = Array.from(track.querySelectorAll('[data-gallery-clone="true"]'));
-        var shouldLoop = originals.length > visibleGalleryItems();
-        if (shouldLoop && !clones.length) {
-          originals.forEach(function (item) {
-            var clone = item.cloneNode(true);
-            clone.setAttribute('data-gallery-clone', 'true');
-            clone.setAttribute('aria-hidden', 'true');
-            clone.tabIndex = -1;
-            track.appendChild(clone);
-          });
-        } else if (!shouldLoop && clones.length) {
-          clones.forEach(function (clone) { clone.remove(); });
-          track.scrollLeft = 0;
-        }
-      }
-      function pauseGallery(track) {
-        var state = galleryStates.get(track);
-        if (!state) return;
-        clearTimeout(state.resumeTimer);
-        state.resumeTimer = null;
-        if (state.frame) cancelAnimationFrame(state.frame);
-        state.frame = null;
-        state.last = 0;
-        state.position = track.scrollLeft;
-        track.classList.remove('is-auto-scrolling');
-      }
-      function startGallery(track) {
-        var gallery = track.parentElement;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || gallery.matches(':hover')) return;
-        var state = galleryStates.get(track);
-        if (!state || state.resumeTimer) return;
-        var clone = track.querySelector('[data-gallery-clone="true"]');
-        if (!clone || track.scrollWidth <= track.clientWidth + 1) return;
-        state.navigationIndex = null;
-        updateGalleryPosition(track);
-        pauseGallery(track);
-        state.loopWidth = clone.offsetLeft;
-        state.position = track.scrollLeft >= state.loopWidth ? track.scrollLeft - state.loopWidth : track.scrollLeft;
-        track.classList.add('is-auto-scrolling');
-        function drift(timestamp) {
-          if (!state.last) state.last = timestamp;
-          var elapsed = Math.min(timestamp - state.last, 50);
-          state.last = timestamp;
-          state.position += gallerySpeed * elapsed / 1000;
-          if (state.position >= state.loopWidth) state.position -= state.loopWidth;
-          track.scrollLeft = state.position;
-          state.frame = requestAnimationFrame(drift);
-        }
-        state.frame = requestAnimationFrame(drift);
-      }
-      galleryTracks.forEach(function (track) {
-        galleryStates.set(track, { frame: null, last: 0, position: 0, loopWidth: 0, currentIndex: -1, navigationIndex: null, positionLabel: null, resumeTimer: null, wrapTimer: null });
-        syncGalleryLoop(track);
-        setupGalleryControls(track);
-        var gallery = track.parentElement;
-        gallery.addEventListener('mouseenter', function () { pauseGallery(track); });
-        gallery.addEventListener('mouseleave', function () { startGallery(track); });
-        track.addEventListener('focusin', function () { pauseGallery(track); });
-        track.addEventListener('focusout', function () { startGallery(track); });
-        track.addEventListener('pointerdown', function () {
-          galleryStates.get(track).navigationIndex = null;
-          pauseGallery(track);
-        });
-        track.addEventListener('pointerup', function (event) {
-          var item = event.target.closest('.timeline-gallery-item');
-          if (event.pointerType !== 'mouse' || !item) scheduleGalleryResume(track);
-        });
-        track.addEventListener('pointercancel', function () { scheduleGalleryResume(track); });
-        track.addEventListener('wheel', function () {
-          galleryStates.get(track).navigationIndex = null;
-          pauseGallery(track);
-          scheduleGalleryResume(track);
-        }, { passive: true });
-        track.addEventListener('scroll', function () { updateGalleryPosition(track); }, { passive: true });
-        track.addEventListener('click', function (event) {
-          var button = event.target.closest('.timeline-gallery-item');
-          if (!button || !track.contains(button)) return;
-          var image = button.querySelector('img');
-          lightboxImage.src = image.src;
-          lightboxImage.alt = image.alt;
-          activeGalleryTrack = track;
-          lightbox.classList.remove('is-closing');
-          lightbox.hidden = false;
-          window.requestAnimationFrame(function () { lightbox.classList.add('is-open'); });
-          lockPageScroll();
-          pauseGallery(track);
-        });
-        track.addEventListener('keydown', function (event) {
-          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-            event.preventDefault();
-            moveGallery(track, event.key === 'ArrowRight' ? 1 : -1);
-          }
-        });
-        updateGalleryPosition(track);
-        startGallery(track);
-      });
-      function closeLightbox() {
-        if (lightbox.hidden || lightbox.classList.contains('is-closing')) return;
-        lightbox.classList.remove('is-open');
-        lightbox.classList.add('is-closing');
-        clearTimeout(lightboxCloseTimer);
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) finishLightboxClose();
-        else lightboxCloseTimer = window.setTimeout(finishLightboxClose, 300);
-      }
-      function finishLightboxClose() {
-        if (lightbox.hidden || !lightbox.classList.contains('is-closing')) return;
-        clearTimeout(lightboxCloseTimer);
-        lightbox.hidden = true;
-        lightbox.classList.remove('is-closing');
-        lightboxImage.removeAttribute('src');
-        unlockPageScroll();
-        if (activeGalleryTrack) scheduleGalleryResume(activeGalleryTrack, 900);
-        activeGalleryTrack = null;
-      }
-      lightbox.addEventListener('transitionend', function (event) {
-        if (event.target === lightbox && event.propertyName === 'opacity' && lightbox.classList.contains('is-closing')) finishLightboxClose();
-      });
-      window.addEventListener('resize', function () {
-        galleryTracks.forEach(function (track) { pauseGallery(track); syncGalleryLoop(track); startGallery(track); });
-      });
-      document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', function (event) { if (event.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') closeLightbox(); });
-    })();
-  </script>
+  <script defer src="assets/js/home-intro.js"></script>
+  <script defer src="assets/js/about-deck.js"></script>
+  <script defer src="assets/js/about-gallery.js"></script>
 </body>
 </html>

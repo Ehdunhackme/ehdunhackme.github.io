@@ -1,4 +1,4 @@
-/* Justify prose site-wide; leave titles, controls, and short metadata alone. */
+/* Natural prose alignment without stretched spacing or automatic word breaks. */
 main :is(
   p:not(.eyebrow):not(.tagline):not(.paper-explanation-note),
   dd,
@@ -10,8 +10,8 @@ main :is(
   .paper-info > em,
   .coauthors
 ) {
-  text-align: justify;
-  text-align-last: start;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: start;
+  text-align-last: auto;
+  text-justify: auto;
+  hyphens: none;
 }

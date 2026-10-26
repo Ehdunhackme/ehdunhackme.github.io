@@ -172,20 +172,6 @@ html.dark :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card
   border-color: var(--card-outline);
   box-shadow: none;
 }
-/* Reset older writing-list dimming so it cannot compete with hover priority. */
-.writing-card-list:has(.writing-section-link:hover) .writing-section-link:not(:hover),
-.writing-card-list:has(.writing-section-link:focus-within) .writing-section-link:not(:focus-within),
-.writing-card-list:has(.writing-section-link:focus-visible) .writing-section-link:not(:focus-visible) { opacity: 1; }
-@media (hover: hover) and (pointer: fine) {
-  body:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover)
-  :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:hover) { opacity: .28; }
-  :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover {
-    opacity: 1;
-  }
-}
-/* Keyboard focus is the fallback, never a second active card beside hover. */
-body:not(:has(:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):hover)):has(.paper-showcase :focus-visible, .writing-card-list .writing-section-link:focus-visible)
-:is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link):not(:focus-within) { opacity: .28; }
 @media (prefers-reduced-motion: reduce) {
   :is(.paper-showcase-scope .paper-list > .paper-showcase, .writing-card-list .writing-section-link) { transition: none; }
 }

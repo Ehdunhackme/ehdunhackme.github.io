@@ -1,0 +1,30 @@
+/* Shared framing for the quiet homepage and the separate About page. */
+body.page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.page-layout > .site-header,
+.page-layout > .site-footer { flex: 0 0 auto; }
+.page-layout > .profile { flex: 1 0 auto; padding-bottom: 3rem; }
+.page-layout > .site-footer { margin-top: auto; }
+.home-introduction { padding-top: 1.2rem; }
+.home-introduction p:last-child { margin-bottom: 0; }
+.about-page-header h1 {
+  margin: 0;
+  color: var(--strong);
+  font: 600 clamp(1.6rem, 4vw, 2.1rem)/1.2 "Geist", Arial, sans-serif;
+  letter-spacing: -.035em;
+}
+.about-page > .content-section { margin-top: 2.75rem; padding-top: 0; scroll-margin-top: 1.5rem; }
+.about-reader .motivation-panel,
+.about-reader .honors-panel { padding: 0; }
+.about-reader .timeline-panel { padding-bottom: 0; }
+.about-reader .timeline-gallery-track { scroll-margin-top: 1rem; }
+.about-reader .honors-list > li { font-size: .88rem; }
+@media (max-width: 600px) {
+  .page-layout .main-nav { gap: clamp(.55rem, 3vw, 1rem); }
+  .about-page > .content-section { margin-top: 2.2rem; }
+  .home-introduction { padding-top: 1rem; }
+}
