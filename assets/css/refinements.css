@@ -19,7 +19,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   text-wrap: pretty;
 }
 .home-introduction p { margin-bottom: 1.35rem; font-size: .9rem; line-height: 1.85; }
-#about.home-introduction > p:nth-of-type(-n + 2) { text-align: justify; }
+#about.home-introduction > p:nth-of-type(-n + 2) { text-align: start; }
 .home-introduction .workplaces { margin-top: 1.6rem; font-size: .82rem; line-height: 1.9; }
 .home-introduction .intro-highlights-lead { margin-bottom: .65rem; }
 .site-header:has(.main-nav) { justify-content: space-between; }
@@ -33,7 +33,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   color: var(--secondary, var(--fg-secondary));
   font-size: .9rem;
   line-height: 1.85;
-  text-align: justify;
+  text-align: start;
 }
 .intro-highlights li { padding-left: .25rem; margin-bottom: .5rem; text-wrap: pretty; }
 .intro-highlights li:last-child { margin-bottom: 0; }
@@ -153,12 +153,12 @@ html.dark #about-deck .deck-label { color: #fff; }
 @media (max-width: 600px) {
   :root { --page-top: 1.75rem; --section-gap: 2rem; }
   #about-deck .deck-quote { max-width: 34ch; white-space: normal; text-wrap: balance; }
-  #about.home-introduction > p:nth-of-type(-n + 2) { text-align: justify; }
-  .intro-highlights { text-align: justify; }
+  #about.home-introduction > p:nth-of-type(-n + 2) { text-align: start; }
+  .intro-highlights { text-align: start; }
   .home-introduction p { font-size: .86rem; }
   .intro-highlights { font-size: .86rem; }
   .home-introduction .workplaces { font-size: .8rem; }
-  main :is(p, dd, blockquote, .timeline-entry li, .writing-content li, .project-description) { text-align: justify; }
+  main :is(p, dd, blockquote, .timeline-entry li, .writing-content li, .project-description) { text-align: start; }
   .home-page .deck-label { font-size: .74rem; }
   .playing-card { filter: drop-shadow(3px 5px 0 rgba(0,0,0,.22)); }
 }
