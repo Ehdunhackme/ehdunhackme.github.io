@@ -16,7 +16,7 @@ html.page-loading body > :is(main, .site-footer) { visibility: hidden; }
   to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 body > :is(main, .site-footer) {
-  animation: site-entry-reveal .5s cubic-bezier(.22, 1, .36, 1) var(--entry-delay, 0s) backwards;
+  animation: site-entry-reveal .6s cubic-bezier(.22, 1, .36, 1) var(--entry-delay, 0s) backwards;
 }
 body > main { --entry-delay: .06s; }
 body > .site-footer { --entry-offset: 6px; --entry-delay: .12s; }
