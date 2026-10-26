@@ -22,7 +22,7 @@
   .deck-choice:hover .playing-card { transform: translateY(-12px) rotate(0deg); }
 }
 .about-reader { margin-top: 2rem; transform-origin: top center; scroll-margin-top: 1.5rem; }
-.deck-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.deck-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1rem; border-bottom: 0; }
 .deck-return { padding: .5rem 0; border: 0; background: none; color: var(--secondary); font: .76rem/1.5 "Geist Mono", monospace; cursor: pointer; }
 .deck-return:hover { color: var(--strong); }
 .deck-return:focus-visible { outline: 2px solid var(--muted); outline-offset: 5px; }
