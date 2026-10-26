@@ -224,7 +224,7 @@
           var button = event.target.closest('.timeline-gallery-item');
           if (!button || !track.contains(button)) return;
           var image = button.querySelector('img');
-          lightboxImage.src = image.src;
+          lightboxImage.src = image.dataset.full || image.src;
           lightboxImage.alt = image.alt;
           activeGalleryTrack = track;
           lightbox.classList.remove('is-closing');
