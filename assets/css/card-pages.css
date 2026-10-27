@@ -36,8 +36,8 @@
 .card-subpage :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link)::after {
   content: "";
   position: absolute;
-  width: .8rem;
-  height: .8rem;
+  width: .65rem;
+  height: .65rem;
   background-color: var(--accent);
   -webkit-mask: var(--page-suit) center / contain no-repeat;
   mask: var(--page-suit) center / contain no-repeat;
