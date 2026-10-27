@@ -78,7 +78,7 @@
     'beamline-straggling': {
       kind: 'project',
       url: 'https://github.com/bunchofcellulose/bl4s2026',
-      image: { file: 'beamline-straggling.png', width: 488, height: 366 },
+      image: { file: 'beamline-straggling.webp', width: 488, height: 366 },
       sections: [
         ['The idea', 'Protons passing through tungsten undergo many small deflections, producing a spread of outgoing angles called angular straggling. That spread contains information about the underlying collisions. Connecting the scattering cross section to the Fermi-Virtual Photon model offers a proposed route to estimating energy-dependent complex permittivity: the real and imaginary parts describing a material\'s electromagnetic response.'],
         ['From scattering angles to permittivity', 'Upstream and downstream wire-chamber pairs reconstruct incoming and outgoing proton tracks, while Cherenkov detectors support particle identification. Removing the baseline beam spread by deconvolution isolates the target\'s contribution. A Poisson-weighted multiple-scattering model then estimates a single-collision cross section; a relativistic angle-to-energy transformation and numerical inversion of the FVP relation connect it to permittivity. Geant4 simulations support the angular-distribution analysis.'],
@@ -88,7 +88,7 @@
     'magnetic-ring': {
       kind: 'project',
       url: 'https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring',
-      image: { file: 'magnetic-ring.png', width: 341, height: 356 },
+      image: { file: 'magnetic-ring.webp', width: 341, height: 356 },
       sections: [
         ['The idea', 'A ring magnet produces a field whose direction and strength change with position. Adding the contributions of many small current elements preserves the ring geometry instead of collapsing it into a single point source. This makes the field inside the opening and around the magnet directly comparable.'],
         ['Biot-Savart field mapping', 'Numerical summation of Biot-Savart contributions gives the magnetic field at points on an x-y grid. A vector plot shows field direction, while a heatmap shows field strength. Comparing nearby sampling positions reveals how sensitive the calculated field is to small spatial changes.'],
@@ -98,7 +98,7 @@
     'double-pendulum': {
       kind: 'project',
       url: 'https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum',
-      image: { file: 'double-pendulum.png', width: 364, height: 375 },
+      image: { file: 'double-pendulum.webp', width: 364, height: 375 },
       sections: [
         ['The idea', 'A double pendulum is mechanically simple but can produce remarkably complicated motion. Because the two arms influence one another through nonlinear dynamics, a small change in the starting configuration can lead to very different trajectories. It is a compact way to explore the difference between deterministic equations and easy long-term prediction.'],
         ['Coupled motion and numerical integration', 'The angles and angular velocities of the two arms form a coupled system of nonlinear equations. Runge-Kutta integration advances that state through small time steps, and the resulting positions trace each mass\'s path. Changing the initial angles or velocities allows nearby starting states to be compared as their trajectories evolve.'],
@@ -108,7 +108,7 @@
     'epecscan': {
       kind: 'project',
       url: 'https://github.com/Ehdunhackme/EPECscan',
-      image: { file: 'epecscan.png', width: 299, height: 298 },
+      image: { file: 'epecscan.webp', width: 299, height: 298 },
       sections: [
         ['The idea', 'Microscopy screening requires locating individual bacteria and identifying their growth stage, often with several cells in the same image. Object detection combines those tasks: a bounding box identifies where a cell is, and its label identifies the predicted stage. Confidence scores make the output more informative than a single whole-image classification.'],
         ['Detection and growth-stage classification', 'A modified YOLOv8m detector learns from annotated microscopy images to predict cell locations and growth-stage labels. Grad-CAM++ heatmaps provide a way to inspect image regions influencing predictions, while a Gradio interface supports trying new inputs. Labelled boxes and confidence scores expose the individual detections for review.'],
@@ -208,11 +208,13 @@
     var image = document.createElement('img');
     image.src = new URL(entry.image
       ? 'project-previews/' + entry.image.file
-      : 'paper-previews/' + id + '.png', assetBase).href;
+      : 'paper-previews/' + id + '.webp', assetBase).href;
     image.alt = (entry.kind === 'project' ? 'Preview of ' : 'First page of ') + title.textContent;
     image.width = entry.image ? entry.image.width : 480;
     image.height = entry.image ? entry.image.height : (tallPages.indexOf(id) === -1 ? 622 : 679);
-    image.loading = board.querySelector('.paper-thumbnail') ? 'lazy' : 'eager';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
     thumbnail.appendChild(image);
     row.insertBefore(thumbnail, info);
     var date = row.querySelector('.paper-date');
