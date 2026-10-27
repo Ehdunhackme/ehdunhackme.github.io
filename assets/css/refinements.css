@@ -10,6 +10,15 @@ html.dark {
   --accent-soft: rgba(195, 174, 223, .1);
 }
 body { font-kerning: normal; -webkit-font-smoothing: antialiased; }
+@keyframes site-entry-reveal {
+  from { opacity: 0; filter: blur(8px); transform: translateY(var(--entry-offset, 10px)); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+body > :is(main, .site-footer) {
+  animation: site-entry-reveal .5s cubic-bezier(.22, 1, .36, 1) var(--entry-delay, 0s) backwards;
+}
+body > main { --entry-delay: .06s; }
+body > .site-footer { --entry-offset: 6px; --entry-delay: .12s; }
 /* Neutral links keep their resting colours; hover and keyboard focus use purple. */
 a[href]:is(:hover, :focus-visible) { color: var(--accent) !important; text-decoration-color: var(--accent); }
 .writing-section-link:is(:hover, :focus-visible) .writing-section-title { color: var(--accent); }
@@ -164,6 +173,7 @@ html.dark #about-deck .deck-label { color: #fff; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  body > :is(main, .site-footer) { animation: none; }
   .playing-card, .quick-links a, .home-introduction a,
   .about-reader a, [data-focus-managed] [data-focus-item], .writing-content a, .about-org img, .workplaces img, .directory-search-field { transition: none; }
   .deck-choice:is(:hover, :focus-visible) .playing-card { transform: rotate(0deg); }
