@@ -399,3 +399,47 @@ h1 { font-weight: 500; }
   }
   .writing-post-shell { max-width: none; }
 }
+
+/* Keep the home card layout in the main stylesheet so it loads with the page.
+   about-deck.css remains as a legacy copy for cached HTML. */
+/* Pixel-art cards frame the navigation; long-form content keeps its normal typography. */
+.about-deck[hidden], .about-reader[hidden], .about-reader > [hidden] { display: none; }
+.home-page .intro-block[hidden], .home-page .home-introduction[hidden] { display: none; }
+.home-page .about-deck { margin-top: 2rem; scroll-margin-top: 1.5rem; }
+.deck-hand { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding: 4.5rem .8rem 2rem; }
+.deck-choice { --tilt: -7deg; display: flex; align-items: center; flex-direction: column; min-width: 0; padding: 0; border: 0; color: var(--strong); background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.deck-choice:nth-child(2) { --tilt: 2deg; }
+.deck-choice:nth-child(3) { --tilt: 8deg; }
+.playing-card { display: block; width: min(100%, 11.75rem); aspect-ratio: 120 / 168; perspective: 900px; transform: rotate(var(--tilt)); transition: transform .22s ease; filter: drop-shadow(6px 9px 0 rgba(0,0,0,.22)); }
+.card-turn { display: block; width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
+.card-front, .card-back { position: absolute; inset: 0; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.card-front img { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.card-back { display: grid; place-items: center; box-sizing: border-box; transform: rotateY(180deg); border: 6px solid #0e0d16; outline: 3px solid #74698c; outline-offset: -10px; background: repeating-conic-gradient(#403951 0% 25%, #332e45 0% 50%) 0 0 / 12px 12px; }
+.card-back span { padding: .4rem; color: #f3f0e8; background: #332e45; font: 700 1.7rem/1 monospace; letter-spacing: .1em; }
+.deck-label { display: block; margin-top: 2rem; font: 600 .82rem/1.5 "Geist Mono", monospace; text-align: center; text-wrap: balance; }
+.home-page .deck-hand { max-width: 34rem; margin: 0 auto; padding: 1.5rem .8rem 1rem; }
+.home-page .playing-card { width: min(100%, 9rem); }
+.home-page .deck-label { margin-top: 1.5rem; }
+.deck-choice:focus-visible { outline: 2px dashed var(--muted); outline-offset: 12px; border-radius: 2px; }
+.deck-choice:focus-visible .playing-card { transform: translateY(-12px) rotate(0deg); }
+@media (hover: hover) {
+  .deck-choice:hover .playing-card { transform: translateY(-12px) rotate(0deg); }
+}
+.about-reader { margin-top: 2rem; transform-origin: top center; scroll-margin-top: 1.5rem; }
+.deck-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.8rem; padding-bottom: 1rem; border-bottom: 0; }
+.deck-return { padding: .5rem 0; border: 0; background: none; color: var(--secondary); font: .76rem/1.5 "Geist Mono", monospace; cursor: pointer; }
+.deck-return:hover { color: var(--strong); }
+.deck-return:focus-visible { outline: 2px solid var(--muted); outline-offset: 5px; }
+.deck-chapter { color: var(--muted); font: .68rem/1.5 "Geist Mono", monospace; }
+.about-reader > .content-section { padding-top: 0; scroll-margin-top: 1.5rem; }
+.about-reader > .content-section:not([hidden]) + .content-section { margin-top: 2.75rem; }
+.about-reader > .content-section > h2:focus { outline: none; }
+@media (max-width: 600px) {
+  .deck-hand { gap: .8rem; padding: 3rem .25rem 1rem; }
+  .deck-label { font-size: .68rem; margin-top: 1.5rem; }
+  .playing-card { filter: drop-shadow(3px 5px 0 rgba(0,0,0,.22)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .playing-card { transition: none; }
+  .deck-choice:hover .playing-card, .deck-choice:focus-visible .playing-card { transform: rotate(0deg); }
+}

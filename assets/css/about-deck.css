@@ -1,4 +1,4 @@
-/* Pixel-art cards frame the navigation; long-form content keeps its normal typography. */
+/* Legacy copy for cached home pages; current home card styles live in site.css. */
 .about-deck[hidden], .about-reader[hidden], .about-reader > [hidden] { display: none; }
 .home-page .intro-block[hidden], .home-page .home-introduction[hidden] { display: none; }
 .home-page .about-deck { margin-top: 2rem; scroll-margin-top: 1.5rem; }
