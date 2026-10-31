@@ -55,6 +55,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   text-underline-offset: .22em;
   transition: color .18s ease, text-decoration-color .18s ease;
 }
+.home-introduction a[href] { color: var(--accent); }
 .home-introduction a:is(:hover, :focus-visible),
 .about-reader :is(p, li, blockquote) a:is(:hover, :focus-visible),
 .writing-content a:is(:hover, :focus-visible), .workplaces a:is(:hover, :focus-visible) {
