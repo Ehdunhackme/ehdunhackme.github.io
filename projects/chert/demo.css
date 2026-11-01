@@ -1,0 +1,23 @@
+:root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #ecece8; background: #101112; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; }
+header, footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 28px; font-size: 13px; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.muted, footer, #status, .disclosure { color: #a9aba8; }
+main { flex: 1; display: grid; align-content: center; }
+#welcome { max-width: 1080px; margin: 28px auto; padding: 0 28px; display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+.portrait { width: 100%; height: auto; display: block; border-radius: 24px; }
+h1 { font-size: clamp(36px, 5vw, 58px); letter-spacing: -0.045em; font-weight: 500; margin: 0 0 20px; }
+p { font-size: 16px; line-height: 1.6; margin: 0 0 24px; max-width: 40ch; }
+button { border: 0; border-radius: 999px; background: #e9ece4; color: #171a17; padding: 15px 23px; font: inherit; font-weight: 500; cursor: pointer; transition: background 160ms, transform 160ms; }
+button:hover { background: #fff; transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+button:disabled { opacity: .65; cursor: wait; }
+button:focus-visible, a:focus-visible { outline: 2px solid #c8d5bd; outline-offset: 5px; }
+#status { font-size: 13px; margin-top: 20px; }
+.disclosure { font-size: 12px; line-height: 1.6; margin-bottom: 0; }
+#call { border: 0; width: 100%; height: calc(100svh - 125px); min-height: 560px; }
+[hidden] { display: none !important; }
+@media (max-width: 700px) { header, footer { padding: 16px; font-size: 12px; } header .muted { display: none; } #welcome { grid-template-columns: 1fr; gap: 28px; padding: 0 20px; margin: 12px auto 32px; } .portrait { max-height: 38svh; object-fit: cover; } h1 { margin-bottom: 12px; } p { max-width: none; } footer { flex-wrap: wrap; } #call { min-height: 600px; height: calc(100svh - 115px); } }
+@media (prefers-reduced-motion: reduce) { button { transition: none; } button:hover { transform: none; } }

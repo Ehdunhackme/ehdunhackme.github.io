@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Try Chert, an experimental conversational video avatar demo by Dun Li Chan.">
+  <meta name="referrer" content="no-referrer">
+  <title>Chert demo · Dun Li Chan</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <header>
+    <a href="../">← Projects</a>
+    <span>Chert <span class="muted">/ video call</span></span>
+    <a href="https://github.com/cherthq/realtime-research" target="_blank" rel="noopener">Source ↗</a>
+  </header>
+  <main id="stage">
+    <section id="welcome" aria-labelledby="title">
+      <img class="portrait" src="portrait.png" alt="One of the ten reference avatars available in the demo" width="640" height="480">
+      <div class="intro">
+        <h1 id="title">Say hello.</h1>
+        <p>A live conversation with an AI avatar. Speak naturally, interrupt, or turn on your camera to show it something.</p>
+        <button id="join" type="button">Open demo <span aria-hidden="true">↗</span></button>
+        <p id="status" role="status" aria-live="polite">One call at a time. Microphone access is required; camera sharing is optional.</p>
+        <p class="disclosure">Experimental AI-generated video and voice. Calls can last up to ten minutes. Audio and enabled camera input are processed by the demo’s AI providers.</p>
+      </div>
+    </section>
+    <iframe id="call" title="Chert video call" allow="camera; microphone; autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer" hidden></iframe>
+  </main>
+  <footer>
+    <span>Built with Chert · AvatarForever, LiveKit and ElevenLabs</span>
+    <a href="https://chert.dunlichan.com" target="_blank" rel="noopener noreferrer">Open in a separate tab ↗</a>
+  </footer>
+  <script src="demo.js" defer></script>
+</body>
+</html>
