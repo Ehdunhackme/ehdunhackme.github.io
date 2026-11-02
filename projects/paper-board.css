@@ -32,6 +32,18 @@
 .paper-showcase-scope .paper-thumbnail img { display: block; width: 100%; height: auto; }
 .paper-showcase-scope .project-thumbnail { box-shadow: none; }
 .paper-showcase-scope .project-thumbnail img { object-fit: contain; }
+.paper-showcase-scope #chert .project-thumbnail {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.paper-showcase-scope .project-title-link {
+  --link-color: #2563eb;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: .18em;
+}
+html.dark .paper-showcase-scope .project-title-link { --link-color: #8ab4ff; }
 .paper-showcase-scope .paper-showcase .paper-info { grid-column: 2; }
 .paper-showcase-scope .paper-showcase .paper-info > strong { font-size: .98rem; line-height: 1.5; }
 .paper-showcase-scope .paper-showcase .paper-links {
