@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dunlichan.com/sitemap.xml
