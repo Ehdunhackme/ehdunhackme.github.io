@@ -1,2 +1,11 @@
 # Playwright MCP browser artifacts (console logs / page snapshots)
 .playwright-mcp/
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+playwright-report/
+test-results/
+.migration/
+.env*.local
