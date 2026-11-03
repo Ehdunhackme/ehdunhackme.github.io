@@ -1,18 +1,12 @@
-"use client";
-import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import type { Metadata } from "next";
+import { AboutContent } from "@/content/about";
+
+export const metadata: Metadata = {
+  title: "More about me",
+  description: "Dun Li Chan's journey, motivations, honours and awards.",
+  alternates: { canonical: "/about/" },
+};
+
 export default function About() {
-  const router = useRouter();
-  useEffect(() => {
-    router.replace("/" + (location.hash || "#about-deck"));
-  }, [router]);
-  return (
-    <main className="profile">
-      <p>
-        About me is now on the home page.{" "}
-        <Link href="/#about-deck">Explore the cards →</Link>
-      </p>
-    </main>
-  );
+  return <AboutContent />;
 }

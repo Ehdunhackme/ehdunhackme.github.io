@@ -3,6 +3,7 @@
   --accent: #171717;
   --accent-soft: rgba(23, 23, 23, 0.12);
   --link-color: #171717;
+  --link-highlight: rgba(241, 202, 69, 0.3);
   --page-top: 2.25rem;
   --section-gap: 2.5rem;
 }
@@ -10,6 +11,7 @@ html.dark {
   --accent: #fff;
   --accent-soft: rgba(255, 255, 255, 0.1);
   --link-color: #fff;
+  --link-highlight: rgba(243, 208, 92, 0.23);
 }
 .site-shell {
   font-kerning: normal;
@@ -112,6 +114,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   font-size: 0.75em;
 }
 .home-introduction a,
+.social-links a,
 .about-reader :is(p, li, blockquote) a,
 .writing-content a,
 .workplaces a {
@@ -123,11 +126,63 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
     text-decoration-color 0.18s ease;
 }
 .home-introduction a:is(:hover, :focus-visible),
+.social-links a:is(:hover, :focus-visible),
 .about-reader :is(p, li, blockquote) a:is(:hover, :focus-visible),
 .writing-content a:is(:hover, :focus-visible),
 .workplaces a:is(:hover, :focus-visible) {
   color: var(--link-color);
   text-decoration-color: var(--link-color);
+}
+/* The entire yellow highlight fades in together, including wrapped lines. */
+:is(
+  .home-introduction a,
+  .social-links a,
+  .about-reader :is(p, li, blockquote) a,
+  .writing-content :is(p, li, blockquote) a,
+  .paper-links a,
+  .project-title-link
+) {
+  background-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition:
+    background-color 0.18s ease-out,
+    color 0.18s ease,
+    text-decoration-color 0.18s ease;
+}
+:is(
+  .home-introduction a,
+  .social-links a,
+  .about-reader :is(p, li, blockquote) a,
+  .writing-content :is(p, li, blockquote) a,
+  .paper-links a,
+  .project-title-link
+):is(:focus-visible, :active) {
+  background-color: var(--link-highlight);
+}
+@media (hover: hover) {
+  :is(
+    .home-introduction a,
+    .social-links a,
+    .about-reader :is(p, li, blockquote) a,
+    .writing-content :is(p, li, blockquote) a,
+    .paper-links a,
+    .project-title-link
+  ):hover {
+    background-color: var(--link-highlight);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .home-introduction a,
+    .social-links a,
+    .about-reader :is(p, li, blockquote) a,
+    .writing-content :is(p, li, blockquote) a,
+    .paper-links a,
+    .project-title-link
+  ) {
+    transition: none;
+  }
 }
 .about-org img,
 .workplaces img {
@@ -199,7 +254,7 @@ html .writing-content a:is(:hover, :focus-visible) {
 .main-nav a:focus-visible,
 .quick-links a:focus-visible,
 .deck-return:focus-visible,
-.deck-choice:focus-visible {
+.about-section-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
@@ -305,66 +360,14 @@ html.dark .paper-links a {
 .about-reader > .content-section > h2 {
   margin-bottom: 1.6rem;
 }
-.deck-choice {
-  --tilt: -5deg;
-}
-.deck-choice:nth-child(2) {
-  --tilt: 0deg;
-}
-.deck-choice:nth-child(3) {
-  --tilt: 5deg;
-}
-.playing-card {
-  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.18));
-  transition: transform 0.24s cubic-bezier(0.22, 0.7, 0.25, 1);
-}
-.home-page .deck-label {
-  color: var(--strong);
-  font:
-    500 0.82rem/1.5 var(--font-jetbrains),
-    monospace;
-  letter-spacing: -0.015em;
-}
-.deck-choice:focus-visible .playing-card {
-  transform: translateY(-4px) rotate(0deg);
-}
 .deck-toolbar {
   padding-bottom: 1.15rem;
   margin-bottom: 1.75rem;
-}
-#about-deck .deck-quote {
-  max-width: none;
-  margin: 1.25rem auto 0;
-  padding: 0;
-  border: 0;
-  color: var(--muted);
-  font:
-    400 clamp(0.78rem, 1.7vw, 0.86rem)/1.7 var(--font-jetbrains),
-    monospace;
-  text-align: center;
-  text-align-last: auto;
-  white-space: nowrap;
-}
-#about-deck .deck-quote-ending {
-  white-space: nowrap;
-}
-html.dark #about-deck .deck-label {
-  color: #fff;
-}
-@media (hover: hover) {
-  .deck-choice:hover .playing-card {
-    transform: translateY(-4px) rotate(0deg);
-  }
 }
 @media (max-width: 600px) {
   :root {
     --page-top: 1.75rem;
     --section-gap: 2rem;
-  }
-  #about-deck .deck-quote {
-    max-width: 34ch;
-    white-space: normal;
-    text-wrap: balance;
   }
   #about.home-introduction > p:nth-of-type(-n + 2) {
     text-align: start;
@@ -392,12 +395,6 @@ html.dark #about-deck .deck-label {
     ) {
     text-align: start;
   }
-  .home-page .deck-label {
-    font-size: 0.74rem;
-  }
-  .playing-card {
-    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -406,9 +403,9 @@ html.dark #about-deck .deck-label {
   .site-shell > :is(main, .site-footer) {
     animation: none;
   }
-  .playing-card,
   .quick-links a,
   .home-introduction a,
+  .social-links a,
   .about-reader a,
   [data-focus-managed] [data-focus-item],
   .writing-content a,
@@ -416,8 +413,5 @@ html.dark #about-deck .deck-label {
   .workplaces img,
   .directory-search-field {
     transition: none;
-  }
-  .deck-choice:is(:hover, :focus-visible) .playing-card {
-    transform: rotate(0deg);
   }
 }

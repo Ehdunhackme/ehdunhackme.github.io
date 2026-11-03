@@ -86,44 +86,47 @@ test("project content is pre-rendered, searchable, and explanations animate both
   await expect(details).not.toHaveAttribute("open", "");
 });
 
-test("all three cards, browser back/forward, deep links and gallery work", async ({
+test("about chapters, browser history, legacy links and gallery work", async ({
   page,
+  request,
 }) => {
-  await page.goto("/#about-deck");
+  const html = await (await request.get("/")).text();
+  expect(html).not.toContain("timeline-gallery");
+  await page.goto("/");
   await page.waitForLoadState("networkidle");
-  for (const [id, label] of [
-    ["more-about-me", "My journey timeline"],
-    ["motivations", "My motivations"],
-    ["honours", "Honours & awards"],
-  ]) {
-    await page.getByRole("button", { name: label, exact: true }).click();
-    await expect(page.locator("#about-reader")).toHaveAttribute(
-      "aria-busy",
-      "false",
-    );
-    await expect(page.locator(`#${id}`)).toBeVisible();
-    await expect(page.locator(".home-intro-content")).toBeHidden();
-    if (id === "motivations") {
-      await expect(
-        page.getByText("There are two things I care most about solving:"),
-      ).toHaveCount(0);
-      await expect(page.locator(".motivation-priorities")).toHaveCount(0);
-      await expect(page.locator("#motivation-education")).toBeVisible();
-      await expect(page.locator("#motivation-ai")).toBeVisible();
-    }
-    await page.goBack();
-    await expect(page.locator("#about-reader")).toBeHidden();
-    await expect(page.locator("#about-deck")).toHaveAttribute(
-      "aria-busy",
-      "false",
-    );
-    await expect(page.locator(".home-introduction")).toBeVisible();
-  }
+  await expect(page.locator("main .about-link-list")).toHaveCount(0);
+  await expect(page.locator("main #about-reader")).toHaveCount(0);
+  await page
+    .getByRole("navigation", { name: "Main navigation" })
+    .getByRole("link", { name: "More about me" })
+    .click();
+  await expect(page).toHaveURL(/\/about\/$/);
+  await expect(page.locator(".site-header [aria-current=page]")).toHaveText(
+    "More about me",
+  );
+  await expect(page.locator("#more-about-me")).toBeVisible();
+  const index = page.getByRole("navigation", { name: "About sections" });
+  await index.getByRole("link", { name: "Motivations", exact: true }).click();
+  await expect(page.locator("#motivations")).toBeVisible();
+  await expect(page.locator("#more-about-me")).toBeHidden();
+  await expect(page.locator("#motivation-education")).toBeVisible();
+  await expect(page.locator("#motivation-ai")).toBeVisible();
+  await expect(page.locator(".motivation-priorities")).toHaveCount(0);
+  await index
+    .getByRole("link", { name: "Honours & awards", exact: true })
+    .click();
+  await expect(page.locator("#honours")).toBeVisible();
+  await expect(page.locator("#motivations")).toBeHidden();
+  await expect(page.locator(".about-reader > section:visible")).toHaveCount(1);
+  await page.goBack();
+  await expect(page.locator("#motivations")).toBeVisible();
   await page.goForward();
   await expect(page.locator("#honours")).toBeVisible();
+  await page.reload();
+  await expect(page.locator("#honours")).toBeVisible();
   await page.goto("/#more-about-me");
+  await expect(page).toHaveURL(/\/about\/#more-about-me$/);
   await page.waitForLoadState("networkidle");
-  await expect(page.locator("#more-about-me")).toBeVisible();
   const gallery = page.locator(".timeline-gallery").first();
   await gallery.getByRole("button", { name: "Next image" }).click();
   await expect(gallery.locator(".timeline-gallery-position")).toHaveText(
@@ -134,14 +137,17 @@ test("all three cards, browser back/forward, deep links and gallery work", async
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).toBeHidden();
   await expect(page.locator("#more-about-me")).toBeVisible();
+  await page.goto("/about/#motivation-ai");
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator("#motivations")).toBeVisible();
+  await expect(page.locator("#motivation-ai")).toBeInViewport();
   await page
-    .getByRole("button", { name: "Back to the cards", exact: false })
+    .getByRole("navigation", { name: "Main navigation" })
+    .getByRole("link", { name: "Home", exact: true })
     .click();
-  await expect(page.locator("#about-deck")).toHaveAttribute(
-    "aria-busy",
-    "false",
-  );
+  await expect(page.locator(".home-introduction")).toBeVisible();
   await page.locator(".journey-link").click();
+  await expect(page).toHaveURL(/\/about\/#more-about-me$/);
   await expect(page.locator("#more-about-me")).toBeVisible();
 });
 
@@ -163,6 +169,7 @@ test("writings search, theme persistence and layouts at viewport width", async (
   await page.getByRole("button", { name: "Switch to dark mode" }).click();
   for (const path of [
     "/",
+    "/about/",
     "/projects/",
     "/writings/",
     "/writings/my-opinionated-guide-to-starting-research-early/",
@@ -188,32 +195,32 @@ test("old HTML URLs and alternate routes redirect without losing anchors", async
   await expect(page.locator("#platonic-representation")).toBeVisible();
   await page.goto("/about/index.html#motivations");
   await page.waitForLoadState("networkidle");
-  await expect(page).toHaveURL(/\/#motivations$/);
+  await expect(page).toHaveURL(/\/about\/#motivations$/);
   await expect(page.locator("#motivations")).toBeVisible();
   await page.goto("/papers/");
   await page.waitForLoadState("networkidle");
   await expect(page).toHaveURL(/\/projects\/#papers-heading$/);
 });
 
-test("reduced motion disables entrance and card animations", async ({
+test("reduced motion disables page and chapter animations", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/about/");
   await page.waitForLoadState("networkidle");
   expect(
     await page.locator("main").evaluate((el) => el.getAnimations().length),
   ).toBe(0);
-  await page
-    .getByRole("button", { name: "My motivations", exact: true })
-    .click();
-  await expect(page.locator("#about-reader")).toHaveAttribute(
-    "aria-busy",
-    "false",
-  );
+  const link = page
+    .getByRole("navigation", { name: "About sections" })
+    .getByRole("link", { name: "Motivations", exact: true });
+  await link.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#motivations")).toBeVisible();
+  await expect(page.locator("#motivations-heading")).toBeFocused();
   expect(
     await page
-      .locator("#about-reader")
+      .locator("#motivations")
       .evaluate((el) => el.getAnimations().length),
   ).toBe(0);
 });

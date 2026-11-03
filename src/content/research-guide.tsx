@@ -14,15 +14,6 @@ export function ResearchGuideContent() {
               {"19 Sep 2026"}
             </time>
           </div>{" "}
-          <span className={"card-page-emblem"} aria-hidden={"true"}>
-            <img
-              src={"/assets/cards/diamond.svg"}
-              alt={""}
-              width={"120"}
-              height={"168"}
-              loading="lazy"
-            />
-          </span>{" "}
         </header>{" "}
         <p>{"My research journey started in a non-traditional way."}</p>{" "}
         <p>

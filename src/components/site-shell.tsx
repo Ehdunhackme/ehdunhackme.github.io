@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { KualaLumpurSkyline } from "./kl-skyline";
 import {
   ContactLanguageProvider,
   ContactLanguageSwitch,
@@ -9,13 +10,15 @@ import {
 
 const links = [
   ["/", "Home"],
+  ["/about/", "More about me"],
   ["/projects/", "Projects"],
   ["/writings/", "Writings"],
 ] as const;
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isDemo = pathname.startsWith("/projects/chert");
-  const home = pathname === "/" || pathname.startsWith("/about");
+  const home = pathname === "/";
+  const about = pathname.startsWith("/about");
   const article =
     pathname.startsWith("/writings/") && pathname !== "/writings/";
   const [dark, setDark] = useState(false);
@@ -49,7 +52,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }
   const classes = isDemo
     ? "demo-shell"
-    : `site-shell ${home || article ? "home-style page-layout" : "standard-style directory-layout"} ${home ? "home-page" : ""} ${pathname.startsWith("/projects") || pathname.startsWith("/writings") ? "card-subpage" : ""} ${pathname.startsWith("/writings") ? "card-subpage--writing" : ""}`;
+    : `site-shell ${home || about || article ? "home-style page-layout" : "standard-style directory-layout"} ${home ? "home-page" : ""} ${about ? "about-route" : ""} ${pathname.startsWith("/projects") || pathname.startsWith("/writings") ? "card-subpage" : ""} ${pathname.startsWith("/writings") ? "card-subpage--writing" : ""}`;
   return (
     <ContactLanguageProvider>
       <div className={classes}>
@@ -89,7 +92,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
         {!isDemo && (
           <footer className="site-footer">
-            <span>© 2026 Dun Li Chan</span>
+            <KualaLumpurSkyline />
           </footer>
         )}
       </div>

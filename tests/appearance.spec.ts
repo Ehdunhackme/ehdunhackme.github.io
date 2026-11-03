@@ -5,7 +5,7 @@ test("content links inherit their text colour and brighten on keyboard focus acr
 }) => {
   for (const [path, selector] of [
     ["/", ".home-introduction a"],
-    ["/#more-about-me", ".timeline-entry a"],
+    ["/about/", ".timeline-entry a"],
     ["/projects/", ".paper-links a"],
     [
       "/writings/my-opinionated-guide-to-starting-research-early/",
@@ -14,11 +14,6 @@ test("content links inherit their text colour and brighten on keyboard focus acr
   ]) {
     await page.goto(path);
     await page.waitForLoadState("networkidle");
-    if (path.includes("#"))
-      await expect(page.locator("#about-reader")).toHaveAttribute(
-        "aria-busy",
-        "false",
-      );
     const link = page.locator(selector).first();
     await expect(link).toBeVisible();
     const inherited = await link.evaluate(

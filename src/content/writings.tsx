@@ -14,15 +14,6 @@ export function WritingsContent() {
               {"Some reflections I've picked up along the journey."}
             </p>
           </div>{" "}
-          <span className={"card-page-emblem"} aria-hidden={"true"}>
-            <img
-              src={"/assets/cards/diamond.svg"}
-              alt={""}
-              width={"120"}
-              height={"168"}
-              loading="lazy"
-            />
-          </span>{" "}
         </header>
       }
       groups={[

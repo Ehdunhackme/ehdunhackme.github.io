@@ -31,15 +31,6 @@ export function ProjectsContent() {
               {"Research, papers, experiments, and things I've built."}
             </p>
           </div>{" "}
-          <span className={"card-page-emblem"} aria-hidden={"true"}>
-            <img
-              src={"/assets/cards/club.svg"}
-              alt={""}
-              width={"120"}
-              height={"168"}
-              loading="lazy"
-            />
-          </span>{" "}
         </header>
       }
       groups={[

@@ -35,18 +35,6 @@
   margin: 0.7rem 0 0;
   line-height: 1.65;
 }
-.card-page-emblem {
-  display: block;
-  flex: 0 0 3.5rem;
-  width: 3.5rem;
-  transform: rotate(7deg);
-}
-.card-page-emblem img {
-  display: block;
-  width: 100%;
-  height: auto;
-  image-rendering: pixelated;
-}
 
 .card-subpage
   :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
@@ -108,10 +96,6 @@
 @media (max-width: 600px) {
   .card-page-heading {
     gap: 1rem;
-  }
-  .card-page-emblem {
-    flex-basis: 2.75rem;
-    width: 2.75rem;
   }
   .card-page-heading .page-intro {
     font-size: 0.84rem;

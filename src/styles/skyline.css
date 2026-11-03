@@ -1,0 +1,128 @@
+/* Quiet social links and the shared architectural footer. */
+.home-page .home-introduction .intro-greeting {
+  display: block;
+  margin: 0 0 0.85rem;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  letter-spacing: normal;
+}
+.home-page .home-introduction .intro-current {
+  display: block;
+  margin: 0;
+}
+.home-page .home-introduction {
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+.home-page .social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: 1.1rem;
+  row-gap: 0.65rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font:
+    400 0.82rem/1.85 var(--font-geist),
+    Arial,
+    sans-serif;
+}
+.home-page .social-links a {
+  display: inline;
+  padding: 0.2rem 0;
+  border: 0;
+  white-space: nowrap;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+.home-page .social-links a:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+.site-shell .site-footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  gap: 0;
+  border: 0;
+}
+.kl-skyline {
+  position: relative;
+  width: 100%;
+  height: clamp(6rem, calc(100svh - 590px), 20rem);
+  overflow: hidden;
+  color: var(--muted);
+  pointer-events: none;
+  user-select: none;
+}
+.kl-skyline svg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  width: max(100%, 56rem);
+  height: 100%;
+  transform: translateX(-50%);
+  opacity: 0.55;
+}
+@media (min-width: 601px) {
+  .site-shell.home-page {
+    height: 100svh;
+  }
+  .site-shell.home-page .site-header {
+    padding-block: 0.85rem;
+  }
+  .site-shell.home-page .home-profile {
+    flex: 0 0 auto;
+    padding-top: clamp(0.75rem, 2.2svh, 1.5rem);
+    padding-bottom: 1rem;
+  }
+  .home-page .home-introduction {
+    padding-top: 0;
+  }
+  .home-page .home-introduction p,
+  .home-page .intro-highlights {
+    font-size: 0.9rem;
+    line-height: 1.85;
+  }
+  .home-page .home-introduction p {
+    margin-block: 1.1rem;
+  }
+  .home-page .home-introduction .intro-highlights-lead {
+    margin-bottom: 0.35rem;
+  }
+  .home-page .intro-highlights {
+    margin-bottom: 0;
+  }
+  .home-page .intro-highlights li {
+    margin-bottom: 0.45rem;
+  }
+  .site-shell.home-page .site-footer {
+    flex: 1 0 5rem;
+    justify-content: flex-end;
+  }
+  .home-page .kl-skyline {
+    flex: 1 1 auto;
+    height: 0;
+    min-height: 3.3rem;
+    max-height: 20rem;
+  }
+}
+@media (max-width: 600px) {
+  .home-page .home-introduction {
+    font-size: 0.86rem;
+    line-height: 1.85;
+  }
+  .home-page .social-links {
+    justify-content: flex-start;
+    column-gap: 1rem;
+    row-gap: 0.75rem;
+  }
+  .kl-skyline {
+    height: 10rem;
+  }
+}
