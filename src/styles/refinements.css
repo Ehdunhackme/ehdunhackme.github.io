@@ -1,14 +1,14 @@
 /* One restrained palette and spacing scale across the portfolio. */
 :root {
-  --accent: #73568f;
-  --accent-soft: rgba(115, 86, 143, 0.12);
+  --accent: #171717;
+  --accent-soft: rgba(23, 23, 23, 0.12);
   --link-color: #171717;
   --page-top: 2.25rem;
   --section-gap: 2.5rem;
 }
 html.dark {
-  --accent: #c3aedf;
-  --accent-soft: rgba(195, 174, 223, 0.1);
+  --accent: #fff;
+  --accent-soft: rgba(255, 255, 255, 0.1);
   --link-color: #fff;
 }
 .site-shell {
@@ -41,6 +41,7 @@ html.dark {
 /* Links sit with the surrounding copy, then brighten on interaction. */
 a[href] {
   color: inherit !important;
+  text-decoration-color: var(--link-color) !important;
   transition:
     color 0.18s ease,
     text-decoration-color 0.18s ease;
@@ -274,6 +275,8 @@ html .paper-links a,
 html.dark .paper-links a {
   color: var(--link-color);
 }
+:where(.home-style) summary::before,
+:where(.standard-style) .paper-extra summary::before,
 .paper-showcase-scope .paper-explanation > summary::after {
   color: var(--accent);
 }

@@ -59,6 +59,7 @@ html.dark .paper-showcase-scope #chert {
 }
 .paper-showcase-scope #chert :is(.project-title-link, .paper-links a) {
   color: var(--project-link-color) !important;
+  text-decoration-color: currentColor !important;
 }
 .paper-showcase-scope
   #chert
