@@ -1,5 +1,52 @@
 import { test, expect } from "@playwright/test";
 
+test("every explanation has readable headings, section spacing and unclipped content", async ({
+  page,
+}) => {
+  await page.goto("/projects/");
+  await page.evaluate(() => document.fonts.ready);
+  const explanations = page.locator(".paper-explanation");
+  await expect(explanations).toHaveCount(13);
+
+  for (const explanation of await explanations.all()) {
+    await explanation.locator("summary").click();
+    await expect(explanation).toHaveAttribute("open", "");
+    await expect(explanation).not.toHaveClass(/is-animating/);
+    const layout = await explanation.evaluate((el) => {
+      const summary = el.querySelector("summary")!.getBoundingClientRect();
+      const body = el.querySelector(".paper-explanation-body")!;
+      const sections = [...body.querySelectorAll(".explanation-section")];
+      const bounds = body.getBoundingClientRect();
+      return {
+        firstHeadingGap:
+          sections[0].querySelector("dt")!.getBoundingClientRect().top -
+          summary.bottom,
+        fontSize: parseFloat(getComputedStyle(body).fontSize),
+        weights: sections.map((section) =>
+          parseInt(getComputedStyle(section.querySelector("dt")!).fontWeight),
+        ),
+        sectionGaps: sections
+          .slice(1)
+          .map(
+            (section, index) =>
+              section.getBoundingClientRect().top -
+              sections[index].getBoundingClientRect().bottom,
+          ),
+        contentFits:
+          body.scrollWidth <= body.clientWidth + 1 &&
+          bounds.bottom <= el.getBoundingClientRect().bottom + 1,
+      };
+    });
+    expect(layout.firstHeadingGap).toBeGreaterThan(20);
+    expect(layout.fontSize).toBeLessThan(16);
+    expect(layout.weights).toEqual([600, 600, 600]);
+    expect(layout.sectionGaps.every((gap) => gap >= 12)).toBe(true);
+    expect(layout.contentFits).toBe(true);
+    await explanation.locator("summary").click();
+    await expect(explanation).not.toHaveAttribute("open", "");
+  }
+});
+
 test("contact language controls stay in the header and persist", async ({
   page,
 }) => {

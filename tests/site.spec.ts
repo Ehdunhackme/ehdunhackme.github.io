@@ -100,6 +100,14 @@ test("all three cards, browser back/forward, deep links and gallery work", async
     );
     await expect(page.locator(`#${id}`)).toBeVisible();
     await expect(page.locator(".home-intro-content")).toBeHidden();
+    if (id === "motivations") {
+      await expect(
+        page.getByText("There are two things I care most about solving:"),
+      ).toHaveCount(0);
+      await expect(page.locator(".motivation-priorities")).toHaveCount(0);
+      await expect(page.locator("#motivation-education")).toBeVisible();
+      await expect(page.locator("#motivation-ai")).toBeVisible();
+    }
     await page.goBack();
     await expect(page.locator("#about-reader")).toBeHidden();
     await expect(page.locator("#about-deck")).toHaveAttribute(

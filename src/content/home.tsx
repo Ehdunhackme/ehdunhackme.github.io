@@ -874,26 +874,6 @@ export function HomeContent() {
                 aria-label={"My Motivations"}
               >
                 {" "}
-                <p className={"motivation-intro"}>
-                  {"There are two things I care most about solving:"}
-                </p>{" "}
-                <ul className={"motivation-priorities"}>
-                  {" "}
-                  <li>
-                    <span>{"01"}</span>
-                    <strong>
-                      {
-                        "Education and opportunity inequality caused by socioeconomic status"
-                      }
-                    </strong>
-                  </li>{" "}
-                  <li>
-                    <span>{"02"}</span>
-                    <strong>
-                      {"How to put AI to good use in advancing humanity"}
-                    </strong>
-                  </li>{" "}
-                </ul>{" "}
                 <section
                   className={"motivation-topic"}
                   aria-labelledby={"motivation-education"}

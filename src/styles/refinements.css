@@ -279,7 +279,7 @@ html.dark .paper-links a {
 .writing-card-list .writing-section-link:focus-visible {
   outline-color: var(--accent);
 }
-.paper-showcase-scope .paper-explanation-.site-shell {
+.paper-showcase-scope .paper-explanation-body {
   line-height: 1.8;
 }
 .about-reader :is(.motivation-topic p, .timeline-entry li) {

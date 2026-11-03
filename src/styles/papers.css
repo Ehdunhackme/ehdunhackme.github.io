@@ -128,7 +128,7 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a {
   outline: 2px solid #2563eb;
   outline-offset: 4px;
 }
-.paper-showcase-scope .paper-explanation-.site-shell {
+.paper-showcase-scope .paper-explanation-body {
   overflow: hidden;
   margin-top: 0.9rem;
   padding-top: 0.85rem;
@@ -139,18 +139,21 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a {
     Arial,
     sans-serif;
 }
-.paper-showcase-scope .paper-explanation-.site-shell dl {
+.paper-showcase-scope .paper-explanation-body dl {
   margin: 0;
 }
-.paper-showcase-scope .paper-explanation-.site-shell dt {
+.paper-showcase-scope
+  .paper-explanation-body
+  .explanation-section
+  + .explanation-section {
   margin-top: 0.8rem;
+}
+.paper-showcase-scope .paper-explanation-body dt {
+  margin: 0;
   color: var(--fg-strong, var(--strong));
   font-weight: 600;
 }
-.paper-showcase-scope .paper-explanation-.site-shell dt:first-child {
-  margin-top: 0;
-}
-.paper-showcase-scope .paper-explanation-.site-shell dd {
+.paper-showcase-scope .paper-explanation-body dd {
   margin: 0.15rem 0 0;
 }
 .paper-showcase-scope .paper-explanation-note {

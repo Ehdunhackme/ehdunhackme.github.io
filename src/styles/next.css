@@ -43,8 +43,7 @@ body {
 }
 .route-content,
 .home-intro-content:not([hidden]),
-.directory-results,
-.explanation-section {
+.directory-results {
   display: contents;
 }
 .site-shell .route-content > main {
