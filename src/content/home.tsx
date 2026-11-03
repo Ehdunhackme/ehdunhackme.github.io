@@ -152,7 +152,7 @@ export function HomeContent() {
                   width={16}
                   height={16}
                 />
-                {"Shanghai Jiao Tong University"}
+                {"Shanghai Jiao Tong Uni."}
               </a>
               {", the "}
               <a
@@ -169,7 +169,7 @@ export function HomeContent() {
                   width={16}
                   height={16}
                 />
-                {"University of Maryland"}
+                {"Uni. of Maryland"}
               </a>
               {", "}
               <a
