@@ -6,6 +6,7 @@ test("navigation retains the document and header, with the active link highlight
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
+  await page.waitForLoadState("networkidle");
   await page.evaluate(() => {
     (window as unknown as Record<string, unknown>).navigationMarker =
       "same-document";
@@ -50,6 +51,7 @@ test("project content is pre-rendered, searchable, and explanations animate both
   expect(html).toContain("Layerwise alignment and transfer");
   expect(html).toContain("paper-thumbnail");
   await page.goto("/projects/");
+  await page.waitForLoadState("networkidle");
   const entries = page.locator(".paper-list > li");
   await expect(entries).toHaveCount(16);
   const search = page.getByRole("searchbox");
@@ -88,6 +90,7 @@ test("all three cards, browser back/forward, deep links and gallery work", async
   page,
 }) => {
   await page.goto("/#about-deck");
+  await page.waitForLoadState("networkidle");
   for (const [id, label] of [
     ["more-about-me", "My journey timeline"],
     ["motivations", "My motivations"],
@@ -119,6 +122,7 @@ test("all three cards, browser back/forward, deep links and gallery work", async
   await page.goForward();
   await expect(page.locator("#honours")).toBeVisible();
   await page.goto("/#more-about-me");
+  await page.waitForLoadState("networkidle");
   await expect(page.locator("#more-about-me")).toBeVisible();
   const gallery = page.locator(".timeline-gallery").first();
   await gallery.getByRole("button", { name: "Next image" }).click();
@@ -145,6 +149,7 @@ test("writings search, theme persistence and layouts at viewport width", async (
   page,
 }) => {
   await page.goto("/writings/");
+  await page.waitForLoadState("networkidle");
   await page.getByRole("searchbox").fill("qwerty");
   await expect(
     page.getByRole("heading", { name: "No matching writings" }),
@@ -163,6 +168,7 @@ test("writings search, theme persistence and layouts at viewport width", async (
     "/writings/my-opinionated-guide-to-starting-research-early/",
   ]) {
     await page.goto(path);
+    await page.waitForLoadState("networkidle");
     await page.evaluate(() => document.fonts.ready);
     expect(
       await page.evaluate(
@@ -177,12 +183,15 @@ test("old HTML URLs and alternate routes redirect without losing anchors", async
   page,
 }) => {
   await page.goto("/projects/index.html#platonic-representation");
+  await page.waitForLoadState("networkidle");
   await expect(page).toHaveURL(/\/projects\/#platonic-representation$/);
   await expect(page.locator("#platonic-representation")).toBeVisible();
   await page.goto("/about/index.html#motivations");
+  await page.waitForLoadState("networkidle");
   await expect(page).toHaveURL(/\/#motivations$/);
   await expect(page.locator("#motivations")).toBeVisible();
   await page.goto("/papers/");
+  await page.waitForLoadState("networkidle");
   await expect(page).toHaveURL(/\/projects\/#papers-heading$/);
 });
 
@@ -191,6 +200,7 @@ test("reduced motion disables entrance and card animations", async ({
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await page.waitForLoadState("networkidle");
   expect(
     await page.locator("main").evaluate((el) => el.getAnimations().length),
   ).toBe(0);

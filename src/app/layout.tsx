@@ -5,13 +5,13 @@ import "@/styles/global.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dunlichan.com"),
-  title: { default: "Dun Li's Personal Site", template: "%s — Dun Li Chan" },
-  description: "Dun Li's Personal Site.",
+  title: { default: "Dun Li's Portfolio Site", template: "%s — Dun Li Chan" },
+  description: "Dun Li's Portfolio Site.",
   authors: [{ name: "Dun Li Chan" }],
   icons: { icon: "/icon.svg", apple: "/assets/dun-li-chan-icon-apple.png" },
   openGraph: {
     type: "website",
-    siteName: "Dun Li's Personal Site",
+    siteName: "Dun Li's Portfolio Site",
     images: [{ url: "/assets/dun-li-chan-icon-apple.png", alt: "Dun Li Chan" }],
   },
   twitter: {

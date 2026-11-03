@@ -14,7 +14,7 @@ export function HomeContent() {
             {" "}
             <HeroName />{" "}
             <p className={"role"}>
-              {"Grokking & Hillclimbing · Based in Malaysia"}
+              {"Based in Penang, Malaysia"}
             </p>{" "}
             <nav className={"quick-links"} aria-label={"External links"}>
               {" "}

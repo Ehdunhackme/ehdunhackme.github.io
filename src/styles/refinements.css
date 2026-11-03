@@ -38,11 +38,15 @@ html.dark {
   --entry-offset: 6px;
   --entry-delay: 0.12s;
 }
-/* Share one neutral link colour across the page styles and interaction states. */
+/* Links sit with the surrounding copy, then brighten on interaction. */
 a[href] {
-  color: var(--link-color) !important;
+  color: inherit !important;
+  transition:
+    color 0.18s ease,
+    text-decoration-color 0.18s ease;
 }
 a[href]:is(:hover, :focus-visible) {
+  color: var(--link-color) !important;
   text-decoration-color: var(--link-color);
 }
 .writing-section-link .writing-section-title {
@@ -182,10 +186,12 @@ html .writing-content a:is(:hover, :focus-visible) {
   opacity: 1;
 }
 .main-nav a:not([aria-current="page"]):not(:hover):not(:focus-visible) {
-  --link-color: var(--muted);
+  color: var(--muted) !important;
 }
 .main-nav a[aria-current="page"],
-.main-nav a:is(:hover, :focus-visible),
+.main-nav a:is(:hover, :focus-visible) {
+  color: var(--link-color) !important;
+}
 .deck-return:is(:hover, :focus-visible) {
   color: var(--link-color);
 }
@@ -306,7 +312,7 @@ html.dark .paper-links a {
   --tilt: 5deg;
 }
 .playing-card {
-  filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.18));
   transition: transform 0.24s cubic-bezier(0.22, 0.7, 0.25, 1);
 }
 .home-page .deck-label {
@@ -317,7 +323,7 @@ html.dark .paper-links a {
   letter-spacing: -0.015em;
 }
 .deck-choice:focus-visible .playing-card {
-  transform: translateY(-6px) rotate(0deg);
+  transform: translateY(-4px) rotate(0deg);
 }
 .deck-toolbar {
   padding-bottom: 1.15rem;
@@ -325,12 +331,12 @@ html.dark .paper-links a {
 }
 #about-deck .deck-quote {
   max-width: none;
-  margin: 1.4rem auto 0;
+  margin: 1.25rem auto 0;
   padding: 0;
   border: 0;
-  color: var(--fg, var(--secondary));
+  color: var(--muted);
   font:
-    400 clamp(0.92rem, 2vw, 1rem)/1.7 var(--font-jetbrains),
+    400 clamp(0.78rem, 1.7vw, 0.86rem)/1.7 var(--font-jetbrains),
     monospace;
   text-align: center;
   text-align-last: auto;
@@ -344,7 +350,7 @@ html.dark #about-deck .deck-label {
 }
 @media (hover: hover) {
   .deck-choice:hover .playing-card {
-    transform: translateY(-6px) rotate(0deg);
+    transform: translateY(-4px) rotate(0deg);
   }
 }
 @media (max-width: 600px) {
@@ -387,7 +393,7 @@ html.dark #about-deck .deck-label {
     font-size: 0.74rem;
   }
   .playing-card {
-    filter: drop-shadow(3px 5px 0 rgba(0, 0, 0, 0.22));
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.18));
   }
 }
 @media (prefers-reduced-motion: reduce) {

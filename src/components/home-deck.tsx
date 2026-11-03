@@ -141,6 +141,11 @@ export function HomeDeck({
           300,
         ),
       ]);
+    // Let native history traversal finish before restoring keyboard focus.
+    if (!update)
+      await new Promise<void>((resolve) =>
+        requestAnimationFrame(() => resolve()),
+      );
     if (ticket !== revision.current) return;
     cancel();
     setBusy(false);

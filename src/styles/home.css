@@ -2111,16 +2111,16 @@ html.dark :where(.home-style) .paper-links a {
   place-items: center;
   box-sizing: border-box;
   transform: rotateY(180deg);
-  border: 6px solid #0e0d16;
-  outline: 3px solid #74698c;
-  outline-offset: -10px;
-  background: repeating-conic-gradient(#403951 0% 25%, #332e45 0% 50%) 0 0 /
+  border: 2px solid #cfcec8;
+  outline: 1px solid #d5d4ce;
+  outline-offset: -7px;
+  background: repeating-conic-gradient(#e3e2dc 0% 25%, #f0efe9 0% 50%) 0 0 /
     12px 12px;
 }
 :where(.home-style) .card-back span {
   padding: 0.4rem;
-  color: #f3f0e8;
-  background: #332e45;
+  color: #202020;
+  background: #f0efe9;
   font: 700 1.7rem/1 monospace;
   letter-spacing: 0.1em;
 }
@@ -2139,7 +2139,7 @@ html.dark :where(.home-style) .paper-links a {
   padding: 1.5rem 0.8rem 1rem;
 }
 .home-page .playing-card {
-  width: min(100%, 9rem);
+  width: min(92%, 8.25rem);
 }
 .home-page .deck-label {
   margin-top: 1.5rem;

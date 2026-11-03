@@ -2,6 +2,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { Directory } from "@/components/directory";
 import { Explanation } from "@/components/explanation";
+
+const chertExplanation = [
+  [
+    "The idea",
+    "A conversational video avatar gives an AI a visible presence during a live conversation. Speech, facial movement, and responses need to feel like parts of the same interaction. This project explores video diffusion models and the infrastructure needed to bring generated avatars into realtime human–AI conversations at Chert.",
+  ],
+  [
+    "From generated video to a live conversation",
+    "Generating a convincing clip is only one part of the challenge. In a live call, new speech and conversational context keep arriving, so video generation and delivery need to keep up. The central challenges are maintaining a consistent appearance across frames, matching facial movement to speech, and keeping delays short enough for natural turn-taking.",
+  ],
+  [
+    "The takeaway",
+    "A useful avatar needs both visual quality and responsiveness. Inference speed, audio–video synchronisation, and reliable streaming all shape how a conversation feels. The research goal is to connect video generation with a responsive interactive system, making the avatar useful throughout a call rather than only in a prepared clip.",
+  ],
+];
+
 export function ProjectsContent() {
   return (
     <Directory
@@ -920,7 +936,8 @@ export function ProjectsContent() {
             {
               id: "chert",
               searchText:
-                "2026 Conversational video avatars model (under Chert (YC P26) ) Realtime video diffusion avatar model infra Demo GitHub ",
+                "2026 Conversational video avatars model (Chert (YC P26)) Realtime video diffusion avatar model infra Demo GitHub " +
+                chertExplanation.flat().join(" "),
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -948,7 +965,7 @@ export function ProjectsContent() {
                     {" "}
                     <time className={"paper-date"}>{"2026"}</time>{" "}
                     <strong>
-                      {"Conversational video avatars model (under "}
+                      {"Conversational video avatars model ("}
                       <a
                         className={"project-title-link"}
                         href={"https://www.trychert.com/"}
@@ -973,6 +990,7 @@ export function ProjectsContent() {
                       </a>
                     </div>{" "}
                   </div>{" "}
+                  <Explanation sections={chertExplanation} />
                 </article>
               ),
             },

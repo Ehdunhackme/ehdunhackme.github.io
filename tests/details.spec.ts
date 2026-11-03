@@ -6,7 +6,7 @@ test("every explanation has readable headings, section spacing and unclipped con
   await page.goto("/projects/");
   await page.evaluate(() => document.fonts.ready);
   const explanations = page.locator(".paper-explanation");
-  await expect(explanations).toHaveCount(13);
+  await expect(explanations).toHaveCount(14);
 
   for (const explanation of await explanations.all()) {
     await explanation.locator("summary").click();
@@ -51,6 +51,7 @@ test("contact language controls stay in the header and persist", async ({
   page,
 }) => {
   await page.goto("/contact/");
+  await page.waitForLoadState("networkidle");
   const header = page.locator(".site-header");
   await header.getByRole("button", { name: "中文", exact: true }).click();
   await expect(
@@ -58,6 +59,7 @@ test("contact language controls stay in the header and persist", async ({
   ).toBeVisible();
   await expect(page.locator("html")).toHaveAttribute("lang", "zh");
   await page.reload();
+  await page.waitForLoadState("networkidle");
   await expect(
     page.getByRole("heading", { name: "联系", exact: true }),
   ).toBeVisible();

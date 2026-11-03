@@ -1,10 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
+const port = process.env.PORT || "3000";
 export default defineConfig({
   testDir: "./tests",
   timeout: 30000,
   fullyParallel: true,
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: `http://127.0.0.1:${port}`,
     colorScheme: "dark",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
@@ -29,8 +30,8 @@ export default defineConfig({
     { name: "mobile-safari", use: { ...devices["iPhone 13"] } },
   ],
   webServer: {
-    command: "npm run start",
-    url: "http://127.0.0.1:3000",
+    command: `npm run start -- --port ${port}`,
+    url: `http://127.0.0.1:${port}`,
     reuseExistingServer: !process.env.CI,
     timeout: 30000,
   },

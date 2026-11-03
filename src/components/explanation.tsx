@@ -77,7 +77,7 @@ export function Explanation({ sections }: { sections: string[][] }) {
             </div>
           ))}
         </dl>
-        <p className="paper-explanation-note">Generated with GPT-6.1 Sol</p>
+        <p className="paper-explanation-note">Generated with GPT-6 Astra</p>
       </div>
     </details>
   );
