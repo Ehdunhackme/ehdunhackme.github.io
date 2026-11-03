@@ -26,7 +26,7 @@ export function ProjectsContent() {
         <header className={"card-page-heading"}>
           {" "}
           <div>
-            <h1 className={"editorial-heading"}>{"my project board."}</h1>
+            <h1 className={"editorial-heading"}>{"My project board."}</h1>
             <p className={"page-intro"}>
               {"Research, papers, experiments, and things I've built."}
             </p>
@@ -927,7 +927,7 @@ export function ProjectsContent() {
             {
               id: "chert",
               searchText:
-                "2026 Conversational video avatars model (Chert (YC P26)) Realtime video diffusion avatar model infra Demo GitHub " +
+                "2026 Conversational video avatars model - Chert (YC P26) Realtime video diffusion avatar model infra Demo GitHub " +
                 chertExplanation.flat().join(" "),
               className: "paper-showcase",
               content: (
@@ -956,7 +956,7 @@ export function ProjectsContent() {
                     {" "}
                     <time className={"paper-date"}>{"2026"}</time>{" "}
                     <strong>
-                      {"Conversational video avatars model ("}
+                      {"Conversational video avatars model - "}
                       <a
                         className={"project-title-link"}
                         href={"https://www.trychert.com/"}
@@ -965,7 +965,6 @@ export function ProjectsContent() {
                       >
                         {"Chert (YC P26)"}
                       </a>
-                      {")"}
                     </strong>{" "}
                     <span className={"project-description"}>
                       {"Realtime video diffusion avatar model infra"}

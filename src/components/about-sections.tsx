@@ -74,7 +74,7 @@ export function AboutSections({ panels }: { panels: Panel[] }) {
   return (
     <main className="profile about-page">
       <header className="about-page-header">
-        <h1>More about me</h1>
+        <h1>More about me.</h1>
         <p>The journey so far, what drives me, and a few milestones.</p>
       </header>
       <div className="about-workspace" ref={workspace}>

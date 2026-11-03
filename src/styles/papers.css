@@ -49,21 +49,19 @@
   border: 0;
   box-shadow: none;
 }
-.paper-showcase-scope #chert {
+.project-board {
   --project-link-color: #2563eb;
   --project-link-hover: #1d4ed8;
 }
-html.dark .paper-showcase-scope #chert {
+html.dark .project-board {
   --project-link-color: #8ab4ff;
   --project-link-hover: #b4ceff;
 }
-.paper-showcase-scope #chert :is(.project-title-link, .paper-links a) {
+.project-board a[href] {
   color: var(--project-link-color) !important;
   text-decoration-color: currentColor !important;
 }
-.paper-showcase-scope
-  #chert
-  :is(.project-title-link, .paper-links a):is(:hover, :focus-visible) {
+.project-board a[href]:is(:hover, :focus-visible) {
   color: var(--project-link-hover) !important;
   text-decoration-color: currentColor;
 }

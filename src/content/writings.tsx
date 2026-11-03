@@ -9,7 +9,7 @@ export function WritingsContent() {
         <header className={"card-page-heading"}>
           {" "}
           <div>
-            <h1 className={"editorial-heading"}>{"Writings"}</h1>
+            <h1 className={"editorial-heading"}>{"Writings."}</h1>
             <p className={"page-intro"}>
               {"Some reflections I've picked up along the journey."}
             </p>
