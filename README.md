@@ -57,6 +57,12 @@ Migration checks compared the previous HTML site's desktop and mobile layouts. O
 
 No secrets or environment variables are required. The Chert iframe remains hosted at `chert.dunlichan.com`; this migration does not deploy or change that service.
 
-The old GitHub Pages workflow is replaced with build/browser checks. It must not upload the Next.js source tree as a static website. The currently published site remains unchanged until the Vercel/domain cutover is performed.
+The Next.js site is deployed by Vercel. GitHub Actions runs build/browser checks.
+
+## Legacy GitHub Pages address
+
+GitHub Pages publishes only `main` → `/docs` (Settings → Pages → Deploy from a branch). The small redirect in `docs/index.html` sends `ehdunhackme.github.io` visitors to `https://dunlichan.com/`. `docs/404.html` handles old deep links, preserving the path, query string, and section hash; trailing `index.html` is converted to the clean route. Browsers without JavaScript fall back to the new homepage.
+
+Keep the two redirect documents identical. Do not add a GitHub Pages custom domain or publish the repository root: `dunlichan.com` belongs to the Vercel deployment, and the Next.js source tree is not a static website.
 
 Existing `.html` URLs redirect to the corresponding clean route, including anchors. `/about/` forwards its card hash to the homepage, `/papers/` forwards to the publications section, and `/work/` forwards to projects. Original static sources are preserved in Git at `f4c1f04` and in the local ignored `.migration/legacy/` backup.

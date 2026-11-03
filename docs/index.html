@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Dun Li Chan — Site moved</title>
+    <script>
+      const destination = new URL("https://dunlichan.com/");
+      destination.pathname = window.location.pathname.replace(/\/index\.html$/, "/");
+      destination.search = window.location.search;
+      destination.hash = window.location.hash;
+      window.location.replace(destination.href);
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://dunlichan.com/" />
+    </noscript>
+    <style>
+      body { margin: 3rem 1.5rem; background: #191919; color: #eee; font: 1rem/1.6 system-ui, sans-serif; }
+      a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <p>This site has moved to <a href="https://dunlichan.com/">dunlichan.com</a>.</p>
+  </body>
+</html>
