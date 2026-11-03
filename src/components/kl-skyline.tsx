@@ -1,4 +1,4 @@
-// A lightweight line illustration; colours follow the site's light/dark theme.
+// A lightweight line illustration that follows the site's colours.
 export function KualaLumpurSkyline() {
   return (
     <div className="kl-skyline" aria-hidden="true">

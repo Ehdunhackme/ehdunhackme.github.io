@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { KualaLumpurSkyline } from "./kl-skyline";
 import {
   ContactLanguageProvider,
@@ -21,35 +20,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const about = pathname.startsWith("/about");
   const article =
     pathname.startsWith("/writings/") && pathname !== "/writings/";
-  const [dark, setDark] = useState(false);
-  useEffect(() => {
-    const sync = () =>
-      setDark(document.documentElement.classList.contains("dark"));
-    sync();
-    const change = (event: StorageEvent) => {
-      if (event.key === "theme") {
-        document.documentElement.classList.toggle(
-          "dark",
-          event.newValue
-            ? event.newValue === "dark"
-            : matchMedia("(prefers-color-scheme: dark)").matches,
-        );
-        sync();
-      }
-    };
-    window.addEventListener("storage", change);
-    return () => window.removeEventListener("storage", change);
-  }, []);
-  function toggleTheme() {
-    const next = !document.documentElement.classList.contains("dark");
-    document.documentElement.classList.toggle("dark", next);
-    setDark(next);
-    try {
-      localStorage.setItem("theme", next ? "dark" : "light");
-    } catch {
-      /* Theme still works without storage. */
-    }
-  }
   const classes = isDemo
     ? "demo-shell"
     : `site-shell ${home || about || article ? "home-style page-layout" : "standard-style directory-layout"} ${home ? "home-page" : ""} ${about ? "about-route" : ""} ${pathname.startsWith("/projects") || pathname.startsWith("/writings") ? "card-subpage" : ""} ${pathname.startsWith("/writings") ? "card-subpage--writing" : ""}`;
@@ -73,18 +43,11 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 </Link>
               ))}
             </nav>
-            <div className="header-actions">
-              {pathname.startsWith("/contact") && <ContactLanguageSwitch />}
-              <button
-                type="button"
-                id="theme-toggle"
-                className="theme-toggle"
-                onClick={toggleTheme}
-                aria-label={`Switch to ${dark ? "light" : "dark"} mode`}
-              >
-                <span aria-hidden="true">◐</span>
-              </button>
-            </div>
+            {pathname.startsWith("/contact") && (
+              <div className="header-actions">
+                <ContactLanguageSwitch />
+              </div>
+            )}
           </header>
         )}
         <div className="route-content" key={pathname}>

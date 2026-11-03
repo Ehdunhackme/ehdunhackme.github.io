@@ -183,31 +183,6 @@ html {
     gap: 1.25rem;
   }
 }
-:where(.standard-style) .theme-toggle {
-  display: grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  place-items: center;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1.2rem;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    color 0.15s ease,
-    transform 0.15s ease;
-}
-:where(.standard-style) .theme-toggle:hover {
-  color: var(--fg-strong);
-  transform: scale(1.08);
-}
-:where(.standard-style) .theme-toggle:focus-visible {
-  outline: 1px solid var(--fg-strong);
-  outline-offset: 4px;
-}
 
 :where(.standard-style) .lang-switch {
   display: inline-flex;
@@ -2335,11 +2310,6 @@ html.dark :where(.standard-style) .writing-content a:hover {
 :where(.standard-style) .site-footer span {
   display: inline;
   margin: 0;
-}
-:where(.standard-style) .theme-toggle {
-  width: 2rem;
-  height: 2rem;
-  font-family: var(--font-geist), Arial, sans-serif;
 }
 @media (max-width: 600px) {
   :where(.standard-style) .site-header {

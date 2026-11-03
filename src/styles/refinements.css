@@ -79,6 +79,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
 }
 .site-header:has(.main-nav) {
   justify-content: space-between;
+  min-height: 4.5rem;
 }
 .site-header:has(.main-nav) > .site-wordmark {
   display: none;
@@ -378,6 +379,9 @@ html.dark .paper-links a {
   margin-bottom: 1.75rem;
 }
 @media (max-width: 600px) {
+  .site-header:has(.main-nav) {
+    min-height: 4rem;
+  }
   :root {
     --page-top: 1.75rem;
     --section-gap: 2rem;

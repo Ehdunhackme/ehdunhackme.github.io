@@ -21,6 +21,7 @@ html.dark {
   box-sizing: border-box;
 }
 html {
+  color-scheme: dark;
   scrollbar-gutter: stable;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;

@@ -102,31 +102,6 @@ html {
   color: var(--muted);
   text-decoration: none;
 }
-:where(.home-style) .theme-toggle {
-  display: grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  place-items: center;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1.2rem;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    color 0.15s ease,
-    transform 0.15s ease;
-}
-:where(.home-style) .theme-toggle:hover {
-  color: var(--strong);
-  transform: scale(1.08);
-}
-:where(.home-style) .theme-toggle:focus-visible {
-  outline: 1px solid var(--strong);
-  outline-offset: 4px;
-}
 :where(.home-style) .profile {
   width: min(calc(100% - 2.5rem), 42rem);
   margin: 0 auto;
@@ -1538,11 +1513,6 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) .header-actions {
   flex: 0 0 auto;
   margin-left: 0;
-}
-:where(.home-style) .theme-toggle {
-  width: 2rem;
-  height: 2rem;
-  font-family: var(--font-geist), Arial, sans-serif;
 }
 :where(.home-style) .profile {
   width: min(calc(100% - 2.5rem), 42rem);

@@ -151,7 +151,7 @@ test("about chapters, browser history, legacy links and gallery work", async ({
   await expect(page.locator("#more-about-me")).toBeVisible();
 });
 
-test("writings search, theme persistence and layouts at viewport width", async ({
+test("writings search and dark layouts at viewport width", async ({
   page,
 }) => {
   await page.goto("/writings/");
@@ -162,11 +162,10 @@ test("writings search, theme persistence and layouts at viewport width", async (
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear", exact: true }).click();
   await expect(page.locator(".writing-section-link")).toBeVisible();
-  await page.getByRole("button", { name: "Switch to light mode" }).click();
-  await expect(page.locator("html")).not.toHaveClass(/dark/);
+  await page.evaluate(() => localStorage.setItem("theme", "light"));
   await page.reload();
-  await expect(page.locator("html")).not.toHaveClass(/dark/);
-  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  await expect(page.locator("#theme-toggle")).toHaveCount(0);
   for (const path of [
     "/",
     "/about/",
@@ -176,6 +175,7 @@ test("writings search, theme persistence and layouts at viewport width", async (
   ]) {
     await page.goto(path);
     await page.waitForLoadState("networkidle");
+    await expect(page.locator("html")).toHaveClass(/dark/);
     await page.evaluate(() => document.fonts.ready);
     expect(
       await page.evaluate(
