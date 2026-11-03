@@ -17,7 +17,7 @@ export function HomeContent() {
             Hi. I’m Dun Li.
           </h1>{" "}
           <p className="intro-current">
-            {"I'm currently working on RSI for robotics manipulation at "}
+            {"I’m currently working on robotics manipulation via RSI at "}
             <a
               className={"about-org"}
               href={"https://www.tsinghua.edu.cn/en/"}
@@ -33,7 +33,7 @@ export function HomeContent() {
               />
               {"Tsinghua"}
             </a>
-            {", World Action Model (WAM) interpretability research at "}
+            {", WAM interp at "}
             <a
               className={"about-org"}
               href={"https://eleuther.ai/soar/"}
@@ -50,9 +50,7 @@ export function HomeContent() {
               />
               {"EleutherAI"}
             </a>
-            {
-              ", and building video diffusion models for human-AI interaction at "
-            }
+            {", video diffusion infra at "}
             <a
               className={"about-org"}
               href={"https://www.trychert.com/"}
@@ -68,9 +66,7 @@ export function HomeContent() {
               />
               {"Chert (YC P26)"}
             </a>
-            {
-              ". I'm also working on some side projects in robotics/model optimisation, and post-training eval & mech interpretability research at "
-            }
+            {", and post-training eval and mech interp at "}
             <a
               className={"about-org"}
               href={"https://universetbd.org/"}
@@ -89,23 +85,21 @@ export function HomeContent() {
             {"."}
           </p>{" "}
           <p>
-            {"Growing up in an under-resourced background, I started my "}
+            {"Growing up with limited resources, my "}
             <Link href="/about/#more-about-me" className="journey-link">
-              {"unconventional journey"}
+              {"journey"}
             </Link>
             {
-              " at age 10 by teaching myself to hack a game website and jailbreak phones, eventually finding my way to frontier AI research with "
+              " began at 10 with hacking games and jailbreaking phones. Right now, I'm currently working in AI research, with "
             }
-            <Link href={"/projects/"}>
-              {"multiple publications in top conferences"}
-            </Link>
-            {" (NeurIPS, AACL, EACL, etc.)."}
+            <Link href={"/projects/"}>{"publications"}</Link>
+            {" at NeurIPS, AACL, and EACL."}
           </p>{" "}
-          <p className={"intro-highlights-lead"}>{"Before that, I:"}</p>{" "}
+          <p className={"intro-highlights-lead"}>{"Previously, I:"}</p>{" "}
           <ul className={"intro-highlights"}>
             {" "}
             <li>
-              {"Represented Malaysia in the "}
+              {"Represented Malaysia at the "}
               <a
                 href={"https://ioaastrophysics.org/"}
                 target={"_blank"}
@@ -113,7 +107,7 @@ export function HomeContent() {
               >
                 {"Intl. Olympiad of Astronomy & Astrophysics (IOAA)"}
               </a>
-              {" and the "}
+              {" and "}
               <a
                 href={"http://www.issp.ac.ru/iao/2025/"}
                 target={"_blank"}
@@ -132,17 +126,15 @@ export function HomeContent() {
               >
                 {"MYResearchGuide"}
               </a>
-              {
-                ", Malaysia's first non-profit to democratise science research opportunities and the nation's first research mentorship program, "
-              }
+              {" and the "}
               <a
                 href={"https://myssp.myresearchguide.org/"}
                 target={"_blank"}
                 rel={"noopener"}
               >
-                {"Malaysia Science Scholar's Programme"}
+                {"Malaysia Science Scholar’s Programme"}
               </a>
-              {"."}
+              {" to make research opportunities more accessible."}
             </li>{" "}
             <li>
               {"Worked at "}
@@ -160,9 +152,9 @@ export function HomeContent() {
                   width={16}
                   height={16}
                 />
-                {"Shanghai Jiao Tong Uni."}
+                {"Shanghai Jiao Tong University"}
               </a>
-              {", "}
+              {", the "}
               <a
                 className={"about-org"}
                 href={"https://www.umd.edu/"}
@@ -177,7 +169,7 @@ export function HomeContent() {
                   width={16}
                   height={16}
                 />
-                {"Uni. of Maryland"}
+                {"University of Maryland"}
               </a>
               {", "}
               <a

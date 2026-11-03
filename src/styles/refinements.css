@@ -53,6 +53,7 @@ a[href]:is(:hover, :focus-visible) {
   text-decoration-color: var(--link-color);
 }
 .writing-section-link .writing-section-title {
+  display: inline;
   color: var(--link-color);
 }
 main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
@@ -133,14 +134,17 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   color: var(--link-color);
   text-decoration-color: var(--link-color);
 }
-/* The entire yellow highlight fades in together, including wrapped lines. */
+/* Fade the yellow fill in place, including links that wrap across lines. */
 :is(
   .home-introduction a,
   .social-links a,
   .about-reader :is(p, li, blockquote) a,
-  .writing-content :is(p, li, blockquote) a,
+  .writing-content a,
   .paper-links a,
-  .project-title-link
+  .project-title-link,
+  .contact-list a,
+  .page-links a,
+  .writing-section-title
 ) {
   background-color: transparent;
   -webkit-box-decoration-break: clone;
@@ -154,10 +158,13 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   .home-introduction a,
   .social-links a,
   .about-reader :is(p, li, blockquote) a,
-  .writing-content :is(p, li, blockquote) a,
+  .writing-content a,
   .paper-links a,
-  .project-title-link
-):is(:focus-visible, :active) {
+  .project-title-link,
+  .contact-list a,
+  .page-links a
+):is(:focus-visible, :active),
+.writing-section-link:is(:focus-visible, :active) .writing-section-title {
   background-color: var(--link-highlight);
 }
 @media (hover: hover) {
@@ -165,10 +172,13 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
     .home-introduction a,
     .social-links a,
     .about-reader :is(p, li, blockquote) a,
-    .writing-content :is(p, li, blockquote) a,
+    .writing-content a,
     .paper-links a,
-    .project-title-link
-  ):hover {
+    .project-title-link,
+    .contact-list a,
+    .page-links a
+  ):hover,
+  .writing-section-link:hover .writing-section-title {
     background-color: var(--link-highlight);
   }
 }
@@ -177,9 +187,12 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
     .home-introduction a,
     .social-links a,
     .about-reader :is(p, li, blockquote) a,
-    .writing-content :is(p, li, blockquote) a,
+    .writing-content a,
     .paper-links a,
-    .project-title-link
+    .project-title-link,
+    .contact-list a,
+    .page-links a,
+    .writing-section-title
   ) {
     transition: none;
   }

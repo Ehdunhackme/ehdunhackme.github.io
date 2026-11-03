@@ -3,7 +3,7 @@
   display: block;
   margin: 0 0 0.85rem;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: inherit;
   letter-spacing: normal;
@@ -13,8 +13,21 @@
   margin: 0;
 }
 .home-page .home-introduction {
+  padding-top: 0;
   font-size: 0.9rem;
   line-height: 1.85;
+}
+.home-page .home-introduction .intro-highlights-lead {
+  margin-bottom: 0.25rem;
+}
+.home-page .intro-highlights {
+  line-height: 1.7;
+}
+.home-page .intro-highlights li {
+  margin-bottom: 0.25rem;
+}
+.home-page .intro-highlights li:last-child {
+  margin-bottom: 0;
 }
 .home-page .social-links {
   display: flex;
@@ -73,33 +86,19 @@
   .site-shell.home-page {
     height: 100svh;
   }
-  .site-shell.home-page .site-header {
-    padding-block: 0.85rem;
-  }
   .site-shell.home-page .home-profile {
     flex: 0 0 auto;
-    padding-top: clamp(0.75rem, 2.2svh, 1.5rem);
     padding-bottom: 1rem;
   }
-  .home-page .home-introduction {
-    padding-top: 0;
-  }
-  .home-page .home-introduction p,
-  .home-page .intro-highlights {
+  .home-page .home-introduction p {
     font-size: 0.9rem;
     line-height: 1.85;
   }
   .home-page .home-introduction p {
     margin-block: 1.1rem;
   }
-  .home-page .home-introduction .intro-highlights-lead {
-    margin-bottom: 0.35rem;
-  }
   .home-page .intro-highlights {
     margin-bottom: 0;
-  }
-  .home-page .intro-highlights li {
-    margin-bottom: 0.45rem;
   }
   .site-shell.home-page .site-footer {
     flex: 1 0 5rem;
