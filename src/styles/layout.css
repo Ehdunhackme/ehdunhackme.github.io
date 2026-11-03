@@ -50,7 +50,7 @@
   font-size: 0.88rem;
 }
 @media (max-width: 600px) {
-  .page-layout .main-nav {
+  .site-shell .main-nav {
     gap: clamp(0.55rem, 3vw, 1rem);
   }
   .about-page > .content-section {
