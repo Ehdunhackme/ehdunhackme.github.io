@@ -1,12 +1,7 @@
-/* The directory pages belong to the same deck as the homepage. */
+/* Shared project and writing card surfaces. */
 .card-subpage {
-  --page-suit: url("/assets/cards/suit-club.svg");
-  --page-card-edge: color-mix(in srgb, var(--fg) 18%, transparent);
   --page-card-surface: color-mix(in srgb, var(--fg) 2%, var(--bg));
   overflow-x: clip;
-}
-.card-subpage--writing {
-  --page-suit: url("/assets/cards/suit-diamond.svg");
 }
 
 .card-page-heading {
@@ -42,44 +37,6 @@
   background: var(--page-card-surface);
   border-radius: 0.5rem;
 }
-.card-subpage
-  :is(
-    .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  )::before,
-.card-subpage
-  :is(
-    .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  )::after {
-  content: "";
-  position: absolute;
-  width: 0.65rem;
-  height: 0.65rem;
-  background-color: var(--muted);
-  -webkit-mask: var(--page-suit) center / contain no-repeat;
-  mask: var(--page-suit) center / contain no-repeat;
-  opacity: 0.55;
-  pointer-events: none;
-}
-.card-subpage
-  :is(
-    .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  )::before {
-  top: 0.35rem;
-  right: 0.45rem;
-}
-.card-subpage
-  :is(
-    .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  )::after {
-  bottom: 0.35rem;
-  left: 0.45rem;
-  transform: rotate(180deg);
-}
-
 .card-post-heading {
   margin-bottom: 2rem;
 }

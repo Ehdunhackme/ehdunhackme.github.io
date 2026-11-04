@@ -22,7 +22,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     pathname.startsWith("/writings/") && pathname !== "/writings/";
   const classes = isDemo
     ? "demo-shell"
-    : `site-shell ${home || about || article ? "home-style page-layout" : "standard-style directory-layout"} ${home ? "home-page" : ""} ${about ? "about-route" : ""} ${pathname.startsWith("/projects") || pathname.startsWith("/writings") ? "card-subpage" : ""} ${pathname.startsWith("/writings") ? "card-subpage--writing" : ""}`;
+    : `site-shell ${home || about || article ? "home-style page-layout" : "standard-style directory-layout"} ${home ? "home-page" : ""} ${about ? "about-route" : ""} ${pathname.startsWith("/projects") || pathname.startsWith("/writings") ? "card-subpage" : ""}`;
   return (
     <ContactLanguageProvider>
       <div className={classes}>
