@@ -1,121 +1,144 @@
-// A lightweight line illustration that follows the site's colours.
+// Original architectural linework: a composed KL panorama, not a street map.
+const towerFloors = Array.from({ length: 28 }, (_, index) => 173 + index * 8);
+
+function PetronasTower({ x }: { x: number }) {
+  return (
+    <g transform={`translate(${x} 0)`}>
+      <path
+        d="M-37 420V273h4v-35h5v-29h5v-24h5v-19h6v-15h6v-12h12v12h6v15h6v19h5v24h5v29h5v35h4v147Z"
+        fill="var(--bg)"
+      />
+      <path d="M0 80v39m-3 4h6m-7 5h8m-9 6h10m-8 5v-14l3-6 3 6v14" />
+      <g strokeWidth="0.7" opacity="0.52">
+        {towerFloors.map((y) => {
+          const half =
+            y < 185 ? 17 : y < 209 ? 22 : y < 238 ? 27 : y < 273 ? 32 : 37;
+          return <path key={y} d={`M${-half} ${y}q${half} 3 ${half * 2} 0`} />;
+        })}
+        <path d="M-26 239v181m9-234v234m10-268v268m14-268v268m10-234v234m9-181v181" />
+      </g>
+      <path
+        d="M-19 185q19 4 38 0m-43 24q24 4 48 0m-53 29q29 4 58 0m-63 35q34 4 68 0m-72 41q38 4 76 0m-76 47q38 4 76 0"
+        strokeWidth="1.4"
+      />
+      <path d="M-12 166q12 3 24 0m-18-15h12" opacity="0.7" />
+    </g>
+  );
+}
+
 export function KualaLumpurSkyline() {
   return (
     <div className="kl-skyline" aria-hidden="true">
       <svg
-        viewBox="0 0 1600 380"
+        viewBox="0 0 1600 420"
         fill="none"
         focusable="false"
         preserveAspectRatio="xMidYMax meet"
       >
-        <defs>
-          <pattern
-            id="kl-windows"
-            width="10"
-            height="12"
-            patternUnits="userSpaceOnUse"
-          >
+        <g stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+          {/* A quiet, uneven backdrop with varied roof heights and setbacks. */}
+          <g strokeWidth="0.85" opacity="0.22">
+            <path d="M-15 420V346h44v-20h29v94m0-57h33v-52h49v109m0-70h32v-65h43v135m0-83h23v-29h58v112m0-111h29v-35h47v146m0-65h29v-30h39v95m0-109h23v-55h46v164m39 0V301h51v119m18 0V320h32v-65h39v165m0-111h30v-24h44v135m0-110h36v-54h33v164m53 0V321h29v-31h50v130m52 0V291h40v129m93 0V292h36v-38h48v166m0-91h39v-37h45v128m0-102h27v-46h43v148m0-88h31v-29h56v117m0-72h42v-17h55v89" />
+            <path d="M91 319h49m32-26h43m63 24h47m47 47h29m29-85h23m130-16h39m44 57h44m36-46h33m165 48h40m132-38h48m129 18h43m31 39h56" />
+          </g>
+
+          {/* Distinct middle-distance masses, with only selected facade detail. */}
+          <g strokeWidth="1.05" strokeOpacity="0.43" fill="var(--bg)">
+            <path d="M24 420V350l54-11 20 9v72Zm54-81v81m-54-62 54-11 20 9" />
+            <path d="M113 420V318h17v-9h47v9h9v102Zm17-111v111m-17-91h73" />
+            <path d="M227 420V306l42-8 22 11v111Zm42-122v122m-42-105 42-8 22 11" />
+            <path d="M329 420V255h47v-12h23v177Zm47-165v165m-47-156h47" />
+            <path d="M420 420V318h34v-22h41v124Zm34-102v102" />
+            <path d="M590 420V281l47-8 21 11v136Zm47-147v147m-47-131 47-8 21 11" />
+            <path d="M687 420V322h20v-17h44v115Zm20-115v115" />
+            <path d="M814 420V276h35v-13h27v157Zm35-144v144m-35-134h35" />
+            <path d="M1101 420V274l57-10 22 12v144Zm57-156v156m-57-137 57-10 22 12" />
+            <path d="M1224 420V307h12v-28h29v-9h17v9h13v141Zm12-113h59m-30-28v141" />
+            <path d="M1337 420V323l48-10 23 13v94Zm48-107v107m-48-89 48-10 23 13" />
+            <path d="M1463 420V302h55v11h24v107Zm55-107v107m-55-102h55" />
+          </g>
+          <g strokeWidth="0.65" opacity="0.23">
+            <path d="M34 368v43m11-45v45m11-47v47m10-49v49m75-82v82m12-82v82m12-82v82m174-135h27m-27 15h27m-27 15h27m-27 15h27m-27 15h27m-27 15h27m-27 15h27m-27 15h27M600 302l26-4m-26 18 26-4m-26 18 26-4m-26 18 26-4m-26 18 26-4m-26 18 26-4m-26 18 26-4m-26 18 26-4M823 302h17m-17 18h17m-17 18h17m-17 18h17m-17 18h17m-17 18h17M1112 297l34-6m-34 21 34-6m-34 21 34-6m-34 21 34-6m-34 21 34-6m-34 21 34-6m-34 21 34-6M1473 331h35m-35 20h35m-35 20h35m-35 20h35" />
+          </g>
+
+          {/* Merdeka 118: straight spire, offset crown, and broad glass facets. */}
+          <g strokeWidth="1.45">
             <path
-              d="M3 3v5m4-5v5"
-              stroke="currentColor"
-              strokeWidth="0.7"
-              opacity="0.45"
-            />
-          </pattern>
-          <g id="kl-twin-tower" stroke="currentColor" strokeLinejoin="round">
-            <path
-              d="M-30 352V172h4v-28h5v-25h5v-17h6V87h6V72h8v15h6v15h6v17h5v25h5v28h4v180Z"
+              d="M503 420 505 150 500 119 541 108 553 124 558 258 553 420Z"
               fill="var(--bg)"
             />
+            <path d="M541 108V18m-3 91 3-65 3 65M500 119l33 8 20-3m-48 26 28-23-17 141 42-10-26 162m-29 0 13-152 37 152m-20-293 9 132" />
             <path
-              d="M0 38v34m-3-15h6m-7 15h8m-8 7h8m-10 8h12m-16 8h20m-25 8h30m-30 8h30m-36 8h42m-42 8h42m-42 8h42m-47 9h52m-52 8h52m-52 8h52m-52 8h52m-56 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60m-60 8h60"
+              d="m508 153 8 115-6 150m29-288 9 126-10 163m-29-154 40-6m-43 62 47-7"
+              strokeWidth="0.65"
+              opacity="0.42"
+            />
+            <path
+              d="m505 149 7 3m-6 35 8 1m-7 35 8 1m35-64 4-1m-2 39 3-1m-2 39 3-1m-50 76 9-1m-10 42 8-1m-9 41 7-1"
               strokeWidth="0.8"
-            />
-            <path
-              d="M-20 172v180m10-233v233M0 87v265m10-233v233m10-180v180"
-              opacity="0.5"
-              strokeWidth="0.8"
-            />
-            <path
-              d="M-34 184h68m-68 32h68m-68 32h68m-68 32h68m-68 32h68"
-              strokeWidth="1.5"
-            />
-            <path d="M-32 174v177m64-177v177" opacity="0.35" />
-          </g>
-        </defs>
-        <g
-          stroke="currentColor"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* The distant ridgeline and a quieter second layer of the city. */}
-          <path
-            opacity="0.24"
-            d="M-15 265c54-8 72-30 112-27s50 21 83 12 48-32 84-25 41 20 78 10 63-27 100-17 50 24 86 15m528 19c45-9 68-36 110-30s55 28 92 17 51-31 96-23 54 34 96 23 86-18 165 8"
-          />
-          <g opacity="0.32">
-            <path d="M0 354v-69h43v69m-25-69v-18h37v87m19 0V248h28v106m17 0v-77h45v77m19 0V231h36v123m18 0v-90h50v90m26 0V206h36v148m14 0V259h39v95m29 0V235h53v119m32 0V205h31v149m40 0V240h45v114m32 0V222h32v132m57 0V259h46v95m22 0V223h46v131m58 0V249h24v105m40 0V243h59v111m18 0V219h31v135m125 0V232h43v122m28 0V210h52v144m26 0V248h40v106m20 0v-69h37v69m26 0V241h48v113m22 0V265h42v89m25 0V226h29v128m18 0v-75h71v75" />
-            <path d="M74 268h28m81-15h36m94-24h36m87 26h53m32-28h31m99 17h32m136 12h46m241-11h43m28-9h52m86 36h37m26-19h48m107-6h29" />
-          </g>
-          {/* Merdeka 118: the slender spire and folded glass faces. */}
-          <g>
-            <path
-              d="M564 354V153l18-39 29-43 18 58 8 36 8 189Z"
-              fill="var(--bg)"
-            />
-            <path
-              d="M611 71V13M582 114l29 240m-47-201 81 201m-34-283 3 283m15-225-15 225m-42-219 65 30-73 73 77 40-77 76"
-              opacity="0.72"
-            />
-            <path
-              d="m568 169 70 3m-70 13 70 3m-70 13 71 3m-71 13 72 3m-72 13 73 3m-73 13 74 3m-74 13 75 3m-75 13 76 3m-76 13 76 3m-76 13 77 3m-77 13 77 3m-77 13 78 3"
-              opacity="0.32"
-              strokeWidth="0.7"
-            />
-            <path d="M567 155v197m81-1-9-185" opacity="0.25" />
-          </g>
-          {/* KL Tower: antenna, observation deck, and tapering concrete shaft. */}
-          <g>
-            <path d="m763 354 7-159h13l7 159Z" fill="var(--bg)" />
-            <path d="M776 62v62m-3-32h6m-5 12h4m-3 12h2m-4 8v10m6-10v10" />
-            <path
-              d="M770 136v-6h13v6l21 6v9l-6 5v15l-15 20h-13l-15-20v-15l-6-5v-9Z"
-              fill="var(--bg)"
-            />
-            <path
-              d="M749 142q27-7 55 0m-55 9q27 6 55 0m-49 5q21 5 43 0m-43 15q21 6 43 0m-43-26v7m7-8v9m7-9v10m8-10v10m7-10v10m7-10v9m7-9v8m-28 19 6 20m7-20-5 20m-2 4v159m-6-111h13m-15 62h17"
               opacity="0.65"
             />
-            <path d="M745 143q29-9 62 0m-45 212 7-159" opacity="0.25" />
           </g>
-          {/* The Petronas Twin Towers and their two-level skybridge. */}
-          <use href="#kl-twin-tower" x="918" y="0" />
-          <use href="#kl-twin-tower" x="1012" y="0" />
-          <path d="M948 222h34v9h-34Z" fill="var(--bg)" />
-          <path d="M948 226h34m-34 27 17-22 17 22m-17-22v-9m-11 0v9m22-9v9" />
-          {/* A low foreground of shophouses, roofs, and the old clock tower. */}
-          <g fill="var(--bg)">
-            <path d="M-12 380v-58l34-12 34 12v58m0 0v-83h60v83m0 0v-54l28-15 28 15v54m0 0v-72h48v72m0 0v-47l23-12 23 12v47m0 0v-69h56v69m0 0v-40h46v40" />
-            <path d="M350 380v-56h30v-15h23v-30h9v-30h11v-15q0-11 10-18 10 7 10 18v15h11v30h9v30h23v15h30v56Z" />
-            <path d="M522 380v-64h44v64m0 0v-32h43v32m0 0v-56h46v56m0 0v-88l29-9 29 9v88m0 0v-53h42v53m0 0v-35h54v35m0 0v-65h44v65m0 0v-38h48v38m0 0v-31h57v31m0 0v-47h42v47m0 0v-69h45v69m0 0v-32h48v32m0 0v-53h38v53m0 0v-73h65v73m0 0v-34h44v34m0 0v-59h48v59m0 0v-47h40v47m0 0v-75h58v75m0 0v-51h45v51m0 0v-64h73v64" />
-          </g>
-          <g opacity="0.55" strokeWidth="0.85">
-            <path d="M-10 331h65m1-27h60m0 30h56m0-19h48m46 3h56m33 14h25m106 0h30M412 254h42m-42 25h42m-51 30h60m-83 15h106m-136 18h166m-109 38v-25q0-11 9-11t9 11v25m7 0v-25q0-11 9-11t9 11v25m-86 0v-22q0-10 8-10t8 10v22m101 0v-22q0-10 8-10t8 10v22" />
-            <circle cx="433" cy="268" r="7" />
-            <path d="M433 263v5l4 2m0-62v9m-3-9h6M533 325h23m-23 13h23m-23 13h23m-23 13h23m93-32h-30m30 13h-30m30 13h-30m47-56h42m-42 14h42m-42 14h42m-42 14h42m-42 14h42m56-3h39m17-30h30m-30 14h30m-30 14h30m104-11h27m-27 12h27m28-34h28m-28 12h28m-28 12h28m-28 12h28m100-18h24m30-13h48m-48 13h48m-48 13h48m-48 13h48m70-29h31m-31 13h31m-31 13h31m67-46h42m-42 13h42m-42 13h42m-42 13h42m66-28h55m-55 13h55m-55 13h55" />
+
+          {/* Menara KL: slender shaft and rounded, stacked observation decks. */}
+          <g strokeWidth="1.35">
+            <path d="M765 420 772 260h12l7 160Z" fill="var(--bg)" />
+            <path d="M778 117v78m-3-56h6m-6 18h6m-6 18h6m-7 20h8v11h-8Z" />
             <path
-              d="M65 311v65m14-65v65m14-65v65m14-65v65m73-55v54m14-54v54m14-54v54m65-51v51m14-51v51m14-51v51m14-51v51m355-76v77m14-77v77m14-77v77m453-62v62m15-62v62m15-62v62m15-62v62"
-              opacity="0.48"
+              d="M750 216q28-15 56 0l-3 15-8 17-10 12h-14l-10-12-8-17Z"
+              fill="var(--bg)"
+            />
+            <path
+              d="M750 216q28 9 56 0m-54 7q26 9 52 0m-50 7q24 9 48 0m-45 7q21 8 42 0m-38 7q17 7 34 0m-30 7q13 5 26 0m-17 9v160"
+              strokeWidth="0.85"
+            />
+            <path
+              d="M758 213v10m8-13v15m8-16v17m8-17v17m8-16v15m8-12v10m-27 86h14m-16 58h18"
+              strokeWidth="0.7"
+              opacity="0.46"
             />
           </g>
-          {/* Small leafy silhouettes break up the roofline. */}
-          <g fill="var(--bg)" opacity="0.8">
-            <path d="M216 379v-13c-17 0-21-11-12-18-4-12 7-20 17-15 7-13 24-4 22 7 13 6 10 24-7 24v15m-11-1v-24m-6 4 6 7 8-12" />
-            <path d="M507 379v-17c-14 1-21-11-13-19-4-10 7-18 16-13 8-12 22-4 20 8 15 6 10 22-6 23v18m-9-1v-29m-6 6 6 9 8-13" />
-            <path d="M1220 380v-17c-13 0-19-11-11-19-3-12 10-18 18-11 8-10 20-2 18 8 13 8 5 23-9 21v18m-8-1v-27m-7 4 7 9 7-11" />
+
+          {/* Petronas floor rings follow the setbacks; the bridge has supports. */}
+          <g strokeWidth="1.3">
+            <PetronasTower x={958} />
+            <PetronasTower x={1062} />
+            <path d="M991 282h38v10h-38Z" fill="var(--bg)" />
+            <path
+              d="M991 287h38m-38 31 19-26 19 26m-19-26v-10"
+              strokeWidth="1.1"
+            />
+            <path d="M1001 283v8m18-8v8" strokeWidth="0.7" />
           </g>
-          <path d="M-10 378h1620" opacity="0.22" />
+
+          {/* Exchange 106's square lantern crown balances the eastern cluster. */}
+          <g strokeWidth="1.05" strokeOpacity="0.55">
+            <path d="M1376 420V226h7v-24h38v24h7v194Z" fill="var(--bg)" />
+            <path d="M1383 202v-11h38v11m-38 24h38m-45 12h52m-45-36v218m38-218v218m-32-218v24m7-24v24m7-24v24m7-24v24" />
+            <path
+              d="M1393 242v178m9-178v178m9-178v178m-29-158h40m-40 24h40m-40 24h40m-40 24h40m-40 24h40m-40 24h40"
+              strokeWidth="0.55"
+              opacity="0.5"
+            />
+          </g>
+
+          {/* Foreground: shophouse roofs and the old civic clock tower. */}
+          <g strokeWidth="1.1" fill="var(--bg)">
+            <path d="M-12 420v-38l44-10 37 10v38m0 0v-53l56 1 18 9v43m0 0v-35l31-8 31 8v35m0 0v-49h43v49m0 0v-35h45v35" />
+            <path d="M282 420v-48h22v-10h30v-34h11v-17h6v-13q0-11 11-17 11 6 11 17v13h6v17h11v34h30v10h22v48Z" />
+            <path d="M442 420v-37l36-9 32 9v37m0 0v-34h54v34m0 0v-55l49-5 23 10v50m0 0v-29h35v29m0 0v-61h47v61m0 0v-28h40v28m0 0v-44l38-7 22 9v42m0 0v-21h37v21m0 0v-49l44-8 31 10v47m0 0v-33h58v33m0 0v-60h38v60m0 0v-31h51v31m0 0v-46l27-7 35 7v46m0 0v-28h42v28m0 0v-52h49v52m0 0v-36l38-9 31 9v36m0 0v-55h47v55m0 0v-30h55v30m0 0v-49h57v49" />
+          </g>
+          <g strokeWidth="0.75" opacity="0.65">
+            <path d="M-10 389h78m8-15h49l11 6m-60-6v46m49-46v46m-42-37h15m-15 12h15m10-12h10m-10 12h10M282 381h160m-160 16h160m-108-35h56m-45-34h34m-34-17h34m-17-39v10m-4-10h8" />
+            <circle cx="362" cy="342" r="9" />
+            <path d="M362 336v7l5 2m-70 75v-27q0-8 7-8t7 8v27m10 0v-27q0-8 7-8t7 8v27m13 0v-25q0-11 14-14 14 3 14 14v25m13 0v-27q0-8 7-8t7 8v27m10 0v-27q0-8 7-8t7 8v27M451 391l27-7 22 6m-47 8v22m13-25v25m13-28v28m14-24v24M575 374l38-5 13 6m-13-6v51m-36-30h26m-26 12h26m80-34h31m-31 13h31m-31 13h31m-31 13h31M879 382l32-6 22 6m-22-6v44m-31-27h22m-22 13h22M1075 399h28m-28 11h28m94-28h32m-32 13h32m-32 13h32m98-27h30m-30 14h30m-30 14h30" />
+          </g>
+          {/* Individual tree canopies soften the architectural edge. */}
+          <g strokeWidth="0.9" strokeOpacity="0.54" fill="var(--bg)">
+            <path d="M221 420v-13c-12 2-17-7-13-14-5-8 1-16 10-15 4-9 16-9 20-1 10-3 17 5 13 13 9 7 2 18-11 17v13m-10 0v-23m-6-3 6 8 7-10" />
+            <path d="M647 420v-12c-12 0-17-10-10-17-4-8 6-14 13-11 8-8 19-2 18 7 11 5 9 17-6 20v13m-8-1v-23m-5 1 5 8 5-10" />
+            <path d="M1150 420v-15c-13 0-19-8-14-16-5-9 3-17 13-15 6-10 19-7 23 2 12-2 17 9 11 16 5 9-3 15-16 13v15m-8 0v-27m-7 0 7 11 8-15" />
+          </g>
         </g>
       </svg>
     </div>

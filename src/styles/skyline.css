@@ -80,7 +80,7 @@
   width: max(100%, 56rem);
   height: 100%;
   transform: translateX(-50%);
-  opacity: 0.55;
+  opacity: 0.68;
 }
 @media (min-width: 601px) {
   .site-shell.home-page {

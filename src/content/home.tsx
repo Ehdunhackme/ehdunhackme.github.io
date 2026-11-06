@@ -14,7 +14,7 @@ export function HomeContent() {
         >
           {" "}
           <h1 className="intro-greeting" id="profile-title">
-            Hi. I’m Dun Li.
+            Hi! I’m Dun Li.
           </h1>{" "}
           <p className="intro-current">
             {"I’m currently working on robotics manipulation via RSI at "}
