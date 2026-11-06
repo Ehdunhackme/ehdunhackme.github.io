@@ -160,8 +160,24 @@ export function AboutContent() {
                       <h3>{"Olympiads & STEM outreach"}</h3>
                       <ul>
                         <li>
+                          {"Placed "}
+                          <a
+                            href={"https://www.facebook.com/mystarfinder/posts/moaa-2025congrats-to-the-top-5-students-of-moaa-camp-2025-your-hard-work-truly-s/1281241123527267/"}
+                            target={"_blank"}
+                            rel={"noopener"}
+                          >
+                            {"3rd"}
+                          </a>
+                          {" and "}
+                          <a
+                            href={"https://drive.google.com/file/d/106pV0jfTmrnT4CiBOoi6WdF19nrSgeyX/view?usp=sharing"}
+                            target={"_blank"}
+                            rel={"noopener"}
+                          >
+                            {"2nd"}
+                          </a>
                           {
-                            "Placed 3rd and 2nd in Malaysia Astronomy Olympiad selection rounds, represented Malaysia in IOAA and IAO, and now help as a problem setter for the national team selection."
+                            " in Malaysia Astronomy Olympiad selection rounds, represented Malaysia in IOAA and IAO, and now help as a problem setter for the national team selection."
                           }
                         </li>
                         <li>
