@@ -51,14 +51,22 @@ const sourceGroups = [
 ];
 
 function ArticleTable({ block }: { block: TableBlock }) {
+  const raceTable = block.columns[0] === "Race";
   const table = (
     <div
-      className={styles.tableScroll}
+      className={`${styles.tableScroll}${raceTable ? ` ${styles.raceScroll}` : ""}`}
       tabIndex={0}
       role="region"
       aria-label={block.summary || `${block.columns[0]} comparison table`}
     >
-      <table>
+      <table className={raceTable ? styles.raceTable : undefined}>
+        {raceTable && (
+          <colgroup>
+            {[70, 180, 220, 128, 124, 128, 150, 180].map((width, index) => (
+              <col key={index} style={{ width }} />
+            ))}
+          </colgroup>
+        )}
         <thead>
           <tr>
             {block.columns.map((column) => (
