@@ -3,12 +3,18 @@ import fs from "node:fs";
 
 const predictions = JSON.parse(
   fs.readFileSync(
-    new URL("../src/content/live/predictions.json", import.meta.url),
+    new URL(
+      "../research/midterms-2026/website/live/predictions.json",
+      import.meta.url,
+    ),
   ),
 );
 const snapshot = JSON.parse(
   fs.readFileSync(
-    new URL("../src/content/live/snapshot.json", import.meta.url),
+    new URL(
+      "../research/midterms-2026/data/results/live-snapshot.json",
+      import.meta.url,
+    ),
   ),
 );
 function payload(chamber) {
@@ -69,6 +75,18 @@ test("live comparison refreshes, filters, preserves estimates and survives outag
   const widget = page.locator("#live-results-comparison");
   await expect(widget.getByRole("status")).toContainText("Checked");
   await expect(widget.locator(".metrics")).toContainText("399 / 413");
+  await expect(widget.locator("tbody tr")).toHaveCount(10);
+  await expect(widget.locator(".pages")).toContainText("1–10 of 435 races");
+  const firstRace = await widget.locator("tbody th").first().innerText();
+  await widget.getByRole("button", { name: "Next", exact: true }).click();
+  await expect(widget.locator("tbody tr")).toHaveCount(10);
+  await expect(widget.locator(".pages")).toContainText("11–20 of 435 races");
+  expect(await widget.locator("tbody th").first().innerText()).not.toBe(
+    firstRace,
+  );
+  await widget.getByRole("button", { name: "Previous", exact: true }).click();
+  await expect(widget.locator(".pages")).toContainText("1–10 of 435 races");
+  await expect(widget.locator(".footer")).toHaveText("Results from civicAPI");
   await widget.getByRole("button", { name: "Senate · 35 contests" }).click();
   await expect(widget.locator(".metrics")).toContainText("31 / 33");
   await expect(widget.locator(".metrics")).toContainText("3.32 pp");

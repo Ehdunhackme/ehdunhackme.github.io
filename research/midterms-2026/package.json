@@ -1,0 +1,23 @@
+{
+  "name": "us-election-article",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:live": "node --test tests/live-core.test.mjs",
+    "article": "node scripts/build-article.mjs",
+    "check:article": "node scripts/check-article.mjs",
+    "preview": "node scripts/serve-article.mjs",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "katex": "0.19.1",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

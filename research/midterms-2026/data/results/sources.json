@@ -1,0 +1,21 @@
+{
+  "provider": "civicAPI",
+  "attribution": "https://civicapi.org",
+  "unofficial": true,
+  "sources": {
+    "senate": {
+      "url": "https://civicapi.org/api/v2/race/87528",
+      "retrievedAt": "2026-11-08T09:17:16.627Z",
+      "sourceUpdatedAt": "2026-11-08T09:16:53.807Z",
+      "sha256": "e928085b474c98b3e7703e74de775807249ea6f28ffe7bb73abfcbd62a5996d3",
+      "cors": "*"
+    },
+    "house": {
+      "url": "https://civicapi.org/api/v2/race/87524",
+      "retrievedAt": "2026-11-08T09:17:17.098Z",
+      "sourceUpdatedAt": "2026-11-08T09:17:05.914Z",
+      "sha256": "4a672931c92af12ea03c4eedaf9c206574f235a77f919c7b46de89e365562af5",
+      "cors": "*"
+    }
+  }
+}

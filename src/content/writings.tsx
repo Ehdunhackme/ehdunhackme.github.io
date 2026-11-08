@@ -23,7 +23,7 @@ export function WritingsContent() {
             {
               id: "writing-midterms-2026",
               searchText:
-                "2026 US Midterm Election Model House Senate polling elections statistics benchmark 13 models poll baseline blend all 50 states historical validation uncertainty 8 Nov 2026",
+                "Modelling the 2026 midterms House Senate polling elections statistics benchmark 13 models poll baseline blend all 50 states historical validation uncertainty 8 Nov 2026",
               content: (
                 <Link
                   className="writing-section-link"
@@ -31,11 +31,11 @@ export function WritingsContent() {
                 >
                   <span>
                     <span className="writing-section-title">
-                      2026 US Midterm Election Model
+                      Modelling the 2026 midterms
                     </span>
                     <span className="writing-section-description">
-                      Comparing 13 models on past elections, then estimating
-                      all 435 House districts and 35 Senate contests.
+                      Comparing 13 models on past elections, then estimating all
+                      435 House districts and 35 Senate contests.
                     </span>
                   </span>
                   <span className="writing-section-side">

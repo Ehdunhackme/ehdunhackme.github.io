@@ -1,0 +1,15 @@
+{
+  "data/frozen/2026-feature-snapshots.csv": "bb9dcd3d8ba8382fcccdf9c4b40100fc55bdc7f5ce8940148d027e6f6f8f8263",
+  "data/frozen/training-data.csv": "739ff8f42a49e9edb1eea801fcde1831909f4774878c2bb6fb21696d9e987b42",
+  "data/reference/district-presidential-2014.csv": "dad622ffb1541aab4c49931bc1ec5fd347bba283a1fe898329184c4d3b75b255",
+  "data/reference/district-presidential-2016.csv": "ff7bff913f9454c186f4f05be318b29d27f639c8131b987b1b70a2c15b4e5490",
+  "data/reference/district-presidential-2018.csv": "4bb62ee72d7e02482b928e617af434c2f6b7a1f05874d24bf5083709cfc35294",
+  "data/reference/district-presidential-2020.csv": "13f58ed61d0c7dc15bd997202e43e7c5d5d96a28e744ea7e7f8d67430e40a475",
+  "data/reference/district-presidential-2022.csv": "1256330f4932a5527bb797c960b338ead1f592a9accd4b1b659920ce87b89720",
+  "data/reference/district-presidential-2024.csv": "ddc9da3942a2fa9eeb957f68e56766bf83708d04deabeaa7834a5d2669a262a7",
+  "data/reference/district-presidential-2026.csv": "537956d09e265a946fc54a39315737cebd9aeb031244c05594edf443dc084a65",
+  "data/reference/generic-ballot-2026.csv": "9f48f8647aa7692de705f78d1d332e9b58cadad5f3ba65c49a75cb7ca8c1a499",
+  "data/reference/historical-poll-features.csv": "929fce9f624d5a6d613db7b13370ecf4cfee1bfd8a4eece6e87c7e7940cba705",
+  "data/reference/nominees-2026.csv": "d4695f836fed24ddbc8aa5e46a8c27eb7ebb07aba98d6ed2581de4908cbc9e9c",
+  "data/reference/state-codes.csv": "440154b94b1ab3c8d0d8570d756d24c20b448367e91e02c95c61f731073e61c2"
+}

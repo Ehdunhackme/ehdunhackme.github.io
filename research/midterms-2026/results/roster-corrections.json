@@ -1,0 +1,234 @@
+[
+  {
+    "state": "CT",
+    "district": 2,
+    "before": "George Patrick Austin, Republican",
+    "candidate": "George Patrick Austin",
+    "party": "REP",
+    "source_line": "2  George Patrick Austin, Republican, Independent ............................................                                  Suffield"
+  },
+  {
+    "state": "MA",
+    "district": 1,
+    "before": "Nadia Donya Milleron, Independent",
+    "candidate": "Nadia Donya Milleron",
+    "party": "OTHER",
+    "source_line": "Nadia Donya Milleron, Independent, Unenrolled ............................................                                   Sheffield"
+  },
+  {
+    "state": "NY",
+    "district": 2,
+    "before": "Patrick Halpin, Democrat",
+    "candidate": "Patrick Halpin",
+    "party": "DEM",
+    "source_line": "Patrick Halpin, Democrat, Working Families ..................................................                            Oak Beach"
+  },
+  {
+    "state": "NY",
+    "district": 3,
+    "before": "Michael J. LiPetri, Jr., Republican",
+    "candidate": "Michael J. LiPetri, Jr.",
+    "party": "REP",
+    "source_line": "3  Michael J. LiPetri, Jr., Republican, Conservative ............................................                           Farmingdale"
+  },
+  {
+    "state": "NY",
+    "district": 4,
+    "before": "Jeanine C. Driscoll, Republican",
+    "candidate": "Jeanine C. Driscoll",
+    "party": "REP",
+    "source_line": "4  Jeanine C. Driscoll, Republican, Conservative .................................................                          Floral Park"
+  },
+  {
+    "state": "NY",
+    "district": 5,
+    "before": "George Marsh, Republican",
+    "candidate": "George Marsh",
+    "party": "REP",
+    "source_line": "5  George Marsh, Republican, Queens United .....................................................                            Rockaway Park"
+  },
+  {
+    "state": "NY",
+    "district": 6,
+    "before": "Joseph Chou, Republican",
+    "candidate": "Joseph Chou",
+    "party": "REP",
+    "source_line": "6  Joseph Chou, Republican, Conservative ...........................................................                        Flushing"
+  },
+  {
+    "state": "NY",
+    "district": 7,
+    "before": "Melvin Rivera, Republican",
+    "candidate": "Melvin Rivera",
+    "party": "REP",
+    "source_line": "17   Melvin Rivera, Republican, Conservative .........................................................                        Brooklyn"
+  },
+  {
+    "state": "NY",
+    "district": 7,
+    "before": "Claire Valdez, Democrat",
+    "candidate": "Claire Valdez",
+    "party": "DEM",
+    "source_line": "Claire Valdez, Democrat, Working Families .....................................................                          Ridgewood"
+  },
+  {
+    "state": "NY",
+    "district": 8,
+    "before": "Lewis Mizrahi, Republican",
+    "candidate": "Lewis Mizrahi",
+    "party": "REP",
+    "source_line": "8  Lewis Mizrahi, Republican, Conservative ........................................................                         Brooklyn"
+  },
+  {
+    "state": "NY",
+    "district": 9,
+    "before": "Joel Azumah, Republican",
+    "candidate": "Joel Azumah",
+    "party": "REP",
+    "source_line": "9  Joel Azumah, Republican, Conservative ..........................................................                         Brooklyn"
+  },
+  {
+    "state": "NY",
+    "district": 10,
+    "before": "Jennifer E. Moore, Republican",
+    "candidate": "Jennifer E. Moore",
+    "party": "REP",
+    "source_line": "210   Jennifer E. Moore, Republican, Conservative ..................................................                           Brooklyn"
+  },
+  {
+    "state": "NY",
+    "district": 10,
+    "before": "Brad Lander, Democrat",
+    "candidate": "Brad Lander",
+    "party": "DEM",
+    "source_line": "Brad Lander, Democrat, Working Families ......................................................                           Brooklyn"
+  },
+  {
+    "state": "NY",
+    "district": 12,
+    "before": "Caroline Shinkle, Republican",
+    "candidate": "Caroline Shinkle",
+    "party": "REP",
+    "source_line": "312   Caroline Shinkle, Republican, Conservative ....................................................                          New York"
+  },
+  {
+    "state": "NY",
+    "district": 13,
+    "before": "Darializa Avila Chevalier, Democrat",
+    "candidate": "Darializa Avila Chevalier",
+    "party": "DEM",
+    "source_line": "Darializa Avila Chevalier, Democrat, Working Families .................................                                  New York"
+  },
+  {
+    "state": "NY",
+    "district": 14,
+    "before": "Diamant Hysenaj, Republican",
+    "candidate": "Diamant Hysenaj",
+    "party": "REP",
+    "source_line": "14   Diamant Hysenaj, Republican, Conservative ...................................................                            Bronx"
+  },
+  {
+    "state": "NY",
+    "district": 17,
+    "before": "Cait Conley, Democrat",
+    "candidate": "Cait Conley",
+    "party": "DEM",
+    "source_line": "Cait Conley, Democrat, Working Families ........................................................                         Ossining"
+  },
+  {
+    "state": "NY",
+    "district": 18,
+    "before": "Jackie Mary Auringer, Republican",
+    "candidate": "Jackie Mary Auringer",
+    "party": "REP",
+    "source_line": "18   Jackie Mary Auringer, Republican, Conservative ............................................                              Kingston"
+  },
+  {
+    "state": "NY",
+    "district": 19,
+    "before": "Peter K. Oberacker, Republican",
+    "candidate": "Peter K. Oberacker",
+    "party": "REP",
+    "source_line": "19   Peter K. Oberacker, Republican, Conservative ................................................                            Schenevus"
+  },
+  {
+    "state": "NY",
+    "district": 20,
+    "before": "Ralph F. Ambrosio, Republican",
+    "candidate": "Ralph F. Ambrosio",
+    "party": "REP",
+    "source_line": "20   Ralph F. Ambrosio, Republican, Conservative .................................................                            Delmar"
+  },
+  {
+    "state": "NY",
+    "district": 21,
+    "before": "Anthony Constantino, Republican",
+    "candidate": "Anthony Constantino",
+    "party": "REP",
+    "source_line": "521   Anthony Constantino, Republican, Taxpayer Rights .......................................                                 Edinburg"
+  },
+  {
+    "state": "NY",
+    "district": 22,
+    "before": "Kailee Buller, Republican",
+    "candidate": "Kailee Buller",
+    "party": "REP",
+    "source_line": "22   Kailee Buller, Republican, Conservative ..........................................................                       Auburn"
+  },
+  {
+    "state": "NY",
+    "district": 23,
+    "before": "Aaron Gies, Democrat",
+    "candidate": "Aaron Gies",
+    "party": "DEM",
+    "source_line": "Aaron Gies, Democrat, Working Families ........................................................                            Olean"
+  },
+  {
+    "state": "NY",
+    "district": 24,
+    "before": "Alissa J. Ellman, Democrat",
+    "candidate": "Alissa J. Ellman",
+    "party": "DEM",
+    "source_line": "Alissa J. Ellman, Democrat, Working Families ...............................................                               Lockport"
+  },
+  {
+    "state": "NY",
+    "district": 25,
+    "before": "Virginia E. McIntyre, Republican",
+    "candidate": "Virginia E. McIntyre",
+    "party": "REP",
+    "source_line": "25    Virginia E. McIntyre, Republican, Conservative ..............................................                              Rochester"
+  },
+  {
+    "state": "NY",
+    "district": 26,
+    "before": "Dennis E. Hannon, Republican",
+    "candidate": "Dennis E. Hannon",
+    "party": "REP",
+    "source_line": "26    Dennis E. Hannon, Republican, Conservative .................................................                               Tonawanda"
+  },
+  {
+    "state": "OR",
+    "district": 2,
+    "before": "Chris Beck, Democrat",
+    "candidate": "Chris Beck",
+    "party": "DEM",
+    "source_line": "Chris Beck, Democrat, Independent .................................................................                         Phoenix"
+  },
+  {
+    "state": "OR",
+    "district": 4,
+    "before": "Monique DeSpain, Republican",
+    "candidate": "Monique DeSpain",
+    "party": "REP",
+    "source_line": "4   Monique DeSpain, Republican, Libertarian .....................................................                              Eugene"
+  },
+  {
+    "state": "OR",
+    "district": 5,
+    "before": "Patti Adair, Republican",
+    "candidate": "Patti Adair",
+    "party": "REP",
+    "source_line": "5   Patti Adair, Republican, Libertarian ................................................................                       West Linn"
+  }
+]
