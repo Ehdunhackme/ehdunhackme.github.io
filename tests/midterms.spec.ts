@@ -8,7 +8,9 @@ test("midterm article is searchable and has complete responsive figures", async 
 }) => {
   test.setTimeout(60000); // Includes decoding ten figures and opening the complete race tables in WebKit.
   const errors: string[] = [];
-  await page.route("https://civicapi.org/api/v2/race/*", (route) => route.abort());
+  await page.route("https://civicapi.org/api/v2/race/*", (route) =>
+    route.abort(),
+  );
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/writings/");
   await page.getByRole("searchbox").fill("poll baseline blend");
@@ -43,18 +45,25 @@ test("midterm article is searchable and has complete responsive figures", async 
       ),
     )
     .toBeTruthy();
-  // A 200 response is not enough: every figure must decode after scrolling.
-  for (const figure of await page.locator("article figure img").all()) {
-    await figure.scrollIntoViewIfNeeded();
-    await expect
-      .poll(() =>
-        figure.evaluate(
-          (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
-        ),
-      )
-      .toBeTruthy();
-    await figure.evaluate((img: HTMLImageElement) => img.decode());
-  }
+  // Check every lazy figure in one browser call. Repeated trace snapshots of
+  // this illustrated article make individual WebKit protocol calls expensive.
+  const decoded = await page
+    .locator("article figure img")
+    .evaluateAll(async (images) => {
+      const results = [];
+      for (const element of images) {
+        const img = element as HTMLImageElement;
+        img.scrollIntoView();
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => resolve()),
+        );
+        await img.decode();
+        results.push({ complete: img.complete, width: img.naturalWidth });
+      }
+      return results;
+    });
+  expect(decoded).toHaveLength(10);
+  expect(decoded.every((img) => img.complete && img.width > 0)).toBe(true);
   const mobile = (page.viewportSize()?.width || 1000) <= 640;
   const selectedSource = await first.evaluate((img: HTMLImageElement) => ({
     current: img.currentSrc,
