@@ -1,6 +1,13 @@
 import type { ReactNode } from "react";
+import { renderToString } from "katex";
+import "katex/dist/katex.min.css";
 import articleData from "./midterms-2026.json";
 import styles from "./midterms-2026.module.css";
+import { LiveComparison } from "./live-comparison";
+import predictions from "./live/predictions.json";
+import snapshot from "./live/snapshot.json";
+
+const liveConfig = { predictions, snapshot };
 
 type TableBlock = {
   type: "table";
@@ -17,8 +24,11 @@ type FigureBlock = {
   height: number;
   mobileWidth: number;
   mobileHeight: number;
+  src: string;
+  mobileSrc: string;
 };
 type Block =
+  | { type: "live" }
   | { type: "heading"; text: string; id: string }
   | { type: "paragraph"; text: string }
   | { type: "equation"; text: string; latex: string }
@@ -94,17 +104,17 @@ function ArticleFigure({ block }: { block: FigureBlock }) {
       <picture>
         <source
           media="(max-width: 640px)"
-          srcSet={`${assets}/${block.slug}-mobile.svg`}
+          srcSet={block.mobileSrc}
           width={block.mobileWidth}
           height={block.mobileHeight}
         />
-        {/* SVGs preserve the figures' typography and do not need raster optimization. */}
+        {/* Embedded figures also render in offline previews and without lazy-load requests. */}
         <img
-          src={`${assets}/${block.slug}.svg`}
+          src={block.src}
           width={block.width}
           height={block.height}
           alt={block.alt}
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </picture>
@@ -124,6 +134,8 @@ function ArticleFigure({ block }: { block: FigureBlock }) {
 
 function renderBlock(block: Block, index: number): ReactNode {
   switch (block.type) {
+    case "live":
+      return <LiveComparison config={liveConfig} key={index} />;
     case "heading":
       return (
         <h2 id={block.id} key={index}>
@@ -136,12 +148,19 @@ function renderBlock(block: Block, index: number): ReactNode {
       return (
         <div
           className={styles.equation}
-          role="math"
+          role="region"
+          tabIndex={0}
           aria-label={block.text}
           key={index}
-        >
-          {block.text}
-        </div>
+          dangerouslySetInnerHTML={{
+            __html: renderToString(block.latex, {
+              displayMode: true,
+              throwOnError: true,
+              trust: false,
+              output: "htmlAndMathml",
+            }),
+          }}
+        />
       );
     case "table":
       return <ArticleTable block={block} key={index} />;
@@ -162,9 +181,9 @@ export function MidtermArticle() {
             <time className="writing-post-date" dateTime={article.date}>
               {article.dateLabel}
             </time>
+            <p className={styles.note}>{article.note}</p>
           </div>
         </header>
-        <p className={styles.note}>{article.note}</p>
         {article.blocks.map(renderBlock)}
         <section className={styles.sources} aria-labelledby="midterms-sources">
           <h2 id="midterms-sources">Data sources and code</h2>
@@ -178,6 +197,11 @@ export function MidtermArticle() {
             ))}
           </ul>
           <p>{article.reproducibility}</p>
+          <p>
+            <a href="https://github.com/Ehdunhackme/US-election">
+              Code and reproducible inputs on GitHub
+            </a>
+          </p>
           <p>
             <a href={`${assets}/2026-estimates.csv`} download>
               Download race estimates (CSV)
