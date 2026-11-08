@@ -59,6 +59,7 @@
 }
 .tableScroll {
   width: 100%;
+  min-width: 0;
   max-width: 100%;
   overflow-x: auto;
   margin: 20px 0;
@@ -69,6 +70,8 @@
   line-height: 1.6;
   width: 100%;
   font-variant-numeric: tabular-nums;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .tableScroll th,
 .tableScroll td {
@@ -83,6 +86,7 @@
 }
 .tableScroll thead th {
   border-bottom: 1px solid var(--line);
+  white-space: nowrap;
 }
 .tableScroll th:first-child {
   text-align: left;
@@ -91,6 +95,35 @@
 .tableScroll td:last-child,
 .tableScroll th:last-child {
   padding-right: 0;
+}
+.raceScroll {
+  max-height: 32rem;
+  overflow: auto;
+}
+.tableScroll .raceTable {
+  width: 1180px;
+  table-layout: fixed;
+}
+.raceTable th,
+.raceTable td {
+  text-align: left;
+}
+.raceTable th:nth-child(4),
+.raceTable th:nth-child(5),
+.raceTable td:nth-child(4),
+.raceTable td:nth-child(5) {
+  text-align: right;
+  white-space: nowrap;
+}
+.raceTable tbody th {
+  white-space: nowrap;
+}
+.raceTable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg, #1a1a1a);
+  box-shadow: 0 1px var(--line);
 }
 .details {
   margin: 24px 0;
