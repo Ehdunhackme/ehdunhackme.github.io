@@ -6,6 +6,7 @@ test("midterm article is searchable and has complete responsive figures", async 
   page,
   request,
 }) => {
+  test.setTimeout(60000); // Includes decoding ten figures and opening the complete race tables in WebKit.
   const errors: string[] = [];
   await page.route("https://civicapi.org/api/v2/race/*", (route) => route.abort());
   page.on("pageerror", (error) => errors.push(error.message));

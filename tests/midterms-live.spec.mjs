@@ -44,6 +44,7 @@ function payload(chamber) {
 test("live comparison refreshes, filters, preserves estimates and survives outages", async ({
   page,
 }, testInfo) => {
+  test.setTimeout(60000); // WebKit loads the full illustrated article twice to check persisted results.
   let failure = false,
     change = false,
     requests = 0;

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("content links inherit their text colour and brighten on keyboard focus across pages", async ({
+test("content links use their page colours and brighten on keyboard focus", async ({
   page,
 }) => {
   for (const [path, selector] of [
@@ -19,7 +19,11 @@ test("content links inherit their text colour and brighten on keyboard focus acr
     const inherited = await link.evaluate(
       (el) => getComputedStyle(el.parentElement!).color,
     );
-    await expect(link).toHaveCSS("color", inherited);
+    // Project resource links have an explicit blue colour in papers.css.
+    await expect(link).toHaveCSS(
+      "color",
+      path === "/projects/" ? "rgb(138, 180, 255)" : inherited,
+    );
     await page.keyboard.press("Tab");
     await link.focus();
     await expect(link).toHaveCSS("color", "rgb(255, 255, 255)");
