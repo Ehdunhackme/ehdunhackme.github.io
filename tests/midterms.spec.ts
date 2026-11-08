@@ -19,10 +19,10 @@ test("midterm article is searchable and has complete responsive figures", async 
   await page.goto("/writings/");
   await page.getByRole("searchbox").fill("poll baseline blend");
   await expect(page.locator(".writing-section-link:visible")).toHaveCount(1);
-  await page.getByRole("link", { name: /Modelling the 2026 midterms/ }).click();
+  await page.getByRole("link", { name: /Modelling the 2026 US Midterm Elections/ }).click();
   await expect(page).toHaveURL(new RegExp(`${path}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Modelling the 2026 midterms",
+    "Modelling the 2026 US Midterm Elections",
   );
   await expect(page.locator('.site-header [aria-current="page"]')).toHaveText(
     "Writings",

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { MidtermArticle } from "@/content/midterms-2026";
 
 export const metadata: Metadata = {
-  title: { absolute: "Modelling the 2026 midterms | Dun Li Chan" },
+  title: { absolute: "Modelling the 2026 US Midterm Elections | Dun Li Chan" },
   description:
     "Comparing 13 election models across past elections, then applying the selected poll/baseline blend to all 435 House districts and 35 Senate contests.",
   alternates: { canonical: "/writings/2026-us-midterm-election-model/" },
   openGraph: {
     type: "article",
-    title: "Modelling the 2026 midterms",
+    title: "Modelling the 2026 US Midterm Elections",
     description:
       "A retrospective forecast across all 50 states, with one model, complete race coverage and historical validation.",
     url: "/writings/2026-us-midterm-election-model/",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Modelling the 2026 midterms",
+    title: "Modelling the 2026 US Midterm Elections",
     images: ["/assets/writings/midterms-2026/preview.png"],
   },
 };
