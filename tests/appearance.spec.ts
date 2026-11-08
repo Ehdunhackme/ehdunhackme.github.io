@@ -19,13 +19,16 @@ test("content links use their page colours and brighten on keyboard focus", asyn
     const inherited = await link.evaluate(
       (el) => getComputedStyle(el.parentElement!).color,
     );
-    // Project resource links have an explicit blue colour in papers.css.
+    // The project board defines blue links and a lighter blue focus colour in papers.css.
     await expect(link).toHaveCSS(
       "color",
       path === "/projects/" ? "rgb(138, 180, 255)" : inherited,
     );
     await page.keyboard.press("Tab");
     await link.focus();
-    await expect(link).toHaveCSS("color", "rgb(255, 255, 255)");
+    await expect(link).toHaveCSS(
+      "color",
+      path === "/projects/" ? "rgb(180, 206, 255)" : "rgb(255, 255, 255)",
+    );
   }
 });
