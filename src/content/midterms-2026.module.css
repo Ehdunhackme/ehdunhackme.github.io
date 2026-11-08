@@ -1,0 +1,116 @@
+.article {
+  overflow-wrap: anywhere;
+}
+.article > p {
+  max-width: 72ch;
+}
+.article .note {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  border-left: 2px solid var(--line);
+  padding-left: 16px;
+  margin-bottom: 40px;
+}
+.article h2 {
+  scroll-margin-top: 24px;
+}
+.figure {
+  margin: 32px 0 40px;
+}
+.figure picture,
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure figcaption {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-top: 16px;
+}
+.figure figcaption a {
+  white-space: nowrap;
+}
+.tableScroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 24px 0;
+}
+.tableScroll table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+.tableScroll th,
+.tableScroll td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  vertical-align: top;
+}
+.tableScroll th {
+  font-weight: 500;
+  color: var(--strong);
+}
+.tableScroll th:first-child {
+  text-align: left;
+  padding-left: 0;
+}
+.tableScroll td:last-child,
+.tableScroll th:last-child {
+  padding-right: 0;
+}
+.details {
+  margin: 24px 0;
+  border-block: 1px solid var(--line);
+}
+.details summary {
+  padding: 16px 0;
+  cursor: pointer;
+  color: var(--strong);
+}
+.equation {
+  font-family: "Cambria Math", "STIX Two Math", Georgia, serif;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin: 16px 0;
+  color: var(--strong);
+}
+.sources {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+}
+.sources ul {
+  padding-left: 20px;
+}
+.sources li {
+  margin-bottom: 8px;
+}
+.tableScroll:focus-visible,
+.details summary:focus-visible {
+  outline: 2px solid var(--strong);
+  outline-offset: 4px;
+}
+@media (min-width: 1100px) {
+  .figure {
+    width: calc(100% + 128px);
+    margin-left: -64px;
+  }
+}
+@media (max-width: 640px) {
+  .figure {
+    margin-block: 24px 32px;
+  }
+  .tableScroll table {
+    min-width: 560px;
+  }
+  .figure figcaption {
+    font-size: 0.8125rem;
+  }
+}

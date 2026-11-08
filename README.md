@@ -26,6 +26,8 @@ npm run start
 - `src/content/projects.tsx`: project and publication cards, links, search text, and explanations.
 - `src/content/writings.tsx`: writing directory.
 - `src/content/research-guide.tsx`: the full article.
+- `src/content/midterms-2026.json`: the generated midterm modeling article and tables; `midterms-2026.tsx` renders it as a server component.
+- `public/assets/writings/midterms-2026/`: the article's desktop/mobile SVG figures, preview image, and downloadable data. The separate research repository generates these from saved model outputs with `scripts/export_website.py --site <portfolio-folder>`.
 - `src/components/`: reusable navigation, search, card transitions, gallery, theme, and explanation interactions.
 - `src/styles/`: the existing styles, scoped to their original page families to avoid changes during navigation.
 - `public/assets/`: images and other public media, still available at `/assets/...`.

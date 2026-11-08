@@ -151,9 +151,7 @@ test("about chapters, browser history, legacy links and gallery work", async ({
   await expect(page.locator("#more-about-me")).toBeVisible();
 });
 
-test("writings search and dark layouts at viewport width", async ({
-  page,
-}) => {
+test("writings search and dark layouts at viewport width", async ({ page }) => {
   await page.goto("/writings/");
   await page.waitForLoadState("networkidle");
   await page.getByRole("searchbox").fill("qwerty");
@@ -161,7 +159,8 @@ test("writings search and dark layouts at viewport width", async ({
     page.getByRole("heading", { name: "No matching writings" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear", exact: true }).click();
-  await expect(page.locator(".writing-section-link")).toBeVisible();
+  await expect(page.locator(".writing-section-link")).toHaveCount(2);
+  await expect(page.locator(".writing-section-link").first()).toBeVisible();
   await page.evaluate(() => localStorage.setItem("theme", "light"));
   await page.reload();
   await expect(page.locator("html")).toHaveClass(/dark/);
@@ -171,6 +170,7 @@ test("writings search and dark layouts at viewport width", async ({
     "/about/",
     "/projects/",
     "/writings/",
+    "/writings/2026-us-midterm-election-model/",
     "/writings/my-opinionated-guide-to-starting-research-early/",
   ]) {
     await page.goto(path);

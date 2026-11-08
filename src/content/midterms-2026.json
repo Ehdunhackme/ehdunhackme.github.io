@@ -1,0 +1,496 @@
+{
+  "title": "2026 US Midterm Election Model",
+  "date": "2026-11-08",
+  "dateLabel": "8 Nov 2026",
+  "note": "Retrospective analysis published November 8, 2026. Estimates use an unverified November 2 polling cutoff and cover selected races only.",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Model predictions",
+      "id": "model-predictions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Our model estimates Democratic two-party vote share in 53 House races and 15 Senate contests using a November 2, 2026 polling cutoff. The point estimates put Democrats above 50% in 24 of the covered House races and 6 of the covered Senate contests. These counts describe the races in our dataset, not the total number of seats either party will win."
+    },
+    {
+      "type": "paragraph",
+      "text": "Uncertainty is substantial. The nominal 95% prediction intervals cross 50% in 49 House races and 10 Senate contests. The charts below show the estimates, intervals and polling averages for each race."
+    },
+    {
+      "type": "figure",
+      "slug": "2026-senate-intervals",
+      "caption": "Filled dots show the model estimate, open circles show the polling average, and grey lines show nominal 95% intervals. Blue dots indicate an estimate above 50%; red dots indicate an estimate below 50%.",
+      "alt": "2026 Senate vote-share estimates",
+      "width": 678.82,
+      "height": 367.23,
+      "mobileWidth": 343.73,
+      "mobileHeight": 367.23
+    },
+    {
+      "type": "figure",
+      "slug": "2026-house-intervals",
+      "caption": "House vote-share estimates for the covered districts. All panels use the same scale. The dashed vertical line marks 50%.",
+      "alt": "2026 House vote-share estimates",
+      "width": 679.29,
+      "height": 566.87,
+      "mobileWidth": 343.73,
+      "mobileHeight": 1036.0
+    },
+    {
+      "type": "heading",
+      "text": "Model description",
+      "id": "model-description"
+    },
+    {
+      "type": "paragraph",
+      "text": "We fit separate elastic-net regressions for the House and Senate. For race i, the outcome is the Democratic share of votes cast for the Democratic and Republican candidates:"
+    },
+    {
+      "type": "equation",
+      "text": "yᵢ = 100 × Dᵢ / (Dᵢ + Rᵢ)",
+      "latex": "y_i = 100\\frac{D_i}{D_i + R_i}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The regression combines polling with incumbency, partisan history and the national political environment:"
+    },
+    {
+      "type": "equation",
+      "text": "ŷᵢ = β₀ + β₁xᵢ₁ + ⋯ + βₚxᵢₚ",
+      "latex": "\\widehat y_i = \\beta_0 + \\sum_{j=1}^{p}\\beta_j x_{ij}"
+    },
+    {
+      "type": "table",
+      "columns": ["Predictor group", "Variables"],
+      "rows": [
+        [
+          "Race polling",
+          "Weighted Democratic two-party polling average; disagreement between pollsters"
+        ],
+        [
+          "Polling coverage",
+          "Log survey count, log pollster count, days since latest poll, log sample size"
+        ],
+        [
+          "National environment",
+          "Generic-ballot polling average, midterm indicator, president’s party"
+        ],
+        [
+          "Partisan history",
+          "Previous presidential election’s state two-party share minus national share"
+        ],
+        [
+          "Incumbency",
+          "Separate indicators for Democratic and Republican incumbents"
+        ],
+        ["State", "State indicators"]
+      ],
+      "summary": null
+    },
+    {
+      "type": "paragraph",
+      "text": "Polls are aggregated over a 90-day window. We weight them by the square root of sample size and apply a 14-day recency half-life. Sample sizes are capped between 100 and 3,000 for weighting, and each pollster’s total weight is capped at its strongest survey. Numeric predictors are imputed and standardized using the training data only."
+    },
+    {
+      "type": "paragraph",
+      "text": "The House training set contains 1,003 races from 2000 to 2022. The Senate set contains 375 races from 2000 to 2024. Both midterm and presidential-election years are included, with a midterm indicator distinguishing the two."
+    },
+    {
+      "type": "table",
+      "columns": [
+        "Chamber",
+        "Years",
+        "Cycles",
+        "Training races",
+        "2026 covered races"
+      ],
+      "rows": [
+        ["House", "2000 to 2022", 12, 1003, 53],
+        ["Senate", "2000 to 2024", 13, 375, 15]
+      ],
+      "summary": null
+    },
+    {
+      "type": "figure",
+      "slug": "01-training-years",
+      "caption": "Number of usable historical races by election cycle. Each race contributes one snapshot at the one-day cutoff. No House 2024 validation set is included.",
+      "alt": "Training data by election year",
+      "width": 678.82,
+      "height": 315.13,
+      "mobileWidth": 349.48,
+      "mobileHeight": 336.68
+    },
+    {
+      "type": "heading",
+      "text": "Model choice",
+      "id": "model-choice"
+    },
+    {
+      "type": "paragraph",
+      "text": "Polling averages, state partisanship and incumbency can carry overlapping information. Elastic net shrinks the regression coefficients to reduce instability when predictors are correlated. It estimates the coefficients by minimizing:"
+    },
+    {
+      "type": "equation",
+      "text": "(1 / 2n) Σ(yᵢ − β₀ − xᵢᵀβ)² + αr ‖β‖₁ + [α(1 − r) / 2] ‖β‖₂²",
+      "latex": "\\frac{1}{2n}\\sum_i(y_i-\\beta_0-x_i^{\\mathsf T}\\beta)^2 + \\alpha r\\lVert\\beta\\rVert_1 + \\frac{\\alpha(1-r)}{2}\\lVert\\beta\\rVert_2^2"
+    },
+    {
+      "type": "paragraph",
+      "text": "Here α controls the amount of shrinkage and r controls the balance between L1 and L2 penalties. The intercept is unpenalized. We compare α values of 0.01, 0.1 and 1, with r equal to 0.2 or 0.8, using prediction errors from earlier election cycles."
+    },
+    {
+      "type": "table",
+      "columns": ["Chamber", "Selected α", "Selected r"],
+      "rows": [
+        ["House", 0.01, 0.8],
+        ["Senate", 0.1, 0.8]
+      ],
+      "summary": null
+    },
+    {
+      "type": "paragraph",
+      "text": "We also compare OLS, ridge, gradient boosting and multilevel regression. In a separate 2024 Senate test, all five methods train on data through 2022. The table reports vote-share RMSE in percentage points, with lower values indicating smaller errors."
+    },
+    {
+      "type": "table",
+      "columns": ["Method", "1-day RMSE", "31-day RMSE"],
+      "rows": [
+        ["Elastic net", 1.9026141129334775, 2.5720749250431774],
+        ["Gradient boosting", 2.6036710686470435, 2.8745386360166227],
+        ["Multilevel", 1.889154880214125, 2.727276680797352],
+        ["OLS", 2.092984096456478, 3.5626903031015917],
+        ["Polling average (reference)", 2.5538380554112896, 2.4179638873813856],
+        ["Ridge", 1.8900627467714681, 3.4060235330717132]
+      ],
+      "summary": null
+    },
+    {
+      "type": "paragraph",
+      "text": "At the one-day cutoff, multilevel regression, ridge and elastic net are nearly tied. At 31 days, the polling average outperforms every fitted model. Elastic net offers a simple main specification, but these results do not identify a method that wins consistently at every horizon."
+    },
+    {
+      "type": "figure",
+      "slug": "05-five-model-comparison",
+      "caption": "Five fitted models and the polling-average reference on the 2024 Senate test. All methods use the same 25 races at one day and the same 24 races at 31 days.",
+      "alt": "Five-model comparison on 2024 Senate races",
+      "width": 678.82,
+      "height": 322.33,
+      "mobileWidth": 343.73,
+      "mobileHeight": 569.08
+    },
+    {
+      "type": "heading",
+      "text": "Model validation",
+      "id": "model-validation"
+    },
+    {
+      "type": "paragraph",
+      "text": "We evaluate the model by moving forward through election years. Each test year is predicted using only earlier years. Preprocessing and parameter selection follow the same restriction. The first two validation folds use the first declared penalty setting; subsequent folds select the setting with the lowest mean RMSE across completed earlier folds."
+    },
+    {
+      "type": "paragraph",
+      "text": "The plots show House forecasts from 2014 to 2022 and Senate forecasts from 2014 to 2024. The table averages each metric across election cycles, giving every cycle equal weight."
+    },
+    {
+      "type": "table",
+      "columns": [
+        "Chamber",
+        "Mean-cycle RMSE",
+        "Mean-cycle MAE",
+        "Mean-cycle Brier",
+        "95% interval coverage"
+      ],
+      "rows": [
+        [
+          "House",
+          4.212615827362721,
+          3.365724303324788,
+          0.14120298618933977,
+          "95.5%"
+        ],
+        [
+          "Senate",
+          3.141425285514274,
+          2.509521835412789,
+          0.05831492490979671,
+          "94.6%"
+        ]
+      ],
+      "summary": null
+    },
+    {
+      "type": "paragraph",
+      "text": "Mean-cycle RMSE is 4.21 percentage points for the House and 3.14 for the Senate. Brier scores evaluate the two-party-majority probabilities, while interval coverage measures how often the actual share falls inside the nominal 95% interval."
+    },
+    {
+      "type": "figure",
+      "slug": "02-historical-validation",
+      "caption": "Predicted versus actual Democratic two-party vote share. Each point is a held-out race. The dashed line represents perfect prediction. The RMSE shown inside each panel pools races rather than weighting cycles equally.",
+      "alt": "Historical predictions and results",
+      "width": 678.82,
+      "height": 347.18,
+      "mobileWidth": 352.02,
+      "mobileHeight": 603.08
+    },
+    {
+      "type": "paragraph",
+      "text": "The next chart focuses on races with a predicted Democratic share between 45% and 55%. Every corresponding actual outcome remains visible, including large misses."
+    },
+    {
+      "type": "figure",
+      "slug": "03-close-races",
+      "caption": "Validation for races the model classified as close. Grey points have the correct D/R ordering; outlined points have the incorrect ordering.",
+      "alt": "Close-race validation",
+      "width": 678.82,
+      "height": 347.18,
+      "mobileWidth": 362.23,
+      "mobileHeight": 603.08
+    },
+    {
+      "type": "figure",
+      "slug": "04-errors-by-year",
+      "caption": "Elastic-net and polling-average RMSE for each election year, evaluated on identical races within that year. The relative performance varies across elections.",
+      "alt": "Prediction error by election year",
+      "width": 678.82,
+      "height": 300.73,
+      "mobileWidth": 343.73,
+      "mobileHeight": 525.88
+    },
+    {
+      "type": "heading",
+      "text": "Prediction uncertainty",
+      "id": "prediction-uncertainty"
+    },
+    {
+      "type": "paragraph",
+      "text": "We estimate uncertainty from earlier out-of-time prediction errors, beginning in 2006. Each calibration election receives equal weight. Adding the weighted 2.5th and 97.5th error quantiles to the point estimate gives the nominal 95% prediction interval."
+    },
+    {
+      "type": "paragraph",
+      "text": "The probability of a Democratic two-party majority is the weighted fraction of historical errors that would put the race above 50%. A small smoothing adjustment prevents exact probabilities of zero or one. These probabilities concern D/(D + R), rather than an unconditional candidate win."
+    },
+    {
+      "type": "paragraph",
+      "text": "Historical errors can be asymmetric. For example, the Texas Senate point estimate is 50.44% Democratic, while its estimated probability of exceeding 50% is 45%. The probability reflects the historical error distribution as well as the point estimate."
+    },
+    {
+      "type": "figure",
+      "slug": "2026-senate-probabilities",
+      "caption": "Estimated probability of Democratic two-party vote share exceeding 50% in each covered Senate contest.",
+      "alt": "2026 Senate two-party-majority probabilities",
+      "width": 678.82,
+      "height": 367.23,
+      "mobileWidth": 343.73,
+      "mobileHeight": 367.23
+    },
+    {
+      "type": "figure",
+      "slug": "2026-house-probabilities",
+      "caption": "The corresponding probabilities for the covered House districts. Labels at the extremes use <1% and >99%.",
+      "alt": "2026 House two-party-majority probabilities",
+      "width": 679.29,
+      "height": 566.87,
+      "mobileWidth": 343.73,
+      "mobileHeight": 1036.0
+    },
+    {
+      "type": "paragraph",
+      "text": "The tables below report the estimates and intervals. Vote shares and interval limits are percentages; the final column is a probability expressed as a percentage."
+    },
+    {
+      "type": "table",
+      "columns": [
+        "Race",
+        "Polling average",
+        "Model estimate",
+        "95% lower",
+        "95% upper",
+        "P(D > 50%), %"
+      ],
+      "rows": [
+        ["IL", 56.57, 56.65, 48.73, 62.36, 96.28],
+        ["GA", 54.45, 55.14, 47.22, 60.85, 93.3],
+        ["NC", 55.84, 54.6, 46.69, 60.32, 90.99],
+        ["MN", 52.79, 53.05, 45.14, 58.77, 81.94],
+        ["MI", 52.51, 52.3, 44.39, 58.02, 70.79],
+        ["TX", 51.84, 50.44, 42.53, 56.16, 45.02],
+        ["KS", 52.31, 49.8, 41.89, 55.52, 36.79],
+        ["IA", 50.25, 49.17, 41.26, 54.89, 29.85],
+        ["SC", 49.69, 47.58, 39.66, 53.29, 14.56],
+        ["MS", 48.14, 45.5, 37.59, 51.22, 4.65],
+        ["KY", 44.94, 41.49, 33.58, 47.21, 1.19],
+        ["AR", 43.14, 40.91, 33.0, 46.63, 1.19],
+        ["AL", 41.84, 40.47, 32.56, 46.19, 1.19],
+        ["TN", 39.27, 38.01, 30.1, 43.73, 0.84],
+        ["MT", 29.7, 32.19, 24.28, 37.91, 0.53]
+      ],
+      "summary": "Senate predictions (15 races)"
+    },
+    {
+      "type": "table",
+      "columns": [
+        "Race",
+        "Polling average",
+        "Model estimate",
+        "95% lower",
+        "95% upper",
+        "P(D > 50%), %"
+      ],
+      "rows": [
+        ["UT-01", 74.73, 67.22, 58.87, 74.98, 99.79],
+        ["VT-AL", 65.11, 65.27, 56.91, 73.02, 99.79],
+        ["NH-02", 58.33, 58.53, 50.17, 66.28, 97.67],
+        ["CA-01", 57.73, 56.18, 47.83, 63.94, 92.45],
+        ["MN-02", 56.52, 54.49, 46.14, 62.25, 82.58],
+        ["CT-05", 53.12, 54.39, 46.04, 62.15, 82.58],
+        ["NC-11", 56.57, 54.28, 45.93, 62.04, 81.8],
+        ["CA-48", 53.44, 54.22, 45.86, 61.98, 81.59],
+        ["NH-01", 54.75, 54.15, 45.8, 61.91, 81.14],
+        ["CA-22", 55.1, 54.06, 45.71, 61.82, 80.52],
+        ["TX-34", 53.64, 53.66, 45.31, 61.42, 77.6],
+        ["WA-03", 50.35, 53.24, 44.89, 61.0, 72.82],
+        ["NE-02", 55.99, 52.2, 43.84, 59.96, 64.8],
+        ["TX-15", 55.02, 52.09, 43.74, 59.85, 64.08],
+        ["OH-01", 51.74, 52.02, 43.67, 59.78, 63.72],
+        ["CO-05", 50.93, 51.76, 43.41, 59.52, 61.42],
+        ["MI-07", 54.0, 51.4, 43.04, 59.16, 58.34],
+        ["FL-14", 52.75, 51.16, 42.81, 58.92, 55.8],
+        ["NJ-07", 52.81, 50.57, 42.21, 58.33, 50.39],
+        ["FL-25", 50.94, 50.56, 42.21, 58.32, 50.39],
+        ["MT-01", 52.71, 50.45, 42.1, 58.21, 49.46],
+        ["KY-06", 53.61, 50.32, 41.97, 58.08, 48.13],
+        ["OH-09", 50.0, 50.07, 41.72, 57.83, 45.88],
+        ["MN-01", 50.69, 50.03, 41.68, 57.79, 45.77],
+        ["CO-08", 49.1, 49.7, 41.35, 57.46, 42.31],
+        ["GA-11", 51.22, 49.52, 41.16, 57.28, 40.62],
+        ["FL-09", 50.0, 49.18, 40.82, 56.93, 37.51],
+        ["MI-04", 50.54, 49.02, 40.67, 56.78, 36.1],
+        ["OH-15", 50.94, 48.87, 40.51, 56.63, 34.66],
+        ["IA-02", 51.55, 48.58, 40.22, 56.33, 31.82],
+        ["MO-02", 50.8, 48.45, 40.09, 56.21, 30.23],
+        ["CO-04", 47.06, 48.24, 39.89, 56.0, 28.54],
+        ["WI-01", 50.27, 48.15, 39.8, 55.91, 27.73],
+        ["PA-10", 50.52, 48.13, 39.78, 55.89, 27.73],
+        ["TX-09", 48.25, 48.05, 39.7, 55.81, 26.5],
+        ["AL-02", 48.96, 48.05, 39.69, 55.81, 26.5],
+        ["FL-07", 50.0, 47.74, 39.39, 55.5, 24.32],
+        ["FL-22", 50.54, 47.69, 39.33, 55.44, 23.86],
+        ["TX-23", 50.0, 47.64, 39.29, 55.4, 23.54],
+        ["FL-13", 50.23, 47.2, 38.85, 54.96, 20.24],
+        ["NE-01", 49.8, 47.2, 38.85, 54.96, 20.24],
+        ["MN-08", 46.74, 46.98, 38.62, 54.73, 19.33],
+        ["FL-27", 49.64, 46.89, 38.54, 54.65, 18.02],
+        ["IN-05", 48.61, 46.72, 38.37, 54.48, 16.72],
+        ["FL-16", 47.97, 46.33, 37.98, 54.09, 14.83],
+        ["GA-03", 47.37, 45.96, 37.61, 53.72, 12.6],
+        ["TX-10", 46.07, 45.91, 37.56, 53.67, 12.17],
+        ["KS-02", 48.42, 45.83, 37.48, 53.59, 12.01],
+        ["NC-07", 46.58, 45.83, 37.47, 53.58, 11.77],
+        ["TN-05", 46.92, 45.05, 36.69, 52.81, 8.23],
+        ["TX-02", 44.58, 44.75, 36.39, 52.51, 7.47],
+        ["UT-04", 44.1, 43.68, 35.33, 51.44, 4.41],
+        ["ID-01", 33.33, 32.32, 23.96, 40.08, 0.17]
+      ],
+      "summary": "House predictions (53 races)"
+    },
+    {
+      "type": "heading",
+      "text": "Simulation",
+      "id": "simulation"
+    },
+    {
+      "type": "paragraph",
+      "text": "We run 50,000 simulations for each chamber. In each draw, we select one historical election cycle and sample race errors from that cycle. All races share the selected cycle, allowing a common election-year error to affect several contests together."
+    },
+    {
+      "type": "paragraph",
+      "text": "Among the 53 covered House races, the median count with Democratic two-party share above 50% is 24, with a central 95% range of 7 to 38. For the 15 covered Senate contests, the median is 6, with a range of 2 to 9. These distributions apply only to the covered subset and do not estimate chamber control."
+    },
+    {
+      "type": "figure",
+      "slug": "09-covered-race-simulation",
+      "caption": "Simulated counts of covered races with Democratic two-party share above 50%. The simulation includes shared cycle-level error but does not model all regional or candidate-specific correlations.",
+      "alt": "Simulation of covered races",
+      "width": 678.82,
+      "height": 332.78,
+      "mobileWidth": 361.64,
+      "mobileHeight": 574.28
+    },
+    {
+      "type": "heading",
+      "text": "Data and limitations",
+      "id": "data-and-limitations"
+    },
+    {
+      "type": "paragraph",
+      "text": "The 2026 sample requires completed surveys recorded by November 2 and exact Democratic and Republican nominee matches against the October 8 official roster. Special elections and contests in Alaska, Maine and Louisiana are excluded because their rule handling is outside this model. Unmatched and unpolled races receive no estimate."
+    },
+    {
+      "type": "paragraph",
+      "text": "This analysis was constructed after Election Day. Historical polling uses field-date proxies, and the 2026 feed was saved retrospectively. Database dates do not verify when a poll was publicly released or whether its contents changed. No 2026 results enter training or evaluation, but the estimates are not a verified reconstruction of the information available on November 2."
+    },
+    {
+      "type": "paragraph",
+      "text": "The historical cycles also informed model development, so they are not an untouched final test. Senate 2024 uses a different polling archive, and House 2024 validation remains unavailable. State presidential lean is a coarse substitute for House district partisanship. These source and coverage differences can affect both accuracy and interval calibration."
+    },
+    {
+      "type": "heading",
+      "text": "Appendix: residual diagnostics",
+      "id": "residual-diagnostics"
+    },
+    {
+      "type": "paragraph",
+      "text": "The residual plots show actual share minus predicted share for the historical validation races. The Q–Q plots compare those errors with a normal distribution. Departures in the tails motivate inspecting the empirical errors; these plots do not establish independence or guarantee interval coverage."
+    },
+    {
+      "type": "figure",
+      "slug": "10-residual-diagnostics",
+      "caption": "Historical forecast errors versus predicted vote share, with normal Q–Q reference plots. Intervals in this model use empirical errors rather than a fitted normal distribution.",
+      "alt": "Historical error diagnostics",
+      "width": 708.77,
+      "height": 531.36,
+      "mobileWidth": 355.32,
+      "mobileHeight": 991.88
+    }
+  ],
+  "sources": [
+    {
+      "label": "Historical polling",
+      "url": "https://github.com/fivethirtyeight/data/tree/master/pollster-ratings"
+    },
+    {
+      "label": "2024 Senate polling",
+      "url": "https://github.com/Jack-Whitcomb/All-US-Senate-polls-2006-2024"
+    },
+    {
+      "label": "2024 generic-ballot archive",
+      "url": "https://github.com/stiles/polls"
+    },
+    {
+      "label": "Senate election results",
+      "url": "https://doi.org/10.7910/DVN/PEJ5QU"
+    },
+    {
+      "label": "Presidential election results",
+      "url": "https://doi.org/10.7910/DVN/42MVDX"
+    },
+    {
+      "label": "Historical legislator records",
+      "url": "https://github.com/unitedstates/congress-legislators"
+    },
+    {
+      "label": "2026 nominee roster",
+      "url": "https://clerk.house.gov/member_info/electionInfo/2026/120-nominations.pdf"
+    },
+    {
+      "label": "2026 House polling feed",
+      "url": "https://www.nytimes.com/newsgraphics/polls/house.csv"
+    },
+    {
+      "label": "2026 Senate polling feed",
+      "url": "https://www.nytimes.com/newsgraphics/polls/senate.csv"
+    }
+  ],
+  "reproducibility": "The companion files include race predictions, historical validation scores, input hashes, model settings, and PNG/SVG figures. Source manifests record the pinned inputs and documented corrections."
+}
