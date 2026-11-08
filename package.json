@@ -8,8 +8,7 @@
     "start": "next start --hostname 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
-    "sync:midterms": "node scripts/sync-midterms.mjs",
-    "test:election": "node --test research/midterms-2026/tests/live-core.test.mjs"
+    "sync:midterms": "node scripts/sync-midterms.mjs"
   },
   "engines": {
     "node": "24.x"

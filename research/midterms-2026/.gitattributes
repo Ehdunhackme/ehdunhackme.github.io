@@ -1,8 +1,0 @@
-* text=auto
-*.py text eol=lf
-*.md text eol=lf
-*.json text eol=lf
-*.csv text eol=lf
-*.yml text eol=lf
-*.mjs text eol=lf
-*.ttf binary

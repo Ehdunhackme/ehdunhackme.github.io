@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { mountComparison } from "../../research/midterms-2026/website/live/widget.mjs";
+import { mountComparison } from "./live/widget.mjs";
 
 export function LiveComparison({ config }: { config: unknown }) {
   const host = useRef<HTMLDivElement>(null);

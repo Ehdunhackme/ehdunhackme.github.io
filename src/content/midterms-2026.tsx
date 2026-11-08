@@ -4,8 +4,8 @@ import "katex/dist/katex.min.css";
 import articleData from "./midterms-2026.json";
 import styles from "./midterms-2026.module.css";
 import { LiveComparison } from "./live-comparison";
-import predictions from "../../research/midterms-2026/website/live/predictions.json";
-import snapshot from "../../research/midterms-2026/data/results/live-snapshot.json";
+import predictions from "./live/predictions.json";
+import snapshot from "./live/snapshot.json";
 
 const liveConfig = { predictions, snapshot };
 
@@ -189,7 +189,7 @@ export function MidtermArticle() {
         <section className={styles.sources} aria-labelledby="midterms-sources">
           <h2 id="midterms-sources">Sources and code</h2>
           <nav className={styles.downloads} aria-label="Code and downloads">
-            <a href="https://github.com/Ehdunhackme/ehdunhackme.github.io/tree/main/research/midterms-2026">
+            <a href="https://github.com/Ehdunhackme/US-election">
               Model code and data
             </a>
             <a href={`${assets}/2026-estimates.csv`} download>

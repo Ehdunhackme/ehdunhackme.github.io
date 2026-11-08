@@ -27,9 +27,8 @@ npm run start
 - `src/content/writings.tsx`: writing directory.
 - `src/content/research-guide.tsx`: the full article.
 - `src/content/midterms-2026.json`: the generated midterm modeling article and tables; `midterms-2026.tsx` renders it as a server component.
-- `research/midterms-2026/`: the complete election project: Python models, frozen inputs, benchmark results, tests, article generator and live comparison. It is part of this repository, with no separate repository or submodule to fetch.
-- `research/midterms-2026/website/live/`: shared live-result code, imported directly by the article. Results refresh from civicAPI every minute while visible; failed requests retain saved results. See the [comparison notes](research/midterms-2026/docs/live-results.md).
-- `public/assets/writings/midterms-2026/`: responsive figures and downloadable data. After rebuilding the model, `npm run sync:midterms` updates the article and assets from the local research folder.
+- `src/content/live/`: the fixed model estimates, initial results snapshot, and live comparison. The browser refreshes civicAPI results every minute while the page is visible. A failed request keeps the last successful result. No API key or scheduled rebuild is required. See the [comparison notes](https://github.com/Ehdunhackme/US-election/blob/main/docs/live-results.md) for scoring and source details.
+- `public/assets/writings/midterms-2026/`: the article's desktop/mobile SVG figures, preview image, and downloadable data. The research repository builds the 470-race article and 13-model benchmark with `python -m election_forecast build`. Copy the generated article JSON and figure assets here, then run `node scripts/embed-midterm-figures.cjs`. Integration instructions are in the research repository’s `website/README.md`.
 - `src/components/`: reusable navigation, search, card transitions, gallery, theme, and explanation interactions.
 - `src/styles/`: the existing styles, scoped to their original page families to avoid changes during navigation.
 - `public/assets/`: images and other public media, still available at `/assets/...`.
@@ -39,11 +38,19 @@ Keep each project's `searchText` in sync when changing its visible text. Stable 
 
 Pages and paper explanations render at build time. Navigation uses Next.js links and prefetching, keeping the header mounted. Photos and paper thumbnails use responsive Next.js image optimisation; small logos have WebP versions. Below-the-fold photos load lazily. Fonts are bundled locally, so rendering no longer depends on Google Fonts requests. Motion respects reduced-motion preferences, and event handlers/timers are cleaned up when leaving a page.
 
-## Verify
+## Election article
 
-The normal website build uses the committed article and assets. Python is only
-needed to reproduce the analysis. Follow the [model README](research/midterms-2026/README.md)
-to rebuild it, then run `npm run sync:midterms` from this directory.
+The portfolio includes everything needed to display the article: text, charts,
+equations, downloads, fixed predictions and the live comparison. It builds and
+serves without cloning the model repository or fetching files from GitHub.
+
+Model training, historical inputs and benchmarks stay in
+[US-election](https://github.com/Ehdunhackme/US-election). After rebuilding that
+project, import only its website files with
+`npm run sync:midterms -- /path/to/US-election`. This is an optional publishing
+step, not part of the website build. Live results come directly from civicAPI.
+
+## Verify
 
 ```sh
 npm run build

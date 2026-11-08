@@ -3,18 +3,12 @@ import fs from "node:fs";
 
 const predictions = JSON.parse(
   fs.readFileSync(
-    new URL(
-      "../research/midterms-2026/website/live/predictions.json",
-      import.meta.url,
-    ),
+    new URL("../src/content/live/predictions.json", import.meta.url),
   ),
 );
 const snapshot = JSON.parse(
   fs.readFileSync(
-    new URL(
-      "../research/midterms-2026/data/results/live-snapshot.json",
-      import.meta.url,
-    ),
+    new URL("../src/content/live/snapshot.json", import.meta.url),
   ),
 );
 function payload(chamber) {

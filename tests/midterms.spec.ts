@@ -86,13 +86,10 @@ test("midterm article is searchable and has complete responsive figures", async 
   ]);
   await expect(
     page.getByRole("link", { name: "Model code and data", exact: true }),
-  ).toHaveAttribute(
-    "href",
-    "https://github.com/Ehdunhackme/ehdunhackme.github.io/tree/main/research/midterms-2026",
-  );
+  ).toHaveAttribute("href", "https://github.com/Ehdunhackme/US-election");
   expect(
     await page.locator("article a[href*='Ehdunhackme/US-election']").count(),
-  ).toBe(0);
+  ).toBe(1);
   expect(
     await page.locator("article > p, article figcaption").allTextContents(),
   ).not.toEqual(expect.arrayContaining([expect.stringContaining("Ohio")]));

@@ -6,9 +6,11 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const model = path.join(root, "research/midterms-2026");
+assert(process.argv[2], "Usage: npm run sync:midterms -- /path/to/US-election");
+const model = path.resolve(process.argv[2]);
 const reports = path.join(model, "reports");
 const assets = path.join(root, "public/assets/writings/midterms-2026");
+const live = path.join(root, "src/content/live");
 const article = JSON.parse(
   await fs.readFile(path.join(reports, "article.json"), "utf8"),
 );
@@ -26,6 +28,21 @@ assert.equal(predictions.races.length, 470);
 assert(article.sources.every((source) => source.group && source.url));
 
 await fs.mkdir(assets, { recursive: true });
+await fs.mkdir(live, { recursive: true });
+for (const name of [
+  "core.mjs",
+  "widget.mjs",
+  "widget.d.mts",
+  "predictions.json",
+])
+  await fs.copyFile(
+    path.join(model, "website/live", name),
+    path.join(live, name),
+  );
+await fs.copyFile(
+  path.join(model, "data/results/live-snapshot.json"),
+  path.join(live, "snapshot.json"),
+);
 for (const figure of article.blocks.filter(
   (block) => block.type === "figure",
 )) {
@@ -61,5 +78,5 @@ execFileSync(
   { cwd: root, stdio: "inherit" },
 );
 console.log(
-  "Synced the article, figures and frozen estimates from this repository.",
+  "Imported website display files. Model code and training data stay in US-election.",
 );
