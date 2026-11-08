@@ -114,8 +114,10 @@
 .details summary::-webkit-details-marker {
   display: none;
 }
-.details summary::before {
+.details summary::before,
+.details[open] summary::before {
   content: none;
+  display: none;
 }
 .details summary::after {
   content: "+";

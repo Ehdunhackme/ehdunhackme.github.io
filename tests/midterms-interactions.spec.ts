@@ -29,6 +29,7 @@ test("article disclosures animate both ways and respect reduced motion", async (
       animation.finish();
     await new Promise(requestAnimationFrame);
     const expanded = element.getBoundingClientRect().height;
+    const marker = getComputedStyle(summary, "::before").content;
     summary.click();
     const closing = element.getAnimations();
     const remainsOpenWhileClosing = element.open;
@@ -39,6 +40,7 @@ test("article disclosures animate both ways and respect reduced motion", async (
       closed,
       middle,
       expanded,
+      marker,
       fade,
       opening: opening.length,
       closing: closing.length,
@@ -48,6 +50,7 @@ test("article disclosures animate both ways and respect reduced motion", async (
   });
   expect(motion.opening).toBe(1);
   expect(motion.closing).toBe(1);
+  expect(motion.marker).toBe("none");
   expect(motion.middle).toBeGreaterThan(motion.closed);
   expect(motion.middle).toBeLessThan(motion.expanded);
   expect(motion.fade).toBeGreaterThan(0);
