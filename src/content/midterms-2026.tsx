@@ -4,6 +4,7 @@ import "katex/dist/katex.min.css";
 import articleData from "./midterms-2026.json";
 import styles from "./midterms-2026.module.css";
 import { LiveComparison } from "./live-comparison";
+import { ArticleDisclosure } from "./article-disclosure";
 import predictions from "./live/predictions.json";
 import snapshot from "./live/snapshot.json";
 
@@ -92,10 +93,9 @@ function ArticleTable({ block }: { block: TableBlock }) {
     </div>
   );
   return block.summary ? (
-    <details className={styles.details}>
-      <summary>{block.summary}</summary>
+    <ArticleDisclosure className={styles.details} summary={block.summary}>
       {table}
-    </details>
+    </ArticleDisclosure>
   ) : (
     table
   );

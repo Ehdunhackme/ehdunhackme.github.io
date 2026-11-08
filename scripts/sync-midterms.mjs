@@ -33,6 +33,8 @@ for (const name of [
   "core.mjs",
   "widget.mjs",
   "widget.d.mts",
+  "disclosure.mjs",
+  "disclosure.d.mts",
   "predictions.json",
 ])
   await fs.copyFile(
