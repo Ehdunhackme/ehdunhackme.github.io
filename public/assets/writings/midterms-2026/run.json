@@ -1,0 +1,1583 @@
+{
+  "family": "Poll/baseline blend",
+  "family_id": "poll_blend",
+  "params": {
+    "poll_weight": 0.75
+  },
+  "training_rows": 3063,
+  "training_by_chamber": {
+    "house": 2656,
+    "senate": 407
+  },
+  "training_years": {
+    "house": [
+      2012,
+      2014,
+      2016,
+      2018,
+      2020,
+      2022,
+      2024
+    ],
+    "senate": [
+      2000,
+      2002,
+      2004,
+      2006,
+      2008,
+      2010,
+      2012,
+      2014,
+      2016,
+      2018,
+      2020,
+      2022,
+      2024
+    ]
+  },
+  "benchmark": {
+    "family_count": 13,
+    "configuration_count": 47,
+    "selection_metric": "MAE, equal weight per election and chamber",
+    "winner_mae_pp": 2.5666464963955526,
+    "baseline_mae_pp": 3.105418277419383,
+    "relative_improvement": 0.17349411025929562,
+    "sequential_selection_mae_pp": 2.92715527905081,
+    "leaderboard": [
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "selection_mae_pp": 2.5666464963955526,
+        "house_mae_pp": 2.632123446348174,
+        "senate_mae_pp": 2.5011695464429318,
+        "final_config": 2
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "selection_mae_pp": 2.913589944055693,
+        "house_mae_pp": 2.727029644579832,
+        "senate_mae_pp": 3.1001502435315538,
+        "final_config": 5
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "selection_mae_pp": 2.914772926329545,
+        "house_mae_pp": 2.823287389793346,
+        "senate_mae_pp": 3.0062584628657443,
+        "final_config": 1
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "selection_mae_pp": 3.001911015591616,
+        "house_mae_pp": 2.8825279484417647,
+        "senate_mae_pp": 3.1212940827414686,
+        "final_config": 0
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "selection_mae_pp": 3.0930391852851136,
+        "house_mae_pp": 2.7410328800702692,
+        "senate_mae_pp": 3.4450454904999575,
+        "final_config": 3
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "selection_mae_pp": 3.105418277419383,
+        "house_mae_pp": 2.718860996772092,
+        "senate_mae_pp": 3.491975558066674,
+        "final_config": 0
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "selection_mae_pp": 3.2716699709526584,
+        "house_mae_pp": 3.1770445799684364,
+        "senate_mae_pp": 3.3662953619368796,
+        "final_config": 1
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "selection_mae_pp": 3.4156274799175406,
+        "house_mae_pp": 3.2839278181350533,
+        "senate_mae_pp": 3.547327141700028,
+        "final_config": 3
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "selection_mae_pp": 3.513384172589172,
+        "house_mae_pp": 3.3213298352400233,
+        "senate_mae_pp": 3.7054385099383214,
+        "final_config": 3
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "selection_mae_pp": 3.5434126592192685,
+        "house_mae_pp": 3.1657569527494194,
+        "senate_mae_pp": 3.921068365689118,
+        "final_config": 0
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "selection_mae_pp": 3.5840489299586533,
+        "house_mae_pp": 3.151160868933681,
+        "senate_mae_pp": 4.016936990983625,
+        "final_config": 0
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "selection_mae_pp": 4.480185507798075,
+        "house_mae_pp": 4.905097765275225,
+        "senate_mae_pp": 4.0552732503209254,
+        "final_config": 2
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "selection_mae_pp": 4.585624425477599,
+        "house_mae_pp": 5.1215537532060935,
+        "senate_mae_pp": 4.0496950977491055,
+        "final_config": 0
+      }
+    ],
+    "chamber-scores": [
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.721617304251448,
+        "rmse_pp": 3.8138349701813943,
+        "winner_accuracy": 0.9544603867747973,
+        "close_n": 343,
+        "close_order_accuracy": 0.8134110787172012,
+        "mae_equal_cycles": 2.718860996772092
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.5012189483458696,
+        "rmse_pp": 5.719003908249024,
+        "winner_accuracy": 0.8688524590163934,
+        "close_n": 38,
+        "close_order_accuracy": 0.631578947368421,
+        "mae_equal_cycles": 3.491975558066674
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.6362016840392606,
+        "rmse_pp": 3.6863781397261284,
+        "winner_accuracy": 0.9588271990018715,
+        "close_n": 343,
+        "close_order_accuracy": 0.8367346938775511,
+        "mae_equal_cycles": 2.632123446348174
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 2.50125399783791,
+        "rmse_pp": 3.938829263344129,
+        "winner_accuracy": 0.9098360655737705,
+        "close_n": 38,
+        "close_order_accuracy": 0.7631578947368421,
+        "mae_equal_cycles": 2.5011695464429318
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 3.328818734805649,
+        "rmse_pp": 4.445481497938917,
+        "winner_accuracy": 0.9488459139114162,
+        "close_n": 343,
+        "close_order_accuracy": 0.8134110787172012,
+        "mae_equal_cycles": 3.3213298352400233
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.718651818444726,
+        "rmse_pp": 5.13159436540339,
+        "winner_accuracy": 0.9098360655737705,
+        "close_n": 38,
+        "close_order_accuracy": 0.8157894736842105,
+        "mae_equal_cycles": 3.7054385099383214
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 4.887325596528771,
+        "rmse_pp": 6.516070837261632,
+        "winner_accuracy": 0.933873986275733,
+        "close_n": 343,
+        "close_order_accuracy": 0.7784256559766763,
+        "mae_equal_cycles": 4.905097765275225
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 4.068265779078974,
+        "rmse_pp": 5.493490240541361,
+        "winner_accuracy": 0.8934426229508197,
+        "close_n": 38,
+        "close_order_accuracy": 0.8421052631578947,
+        "mae_equal_cycles": 4.0552732503209254
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.744394302785667,
+        "rmse_pp": 3.815884432404104,
+        "winner_accuracy": 0.9569557080474111,
+        "close_n": 343,
+        "close_order_accuracy": 0.8279883381924198,
+        "mae_equal_cycles": 2.7410328800702692
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.455755364686881,
+        "rmse_pp": 4.8468229117187285,
+        "winner_accuracy": 0.9180327868852459,
+        "close_n": 38,
+        "close_order_accuracy": 0.8421052631578947,
+        "mae_equal_cycles": 3.4450454904999575
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.728461791847311,
+        "rmse_pp": 3.796212053195385,
+        "winner_accuracy": 0.9594510293200249,
+        "close_n": 343,
+        "close_order_accuracy": 0.8367346938775511,
+        "mae_equal_cycles": 2.727029644579832
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.110852195579832,
+        "rmse_pp": 4.457181391049086,
+        "winner_accuracy": 0.9262295081967213,
+        "close_n": 38,
+        "close_order_accuracy": 0.8421052631578947,
+        "mae_equal_cycles": 3.1001502435315538
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.82678325707491,
+        "rmse_pp": 3.8940865435845047,
+        "winner_accuracy": 0.9538365564566438,
+        "close_n": 343,
+        "close_order_accuracy": 0.8134110787172012,
+        "mae_equal_cycles": 2.823287389793346
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.0153335090660573,
+        "rmse_pp": 4.4344784662164605,
+        "winner_accuracy": 0.9180327868852459,
+        "close_n": 38,
+        "close_order_accuracy": 0.8421052631578947,
+        "mae_equal_cycles": 3.0062584628657443
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 5.114333751938172,
+        "rmse_pp": 6.68576988902371,
+        "winner_accuracy": 0.9276356830941984,
+        "close_n": 343,
+        "close_order_accuracy": 0.749271137026239,
+        "mae_equal_cycles": 5.1215537532060935
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 4.062647705623878,
+        "rmse_pp": 5.490286045582371,
+        "winner_accuracy": 0.8934426229508197,
+        "close_n": 38,
+        "close_order_accuracy": 0.8421052631578947,
+        "mae_equal_cycles": 4.0496950977491055
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 3.154352951446299,
+        "rmse_pp": 4.164810545225522,
+        "winner_accuracy": 0.9538365564566438,
+        "close_n": 343,
+        "close_order_accuracy": 0.8221574344023324,
+        "mae_equal_cycles": 3.151160868933681
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 4.03166195447348,
+        "rmse_pp": 5.641779934710517,
+        "winner_accuracy": 0.8934426229508197,
+        "close_n": 38,
+        "close_order_accuracy": 0.8157894736842105,
+        "mae_equal_cycles": 4.016936990983625
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 3.1668683037876093,
+        "rmse_pp": 4.210391298274119,
+        "winner_accuracy": 0.9557080474111042,
+        "close_n": 343,
+        "close_order_accuracy": 0.8250728862973761,
+        "mae_equal_cycles": 3.1657569527494194
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.939233074622006,
+        "rmse_pp": 5.772504288372884,
+        "winner_accuracy": 0.8770491803278688,
+        "close_n": 38,
+        "close_order_accuracy": 0.7894736842105263,
+        "mae_equal_cycles": 3.921068365689118
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 3.2856253912471254,
+        "rmse_pp": 4.298326256536365,
+        "winner_accuracy": 0.9557080474111042,
+        "close_n": 343,
+        "close_order_accuracy": 0.8338192419825073,
+        "mae_equal_cycles": 3.2839278181350533
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.549152061050892,
+        "rmse_pp": 5.217293482822862,
+        "winner_accuracy": 0.9016393442622951,
+        "close_n": 38,
+        "close_order_accuracy": 0.8157894736842105,
+        "mae_equal_cycles": 3.547327141700028
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 2.885288413480554,
+        "rmse_pp": 3.9364089481359894,
+        "winner_accuracy": 0.9532127261384903,
+        "close_n": 343,
+        "close_order_accuracy": 0.8163265306122449,
+        "mae_equal_cycles": 2.8825279484417647
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.128967986159959,
+        "rmse_pp": 4.7055059995246165,
+        "winner_accuracy": 0.9098360655737705,
+        "close_n": 38,
+        "close_order_accuracy": 0.7894736842105263,
+        "mae_equal_cycles": 3.1212940827414686
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "chamber": "house",
+        "n": 1603,
+        "mae_pp": 3.1731926128716084,
+        "rmse_pp": 4.137506253136488,
+        "winner_accuracy": 0.9507174048658765,
+        "close_n": 343,
+        "close_order_accuracy": 0.8075801749271136,
+        "mae_equal_cycles": 3.1770445799684364
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "chamber": "senate",
+        "n": 122,
+        "mae_pp": 3.378343680523278,
+        "rmse_pp": 5.123650261065873,
+        "winner_accuracy": 0.860655737704918,
+        "close_n": 38,
+        "close_order_accuracy": 0.6842105263157895,
+        "mae_equal_cycles": 3.3662953619368796
+      }
+    ],
+    "cycle-scores": [
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 2.848758159374145,
+        "rmse_pp": 3.7624084794142676,
+        "winner_accuracy": 0.9517766497461929
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.976385027712327,
+        "rmse_pp": 8.133601713115496,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.2925170260015797,
+        "rmse_pp": 4.201405060969711,
+        "winner_accuracy": 0.9509803921568627
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 2.6109689199485717,
+        "rmse_pp": 3.592903983931353,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.5591388462764413,
+        "rmse_pp": 4.290182909244095,
+        "winner_accuracy": 0.9478908188585607
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.9281287510357696,
+        "rmse_pp": 3.662278318835822,
+        "winner_accuracy": 0.8620689655172413
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.1750299554362016,
+        "rmse_pp": 2.7995879908975505,
+        "winner_accuracy": 0.9673366834170855
+      },
+      {
+        "family": "baseline",
+        "method": "Simple baseline",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.452419533570027,
+        "rmse_pp": 6.091509140396925,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 2.552421208400481,
+        "rmse_pp": 3.334639953181668,
+        "winner_accuracy": 0.9720812182741116
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 1.7652774747720108,
+        "rmse_pp": 2.317907586893084,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.3390489308926656,
+        "rmse_pp": 4.144802880123939,
+        "winner_accuracy": 0.9485294117647058
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.161065975738914,
+        "rmse_pp": 3.7327550692472347,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.4619936906633484,
+        "rmse_pp": 4.248479054541706,
+        "winner_accuracy": 0.9478908188585607
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.496018011349266,
+        "rmse_pp": 3.3324372286219672,
+        "winner_accuracy": 0.896551724137931
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.1750299554362016,
+        "rmse_pp": 2.7995879908975505,
+        "winner_accuracy": 0.9673366834170855
+      },
+      {
+        "family": "poll_blend",
+        "method": "Poll/baseline blend",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 2.5823167239115348,
+        "rmse_pp": 5.600155624527749,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.6150592320559625,
+        "rmse_pp": 4.4141894220808995,
+        "winner_accuracy": 0.916243654822335
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.8419063165691925,
+        "rmse_pp": 4.639354212147241,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 4.991147718157544,
+        "rmse_pp": 5.909505345253567,
+        "winner_accuracy": 0.946078431372549
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.312127386668033,
+        "rmse_pp": 5.391935263812848,
+        "winner_accuracy": 0.967741935483871
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.6176187875971753,
+        "rmse_pp": 4.130681764656261,
+        "winner_accuracy": 0.9627791563275434
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.899426691047586,
+        "rmse_pp": 4.061011150773713,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.0614936031494113,
+        "rmse_pp": 2.6887909395867458,
+        "winner_accuracy": 0.9698492462311558
+      },
+      {
+        "family": "legacy_elastic",
+        "method": "Direct elastic net",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.7682936454684746,
+        "rmse_pp": 6.132676883578947,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 9.631230191051088,
+        "rmse_pp": 10.443187640221344,
+        "winner_accuracy": 0.8553299492385786
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.697305697827114,
+        "rmse_pp": 5.446773204302404,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 4.978413015717291,
+        "rmse_pp": 5.915934022326077,
+        "winner_accuracy": 0.9411764705882353
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.35690228606388,
+        "rmse_pp": 5.451901111654197,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.8416159048984526,
+        "rmse_pp": 4.373944302678819,
+        "winner_accuracy": 0.967741935483871
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 3.262728996079949,
+        "rmse_pp": 4.606101246551689,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.1691319494340697,
+        "rmse_pp": 2.792268553893065,
+        "winner_accuracy": 0.9698492462311558
+      },
+      {
+        "family": "direct_ridge",
+        "method": "Direct ridge",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.9041560213127573,
+        "rmse_pp": 6.2871930618451035,
+        "winner_accuracy": 0.8709677419354839
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.0492460596829085,
+        "rmse_pp": 3.8325196689805754,
+        "winner_accuracy": 0.949238578680203
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.859210287581008,
+        "rmse_pp": 4.755904507881522,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.587411638341299,
+        "rmse_pp": 4.603800646258622,
+        "winner_accuracy": 0.9558823529411765
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.6635635831484326,
+        "rmse_pp": 4.440119587086648,
+        "winner_accuracy": 1.0
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.3725180297750166,
+        "rmse_pp": 3.940538998643912,
+        "winner_accuracy": 0.9503722084367245
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.79174316509758,
+        "rmse_pp": 3.9543332865495744,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 1.9549557924818521,
+        "rmse_pp": 2.579788653220217,
+        "winner_accuracy": 0.9723618090452262
+      },
+      {
+        "family": "residual_ridge",
+        "method": "Ridge correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.465664926172809,
+        "rmse_pp": 5.957344845848111,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.1821109279245214,
+        "rmse_pp": 3.9929839121410957,
+        "winner_accuracy": 0.949238578680203
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.693920050816417,
+        "rmse_pp": 4.509885657124109,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.2925839966124784,
+        "rmse_pp": 4.343307926659402,
+        "winner_accuracy": 0.9656862745098039
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.244841861271182,
+        "rmse_pp": 3.8319752055633947,
+        "winner_accuracy": 1.0
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.4191323811439873,
+        "rmse_pp": 3.961392953932853,
+        "winner_accuracy": 0.9478908188585607
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.447331168586585,
+        "rmse_pp": 3.3822762826762576,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.0142912726383426,
+        "rmse_pp": 2.651687085799075,
+        "winner_accuracy": 0.9748743718592965
+      },
+      {
+        "family": "residual_elastic",
+        "method": "Elastic-net correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.014507893452032,
+        "rmse_pp": 5.697307435364611,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.2465706060493535,
+        "rmse_pp": 3.979314533639798,
+        "winner_accuracy": 0.9416243654822335
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.0677442755768274,
+        "rmse_pp": 3.779540813624179,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.798019091988124,
+        "rmse_pp": 4.764248508255763,
+        "winner_accuracy": 0.9509803921568627
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.359169986142848,
+        "rmse_pp": 4.176374014895942,
+        "winner_accuracy": 1.0
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.3332256088779744,
+        "rmse_pp": 3.9409746937020547,
+        "winner_accuracy": 0.9503722084367245
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.4526806446466236,
+        "rmse_pp": 3.5064414193984965,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 1.9153342522579333,
+        "rmse_pp": 2.5306479382018408,
+        "winner_accuracy": 0.9723618090452262
+      },
+      {
+        "family": "residual_huber",
+        "method": "Huber correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.1454389450966773,
+        "rmse_pp": 5.844723041298433,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 9.036222170959384,
+        "rmse_pp": 9.89184834666381,
+        "winner_accuracy": 0.8578680203045685
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.699883582958469,
+        "rmse_pp": 5.449102794823818,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 6.787141119284508,
+        "rmse_pp": 7.580020604007439,
+        "winner_accuracy": 0.9191176470588235
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.32922007652895,
+        "rmse_pp": 5.419180443947002,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.607381348756397,
+        "rmse_pp": 4.115229243313065,
+        "winner_accuracy": 0.9652605459057072
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 3.259586017388007,
+        "rmse_pp": 4.610828644509931,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.055470373824085,
+        "rmse_pp": 2.668336014999685,
+        "winner_accuracy": 0.9673366834170855
+      },
+      {
+        "family": "residual_bayes",
+        "method": "Bayesian-ridge correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.910090714120997,
+        "rmse_pp": 6.299194843044019,
+        "winner_accuracy": 0.8709677419354839
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.232899098259088,
+        "rmse_pp": 3.949173483254323,
+        "winner_accuracy": 0.9390862944162437
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.4763045722333485,
+        "rmse_pp": 6.191426384836157,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.896157550049271,
+        "rmse_pp": 4.9234137158849105,
+        "winner_accuracy": 0.9534313725490197
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.82206088708539,
+        "rmse_pp": 4.5698034524176805,
+        "winner_accuracy": 0.967741935483871
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.7499397437081643,
+        "rmse_pp": 4.129125581254802,
+        "winner_accuracy": 0.9553349875930521
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 3.118714218102472,
+        "rmse_pp": 4.081213338388066,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.7256470837182003,
+        "rmse_pp": 3.5085387454750987,
+        "winner_accuracy": 0.9673366834170855
+      },
+      {
+        "family": "residual_forest",
+        "method": "Random-forest correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.650668286513289,
+        "rmse_pp": 7.103986845036988,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.179041530530903,
+        "rmse_pp": 3.9450804782380495,
+        "winner_accuracy": 0.9467005076142132
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 5.152193112309045,
+        "rmse_pp": 7.28258726154315,
+        "winner_accuracy": 0.8064516129032258
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.5849960156851033,
+        "rmse_pp": 4.735148438164523,
+        "winner_accuracy": 0.9558823529411765
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.307764348314506,
+        "rmse_pp": 4.4071740461323605,
+        "winner_accuracy": 0.9354838709677419
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.694205631946816,
+        "rmse_pp": 4.094006981953622,
+        "winner_accuracy": 0.9528535980148883
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.813021120782941,
+        "rmse_pp": 3.7557714142009755,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 3.204784632834856,
+        "rmse_pp": 4.004478235231125,
+        "winner_accuracy": 0.9673366834170855
+      },
+      {
+        "family": "residual_extra",
+        "method": "Extra-trees correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.41129488134998,
+        "rmse_pp": 6.744064259764287,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.06939168282833,
+        "rmse_pp": 3.8183794598124527,
+        "winner_accuracy": 0.9568527918781726
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.6921010406337205,
+        "rmse_pp": 5.415034868301098,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.8107042060776566,
+        "rmse_pp": 4.612449773718751,
+        "winner_accuracy": 0.9436274509803921
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 2.870478671104807,
+        "rmse_pp": 3.751217706034353,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.6029880737346183,
+        "rmse_pp": 4.0630439611837,
+        "winner_accuracy": 0.9454094292803971
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 3.4360070612973095,
+        "rmse_pp": 4.308030050152439,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 3.6526273098996103,
+        "rmse_pp": 4.631914054672812,
+        "winner_accuracy": 0.9773869346733668
+      },
+      {
+        "family": "residual_hist",
+        "method": "Histogram-boosting correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 4.190721793764274,
+        "rmse_pp": 6.80943972023892,
+        "winner_accuracy": 0.8709677419354839
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.3544438043828313,
+        "rmse_pp": 4.164407467148558,
+        "winner_accuracy": 0.9390862944162437
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.7009622533864763,
+        "rmse_pp": 5.170852817284966,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.7493971938408266,
+        "rmse_pp": 4.6456372941086554,
+        "winner_accuracy": 0.9509803921568627
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.1097648786489858,
+        "rmse_pp": 3.8885824552249613,
+        "winner_accuracy": 0.967741935483871
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.4113272338325276,
+        "rmse_pp": 3.966250607847776,
+        "winner_accuracy": 0.9478908188585607
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.6531859742135326,
+        "rmse_pp": 3.468942087026782,
+        "winner_accuracy": 0.9310344827586207
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 2.0149435617108726,
+        "rmse_pp": 2.681147477118828,
+        "winner_accuracy": 0.9748743718592965
+      },
+      {
+        "family": "residual_boost",
+        "method": "Huber-boosting correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.0212632247168787,
+        "rmse_pp": 5.832893927012153,
+        "winner_accuracy": 0.9032258064516129
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2018,
+        "chamber": "house",
+        "n": 394,
+        "mae_pp": 3.7863523334471934,
+        "rmse_pp": 4.517767787896271,
+        "winner_accuracy": 0.9137055837563451
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2018,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.4154166109673594,
+        "rmse_pp": 5.81528587652493,
+        "winner_accuracy": 0.8064516129032258
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2020,
+        "chamber": "house",
+        "n": 408,
+        "mae_pp": 3.0582007575355963,
+        "rmse_pp": 3.9468456558019103,
+        "winner_accuracy": 0.9583333333333334
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2020,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.939745384324421,
+        "rmse_pp": 4.615594292256215,
+        "winner_accuracy": 0.8387096774193549
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2022,
+        "chamber": "house",
+        "n": 403,
+        "mae_pp": 2.6672377763738346,
+        "rmse_pp": 4.041513150001397,
+        "winner_accuracy": 0.9578163771712159
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2022,
+        "chamber": "senate",
+        "n": 29,
+        "mae_pp": 2.6313479281666163,
+        "rmse_pp": 3.5379148256474764,
+        "winner_accuracy": 0.896551724137931
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2024,
+        "chamber": "house",
+        "n": 398,
+        "mae_pp": 3.196387452517123,
+        "rmse_pp": 4.029374188142481,
+        "winner_accuracy": 0.9723618090452262
+      },
+      {
+        "family": "residual_svr",
+        "method": "Support-vector correction",
+        "cycle": 2024,
+        "chamber": "senate",
+        "n": 31,
+        "mae_pp": 3.478671524289122,
+        "rmse_pp": 6.040110953478781,
+        "winner_accuracy": 0.9032258064516129
+      }
+    ],
+    "leave-one-cycle-out": [
+      {
+        "omitted_cycle": 2018,
+        "family": "poll_blend",
+        "method": "Poll/baseline blend"
+      },
+      {
+        "omitted_cycle": 2020,
+        "family": "poll_blend",
+        "method": "Poll/baseline blend"
+      },
+      {
+        "omitted_cycle": 2022,
+        "family": "poll_blend",
+        "method": "Poll/baseline blend"
+      },
+      {
+        "omitted_cycle": 2024,
+        "family": "poll_blend",
+        "method": "Poll/baseline blend"
+      }
+    ]
+  },
+  "calibration": "Same family's earlier-cycle errors by chamber and availability of polling",
+  "kind": "retrospective_development_benchmark",
+  "cutoff": "2026-11-02",
+  "2026_outcomes_used": false,
+  "coverage": {
+    "house": 435,
+    "senate": 35
+  },
+  "python": "3.13.1 (tags/v3.13.1:0671451, Dec  3 2024, 19:06:28) [MSC v.1942 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2"
+  },
+  "input_and_code_sha256": {
+    "src\\election_forecast\\audit.py": "027ea3975d2e05d29040f7fb2ea6d3d15a6ed333bb97ee9fd440306108aca162",
+    "src\\election_forecast\\benchmark.py": "a47dcd228c299028fc1130c4d32c647460bde19a3f6f224398cb235ad14adf6c",
+    "src\\election_forecast\\charts.py": "48c8c9e3563feaeb34ae250d3af3a66fec90331d956876f1cc5cc57645b77d6c",
+    "src\\election_forecast\\context.py": "ec5cd444fd946fb3da56c36738e2b733c52ad1a4d9d42d7604c7f2d9b013b5ec",
+    "src\\election_forecast\\data.py": "c02028a1336ff1e9f7dfaf328e016adb693365a44e67655fee713b98243d9593",
+    "src\\election_forecast\\dataset.py": "e8c0a7f4a71b2d170295d2baab99fe56f64cac3ac8a213258d804bce6bb06ccd",
+    "src\\election_forecast\\geometry.py": "abd4cd2df54cb717fcf7a1bb7263fda39025c27b4f8bccfcd6ffb2724800580f",
+    "src\\election_forecast\\legacy.py": "e46d3da5b3db1f081ecccdc7f4eb46265d326ac183e2ccac51c3d7342184d2b2",
+    "src\\election_forecast\\model.py": "608f7526c3e8a3b41e1561a8145512f1ed86d140bb35d95760b0a0257167928f",
+    "src\\election_forecast\\report.py": "2ddaffc0355ffc4f1fbbc7c5bf1ef9372cc33ff6d27312dfb2467c2d960b9ceb",
+    "src\\election_forecast\\statistics.py": "24c07acaa2de09938d02ca3b94a04627f6472b9a88b0fef79b95a7e145d5148f",
+    "src\\election_forecast\\__init__.py": "548437dc8da3a04a4353e0d434274c65f68e9c6f2a2a19324c7f99812227ed44",
+    "src\\election_forecast\\__main__.py": "1eefd60a8713ad64a618f09950fc58ea2dc0c3a71fba07f2c4f996a5fcaecb95",
+    "data\\frozen\\2026-feature-snapshots.csv": "bb9dcd3d8ba8382fcccdf9c4b40100fc55bdc7f5ce8940148d027e6f6f8f8263",
+    "data\\frozen\\training-data.csv": "739ff8f42a49e9edb1eea801fcde1831909f4774878c2bb6fb21696d9e987b42",
+    "data\\raw\\nyt-house-2026.csv": "ca9a2cb722d1fc763bd8640ec1897edd393e7aec30f5a2ce089faedd3dbcc691",
+    "data\\raw\\nyt-senate-2026.csv": "5f5c49017e7e48b1c5720d36b429faf1317b3766ab4f516dfcecc82bd2f00010",
+    "data\\raw\\president.csv": "9936410a6dd4ecc8be7fe202c6dff5b5f8fee59d88f35ab542ed12879941dcb7",
+    "data\\reference\\district-presidential-2014.csv": "dad622ffb1541aab4c49931bc1ec5fd347bba283a1fe898329184c4d3b75b255",
+    "data\\reference\\district-presidential-2016.csv": "ff7bff913f9454c186f4f05be318b29d27f639c8131b987b1b70a2c15b4e5490",
+    "data\\reference\\district-presidential-2018.csv": "4bb62ee72d7e02482b928e617af434c2f6b7a1f05874d24bf5083709cfc35294",
+    "data\\reference\\district-presidential-2020.csv": "13f58ed61d0c7dc15bd997202e43e7c5d5d96a28e744ea7e7f8d67430e40a475",
+    "data\\reference\\district-presidential-2022.csv": "1256330f4932a5527bb797c960b338ead1f592a9accd4b1b659920ce87b89720",
+    "data\\reference\\district-presidential-2024.csv": "ddc9da3942a2fa9eeb957f68e56766bf83708d04deabeaa7834a5d2669a262a7",
+    "data\\reference\\district-presidential-2026.csv": "537956d09e265a946fc54a39315737cebd9aeb031244c05594edf443dc084a65",
+    "data\\reference\\generic-ballot-2026.csv": "9f48f8647aa7692de705f78d1d332e9b58cadad5f3ba65c49a75cb7ca8c1a499",
+    "data\\reference\\historical-poll-features.csv": "929fce9f624d5a6d613db7b13370ecf4cfee1bfd8a4eece6e87c7e7940cba705",
+    "data\\reference\\nominees-2026.csv": "d4695f836fed24ddbc8aa5e46a8c27eb7ebb07aba98d6ed2581de4908cbc9e9c",
+    "data\\reference\\state-codes.csv": "440154b94b1ab3c8d0d8570d756d24c20b448367e91e02c95c61f731073e61c2",
+    "assets\\fonts\\Geist-LICENSE.txt": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f",
+    "assets\\fonts\\Geist-Regular.ttf": "de08b4b4d7b1638970aa5414a4a99141fae9b1500f1ea592bbb3ffeaede7993e",
+    "assets\\maps\\LICENSE": "8048290dfdb6e83fbed17e8985c8cfc4ce9da9b842642f3d3e497280790cfa31",
+    "assets\\maps\\README.md": "c75acac0d814e2a32e319ebc14bc12e0250ed1cf8ee67afb96417dd99f83127e",
+    "assets\\maps\\states-albers-10m.json": "6e7bb086a3c791490361968a3094f377f7726c5d0c4900fec03cc42db2305a3d"
+  }
+}

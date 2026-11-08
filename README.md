@@ -26,6 +26,9 @@ npm run start
 - `src/content/projects.tsx`: project and publication cards, links, search text, and explanations.
 - `src/content/writings.tsx`: writing directory.
 - `src/content/research-guide.tsx`: the full article.
+- `src/content/midterms-2026.json`: the generated midterm modeling article and tables; `midterms-2026.tsx` renders it as a server component.
+- `src/content/live/`: the fixed model estimates, initial results snapshot, and live comparison. The browser refreshes civicAPI results every minute while the page is visible. A failed request keeps the last successful result. No API key or scheduled rebuild is required. See the [comparison notes](https://github.com/Ehdunhackme/US-election/blob/main/docs/live-results.md) for scoring and source details.
+- `public/assets/writings/midterms-2026/`: the article's desktop/mobile SVG figures, preview image, and downloadable data. The research repository builds the 470-race article and 13-model benchmark with `python -m election_forecast build`. Copy the generated article JSON and figure assets here, then run `node scripts/embed-midterm-figures.cjs`. Integration instructions are in the research repository’s `website/README.md`.
 - `src/components/`: reusable navigation, search, card transitions, gallery, theme, and explanation interactions.
 - `src/styles/`: the existing styles, scoped to their original page families to avoid changes during navigation.
 - `public/assets/`: images and other public media, still available at `/assets/...`.

@@ -1,0 +1,19 @@
+{
+  "family": "Poll/baseline blend",
+  "family_id": "poll_blend",
+  "params": {
+    "poll_weight": 0.75
+  },
+  "kind": "retrospective_development_benchmark",
+  "cutoff": "2026-11-02",
+  "2026_outcomes_used": false,
+  "scores": {
+    "family_count": 13,
+    "configuration_count": 47,
+    "selection_metric": "MAE, equal weight per election and chamber",
+    "winner_mae_pp": 2.5666464963955526,
+    "baseline_mae_pp": 3.105418277419383,
+    "relative_improvement": 0.17349411025929562,
+    "sequential_selection_mae_pp": 2.92715527905081
+  }
+}
