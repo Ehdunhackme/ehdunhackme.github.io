@@ -38,6 +38,18 @@ Keep each project's `searchText` in sync when changing its visible text. Stable 
 
 Pages and paper explanations render at build time. Navigation uses Next.js links and prefetching, keeping the header mounted. Photos and paper thumbnails use responsive Next.js image optimisation; small logos have WebP versions. Below-the-fold photos load lazily. Fonts are bundled locally, so rendering no longer depends on Google Fonts requests. Motion respects reduced-motion preferences, and event handlers/timers are cleaned up when leaving a page.
 
+## Election article
+
+The portfolio includes everything needed to display the article: text, charts,
+equations, downloads, fixed predictions and the live comparison. It builds and
+serves without cloning the model repository or fetching files from GitHub.
+
+Model training, historical inputs and benchmarks stay in
+[US-election](https://github.com/Ehdunhackme/US-election). After rebuilding that
+project, import only its website files with
+`npm run sync:midterms -- /path/to/US-election`. This is an optional publishing
+step, not part of the website build. Live results come directly from civicAPI.
+
 ## Verify
 
 ```sh

@@ -1,27 +1,46 @@
 .article {
+  width: 100%;
+  max-width: 70ch;
+  margin-inline: auto;
   overflow-wrap: anywhere;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 .article > p {
-  max-width: 70ch;
+  max-width: none;
   margin: 0 0 20px;
 }
-.article .note {
+.article .header {
+  margin: 0 0 32px;
+}
+.article .header h1 {
+  margin: 0 0 16px;
+  font-family: inherit;
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
   color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.65;
-  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 .article h2 {
   scroll-margin-top: 24px;
-  margin: 64px 0 20px;
-  line-height: 1.35;
+  margin: 48px 0 16px;
+  font-size: 1.25rem;
+  line-height: 1.4;
 }
 .article > header + h2 {
-  margin-top: 36px;
+  margin-top: 32px;
 }
 .figure {
-  margin: 36px 0 48px;
+  width: 100%;
+  margin: 28px 0 40px;
 }
 .figure picture,
 .figure img {
@@ -30,24 +49,24 @@
   height: auto;
 }
 .figure figcaption {
-  font-size: 0.8rem;
-  line-height: 1.6;
+  margin-top: 12px;
   color: var(--muted);
-  margin-top: 14px;
-  max-width: 74ch;
+  font-size: 0.8125rem;
+  line-height: 1.6;
 }
 .figure figcaption a {
   white-space: nowrap;
 }
 .tableScroll {
+  width: 100%;
   max-width: 100%;
   overflow-x: auto;
-  margin: 24px 0;
+  margin: 20px 0;
 }
 .tableScroll table {
   border-collapse: collapse;
-  font-size: 0.8rem;
-  line-height: 1.55;
+  font-size: 0.8125rem;
+  line-height: 1.6;
   width: 100%;
   font-variant-numeric: tabular-nums;
 }
@@ -78,7 +97,7 @@
   border: 0;
 }
 .details summary {
-  padding: 10px 0;
+  padding: 12px 0;
   min-height: 44px;
   cursor: pointer;
   color: var(--strong);
@@ -93,11 +112,12 @@
   text-underline-offset: 4px;
 }
 .equation {
-  font-size: 1.05rem;
+  width: 100%;
+  font-size: 1rem;
   overflow-wrap: normal;
   overflow-x: auto;
-  padding: 24px 8px;
-  margin: 24px 0 32px;
+  padding: 20px 0;
+  margin: 20px 0 28px;
   color: var(--strong);
 }
 .equation :global(.katex-display) {
@@ -106,13 +126,36 @@
   min-width: 100%;
 }
 .sources {
+  width: 100%;
   margin-top: 48px;
 }
-.sources ul {
-  padding-left: 20px;
+.downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0 0 28px;
+  font-size: 0.875rem;
 }
-.sources li {
-  margin-bottom: 8px;
+.sourceGroups {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+.sourceGroups > div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.sourceGroups dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+.sourceGroups dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0;
 }
 .tableScroll:focus-visible,
 .equation:focus-visible,
@@ -120,34 +163,23 @@
   outline: 2px solid var(--strong);
   outline-offset: 4px;
 }
-@media (min-width: 1100px) {
-  .figure {
-    width: calc(100% + 128px);
-    margin-left: -64px;
-  }
-}
 @media (max-width: 640px) {
   .article h2 {
-    margin-top: 44px;
-  }
-  .article > header + h2 {
-    margin-top: 28px;
-  }
-  .article > p {
-    margin-bottom: 20px;
-  }
-  .equation {
-    font-size: 0.85rem;
-    padding: 20px 4px;
-    margin-block: 20px 28px;
+    margin-top: 40px;
   }
   .figure {
     margin-block: 24px 32px;
   }
+  .equation {
+    font-size: 0.8125rem;
+    padding: 16px 0;
+  }
   .tableScroll table {
     min-width: 560px;
   }
-  .figure figcaption {
-    font-size: 0.8125rem;
+  .sourceGroups > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-bottom: 20px;
   }
 }

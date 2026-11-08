@@ -40,11 +40,14 @@ type Article = {
   dateLabel: string;
   note: string;
   blocks: Block[];
-  sources: { label: string; url: string }[];
+  sources: { group: string; label: string; url: string }[];
   reproducibility: string;
 };
 const article = articleData as Article;
 const assets = "/assets/writings/midterms-2026";
+const sourceGroups = [
+  ...new Set(article.sources.map((source) => source.group)),
+];
 
 function ArticleTable({ block }: { block: TableBlock }) {
   const table = (
@@ -108,7 +111,7 @@ function ArticleFigure({ block }: { block: FigureBlock }) {
           width={block.mobileWidth}
           height={block.mobileHeight}
         />
-        {/* Embedded figures also render in offline previews and without lazy-load requests. */}
+        {/* Embedded figures remain readable in the offline article export. */}
         <img
           src={block.src}
           width={block.width}
@@ -125,7 +128,7 @@ function ArticleFigure({ block }: { block: FigureBlock }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Open figure
+          Full size
         </a>
       </figcaption>
     </figure>
@@ -175,42 +178,48 @@ export function MidtermArticle() {
       <article
         className={`page-shell writing-post-shell writing-content ${styles.article}`}
       >
-        <header className="card-page-heading card-post-heading">
-          <div>
-            <h1>{article.title}</h1>
-            <time className="writing-post-date" dateTime={article.date}>
-              {article.dateLabel}
-            </time>
-            <p className={styles.note}>{article.note}</p>
+        <header className={styles.header}>
+          <h1>{article.title}</h1>
+          <div className={styles.meta}>
+            <time dateTime={article.date}>{article.dateLabel}</time>
+            <span>{article.note}</span>
           </div>
         </header>
         {article.blocks.map(renderBlock)}
         <section className={styles.sources} aria-labelledby="midterms-sources">
-          <h2 id="midterms-sources">Data sources and code</h2>
-          <ul>
-            {article.sources.map((source) => (
-              <li key={source.url}>
-                <a href={source.url} target="_blank" rel="noopener noreferrer">
-                  {source.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p>{article.reproducibility}</p>
-          <p>
+          <h2 id="midterms-sources">Sources and code</h2>
+          <nav className={styles.downloads} aria-label="Code and downloads">
             <a href="https://github.com/Ehdunhackme/US-election">
-              Code and reproducible inputs on GitHub
+              Model code and data
             </a>
-          </p>
-          <p>
             <a href={`${assets}/2026-estimates.csv`} download>
-              Download race estimates (CSV)
+              Estimates CSV
             </a>
-            {" / "}
-            <a href={`${assets}/historical-cycle-scores.csv`} download>
-              Historical validation scores (CSV)
+            <a href={`${assets}/benchmark-leaderboard.csv`} download>
+              Benchmark CSV
             </a>
-          </p>
+          </nav>
+          <dl className={styles.sourceGroups}>
+            {sourceGroups.map((group) => (
+              <div key={group}>
+                <dt>{group}</dt>
+                <dd>
+                  {article.sources
+                    .filter((source) => source.group === group)
+                    .map((source) => (
+                      <a
+                        href={source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        key={source.url}
+                      >
+                        {source.label}
+                      </a>
+                    ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </section>
       </article>
     </main>

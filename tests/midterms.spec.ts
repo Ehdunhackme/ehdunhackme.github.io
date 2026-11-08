@@ -1,11 +1,15 @@
 import { test, expect } from "@playwright/test";
 
+// Embedded chart images make per-action DOM trace snapshots several MB each.
+// Keep action logs and the explicit screenshots without copying every image.
+test.use({ trace: { mode: "retain-on-failure", snapshots: false } });
+
 const path = "/writings/2026-us-midterm-election-model/";
 
 test("midterm article is searchable and has complete responsive figures", async ({
   page,
   request,
-}) => {
+}, testInfo) => {
   test.setTimeout(60000); // Includes decoding ten figures and opening the complete race tables in WebKit.
   const errors: string[] = [];
   await page.route("https://civicapi.org/api/v2/race/*", (route) =>
@@ -15,12 +19,10 @@ test("midterm article is searchable and has complete responsive figures", async 
   await page.goto("/writings/");
   await page.getByRole("searchbox").fill("poll baseline blend");
   await expect(page.locator(".writing-section-link:visible")).toHaveCount(1);
-  await page
-    .getByRole("link", { name: /2026 US Midterm Election Model/ })
-    .click();
+  await page.getByRole("link", { name: /Modelling the 2026 midterms/ }).click();
   await expect(page).toHaveURL(new RegExp(`${path}$`));
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "2026 US Midterm Election Model",
+    "Modelling the 2026 midterms",
   );
   await expect(page.locator('.site-header [aria-current="page"]')).toHaveText(
     "Writings",
@@ -64,6 +66,36 @@ test("midterm article is searchable and has complete responsive figures", async 
     });
   expect(decoded).toHaveLength(10);
   expect(decoded.every((img) => img.complete && img.width > 0)).toBe(true);
+  const alignment = await page.locator("article").evaluate((article) => {
+    const text = article.querySelector(":scope > p")!.getBoundingClientRect();
+    const blocks = [
+      ...article.querySelectorAll(
+        ":scope > figure, :scope > [role=region], :scope > #live-results-comparison, :scope > section",
+      ),
+    ];
+    return blocks.every((block) => {
+      const bounds = block.getBoundingClientRect();
+      return (
+        Math.abs(bounds.left - text.left) < 1 &&
+        Math.abs(bounds.width - text.width) < 1
+      );
+    });
+  });
+  expect(alignment).toBe(true);
+  await expect(
+    page
+      .getByRole("region", { name: "Sources and code", exact: true })
+      .locator("dt"),
+  ).toHaveText(["Results", "Election data", "Context", "Polling"]);
+  await expect(
+    page.getByRole("link", { name: "Model code and data", exact: true }),
+  ).toHaveAttribute("href", "https://github.com/Ehdunhackme/US-election");
+  expect(
+    await page.locator("article a[href*='Ehdunhackme/US-election']").count(),
+  ).toBe(1);
+  expect(
+    await page.locator("article > p, article figcaption").allTextContents(),
+  ).not.toEqual(expect.arrayContaining([expect.stringContaining("Ohio")]));
   const mobile = (page.viewportSize()?.width || 1000) <= 640;
   const selectedSource = await first.evaluate((img: HTMLImageElement) => ({
     current: img.currentSrc,
@@ -115,4 +147,10 @@ test("midterm article is searchable and has complete responsive figures", async 
     "https://dunlichan.com" + path,
   );
   expect(errors).toEqual([]);
+  await page
+    .getByRole("heading", { name: "Sources and code", exact: true })
+    .scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath("article-sources.png") });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: testInfo.outputPath("article-top.png") });
 });
