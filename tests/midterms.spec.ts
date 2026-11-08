@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 
+// Embedded chart images make per-action DOM trace snapshots several MB each.
+// Keep action logs and the explicit screenshots without copying every image.
+test.use({ trace: { mode: "retain-on-failure", snapshots: false } });
+
 const path = "/writings/2026-us-midterm-election-model/";
 
 test("midterm article is searchable and has complete responsive figures", async ({
@@ -78,12 +82,11 @@ test("midterm article is searchable and has complete responsive figures", async 
     });
   });
   expect(alignment).toBe(true);
-  await expect(page.locator("article dl").last().locator("dt")).toHaveText([
-    "Results",
-    "Election data",
-    "Context",
-    "Polling",
-  ]);
+  await expect(
+    page
+      .getByRole("region", { name: "Sources and code", exact: true })
+      .locator("dt"),
+  ).toHaveText(["Results", "Election data", "Context", "Polling"]);
   await expect(
     page.getByRole("link", { name: "Model code and data", exact: true }),
   ).toHaveAttribute("href", "https://github.com/Ehdunhackme/US-election");

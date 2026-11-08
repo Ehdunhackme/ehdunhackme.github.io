@@ -1,6 +1,10 @@
 import { test, expect } from "@playwright/test";
 import fs from "node:fs";
 
+// This page embeds all charts. Retain action logs without repeatedly copying
+// those images into trace DOM snapshots; screenshots below cover the layout.
+test.use({ trace: { mode: "retain-on-failure", snapshots: false } });
+
 const predictions = JSON.parse(
   fs.readFileSync(
     new URL("../src/content/live/predictions.json", import.meta.url),
@@ -71,6 +75,8 @@ test("live comparison refreshes, filters, preserves estimates and survives outag
   await expect(widget.locator(".metrics")).toContainText("399 / 413");
   await expect(widget.locator("tbody tr")).toHaveCount(10);
   await expect(widget.locator(".pages")).toContainText("1–10 of 435 races");
+  await widget.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: testInfo.outputPath("live-house.png") });
   const firstRace = await widget.locator("tbody th").first().innerText();
   await widget.getByRole("button", { name: "Next", exact: true }).click();
   await expect(widget.locator("tbody tr")).toHaveCount(10);
