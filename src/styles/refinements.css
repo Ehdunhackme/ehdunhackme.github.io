@@ -144,8 +144,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   .paper-links a,
   .project-title-link,
   .contact-list a,
-  .page-links a,
-  .writing-section-title
+  .page-links a
 ) {
   background-color: transparent;
   -webkit-box-decoration-break: clone;
@@ -164,8 +163,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
   .project-title-link,
   .contact-list a,
   .page-links a
-):is(:focus-visible, :active),
-.writing-section-link:is(:focus-visible, :active) .writing-section-title {
+):is(:focus-visible, :active) {
   background-color: var(--link-highlight);
 }
 @media (hover: hover) {
@@ -178,8 +176,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
     .project-title-link,
     .contact-list a,
     .page-links a
-  ):hover,
-  .writing-section-link:hover .writing-section-title {
+  ):hover {
     background-color: var(--link-highlight);
   }
 }
@@ -192,8 +189,7 @@ main :is(p, dd, blockquote, .timeline-entry li, .writing-content li) {
     .paper-links a,
     .project-title-link,
     .contact-list a,
-    .page-links a,
-    .writing-section-title
+    .page-links a
   ) {
     transition: none;
   }
