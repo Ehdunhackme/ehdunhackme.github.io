@@ -503,10 +503,10 @@ const factoryDrawing = (
         <rect x="44" y="389" width="17" height="25" strokeWidth="0.7" />
         <LoadingDoor x={87} y={388} width={63} />
 
-        <path d="M552 419V352H631L657 364V419Z" fill="var(--bg)" />
-        <path d="M548 347H631L661 359L657 364L631 352H548Z" fill="var(--bg)" />
-        <path d="M631 352V419" />
-        {[565, 594].map((x) => (
+        {/* Straight-on annex: one flat facade and a horizontal roof cap. */}
+        <rect x="552" y="352" width="101" height="67" fill="var(--bg)" />
+        <rect x="548" y="347" width="109" height="5" fill="var(--bg)" />
+        {[573, 613].map((x) => (
           <rect
             key={x}
             x={x}
@@ -516,8 +516,7 @@ const factoryDrawing = (
             strokeWidth="0.7"
           />
         ))}
-        <rect x="572" y="400" width="21" height="19" strokeWidth="0.7" />
-        <path d="M637 371L650 376V404L637 399Z" strokeWidth="0.7" />
+        <rect x="592" y="400" width="21" height="19" strokeWidth="0.7" />
 
         <rect x="653" y="366" width="87" height="53" fill="var(--bg)" />
         <rect x="649" y="361" width="95" height="5" fill="var(--bg)" />
