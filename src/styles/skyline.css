@@ -63,7 +63,7 @@
   gap: 0;
   border: 0;
 }
-.kl-skyline {
+.factory-panorama {
   position: relative;
   width: 100%;
   height: clamp(6rem, calc(100svh - 590px), 20rem);
@@ -72,15 +72,16 @@
   pointer-events: none;
   user-select: none;
 }
-.kl-skyline svg {
+.factory-panorama svg {
   position: absolute;
   bottom: 0;
   left: 50%;
   display: block;
   width: max(100%, 56rem);
   height: 100%;
+  overflow: visible;
   transform: translateX(-50%);
-  opacity: 0.68;
+  opacity: 0.74;
 }
 @media (min-width: 601px) {
   .site-shell.home-page {
@@ -104,7 +105,7 @@
     flex: 1 0 5rem;
     justify-content: flex-end;
   }
-  .home-page .kl-skyline {
+  .home-page .factory-panorama {
     flex: 1 1 auto;
     height: 0;
     min-height: 3.3rem;
@@ -124,7 +125,7 @@
     column-gap: 1rem;
     row-gap: 0.75rem;
   }
-  .kl-skyline {
+  .factory-panorama {
     height: 10rem;
   }
 }

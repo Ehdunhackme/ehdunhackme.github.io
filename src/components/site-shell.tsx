@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { KualaLumpurSkyline } from "./kl-skyline";
+import { FactoryPanorama } from "./factory-panorama";
 import {
   ContactLanguageProvider,
   ContactLanguageSwitch,
@@ -55,7 +55,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
         {!isDemo && (
           <footer className="site-footer">
-            <KualaLumpurSkyline />
+            <FactoryPanorama />
           </footer>
         )}
       </div>

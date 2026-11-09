@@ -66,7 +66,7 @@ export function HomeContent() {
               />
               {"Chert (YC P26)"}
             </a>
-            {", and post-training eval and mech interp at "}
+            {", and post-training eval and optimisation at "}
             <a
               className={"about-org"}
               href={"https://universetbd.org/"}
@@ -90,7 +90,7 @@ export function HomeContent() {
               {"journey"}
             </Link>
             {
-              " began at 10 with hacking games and jailbreaking phones. Right now, I'm currently working in AI research, with "
+              " began at 10 with hacking games and jailbreaking phones. I'm currently working in physical AI & post-training optimisation, with "
             }
             <Link href={"/projects/"}>{"publications"}</Link>
             {" at NeurIPS, AACL, and EACL."}
@@ -137,7 +137,7 @@ export function HomeContent() {
               {" to make research opportunities more accessible."}
             </li>{" "}
             <li>
-              {"Worked at "}
+              {"Did research at "}
               <a
                 className={"about-org"}
                 href={"https://en.sjtu.edu.cn/"}
@@ -212,35 +212,7 @@ export function HomeContent() {
 
       <nav className={"social-links"} aria-label={"External links"}>
         {" "}
-        <a
-          href={"https://github.com/ehdunhackme"}
-          target={"_blank"}
-          rel={"noopener"}
-        >
-          {"GitHub"}
-        </a>{" "}
-        <a
-          href={"https://www.linkedin.com/in/dun-li-chan-6b3095269/"}
-          target={"_blank"}
-          rel={"noopener"}
-        >
-          {"LinkedIn"}
-        </a>{" "}
-        <a
-          href={"https://x.com/dunlichan"}
-          target={"_blank"}
-          rel={"noopener"}
-          aria-label={"X profile"}
-        >
-          {"X"}
-        </a>{" "}
-        <a
-          href={"https://scholar.google.com/citations?user=UOYqiG4AAAAJ"}
-          target={"_blank"}
-          rel={"noopener"}
-        >
-          {"Google Scholar"}
-        </a>{" "}
+        <a href={"mailto:dunlinmy88@gmail.com"}>{"Email"}</a>{" "}
         <a
           href={
             "https://docs.google.com/document/d/1GGPG1R-ieZixVmeLvklmSXJkOLpN7ZH7Nxp0hMCjDuc/edit?usp=sharing"
@@ -250,7 +222,35 @@ export function HomeContent() {
         >
           {"Resume"}
         </a>{" "}
-        <a href={"mailto:dunlinmy88@gmail.com"}>{"Email"}</a>{" "}
+        <a
+          href={"https://www.linkedin.com/in/dun-li-chan-6b3095269/"}
+          target={"_blank"}
+          rel={"noopener"}
+        >
+          {"LinkedIn"}
+        </a>{" "}
+        <a
+          href={"https://github.com/ehdunhackme"}
+          target={"_blank"}
+          rel={"noopener"}
+        >
+          {"GitHub"}
+        </a>{" "}
+        <a
+          href={"https://scholar.google.com/citations?user=UOYqiG4AAAAJ"}
+          target={"_blank"}
+          rel={"noopener"}
+        >
+          {"Google Scholar"}
+        </a>{" "}
+        <a
+          href={"https://x.com/dunlichan"}
+          target={"_blank"}
+          rel={"noopener"}
+          aria-label={"X profile"}
+        >
+          {"X"}
+        </a>{" "}
         <a
           href={"https://calendly.com/dunlinmy88/30min"}
           target={"_blank"}
