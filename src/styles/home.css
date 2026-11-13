@@ -57,8 +57,9 @@ html {
 :where(.home-style) .site-wordmark {
   color: var(--strong);
   font:
-    600 11px/1 var(--font-jetbrains),
-    monospace;
+    600 11px/1 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.16em;
   text-decoration: none;
   text-transform: uppercase;
@@ -93,8 +94,9 @@ html {
   align-items: center;
   gap: 1rem;
   font:
-    10px var(--font-jetbrains),
-    monospace;
+    10px var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -119,8 +121,9 @@ html {
   margin: 0 0 1.5rem;
   color: var(--strong);
   font:
-    600 1.2rem/1.35 var(--font-jetbrains),
-    monospace;
+    600 1.2rem/1.35 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: -0.02em;
 }
 :where(.home-style) .writing-page {
@@ -139,8 +142,9 @@ html {
   margin: 0 0 0.8rem;
   color: var(--strong);
   font:
-    600 clamp(2rem, 5vw, 3rem)/1.2 var(--font-jetbrains),
-    monospace;
+    600 clamp(2rem, 5vw, 3rem)/1.2 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: -0.04em;
 }
 :where(.home-style) .writing-post-date {
@@ -148,8 +152,9 @@ html {
   margin: 0 0 2.5rem;
   color: var(--muted);
   font:
-    0.7rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.7rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
 }
 :where(.home-style) .writing-list {
@@ -165,15 +170,17 @@ html {
   margin: 3rem 0 1rem;
   color: var(--strong);
   font:
-    600 1.18rem/1.35 var(--font-jetbrains),
-    monospace;
+    600 1.18rem/1.35 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .writing-content h3 {
   margin: 2rem 0 0.75rem;
   color: var(--strong);
   font:
-    600 1rem/1.35 var(--font-jetbrains),
-    monospace;
+    600 1rem/1.35 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .writing-content p {
   margin: 0 0 1.1rem;
@@ -206,11 +213,12 @@ html.dark :where(.home-style) .writing-content a {
   background: color-mix(in srgb, var(--fg) 5%, var(--bg));
   color: var(--secondary);
   font:
-    0.78rem/1.65 var(--font-jetbrains),
-    monospace;
+    0.78rem/1.65 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .writing-content code {
-  font-family: var(--font-jetbrains), monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
   font-size: 0.9em;
 }
 :where(.home-style) .writing-content .katex {
@@ -224,8 +232,9 @@ html.dark :where(.home-style) .writing-content a {
 :where(.home-style) .page-links a {
   color: var(--muted);
   font:
-    10px/1.4 var(--font-jetbrains),
-    monospace;
+    10px/1.4 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.18em;
   text-decoration: none;
   text-transform: uppercase;
@@ -240,8 +249,9 @@ html.dark :where(.home-style) .writing-content a {
   margin: 0 0 1rem;
   color: var(--muted);
   font:
-    10px var(--font-jetbrains),
-    monospace;
+    10px var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -253,7 +263,7 @@ html.dark :where(.home-style) .writing-content a {
 :where(.home-style) time,
 :where(.home-style) .section-link,
 :where(.home-style) .site-footer {
-  font-family: var(--font-jetbrains), monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
 }
 :where(.home-style) h1 {
   margin: 0;
@@ -417,8 +427,9 @@ html.dark :where(.home-style) .writing-content a {
   margin: 0 0 0.8rem;
   color: var(--secondary);
   font:
-    600 13px/1.55 var(--font-jetbrains),
-    monospace;
+    600 13px/1.55 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .honors-list {
   margin: 0;
@@ -482,8 +493,9 @@ html.dark :where(.home-style) .writing-content a {
 :where(.home-style) .motivation-priorities li span {
   color: var(--muted);
   font:
-    0.63rem/1.4 var(--font-jetbrains),
-    monospace;
+    0.63rem/1.4 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.08em;
 }
 :where(.home-style) .motivation-priorities li strong,
@@ -500,8 +512,9 @@ html.dark :where(.home-style) .writing-content a {
   margin: 0 0 0.8rem;
   color: var(--strong, var(--fg-strong));
   font:
-    600 0.95rem/1.5 var(--font-jetbrains),
-    monospace;
+    600 0.95rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .motivation-topic p {
   margin: 0 0 0.85rem;
@@ -567,8 +580,9 @@ html.dark :where(.home-style) .motivation-panel a {
   flex: 0 0 auto;
   color: var(--muted);
   font:
-    10px/1.4 var(--font-jetbrains),
-    monospace;
+    10px/1.4 var(--font-geist),
+    Arial,
+    sans-serif;
   text-decoration: none;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -611,8 +625,9 @@ html.dark :where(.home-style) .motivation-panel a {
 :where(.home-style) .about-section h2 {
   margin-bottom: 1.25rem;
   font:
-    600 1.2rem/1.35 var(--font-jetbrains),
-    monospace;
+    600 1.2rem/1.35 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: -0.02em;
 }
 :where(.home-style) .workplaces {
@@ -678,8 +693,9 @@ html.dark :where(.home-style) .logo-metacreation {
 :where(.home-style) .timeline-date {
   color: var(--muted);
   font:
-    500 10px/1.5 var(--font-jetbrains),
-    monospace;
+    500 10px/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -735,8 +751,9 @@ html.dark :where(.home-style) .logo-metacreation {
   flex: 0 0 auto;
   color: var(--muted);
   font:
-    0.64rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.64rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   white-space: nowrap;
 }
 :where(.home-style) .timeline-entry .research-role ul {
@@ -801,8 +818,9 @@ html.dark
   margin-left: 0.25rem;
   color: var(--muted);
   font:
-    0.64rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.64rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
 }
 :where(.home-style) .timeline-entry .research-role li p {
   margin: 0.22rem 0 0;
@@ -907,8 +925,9 @@ html.dark :where(.home-style) .timeline-entry a {
   background: transparent;
   color: var(--muted);
   font:
-    1rem/1 var(--font-jetbrains),
-    monospace;
+    1rem/1 var(--font-geist),
+    Arial,
+    sans-serif;
   cursor: pointer;
   transition:
     color 0.15s ease,
@@ -929,8 +948,9 @@ html.dark :where(.home-style) .timeline-entry a {
   min-width: 4.5rem;
   color: var(--muted);
   font:
-    0.68rem/1 var(--font-jetbrains),
-    monospace;
+    0.68rem/1 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   text-align: center;
   font-variant-numeric: tabular-nums;
@@ -955,8 +975,9 @@ html.dark :where(.home-style) .timeline-entry a {
   margin: 0 0 0.55rem;
   color: var(--muted);
   font:
-    0.62rem/1.4 var(--font-jetbrains),
-    monospace;
+    0.62rem/1.4 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -964,16 +985,18 @@ html.dark :where(.home-style) .timeline-entry a {
   margin: 0;
   color: var(--strong);
   font:
-    600 1.2rem/1.35 var(--font-jetbrains),
-    monospace;
+    600 1.2rem/1.35 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: -0.02em;
 }
 :where(.home-style) .research-board-note {
   padding-bottom: 0.15rem;
   color: var(--muted);
   font:
-    0.66rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.66rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
 }
 :where(.home-style) .research-toolbar {
@@ -991,8 +1014,9 @@ html.dark :where(.home-style) .timeline-entry a {
   background: transparent;
   color: var(--muted);
   font:
-    0.68rem var(--font-jetbrains),
-    monospace;
+    0.68rem var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   padding: 0.45rem 0.7rem;
   cursor: pointer;
@@ -1024,8 +1048,9 @@ html.dark :where(.home-style) .timeline-entry a {
   margin: 0 0 0.8rem;
   color: var(--muted);
   font:
-    500 0.66rem/1.5 var(--font-jetbrains),
-    monospace;
+    500 0.66rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1087,8 +1112,9 @@ html.dark :where(.home-style) .timeline-entry a {
   border: 1px solid var(--line);
   color: var(--muted);
   font:
-    0.62rem/1.2 var(--font-jetbrains),
-    monospace;
+    0.62rem/1.2 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1107,8 +1133,9 @@ html.dark :where(.home-style) .timeline-entry a {
   gap: 0.35rem;
   color: var(--muted);
   font:
-    0.62rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.62rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   cursor: pointer;
   list-style: none;
 }
@@ -1148,8 +1175,9 @@ html.dark :where(.home-style) .paper-links a {
   background: transparent;
   color: var(--muted);
   font:
-    0.68rem var(--font-jetbrains),
-    monospace;
+    0.68rem var(--font-geist),
+    Arial,
+    sans-serif;
   cursor: pointer;
 }
 :where(.home-style) .show-more:hover,
@@ -1215,8 +1243,9 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) .writing-date {
   color: var(--muted);
   font:
-    0.7rem/1.5 var(--font-jetbrains),
-    monospace;
+    0.7rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -1241,7 +1270,7 @@ html.dark :where(.home-style) .paper-links a {
   padding: 1.5rem 0 3rem;
   border-top: 0;
   color: var(--muted);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.04em;
 }
@@ -1300,8 +1329,9 @@ html.dark :where(.home-style) .paper-links a {
   background: transparent;
   color: #fff;
   font:
-    2.5rem/1 var(--font-jetbrains),
-    monospace;
+    2.5rem/1 var(--font-geist),
+    Arial,
+    sans-serif;
   cursor: pointer;
   transition:
     color 0.15s ease,
@@ -1472,8 +1502,9 @@ html.dark :where(.home-style) .paper-links a {
   display: inline-block;
   flex: 0 0 auto;
   font:
-    600 0.68rem/1 var(--font-geist-mono),
-    monospace;
+    600 0.68rem/1 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.12em;
 }
 :where(.home-style) .main-nav {
@@ -1541,8 +1572,9 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) .directory-page .eyebrow {
   margin-bottom: 0.45rem;
   font:
-    500 0.68rem/1.4 var(--font-geist-mono),
-    monospace;
+    500 0.68rem/1.4 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1589,7 +1621,7 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) .timeline-date,
 :where(.home-style) .writing-date,
 :where(.home-style) .writing-post-date {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
 }
 :where(.home-style) .writing-content {
   font-family: var(--font-geist), Arial, sans-serif;
@@ -1727,8 +1759,9 @@ html.dark :where(.home-style) .paper-links a {
   border: 0;
   color: var(--muted);
   font:
-    500 0.64rem/1.3 var(--font-geist-mono),
-    monospace;
+    500 0.64rem/1.3 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -1818,8 +1851,9 @@ html.dark :where(.home-style) .paper-links a {
   color: var(--muted);
   text-align: center;
   font:
-    400 0.7rem/1.5 var(--font-geist-mono),
-    monospace;
+    400 0.7rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   letter-spacing: 0.04em;
   text-transform: none;
 }
@@ -1908,7 +1942,7 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) .page-shell h1,
 :where(.home-style) .directory-page > .editorial-heading,
 :where(.home-style) .directory-page .directory-group h2 {
-  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -1969,7 +2003,7 @@ html.dark :where(.home-style) .paper-links a {
 :where(.home-style) #about-heading,
 :where(.home-style) #research-heading,
 :where(.home-style) #writings-heading {
-  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
   font-size: 1.1rem;
   font-style: normal;
   font-weight: 600;
@@ -2062,8 +2096,9 @@ html.dark :where(.home-style) .paper-links a {
   background: none;
   color: var(--secondary);
   font:
-    0.76rem/1.5 var(--font-geist-mono),
-    monospace;
+    0.76rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
   cursor: pointer;
 }
 :where(.home-style) .deck-return:hover {

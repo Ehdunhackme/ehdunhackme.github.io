@@ -34,6 +34,13 @@ body {
   font-family: var(--font-geist), Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+/* Reserve monospace for code; navigation, headings and metadata use Geist. */
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-geist-mono), monospace;
+}
 [hidden] {
   display: none !important;
 }
@@ -85,6 +92,14 @@ dialog.gallery-lightbox::backdrop {
 }
 .demo-shell #connection-notice {
   z-index: 100;
+}
+.writing-route .writing-content :is(.writing-post-date, header time) {
+  font:
+    400 0.8125rem/1.65 var(--font-geist),
+    Arial,
+    sans-serif;
+  color: var(--muted);
+  letter-spacing: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   html {

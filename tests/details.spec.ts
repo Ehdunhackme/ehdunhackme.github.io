@@ -3,17 +3,25 @@ import { test, expect } from "@playwright/test";
 test("every explanation has readable headings, section spacing and unclipped content", async ({
   page,
 }) => {
+  // This checks 28 animated interactions across all entries, including mobile WebKit.
+  test.setTimeout(120000);
   await page.goto("/projects/");
   await page.evaluate(() => document.fonts.ready);
   const explanations = page.locator(".paper-explanation");
   await expect(explanations).toHaveCount(14);
 
   for (const explanation of await explanations.all()) {
-    await explanation.locator("summary").click();
-    await expect(explanation).toHaveAttribute("open", "");
-    await expect(explanation).not.toHaveClass(/is-animating/);
+    const toggle = explanation.getByRole("button", { name: "AI summary" });
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await explanation.evaluate(async (el) => {
+      el.getBoundingClientRect();
+      await Promise.all(
+        el.getAnimations({ subtree: true }).map((a) => a.finished),
+      );
+    });
     const layout = await explanation.evaluate((el) => {
-      const summary = el.querySelector("summary")!.getBoundingClientRect();
+      const summary = el.querySelector("button")!.getBoundingClientRect();
       const body = el.querySelector(".paper-explanation-body")!;
       const sections = [...body.querySelectorAll(".explanation-section")];
       const bounds = body.getBoundingClientRect();
@@ -42,8 +50,11 @@ test("every explanation has readable headings, section spacing and unclipped con
     expect(layout.weights).toEqual([600, 600, 600]);
     expect(layout.sectionGaps.every((gap) => gap >= 12)).toBe(true);
     expect(layout.contentFits).toBe(true);
-    await explanation.locator("summary").click();
-    await expect(explanation).not.toHaveAttribute("open", "");
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await expect(
+      explanation.locator(".paper-explanation-panel"),
+    ).toHaveAttribute("inert", "");
   }
 });
 
@@ -67,7 +78,7 @@ test("contact language controls stay in the header and persist", async ({
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
 });
 
-test("project hover keeps one card selected and responsive images load", async ({
+test("project spotlight follows one entry and responsive images load", async ({
   page,
   isMobile,
 }) => {
@@ -97,6 +108,10 @@ test("project hover keeps one card selected and responsive images load", async (
         "id",
         id,
       );
+      await expect(page.locator("#" + id)).toHaveCSS("opacity", "1");
+      await expect(
+        page.locator(".paper-list > li:not([data-focus-selected])").first(),
+      ).toHaveCSS("opacity", "0.28");
     }
   }
   await page.goto("/missing-page-check/");

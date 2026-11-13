@@ -47,12 +47,16 @@ export function ProjectsContent() {
               content: (
                 <article className={"paper-row"}>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"Ongoing"}</time>
                     <strong>
                       {
                         "Identification of Faint Near-Earth Asteroid Streak Candidates Using a Three-Channel Deep-Learning Pipeline."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"Ongoing"}</time>
+                      <em>{"Drafting for journal submission"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-sjtu"}
@@ -70,9 +74,9 @@ export function ProjectsContent() {
                         width={16}
                         height={16}
                       />
-                      {"Shanghai Jiao Tong University · University of Maryland"}
+                      {"Shanghai Jiao Tong University & University of Maryland"}
                     </span>
-                    <em>{"Drafting for journal submission"}</em>
+
                     <span className={"coauthors"}>
                       {"Advised by Dr. Quanzhi Ye & Yiyang Guo"}
                     </span>
@@ -88,12 +92,15 @@ export function ProjectsContent() {
               content: (
                 <article className={"paper-row"}>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"Ongoing"}</time>
                     <strong>
                       {
                         "Feature-Based Comet Classification Pipeline for Zwicky Transient Facility (ZTF) Alert Image Streams."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"Ongoing"}</time>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-maryland"}
@@ -115,7 +122,7 @@ export function ProjectsContent() {
             {
               id: "platonic-representation",
               searchText:
-                "2026 Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy UniverseTBD NeurIPS 2026 Interpretability for Discovery Workshop with Kshitij Duraphe et al. GitHub OpenReview arXiv The idea Two models can group the same galaxies similarly without encoding the same useful physics. Nearby points in representation space may reflect shared visual features rather than redshift or other physical properties. Genuine interchangeability requires more than similar geometry: a predictor trained on one survey should also remain useful when transferred to another. Layerwise alignment and transfer Matched optical images, infrared images, and spectra provide a common set of astronomical objects for comparing 36 pretrained models. Across 139 model-survey comparisons, neighborhood alignment measures agreement at different depths. Cross-survey prediction then compares layers chosen for geometric similarity with layers chosen for their ability to predict the target physical property. The takeaway Local alignment appears somewhere in every comparison, but does not generally increase with depth. Geometry-selected layers underperform label-selected layers in the image-transfer tests, and aligned final representations can still fail at redshift transfer. Similar neighborhoods therefore do not establish shared physical information; direct prediction and transfer tests remain necessary.",
+                "Sep 2026 Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy UniverseTBD NeurIPS 2026 Interpretability for Discovery Workshop with Kshitij Duraphe et al. GitHub OpenReview arXiv The idea Two models can group the same galaxies similarly without encoding the same useful physics. Nearby points in representation space may reflect shared visual features rather than redshift or other physical properties. Genuine interchangeability requires more than similar geometry: a predictor trained on one survey should also remain useful when transferred to another. Layerwise alignment and transfer Matched optical images, infrared images, and spectra provide a common set of astronomical objects for comparing 36 pretrained models. Across 139 model-survey comparisons, neighborhood alignment measures agreement at different depths. Cross-survey prediction then compares layers chosen for geometric similarity with layers chosen for their ability to predict the target physical property. The takeaway Local alignment appears somewhere in every comparison, but does not generally increase with depth. Geometry-selected layers underperform label-selected layers in the image-transfer tests, and aligned final representations can still fail at redshift transfer. Similar neighborhoods therefore do not establish shared physical information; direct prediction and transfer tests remain necessary.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -138,16 +145,24 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={622}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2026"}</time>
                     <strong>
                       {
                         "Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy"
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-09">
+                        Sep 2026
+                      </time>
+                      <em>
+                        {"NeurIPS 2026 Interpretability for Discovery Workshop"}
+                      </em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         src={"/assets/logos/universetbd-square.webp"}
@@ -158,37 +173,37 @@ export function ProjectsContent() {
                       />
                       {"UniverseTBD"}
                     </span>
-                    <em>
-                      {"NeurIPS 2026 Interpretability for Discovery Workshop"}
-                    </em>
+
                     <span className={"coauthors"}>
                       {"with Kshitij Duraphe et al."}
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={"https://github.com/ksd3/layerwise-analysis"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                      <a
-                        href={"https://openreview.net/forum?id=Xw72C0uPBw"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"OpenReview"}
-                      </a>
-                      <a
-                        href={"https://arxiv.org/abs/2610.04130"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={"https://github.com/ksd3/layerwise-analysis"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={"https://openreview.net/forum?id=Xw72C0uPBw"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"OpenReview"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2610.04130"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -210,7 +225,7 @@ export function ProjectsContent() {
             {
               id: "perturbation-robustness",
               searchText:
-                "2026 How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models EleutherAI NeurIPS 2026 Interpscience Workshop with Emily Liu et al. GitHub arXiv The idea A typo changes the form of individual words, while shuffling changes their order and context. Both can hurt predictions, but the disruption can begin at different depths and affect different attention functions. Tracking the path from altered input to hidden states to output reveals distinctions that a final accuracy or loss score misses. Tracing disruption through the model Six perturbations, including character edits, token substitutions, and shuffling, are evaluated through output behavior, layerwise representations, and attention-head function. Behavioral comparisons span four GPT-2 and two Qwen2.5 checkpoints; head-level analysis focuses on GPT-2. Gradient-guided HotFlip substitutions are compared with random substitutions at the same edit rate to separate targeted disruption from the amount of corruption. The takeaway Different perturbations leave different internal signatures, and HotFlip is more disruptive than matched random edits in the tested settings. Patterns are only partly consistent across checkpoints. Robustness is therefore better understood through complementary behavioral and internal measurements than through a single output score or representation metric.",
+                "Sep 2026 How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models EleutherAI NeurIPS 2026 Interpscience Workshop with Emily Liu et al. GitHub arXiv The idea A typo changes the form of individual words, while shuffling changes their order and context. Both can hurt predictions, but the disruption can begin at different depths and affect different attention functions. Tracking the path from altered input to hidden states to output reveals distinctions that a final accuracy or loss score misses. Tracing disruption through the model Six perturbations, including character edits, token substitutions, and shuffling, are evaluated through output behavior, layerwise representations, and attention-head function. Behavioral comparisons span four GPT-2 and two Qwen2.5 checkpoints; head-level analysis focuses on GPT-2. Gradient-guided HotFlip substitutions are compared with random substitutions at the same edit rate to separate targeted disruption from the amount of corruption. The takeaway Different perturbations leave different internal signatures, and HotFlip is more disruptive than matched random edits in the tested settings. Patterns are only partly consistent across checkpoints. Robustness is therefore better understood through complementary behavioral and internal measurements than through a single output score or representation metric.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -233,16 +248,22 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={622}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2026"}</time>
                     <strong>
                       {
                         "How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models"
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-09">
+                        Sep 2026
+                      </time>
+                      <em>{"NeurIPS 2026 Interpscience Workshop"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-eleutherai"}
@@ -254,30 +275,32 @@ export function ProjectsContent() {
                       />
                       {"EleutherAI"}
                     </span>
-                    <em>{"NeurIPS 2026 Interpscience Workshop"}</em>
+
                     <span className={"coauthors"}>
                       {"with Emily Liu et al."}
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/emilyzfliu/decoding-robustness"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                      <a
-                        href={"https://arxiv.org/abs/2609.03322"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/emilyzfliu/decoding-robustness"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2609.03322"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -299,7 +322,7 @@ export function ProjectsContent() {
             {
               id: "nonlinear-queries",
               searchText:
-                "2026 Beyond Query Linearity: The Case for Nonlinear Queries. EleutherAI NeurIPS 2026 SLM-Agents Workshop · Poster with Marko Karbevski et al. GitHub OpenReview The idea Attention uses queries to decide which information to retrieve. A learned linear query projection can be partly redundant with surrounding transformations: it may change coordinates without adding a genuinely new function. A nonlinear query pathway can break that symmetry, offering a way to spend a similar parameter budget on a richer computation instead. Nonlinear query projections A residual bottleneck network replaces the usual linear query projection, adding a nonlinear transformation before attention scores are computed. Matched-parameter linear baselines help isolate the effect of the query function rather than extra model capacity. Varying the learning-rate schedule tests how much of the benefit depends on the optimization setup. The takeaway In the reported 124M-model experiments, validation log-loss improves by roughly 0.3% to 2.4%, depending on the learning-rate schedule. A small change to the query pathway can therefore improve how a fixed parameter budget is used. The schedule dependence also makes training configuration an important part of evaluating the architecture.",
+                "Sep 2026 Beyond Query Linearity: The Case for Nonlinear Queries. EleutherAI NeurIPS 2026 SLM-Agents Workshop · Poster with Marko Karbevski et al. GitHub OpenReview The idea Attention uses queries to decide which information to retrieve. A learned linear query projection can be partly redundant with surrounding transformations: it may change coordinates without adding a genuinely new function. A nonlinear query pathway can break that symmetry, offering a way to spend a similar parameter budget on a richer computation instead. Nonlinear query projections A residual bottleneck network replaces the usual linear query projection, adding a nonlinear transformation before attention scores are computed. Matched-parameter linear baselines help isolate the effect of the query function rather than extra model capacity. Varying the learning-rate schedule tests how much of the benefit depends on the optimization setup. The takeaway In the reported 124M-model experiments, validation log-loss improves by roughly 0.3% to 2.4%, depending on the learning-rate schedule. A small change to the query pathway can therefore improve how a fixed parameter budget is used. The schedule dependence also makes training configuration an important part of evaluating the architecture.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -320,16 +343,22 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={622}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2026"}</time>
                     <strong>
                       {
                         "Beyond Query Linearity: The Case for Nonlinear Queries."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-09">
+                        Sep 2026
+                      </time>
+                      <em>{"NeurIPS 2026 SLM-Agents Workshop (Poster)"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-eleutherai"}
@@ -341,30 +370,32 @@ export function ProjectsContent() {
                       />
                       {"EleutherAI"}
                     </span>
-                    <em>{"NeurIPS 2026 SLM-Agents Workshop · Poster"}</em>
+
                     <span className={"coauthors"}>
                       {"with Marko Karbevski et al."}
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/MarkoKarbevski/beyond_query_linearity_community"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                      <a
-                        href={"https://openreview.net/forum?id=M8z9uMfxk5"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"OpenReview"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/MarkoKarbevski/beyond_query_linearity_community"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={"https://openreview.net/forum?id=M8z9uMfxk5"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"OpenReview"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -407,34 +438,42 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={679}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"08/2026"}</time>
                     <strong>
                       {
                         "Do All LLMs Know When They're Being Harmful? A Reproducibility Study of Latent-Space Safety Probes Across Model Families."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-08">
+                        Aug 2026
+                      </time>
+                      <em>{"Preprint"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       {"Independent Research"}
                     </span>
-                    <em>{"Preprint"}</em>
+
                     <span className={"coauthors"}>
                       {"with Alizishaan Khatri"}
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={"https://arxiv.org/abs/2608.08029"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={"https://arxiv.org/abs/2608.08029"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -479,16 +518,22 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={679}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"07/2026"}</time>
                     <strong>
                       {
                         "Large-Scale Symbolic Music Genre Classification under Class Imbalance using Graph-Based MIDI Embeddings (part of GigaMIDI projects)."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-07">
+                        Jul 2026
+                      </time>
+                      <em>{"Drafting for TISMIR"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-metacreation"}
@@ -498,27 +543,29 @@ export function ProjectsContent() {
                         width={16}
                         height={16}
                       />
-                      {"Metacreation Lab · Simon Fraser University"}
+                      {"Metacreation Lab, Simon Fraser University"}
                     </span>
-                    <em>{"Drafting for TISMIR"}</em>
+
                     <span className={"coauthors"}>
                       {
                         "Advised by Prof. Philippe Pasquier & Keon Ju Maverick Lee"
                       }
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://drive.google.com/file/d/1KwlyPhz1iGwa_f1jHtaqDN6pFNm_c75P/view?usp=sharing"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"Paper"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://drive.google.com/file/d/1KwlyPhz1iGwa_f1jHtaqDN6pFNm_c75P/view?usp=sharing"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"Paper"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -561,16 +608,22 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={622}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"04/2026"}</time>
                     <strong>
                       {
                         "Anthropogenic Regional Adaptation in Multimodal Vision-Language Models."
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-04">
+                        Apr 2026
+                      </time>
+                      <em>{"AACL-IJCNLP 2026 Findings"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         src={"/assets/logos/seacrowd-square.webp"}
@@ -581,21 +634,23 @@ export function ProjectsContent() {
                       />
                       {"SEACrowd"}
                     </span>
-                    <em>{"AACL-IJCNLP 2026 Findings"}</em>
+
                     <span className={"coauthors"}>
                       {"with Samuel Cahyawijaya, Peerat Limkonchotiwat et al."}
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={"https://arxiv.org/abs/2604.11490"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={"https://arxiv.org/abs/2604.11490"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -640,16 +695,22 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={679}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"03/2026"}</time>
                     <strong>
                       {
                         "Can Linguistically Related Languages Guide LLM Translation in Low-Resource Settings?"
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2026-03">
+                        Mar 2026
+                      </time>
+                      <em>{"EACL 2026 - LoResMT Workshop"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-eleutherai"}
@@ -661,48 +722,52 @@ export function ProjectsContent() {
                       />
                       {"EleutherAI"}
                     </span>
-                    <em>{"EACL 2026 - LoResMT Workshop"}</em>
+
                     <span className={"coauthors"}>
                       {
                         "with Aishwarya Ramasethu, Niyathi Allu, Rohin Garg, Harshwardhan Fartale"
                       }
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/aramasethu/low_resource_language_translation"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                      <a
-                        href={"https://aclanthology.org/2026.loresmt-1.14.pdf"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"Official"}
-                      </a>
-                      <a
-                        href={"https://arxiv.org/abs/2603.16660"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                      <a
-                        href={
-                          "https://drive.google.com/file/d/1zf_y5IH0pocmyJOfAnTqMxEvWU9k10_D/view?usp=sharing"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"Poster"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/aramasethu/low_resource_language_translation"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={
+                            "https://aclanthology.org/2026.loresmt-1.14.pdf"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"Official"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2603.16660"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                        <a
+                          href={
+                            "https://drive.google.com/file/d/1zf_y5IH0pocmyJOfAnTqMxEvWU9k10_D/view?usp=sharing"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"Poster"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -747,14 +812,20 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={679}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"09/2025"}</time>
                     <strong>
                       {"A Traditional Approach to Symbolic Piano Continuation."}
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2025-09">
+                        Sep 2025
+                      </time>
+                      <em>{"ISMIR 2025 - MIREX"}</em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         className={"logo-eleutherai"}
@@ -766,32 +837,34 @@ export function ProjectsContent() {
                       />
                       {"EleutherAI SOAR"}
                     </span>
-                    <em>{"ISMIR 2025 - MIREX"}</em>
+
                     <span className={"coauthors"}>
                       {
                         "with Christian Zhou-Zheng, John Backsund, Alex Coventry, Avid Eslami, Jyotin Goel, Xingwen Han, Danysh Soomro, Galen Wei"
                       }
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://music-ir.org/mirex/wiki/2025:Symbolic_Music_Generation_Results"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"Official"}
-                      </a>
-                      <a
-                        href={"https://arxiv.org/abs/2509.12267"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://music-ir.org/mirex/wiki/2025:Symbolic_Music_Generation_Results"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"Official"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2509.12267"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -843,16 +916,26 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={480}
                       height={622}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"09/2025"}</time>
                     <strong>
                       {
                         "The Platonic Universe: Do Foundation Models See the Same Sky?"
                       }
                     </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2025-09">
+                        Sep 2025
+                      </time>
+                      <em>
+                        {
+                          "Machine Learning and the Physical Sciences Workshop, NeurIPS 2025"
+                        }
+                      </em>
+                    </div>
+
                     <span className={"project-affiliation"}>
                       <img
                         src={"/assets/logos/universetbd-square.webp"}
@@ -869,36 +952,34 @@ export function ProjectsContent() {
                         {"UniverseTBD"}
                       </a>
                     </span>
-                    <em>
-                      {
-                        "Machine Learning and the Physical Sciences Workshop · NeurIPS 2025"
-                      }
-                    </em>
+
                     <span className={"project-description"}>
                       {
                         "Acknowledged for discussions and comments that improved the paper."
                       }
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/UniverseTBD/platonic-universe"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                      <a
-                        href={"https://arxiv.org/abs/2509.19453"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"arXiv"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/UniverseTBD/platonic-universe"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2509.19453"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -949,12 +1030,10 @@ export function ProjectsContent() {
                       height={"1030"}
                       loading={"lazy"}
                       decoding={"async"}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </Link>{" "}
                   <div className={"paper-info"}>
-                    {" "}
-                    <time className={"paper-date"}>{"2026"}</time>{" "}
                     <strong>
                       {"Conversational video avatars model - "}
                       <a
@@ -965,22 +1044,29 @@ export function ProjectsContent() {
                       >
                         {"Chert (YC P26)"}
                       </a>
-                    </strong>{" "}
+                    </strong>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"2026"}</time>
+                    </div>{" "}
                     <span className={"project-description"}>
                       {"Realtime video diffusion avatar model infra"}
                     </span>{" "}
-                    <div className={"paper-links"}>
-                      <Link href={"/projects/chert/"}>{"Demo"}</Link>
-                      <a
-                        href={"https://github.com/cherthq/realtime-research"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                    </div>{" "}
-                  </div>{" "}
-                  <Explanation sections={chertExplanation} />
+                  </div>
+                  <Explanation
+                    links={
+                      <>
+                        <Link href={"/projects/chert/"}>{"Demo"}</Link>
+                        <a
+                          href={"https://github.com/cherthq/realtime-research"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                      </>
+                    }
+                    sections={chertExplanation}
+                  />
                 </article>
               ),
             },
@@ -1008,44 +1094,51 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={488}
                       height={366}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2026"}</time>
                     <strong>
                       {
                         "Finding the complex permittivity as a function of energy using angular straggling"
                       }
                     </strong>
-                    <em>
-                      {"Experimental proposal · CERN Beamline for Schools 2026"}
-                    </em>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"2026"}</time>
+                      <em>
+                        {
+                          "Experimental proposal, CERN Beamline for Schools 2026"
+                        }
+                      </em>
+                    </div>
+
                     <span className={"project-description"}>
                       {
                         "A Geant4 simulation project for studying particle interactions and analysis workflows for the proposed beam experiment."
                       }
                     </span>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://drive.google.com/file/d/1BrebBET4nnph5qcTX73HPzpekXX5UH98/view?usp=sharing"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"Proposal"}
-                      </a>
-                      <a
-                        href={"https://github.com/bunchofcellulose/bl4s2026"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                    </div>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://drive.google.com/file/d/1BrebBET4nnph5qcTX73HPzpekXX5UH98/view?usp=sharing"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"Proposal"}
+                        </a>
+                        <a
+                          href={"https://github.com/bunchofcellulose/bl4s2026"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -1090,32 +1183,36 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={341}
                       height={356}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2024"}</time>
                     <strong>
                       {"Magnetic Field of Cylindrical Axially Magnetized Ring"}
                     </strong>
-                    <em>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"2024"}</time>
+                    </div>
+                    <span className="project-description">
                       {
                         "Simulates and visualizes the magnetic field of an axially magnetized cylindrical ring using the Biot–Savart law."
                       }
-                    </em>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                    </div>
+                    </span>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -1158,30 +1255,34 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={364}
                       height={375}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2024"}</time>
                     <strong>{"Chaotic Behavior of Double Pendulum"}</strong>
-                    <em>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"2024"}</time>
+                    </div>
+                    <span className="project-description">
                       {
                         "Numerically simulates double-pendulum dynamics with coupled nonlinear equations and Runge–Kutta integration."
                       }
-                    </em>
-                    <div className={"paper-links"}>
-                      <a
-                        href={
-                          "https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum"
-                        }
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                    </div>
+                    </span>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",
@@ -1220,28 +1321,32 @@ export function ProjectsContent() {
                       loading={"lazy"}
                       width={299}
                       height={298}
-                      sizes="(max-width: 600px) 80px, 132px"
+                      sizes="(max-width: 600px) 64px, 100px"
                     />
                   </a>
                   <div className={"paper-info"}>
-                    <time className={"paper-date"}>{"2024"}</time>
                     <strong>{"EPECscan"}</strong>
-                    <em>
+                    <div className="paper-meta">
+                      <time className={"paper-date"}>{"2024"}</time>
+                    </div>
+                    <span className="project-description">
                       {
                         "A deep-learning screening model that detects EPEC bacteria and classifies their growth stage from microscopic water samples."
                       }
-                    </em>
-                    <div className={"paper-links"}>
-                      <a
-                        href={"https://github.com/Ehdunhackme/EPECscan"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"GitHub"}
-                      </a>
-                    </div>
+                    </span>
                   </div>
                   <Explanation
+                    links={
+                      <>
+                        <a
+                          href={"https://github.com/Ehdunhackme/EPECscan"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                      </>
+                    }
                     sections={[
                       [
                         "The idea",

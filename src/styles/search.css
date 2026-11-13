@@ -26,7 +26,8 @@
 [data-directory-search] :is(.paper-list, .writing-card-list) > li[hidden] {
   display: none;
 }
-.directory-search label {
+.directory-search label,
+.directory-search-status {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -41,18 +42,16 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 0.4rem;
-  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
-}
-.directory-search-field:focus-within {
-  border-color: var(--muted);
-  outline: 2px solid #8ab4ff;
-  outline-offset: 3px;
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  box-shadow: 0 1px transparent;
+  border-radius: 0;
+  background: transparent;
 }
 .directory-search-icon {
   position: absolute;
-  left: 0.9rem;
+  left: 0;
   width: 1rem;
   height: 1rem;
   color: var(--muted);
@@ -61,15 +60,15 @@
 .directory-search input {
   width: 100%;
   min-width: 0;
-  min-height: 2.9rem;
-  padding: 0.75rem 4.5rem 0.75rem 2.6rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 3.5rem 0.5rem 1.65rem;
   border: 0;
   border-radius: inherit;
   outline: none;
   background: transparent;
   color: var(--fg-strong, var(--strong));
   font:
-    400 0.85rem/1.5 var(--font-geist),
+    400 0.95rem/1.5 var(--font-geist),
     Arial,
     sans-serif;
   appearance: none;
@@ -81,9 +80,9 @@
 .directory-search input::-webkit-search-cancel-button {
   appearance: none;
 }
-.directory-search button {
+.directory-search-clear {
   position: absolute;
-  right: 0.4rem;
+  right: 0;
   min-height: 2.2rem;
   padding: 0.3rem 0.6rem;
   border: 0;
@@ -96,7 +95,7 @@
     sans-serif;
   cursor: pointer;
 }
-.directory-search button:hover {
+.directory-search-clear:hover {
   background: color-mix(in srgb, var(--fg) 8%, transparent);
 }
 .directory-search button:focus-visible {
@@ -105,19 +104,45 @@
 .directory-search button[hidden] {
   display: none;
 }
-.directory-search-status {
-  display: block;
-  margin-top: 0.65rem;
+.directory-view-switch {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.125rem;
+}
+.directory-view-switch button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.2rem;
+  background: transparent;
   color: var(--muted);
-  font:
-    400 0.68rem/1.5 var(--font-geist-mono),
-    monospace;
+  cursor: pointer;
+  opacity: 0.65;
+  transition:
+    color 0.15s ease,
+    opacity 0.15s ease;
+}
+.directory-view-switch
+  button:is([aria-pressed="true"], :hover, :focus-visible) {
+  color: var(--strong);
+  opacity: 1;
+}
+.directory-view-switch svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .directory-view-switch button {
+    transition: none;
+  }
 }
 .directory-search-empty {
   margin: 0 0 2rem;
-  padding: 2rem 1.35rem;
-  border: 1px dashed var(--line);
-  border-radius: 0.4rem;
+  padding: 1rem 0;
 }
 .directory-search-empty h2 {
   margin: 0 0 0.4rem;

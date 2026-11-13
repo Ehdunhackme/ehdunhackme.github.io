@@ -10,12 +10,7 @@ const mono = localFont({
   variable: "--font-geist-mono",
   display: "swap",
   weight: "100 900",
-});
-const jetbrains = localFont({
-  src: "./fonts/jetbrains-mono-latin-wght-normal.woff2",
-  variable: "--font-jetbrains",
-  display: "swap",
-  weight: "100 800",
+  preload: false,
 });
 const instrument = localFont({
   src: [
@@ -34,9 +29,6 @@ const instrument = localFont({
   display: "swap",
   preload: false,
 });
-export const fonts = [
-  geist.variable,
-  mono.variable,
-  jetbrains.variable,
-  instrument.variable,
-].join(" ");
+export const fonts = [geist.variable, mono.variable, instrument.variable].join(
+  " ",
+);

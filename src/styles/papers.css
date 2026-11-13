@@ -1,20 +1,29 @@
-/* Shared cards for the project board, selected papers, and writing lists. */
+/* Compact publication entries, with their source links and summaries together. */
 .paper-showcase-scope .paper-list > .paper-showcase {
-  margin: 1rem 0;
-  border: 1px solid var(--line);
-  border-radius: 0.4rem;
-  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   scroll-margin-top: 1.5rem;
+}
+.paper-showcase-scope
+  .paper-list
+  > .paper-showcase:not([hidden])
+  ~ .paper-showcase:not([hidden]) {
+  border-top: 1px solid var(--line);
 }
 .paper-showcase-scope .paper-showcase > .paper-row {
   display: grid;
-  grid-template-columns: 8.25rem minmax(0, 1fr);
+  grid-template-columns: 6.25rem minmax(0, 1fr);
+  /* Keep metadata height fixed when the spanning thumbnail's summary opens. */
+  grid-template-rows: min-content 1fr;
   align-items: start;
-  gap: 1rem 1.4rem;
-  padding: 1.35rem;
+  gap: 0.25rem 1.25rem;
+  padding: 1.5rem 0;
   border: 0;
 }
-.paper-showcase-scope .paper-list > .paper-showcase > .paper-row {
+/* Override the legacy first-row rule as well as the normal row borders. */
+.directory-page.paper-showcase-scope .paper-list .paper-showcase > .paper-row {
   border: 0;
 }
 .paper-showcase-scope .paper-thumbnail {
@@ -24,22 +33,12 @@
   overflow: hidden;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 0.25rem 0.9rem rgba(0, 0, 0, 0.12);
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease;
-}
-.paper-showcase-scope .paper-thumbnail:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 .paper-showcase-scope .paper-thumbnail img {
   display: block;
   width: 100%;
   height: auto;
-}
-.paper-showcase-scope .project-thumbnail {
-  box-shadow: none;
 }
 .paper-showcase-scope .project-thumbnail img {
   object-fit: contain;
@@ -47,7 +46,6 @@
 .paper-showcase-scope #chert .project-thumbnail {
   background: transparent;
   border: 0;
-  box-shadow: none;
 }
 .project-board {
   --project-link-color: #2563eb;
@@ -63,11 +61,9 @@ html.dark .project-board {
 }
 .project-board a[href]:is(:hover, :focus-visible) {
   color: var(--project-link-hover) !important;
-  text-decoration-color: currentColor;
 }
 .paper-showcase-scope .project-title-link {
   text-decoration: underline;
-  text-decoration-color: currentColor;
   text-underline-offset: 0.18em;
 }
 .paper-showcase-scope .paper-showcase .paper-info {
@@ -76,75 +72,122 @@ html.dark .project-board {
 .paper-showcase-scope .paper-showcase .paper-info > strong {
   font-size: 0.98rem;
   line-height: 1.5;
+  margin: 0 0 0.25rem;
 }
-.paper-showcase-scope .paper-showcase .paper-links {
-  flex-wrap: wrap;
-  gap: 0.55rem 1rem;
-  margin: 0.85rem 0 0;
-  padding: 0;
-  white-space: normal;
+.paper-showcase-scope .paper-meta {
+  display: block;
+  margin-bottom: 0.25rem;
 }
-.paper-showcase-scope .paper-showcase .paper-links a {
+.paper-showcase-scope .paper-meta :is(em, .paper-date) {
+  display: block;
   margin: 0;
-  color: #2563eb;
+  font:
+    400 0.8125rem/1.65 var(--font-geist),
+    Arial,
+    sans-serif;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
 }
-html.dark .paper-showcase-scope .paper-showcase .paper-links a {
-  color: #8ab4ff;
+.paper-showcase-scope .paper-showcase .project-affiliation {
+  display: block;
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+.paper-showcase-scope .paper-showcase .project-affiliation img {
+  display: inline-block;
+  vertical-align: -0.2em;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.25rem;
+}
+.paper-showcase-scope .paper-showcase .coauthors {
+  display: block;
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.65;
+}
+.paper-showcase-scope .paper-showcase .project-description {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
 }
 .paper-showcase-scope .paper-explanation {
   grid-column: 2;
   min-width: 0;
-  margin: 0;
 }
-.paper-showcase-scope .paper-explanation.is-animating {
-  overflow: hidden;
-}
-.paper-showcase-scope .paper-explanation > summary {
+.paper-showcase-scope .paper-actions {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 2.5rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: 0.25rem;
-  color: var(--fg-strong, var(--strong));
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1rem;
+  row-gap: 0;
+}
+.paper-showcase-scope .paper-showcase .paper-links {
+  display: contents;
+  white-space: normal;
+}
+.paper-showcase-scope .paper-actions :is(a, button) {
+  margin: 0;
+  padding: 0.5rem 0;
   font:
-    500 0.72rem/1.45 var(--font-geist-mono),
-    ui-monospace,
-    monospace;
-  cursor: pointer;
-  list-style: none;
+    400 0.76rem/1.5 var(--font-geist),
+    Arial,
+    sans-serif;
 }
-.paper-showcase-scope .paper-explanation > summary::-webkit-details-marker {
-  display: none;
-}
-.paper-showcase-scope .paper-explanation > summary::before {
+.paper-showcase-scope .paper-links a::after {
   content: none;
 }
-.paper-showcase-scope .paper-explanation > summary::after {
-  content: "+";
-  margin-left: auto;
-  font-size: 1rem;
-  line-height: 1;
+.paper-showcase-scope .paper-summary-toggle {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.16s ease;
 }
-.paper-showcase-scope .paper-explanation[open] > summary::after {
-  content: "−";
+.paper-showcase-scope .paper-summary-toggle > span {
+  display: inline-block;
+  width: 1em;
+  text-align: center;
 }
-.paper-showcase-scope .paper-explanation > summary:hover {
-  border-color: var(--muted);
+.paper-showcase-scope
+  .paper-summary-toggle:is(:hover, :focus-visible, [aria-expanded="true"]) {
+  color: var(--fg-strong, var(--strong));
 }
-.paper-showcase-scope .paper-explanation > summary:focus-visible,
-.paper-showcase-scope .paper-thumbnail:focus-visible {
-  outline: 2px solid #2563eb;
+.paper-showcase-scope
+  :is(.paper-summary-toggle, .paper-thumbnail):focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
-.paper-showcase-scope .paper-explanation-body {
+.paper-explanation-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.22s ease,
+    opacity 0.18s ease,
+    visibility 0s 0.22s;
+}
+.paper-explanation[data-open="true"] .paper-explanation-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.paper-explanation-clip {
+  min-height: 0;
   overflow: hidden;
-  margin-top: 0.9rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid var(--line);
+}
+.paper-showcase-scope .paper-explanation-body {
+  margin-top: 0.75rem;
+  padding: 0.75rem 0 0.25rem;
+  border: 0;
   color: var(--fg-secondary, var(--secondary));
   font:
     400 0.84rem/1.7 var(--font-geist),
@@ -154,10 +197,7 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a {
 .paper-showcase-scope .paper-explanation-body dl {
   margin: 0;
 }
-.paper-showcase-scope
-  .paper-explanation-body
-  .explanation-section
-  + .explanation-section {
+.paper-showcase-scope .explanation-section + .explanation-section {
   margin-top: 0.8rem;
 }
 .paper-showcase-scope .paper-explanation-body dt {
@@ -174,69 +214,14 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a {
   font-size: 0.7rem;
   line-height: 1.6;
 }
-.paper-showcase-scope .paper-explanation-note a {
-  color: inherit;
-}
 .paper-showcase-scope .paper-showcase.paper-showcase--text > .paper-row {
   grid-template-columns: minmax(0, 1fr);
 }
 .paper-showcase-scope .paper-showcase.paper-showcase--text .paper-info {
   grid-column: 1;
 }
-/* Keep a card readable while its explanation is open or another card is hovered. */
-.paper-showcase-scope .paper-list:has(.paper-row:hover) .paper-row:not(:hover),
-.paper-showcase-scope
-  .paper-list:has(.paper-row:focus-within)
-  .paper-row:not(:focus-within) {
-  opacity: 1;
-}
-@media (max-width: 600px) {
-  .paper-showcase-scope .paper-showcase > .paper-row {
-    grid-template-columns: 5rem minmax(0, 1fr);
-    gap: 0.85rem;
-    padding: 1rem;
-  }
-  .paper-showcase-scope .paper-thumbnail {
-    grid-row: 1;
-  }
-  .paper-showcase-scope .paper-showcase .paper-info > strong {
-    font-size: 0.9rem;
-  }
-  .paper-showcase-scope .paper-showcase .project-affiliation {
-    flex-wrap: wrap;
-    font-size: 0.73rem;
-  }
-  .paper-showcase-scope .paper-showcase .paper-info > em,
-  .paper-showcase-scope .paper-showcase .coauthors {
-    font-size: 0.75rem;
-  }
-  .paper-showcase-scope .paper-explanation {
-    grid-column: 1 / -1;
-  }
-  .paper-showcase-scope .paper-explanation > summary {
-    min-height: 2.75rem;
-  }
-}
-@media (max-width: 360px) {
-  .paper-showcase-scope .paper-showcase > .paper-row {
-    grid-template-columns: 1fr;
-  }
-  .paper-showcase-scope .paper-thumbnail {
-    width: 5rem;
-  }
-  .paper-showcase-scope .paper-showcase .paper-info {
-    grid-column: 1;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .paper-showcase-scope .paper-thumbnail {
-    transition: none;
-  }
-  .paper-showcase-scope .paper-thumbnail:hover {
-    transform: none;
-  }
-}
 
+/* Writing is an archive: title and date first, description beneath. */
 .writing-list.writing-card-list {
   margin: 0;
   padding: 0;
@@ -244,80 +229,140 @@ html.dark .paper-showcase-scope .paper-showcase .paper-links a {
   list-style: none;
 }
 .writing-card-list > li {
-  margin: 1rem 0;
+  margin: 0;
   border: 0;
 }
-.writing-card-list .writing-section-link {
+.writing-card-list > li:not([hidden]) ~ li:not([hidden]) {
+  border-top: 1px solid var(--line);
+}
+.writing-card-list .writing-section-link,
+.writing-card-list .writing-section-link:is(:hover, :focus-visible) {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: baseline;
   width: 100%;
-  gap: 1.25rem;
-  margin: 1rem 0;
-  padding: 1.35rem;
-  border: 1px solid var(--line);
-  border-radius: 0.4rem;
-  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 1.5rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   text-decoration: none;
 }
-.writing-card-list > li > .writing-section-link {
-  margin: 0;
+.writing-card-list .writing-entry-content {
+  display: contents;
 }
-.writing-card-list .writing-section-link:hover,
-.writing-card-list .writing-section-link:focus-visible {
-  padding: 1.35rem;
-  border-color: var(--line);
+.writing-card-list :is(.writing-year, .writing-date-short) {
+  display: none;
 }
-.writing-card-list .writing-section-link:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 4px;
+.writing-card-list .writing-section-title {
+  grid-column: 1;
+  grid-row: 1;
+  text-decoration: none;
+}
+.writing-card-list .writing-section-side {
+  grid-column: 1;
+  grid-row: 2;
+  align-items: flex-start;
+  text-align: left;
+}
+.writing-card-list .writing-date {
+  font:
+    400 0.8125rem/1.65 var(--font-geist),
+    Arial,
+    sans-serif;
+  color: var(--muted);
+  letter-spacing: 0;
 }
 .writing-card-list .writing-section-description {
-  max-width: none;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  max-width: 70ch;
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--muted);
 }
-/* Keep the same subtle grey edge in every state; only other cards fade. */
-:is(
-  .paper-showcase-scope .paper-list > .paper-showcase,
-  .writing-card-list .writing-section-link
-) {
-  --card-outline: var(--line);
-  border-color: var(--card-outline);
-  transition: opacity 0.14s ease-out;
-}
-html.dark
-  :is(
-    .paper-showcase-scope .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  ) {
-  --card-outline: rgba(255, 255, 255, 0.16);
-}
-:is(
-  .paper-showcase-scope .paper-list > .paper-showcase,
-  .writing-card-list .writing-section-link
-):is(:hover, :focus, :focus-within) {
-  border-color: var(--card-outline);
-  box-shadow: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  :is(
-    .paper-showcase-scope .paper-list > .paper-showcase,
-    .writing-card-list .writing-section-link
-  ) {
-    transition: none;
-  }
+.writing-card-list .writing-section-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 @media (max-width: 600px) {
-  .writing-card-list .writing-section-link,
-  .writing-card-list .writing-section-link:hover,
-  .writing-card-list .writing-section-link:focus-visible {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.85rem;
-    padding: 1rem;
+  .paper-showcase-scope .paper-showcase > .paper-row {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    gap: 0.25rem 1rem;
+    padding: 1.25rem 0;
   }
-  .writing-card-list .writing-section-side {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  .paper-showcase-scope .paper-thumbnail {
+    grid-row: 1;
+  }
+  .paper-showcase-scope .paper-showcase .paper-info > strong {
+    font-size: 0.9rem;
+  }
+  .paper-showcase-scope .paper-explanation {
+    grid-column: 1 / -1;
+  }
+  .paper-showcase-scope .paper-actions :is(a, button) {
+    padding-block: 0.75rem;
+  }
+  .writing-card-list .writing-section-title {
+    font-size: 0.95rem;
+  }
+}
+/* Compact mode keeps titles, dates and actions without descriptive detail. */
+.directory-page[data-view="compact"] .writing-section-link {
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  padding: 0.9rem 0;
+}
+.directory-page[data-view="compact"] .writing-year {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.directory-page[data-view="compact"] .writing-section-title {
+  grid-column: 2;
+  font-size: 0.9rem;
+}
+.directory-page[data-view="compact"] .writing-section-side {
+  grid-column: 3;
+  grid-row: 1;
+}
+.directory-page[data-view="compact"] .writing-date-short {
+  display: inline;
+}
+.directory-page[data-view="compact"] .writing-date-full {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.directory-page[data-view="compact"]
+  :is(
+    .writing-section-description,
+    .paper-thumbnail,
+    .project-affiliation,
+    .coauthors,
+    .project-description
+  ) {
+  display: none;
+}
+.directory-page[data-view="compact"] .paper-showcase > .paper-row {
+  grid-template-columns: minmax(0, 1fr);
+  padding: 1rem 0;
+}
+.directory-page[data-view="compact"] :is(.paper-info, .paper-explanation) {
+  grid-column: 1;
+}
+.directory-page[data-view="compact"] .paper-meta {
+  margin-bottom: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-explanation-panel,
+  .paper-summary-toggle {
+    transition: none;
   }
 }

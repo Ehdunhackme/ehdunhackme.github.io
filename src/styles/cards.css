@@ -1,6 +1,5 @@
-/* Shared project and writing card surfaces. */
+/* Shared project and writing page headings. */
 .card-subpage {
-  --page-card-surface: color-mix(in srgb, var(--fg) 2%, var(--bg));
   overflow-x: clip;
 }
 
@@ -16,7 +15,7 @@
   min-width: 0;
 }
 .card-page-heading h1 {
-  font-family: var(--font-jetbrains), monospace;
+  font-family: var(--font-geist), Arial, sans-serif;
   font-style: normal;
   font-weight: 600;
 }
@@ -31,12 +30,6 @@
   line-height: 1.65;
 }
 
-.card-subpage
-  :is(.paper-list > .paper-showcase, .writing-card-list .writing-section-link) {
-  position: relative;
-  background: var(--page-card-surface);
-  border-radius: 0.5rem;
-}
 .card-post-heading {
   margin-bottom: 2rem;
 }

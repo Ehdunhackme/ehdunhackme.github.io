@@ -3,7 +3,7 @@
   display: block;
   margin: 0 0 0.85rem;
   font-family: inherit;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   line-height: inherit;
   letter-spacing: normal;
@@ -14,14 +14,16 @@
 }
 .home-page .home-introduction {
   padding-top: 0;
-  font-size: 0.9rem;
-  line-height: 1.85;
+  font-size: 0.875rem;
+  line-height: 1.7143;
+}
+.home-page .home-introduction p,
+.home-page .intro-highlights {
+  font-size: inherit;
+  line-height: inherit;
 }
 .home-page .home-introduction .intro-highlights-lead {
   margin-bottom: 0.25rem;
-}
-.home-page .intro-highlights {
-  line-height: 1.7;
 }
 .home-page .intro-highlights li {
   margin-bottom: 0.25rem;
@@ -92,10 +94,6 @@
     padding-bottom: 1rem;
   }
   .home-page .home-introduction p {
-    font-size: 0.9rem;
-    line-height: 1.85;
-  }
-  .home-page .home-introduction p {
     margin-block: 1.1rem;
   }
   .home-page .intro-highlights {
@@ -113,10 +111,6 @@
   }
 }
 @media (max-width: 600px) {
-  .home-page .home-introduction {
-    font-size: 0.86rem;
-    line-height: 1.85;
-  }
   .home-page .home-introduction .intro-current {
     margin-bottom: 1.35rem;
   }

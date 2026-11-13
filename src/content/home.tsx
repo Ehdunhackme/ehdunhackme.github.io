@@ -17,7 +17,25 @@ export function HomeContent() {
             Hi! I’m Dun Li.
           </h1>{" "}
           <p className="intro-current">
-            {"I’m currently working on robotics manipulation via RSI at "}
+            {
+              "I’m currently an R&D engineer building frontier video diffusion infra at "
+            }
+            <a
+              className={"about-org"}
+              href={"https://www.trychert.com/"}
+              target={"_blank"}
+              rel={"noopener"}
+            >
+              <img
+                src={"/assets/logos/chert-square.webp"}
+                width={"16"}
+                height={"16"}
+                alt={""}
+                loading="lazy"
+              />
+              {"Chert (YC P26)"}
+            </a>
+            {", working on robotics manipulation via RSI at "}
             <a
               className={"about-org"}
               href={"https://www.tsinghua.edu.cn/en/"}
@@ -50,22 +68,6 @@ export function HomeContent() {
               />
               {"EleutherAI"}
             </a>
-            {", video diffusion infra at "}
-            <a
-              className={"about-org"}
-              href={"https://www.trychert.com/"}
-              target={"_blank"}
-              rel={"noopener"}
-            >
-              <img
-                src={"/assets/logos/chert-square.webp"}
-                width={"16"}
-                height={"16"}
-                alt={""}
-                loading="lazy"
-              />
-              {"Chert (YC P26)"}
-            </a>
             {", and post-training eval and optimisation at "}
             <a
               className={"about-org"}
@@ -85,7 +87,7 @@ export function HomeContent() {
             {"."}
           </p>{" "}
           <p>
-            {"Growing up with limited resources, my "}
+            {"Growing up in Malaysia, my "}
             <Link href="/about/#more-about-me" className="journey-link">
               {"journey"}
             </Link>

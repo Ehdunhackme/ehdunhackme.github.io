@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Directory } from "@/components/directory";
 export function WritingsContent() {
   return (
@@ -29,7 +28,10 @@ export function WritingsContent() {
                   className="writing-section-link"
                   href="/writings/2026-us-midterm-election-model/"
                 >
-                  <span>
+                  <span className="writing-year" aria-hidden="true">
+                    2026
+                  </span>
+                  <span className="writing-entry-content">
                     <span className="writing-section-title">
                       Modelling the 2026 US Midterm Elections
                     </span>
@@ -40,11 +42,11 @@ export function WritingsContent() {
                   </span>
                   <span className="writing-section-side">
                     <time className="writing-date" dateTime="2026-11-08">
-                      8 Nov 2026
+                      <span className="writing-date-full">8 Nov 2026</span>
+                      <span className="writing-date-short" aria-hidden="true">
+                        11/08
+                      </span>
                     </time>
-                    <span className="writing-section-arrow" aria-hidden="true">
-                      ↗︎
-                    </span>
                   </span>
                 </Link>
               ),
@@ -61,7 +63,10 @@ export function WritingsContent() {
                   }
                 >
                   {" "}
-                  <span>
+                  <span className="writing-year" aria-hidden="true">
+                    2026
+                  </span>
+                  <span className="writing-entry-content">
                     {" "}
                     <span className={"writing-section-title"}>
                       {"My opinionated guide to starting research early"}
@@ -75,14 +80,11 @@ export function WritingsContent() {
                   <span className={"writing-section-side"}>
                     {" "}
                     <time className={"writing-date"} dateTime={"2026-09-19"}>
-                      {"19 Sep 2026"}
+                      <span className="writing-date-full">19 Sep 2026</span>
+                      <span className="writing-date-short" aria-hidden="true">
+                        09/19
+                      </span>
                     </time>{" "}
-                    <span
-                      className={"writing-section-arrow"}
-                      aria-hidden={"true"}
-                    >
-                      {"↗︎"}
-                    </span>{" "}
                   </span>{" "}
                 </Link>
               ),

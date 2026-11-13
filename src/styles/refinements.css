@@ -300,33 +300,60 @@ html .writing-content a:is(:hover, :focus-visible) {
   line-height: 1.75;
 }
 .directory-page > .directory-search {
-  margin: 1.75rem 0 var(--section-gap);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0 2rem;
 }
-.directory-page > .directory-group {
-  margin-top: var(--section-gap);
+.directory-view-content {
+  display: flow-root;
 }
-.directory-page
-  > .directory-search
-  + .directory-search-empty[hidden]
-  + .directory-group {
-  margin-top: 0;
+.directory-page .directory-view-content > .directory-group {
+  margin: 0;
+}
+.directory-view-content
+  > .directory-group:not([hidden])
+  ~ .directory-group:not([hidden]) {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border: 0;
+}
+.directory-page .directory-view-content .directory-group h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin: 0 0 1.25rem;
+  color: var(--fg-strong);
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.directory-group-title {
+  min-width: 0;
+}
+.directory-page .directory-view-content .directory-group h2::after {
+  content: "";
+  flex: 1 0 1.25rem;
+  height: 1px;
+  background: var(--line);
+}
+.directory-group-count {
+  order: 1;
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
 }
 .directory-page > .writing-card-list {
   margin-top: 0;
 }
 .directory-search-field {
-  background: color-mix(in srgb, var(--fg) 2%, var(--bg));
-  outline: 2px solid transparent;
-  outline-offset: 3px;
-  transition:
-    border-color 0.16s ease-out,
-    outline-color 0.16s ease-out,
-    background-color 0.16s ease-out;
+  transition: box-shadow 0.16s ease-out;
 }
 .directory-search-field:focus-within {
-  border-color: var(--accent);
-  outline-color: var(--accent);
-  background-color: color-mix(in srgb, var(--accent) 6%, var(--bg));
+  box-shadow: 0 1px var(--muted);
 }
 .directory-search button:focus-visible {
   outline-color: var(--accent);
@@ -341,14 +368,13 @@ html.dark .paper-links a {
   color: var(--link-color);
 }
 :where(.home-style) summary::before,
-:where(.standard-style) .paper-extra summary::before,
-.paper-showcase-scope .paper-explanation > summary::after {
+:where(.standard-style) .paper-extra summary::before {
   color: var(--accent);
 }
 .writing-card-list .writing-section-arrow {
   color: var(--link-color);
 }
-.paper-showcase-scope .paper-explanation > summary:focus-visible,
+.paper-showcase-scope .paper-summary-toggle:focus-visible,
 .paper-showcase-scope .paper-thumbnail:focus-visible,
 .writing-card-list .writing-section-link:focus-visible {
   outline-color: var(--accent);
