@@ -71,7 +71,7 @@ test("project content is pre-rendered, searchable, and explanations animate both
     page.getByRole("heading", { name: "No matching projects or papers" }),
   ).toBeVisible();
   await search.press("Escape");
-  await expect(page.locator(".paper-list > li:visible")).toHaveCount(16);
+  await expect(page.locator(".paper-list > li:visible")).toHaveCount(10);
   const details = page.locator("#platonic-representation .paper-explanation");
   const toggle = details.getByRole("button", { name: "AI summary" });
   const panel = details.locator(".paper-explanation-panel");

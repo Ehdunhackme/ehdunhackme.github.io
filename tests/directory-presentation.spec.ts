@@ -12,6 +12,8 @@ test("directory metadata and separators stay consistent", async ({ page }) => {
     .locator(".project-description")
     .first()
     .evaluate(style);
+  const index = page.getByRole("navigation", { name: "Project sections" });
+  await index.getByRole("link", { name: "Projects", exact: true }).click();
   for (const id of ["magnetic-ring", "double-pendulum", "epecscan"]) {
     const entry = page.locator(`#${id}`);
     await expect(entry.locator(".paper-meta")).toHaveText("2024");
@@ -21,6 +23,7 @@ test("directory metadata and separators stay consistent", async ({ page }) => {
       .boundingBox();
     expect(description!.y).toBeGreaterThanOrEqual(meta!.y + meta!.height);
   }
+  await index.getByRole("link", { name: "Publications", exact: true }).click();
   const entry = page.locator("#platonic-representation");
   await entry.getByRole("button", { name: "AI summary" }).click();
   await expect(entry.locator(".paper-explanation-body")).toHaveCSS(
@@ -33,6 +36,12 @@ test("directory metadata and separators stay consistent", async ({ page }) => {
     await expect(metadata).not.toContainText("·");
   }
   for (const heading of await page.locator(".directory-group h2").all()) {
+    const id = await heading.getAttribute("id");
+    const section = await heading.evaluate(
+      (el) => el.closest("section")!.dataset.projectSection!,
+    );
+    await index.locator(`[aria-controls="${section}"]`).click();
+    await expect(page.locator(`#${id}`)).toBeVisible();
     const title = await heading.locator(".directory-group-title").boundingBox();
     const count = await heading.locator(".directory-group-count").boundingBox();
     expect(count!.x).toBeGreaterThan(title!.x + title!.width);
@@ -79,6 +88,13 @@ test("AI summary actions stay anchored through opening and closing", async ({
       "anthropogenic-vlm",
       "chert",
     ]) {
+      await page
+        .getByRole("navigation", { name: "Project sections" })
+        .getByRole("link", {
+          name: id === "chert" ? "Projects" : "Publications",
+          exact: true,
+        })
+        .click();
       const button = page.locator(`#${id} .paper-summary-toggle`);
       await button.scrollIntoViewIfNeeded();
       await page.waitForTimeout(350);

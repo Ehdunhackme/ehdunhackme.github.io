@@ -15,20 +15,23 @@
   font-size: 0.9rem;
   line-height: 1.7;
 }
-.about-workspace {
+.about-workspace,
+.project-workspace {
   display: grid;
   grid-template-columns: 9.5rem minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
   scroll-margin-top: 1.5rem;
 }
-.about-index {
+.about-index,
+.project-index {
   position: sticky;
   top: 1.5rem;
   display: grid;
   gap: 0.35rem;
 }
-.about-index a {
+.about-index a,
+.project-board .project-index a[href] {
   display: block;
   padding: 0.65rem 0 0.65rem 0.85rem;
   border-left: 2px solid transparent;
@@ -42,15 +45,21 @@
     color 0.16s ease,
     border-color 0.16s ease;
 }
-.about-index a[aria-current] {
+.about-index a[aria-current],
+.project-board .project-index a[href][aria-current] {
   color: var(--strong) !important;
   border-color: var(--strong);
 }
-.about-index a:focus-visible {
+.project-board .project-index a[href]:is(:hover, :focus-visible) {
+  color: var(--strong) !important;
+}
+.about-index a:focus-visible,
+.project-index a:focus-visible {
   outline: 1px solid var(--strong);
   outline-offset: 3px;
 }
-.about-page .about-reader {
+.about-page .about-reader,
+.project-workspace > .directory-view-content {
   min-width: 0;
   margin: 0;
 }
@@ -58,7 +67,8 @@
   margin: 0;
   padding: 0;
 }
-.about-page .about-reader > .content-section:not([hidden]) {
+.about-page .about-reader > .content-section:not([hidden]),
+.project-workspace .directory-group:not([hidden]) {
   animation: about-chapter-reveal 220ms ease-out both;
 }
 .about-page .about-reader > .content-section > h2 {
@@ -131,12 +141,14 @@
   .about-page .about-page-header {
     margin-bottom: 1.5rem;
   }
-  .about-workspace {
+  .about-workspace,
+  .project-workspace {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.75rem;
     scroll-margin-top: 0;
   }
-  .about-index {
+  .about-index,
+  .project-index {
     z-index: 2;
     top: 0;
     grid-template-columns: 1fr 0.85fr 1.2fr;
@@ -144,7 +156,11 @@
     padding-block: 0.5rem;
     background: var(--bg);
   }
-  .about-index a {
+  .project-index {
+    grid-template-columns: 1fr 0.8fr 1.4fr;
+  }
+  .about-index a,
+  .project-board .project-index a[href] {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,6 +171,9 @@
     text-align: center;
   }
   .about-page .about-reader > .content-section {
+    scroll-margin-top: 5rem;
+  }
+  .project-workspace :is(.directory-group h2, .paper-list, .paper-showcase) {
     scroll-margin-top: 5rem;
   }
   .about-page .about-reader > .content-section > h2 {
@@ -178,10 +197,12 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .about-page .about-reader > .content-section:not([hidden]) {
+  .about-page .about-reader > .content-section:not([hidden]),
+  .project-workspace .directory-group:not([hidden]) {
     animation: none;
   }
-  .about-index a {
+  .about-index a,
+  .project-board .project-index a[href] {
     transition: none;
   }
 }

@@ -11,6 +11,7 @@ type Entry = {
 type Group = {
   id: string;
   title?: string;
+  navigationLabel?: string;
   headingId?: string;
   entries: Entry[];
 };
@@ -33,6 +34,15 @@ export function Directory({
 }) {
   const [query, setQuery] = useState("");
   const [view, setView] = useState<"detailed" | "compact">("detailed");
+  const [chapter, setChapter] = useState<{ id: string; anchor: string | null }>(
+    {
+      id: groups[0].id,
+      anchor: null,
+    },
+  );
+  const projects = kind === "projects";
+  const workspace = useRef<HTMLDivElement>(null);
+  const shouldFocus = useRef(false);
   const input = useRef<HTMLInputElement>(null);
   const results = useRef<HTMLDivElement>(null);
   const transition = useRef<Animation | null>(null);
@@ -41,8 +51,71 @@ export function Directory({
   useCardFocus(
     results,
     ".paper-list > li, .writing-card-list > li",
-    `${query}:${view}`,
+    `${query}:${view}:${chapter.id}`,
   );
+
+  // Keep existing section, heading, and individual project URLs working.
+  useLayoutEffect(() => {
+    if (!projects) return;
+    const sync = () => {
+      let hash: string;
+      try {
+        hash = decodeURIComponent(location.hash.slice(1));
+      } catch {
+        hash = "";
+      }
+      const target = hash ? document.getElementById(hash) : null;
+      const section = target?.closest<HTMLElement>("[data-project-section]");
+      const group = groups.find(
+        (group) =>
+          results.current?.contains(section ?? null) &&
+          group.id === section?.dataset.projectSection,
+      );
+      const id = group?.id ?? groups[0].id;
+      const anchor =
+        group && target?.id !== group.id ? (target?.id ?? null) : null;
+      setQuery("");
+      setChapter((previous) =>
+        previous.id === id && previous.anchor === anchor
+          ? previous
+          : { id, anchor },
+      );
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", sync);
+    };
+  }, [groups, projects]);
+
+  useLayoutEffect(() => {
+    if (!projects) return;
+    const target = chapter.anchor
+      ? document.getElementById(chapter.anchor)
+      : null;
+    if (target) {
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+    } else if (
+      shouldFocus.current &&
+      workspace.current &&
+      workspace.current.getBoundingClientRect().top < 0
+    ) {
+      workspace.current.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+    if (shouldFocus.current) {
+      const heading = document
+        .getElementById(chapter.id)
+        ?.closest("section")
+        ?.querySelector("h2");
+      if (heading) {
+        heading.tabIndex = -1;
+        heading.focus({ preventScroll: true });
+      }
+      shouldFocus.current = false;
+    }
+  }, [chapter, projects]);
 
   // Keep the same entries mounted so changing density preserves open summaries.
   useLayoutEffect(() => {
@@ -90,7 +163,6 @@ export function Directory({
       }
     };
   };
-  const projects = kind === "projects";
   const words = normalize(query).split(/\s+/).filter(Boolean);
   const matches = (entry: Entry) =>
     words.every((word) => normalize(entry.searchText).includes(word));
@@ -140,7 +212,7 @@ export function Directory({
             id={id}
             name="q"
             type="search"
-            placeholder="Search..."
+            placeholder={projects ? "Search all projects..." : "Search..."}
             aria-controls={groups.map((g) => g.id).join(" ")}
             autoComplete="off"
             spellCheck={false}
@@ -212,62 +284,107 @@ export function Directory({
           {total === 1 ? "entry" : "entries"}
         </span>
       </form>
-      <div ref={results} className="directory-view-content">
-        <div
-          className="directory-search-empty"
-          data-search-empty=""
-          hidden={count !== 0}
-        >
-          <h2>No matching {projects ? "projects or papers" : "writings"}</h2>
-          <p>
-            Try a different {projects ? "topic, name" : "title, topic"}, or
-            year, or clear your search.
-          </p>
+      <div
+        ref={workspace}
+        className={projects ? "project-workspace" : undefined}
+      >
+        {projects && (
+          <nav className="project-index" aria-label="Project sections">
+            {groups.map((group) => (
+              <a
+                key={group.id}
+                href={`#${group.id}`}
+                aria-current={
+                  !words.length && chapter.id === group.id
+                    ? "location"
+                    : undefined
+                }
+                aria-controls={group.id}
+                onClick={(event) => {
+                  if (
+                    event.button !== 0 ||
+                    event.metaKey ||
+                    event.ctrlKey ||
+                    event.shiftKey ||
+                    event.altKey
+                  )
+                    return;
+                  event.preventDefault();
+                  if (!words.length && chapter.id === group.id) return;
+                  if (location.hash !== `#${group.id}`) {
+                    history.pushState(history.state, "", `#${group.id}`);
+                  }
+                  setQuery("");
+                  shouldFocus.current = true;
+                  setChapter({ id: group.id, anchor: null });
+                }}
+              >
+                {group.navigationLabel ?? group.title}
+              </a>
+            ))}
+          </nav>
+        )}
+        <div ref={results} className="directory-view-content">
+          <div
+            className="directory-search-empty"
+            data-search-empty=""
+            hidden={count !== 0}
+          >
+            <h2>No matching {projects ? "projects or papers" : "writings"}</h2>
+            <p>
+              Try a different {projects ? "topic, name" : "title, topic"}, or
+              year, or clear your search.
+            </p>
+          </div>
+          {groups.map((group) => {
+            const list = (
+              <ul
+                className={
+                  projects
+                    ? "paper-list"
+                    : "writing-list writing-posts writing-card-list"
+                }
+                id={group.id}
+              >
+                {group.entries.map((entry) => (
+                  <li
+                    key={entry.id}
+                    id={entry.id}
+                    className={entry.className}
+                    hidden={!matches(entry)}
+                  >
+                    {entry.content}
+                  </li>
+                ))}
+              </ul>
+            );
+            return group.title ? (
+              <section
+                key={group.id}
+                className="directory-group"
+                aria-labelledby={group.headingId}
+                data-search-group=""
+                data-project-section={projects ? group.id : undefined}
+                hidden={
+                  !group.entries.some(matches) ||
+                  (projects && !words.length && chapter.id !== group.id)
+                }
+              >
+                <h2 id={group.headingId}>
+                  <span className="directory-group-title">{group.title}</span>
+                  <span className="directory-group-count" aria-hidden="true">
+                    {group.entries.filter(matches).length}
+                  </span>
+                </h2>
+                {list}
+              </section>
+            ) : (
+              <div key={group.id} className="directory-results">
+                {list}
+              </div>
+            );
+          })}
         </div>
-        {groups.map((group) => {
-          const list = (
-            <ul
-              className={
-                projects
-                  ? "paper-list"
-                  : "writing-list writing-posts writing-card-list"
-              }
-              id={group.id}
-            >
-              {group.entries.map((entry) => (
-                <li
-                  key={entry.id}
-                  id={entry.id}
-                  className={entry.className}
-                  hidden={!matches(entry)}
-                >
-                  {entry.content}
-                </li>
-              ))}
-            </ul>
-          );
-          return group.title ? (
-            <section
-              key={group.id}
-              className="directory-group"
-              aria-labelledby={group.headingId}
-              data-search-group=""
-              hidden={!group.entries.some(matches)}
-            >
-              <h2 id={group.headingId}>
-                <span className="directory-group-title">{group.title}</span>
-                <span className="directory-group-count" aria-hidden="true">
-                  {group.entries.filter(matches).length}
-                </span>
-              </h2>
-              {list}
-            </section>
-          ) : (
-            <div key={group.id} className="directory-results">
-              {list}
-            </div>
-          );
-        })}
       </div>
     </main>
   );

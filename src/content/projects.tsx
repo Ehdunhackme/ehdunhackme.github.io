@@ -38,6 +38,7 @@ export function ProjectsContent() {
           id: "project-papers",
           headingId: "papers-heading",
           title: "Peer-reviewed publications & preprints",
+          navigationLabel: "Publications",
           entries: [
             {
               id: "asteroid-detection",
@@ -886,121 +887,6 @@ export function ProjectsContent() {
           ],
         },
         {
-          id: "project-acknowledgements",
-          headingId: "acknowledgements-heading",
-          title: "Acknowledgements",
-          entries: [
-            {
-              id: "platonic-universe-acknowledgement",
-              searchText:
-                "09/2025 The Platonic Universe: Do Foundation Models See the Same Sky? UniverseTBD Machine Learning and the Physical Sciences Workshop · NeurIPS 2025 Acknowledged for discussions and comments that improved the paper. GitHub arXiv The idea Do models trained on different data learn a shared picture of the same physical universe? Astronomy provides an external reference: the same galaxy can be observed with different telescopes and through different modalities, while physical properties provide a way to judge what the representations actually capture. This makes it possible to compare similarity with scientific usefulness. Frozen representations and physical properties Matched telescope images and spectra allow comparisons across eleven foundation-model families without changing their weights. Probes test how well the frozen representations encode redshift, stellar mass, and other physical properties. Local neighborhood similarity and global geometric alignment provide two different ways to compare representations across architectures, training approaches, and capacities. The takeaway Model capacity predicts physical-property performance, while local alignment tracks that performance better than global geometric alignment in the studied comparisons. Observations of the same physical objects create a useful testbed for distinguishing shared representation structure from information that supports scientific prediction.",
-              className: "paper-showcase",
-              content: (
-                <article className={"paper-row"}>
-                  <a
-                    href={"https://arxiv.org/abs/2509.19453"}
-                    className={"paper-thumbnail"}
-                    target={"_blank"}
-                    rel={"noopener"}
-                    aria-label={
-                      "Read paper: The Platonic Universe: Do Foundation Models See the Same Sky?"
-                    }
-                  >
-                    <Image
-                      src={
-                        "/assets/paper-previews/platonic-universe-acknowledgement.webp"
-                      }
-                      alt={
-                        "First page of The Platonic Universe: Do Foundation Models See the Same Sky?"
-                      }
-                      loading={"lazy"}
-                      width={480}
-                      height={622}
-                      sizes="(max-width: 600px) 64px, 100px"
-                    />
-                  </a>
-                  <div className={"paper-info"}>
-                    <strong>
-                      {
-                        "The Platonic Universe: Do Foundation Models See the Same Sky?"
-                      }
-                    </strong>
-                    <div className="paper-meta">
-                      <time className="paper-date" dateTime="2025-09">
-                        Sep 2025
-                      </time>
-                      <em>
-                        {
-                          "Machine Learning and the Physical Sciences Workshop, NeurIPS 2025"
-                        }
-                      </em>
-                    </div>
-
-                    <span className={"project-affiliation"}>
-                      <img
-                        src={"/assets/logos/universetbd-square.webp"}
-                        alt={""}
-                        loading="lazy"
-                        width={16}
-                        height={16}
-                      />
-                      <a
-                        href={"https://universetbd.org/"}
-                        target={"_blank"}
-                        rel={"noopener"}
-                      >
-                        {"UniverseTBD"}
-                      </a>
-                    </span>
-
-                    <span className={"project-description"}>
-                      {
-                        "Acknowledged for discussions and comments that improved the paper."
-                      }
-                    </span>
-                  </div>
-                  <Explanation
-                    links={
-                      <>
-                        <a
-                          href={
-                            "https://github.com/UniverseTBD/platonic-universe"
-                          }
-                          target={"_blank"}
-                          rel={"noopener"}
-                        >
-                          {"GitHub"}
-                        </a>
-                        <a
-                          href={"https://arxiv.org/abs/2509.19453"}
-                          target={"_blank"}
-                          rel={"noopener"}
-                        >
-                          {"arXiv"}
-                        </a>
-                      </>
-                    }
-                    sections={[
-                      [
-                        "The idea",
-                        "Do models trained on different data learn a shared picture of the same physical universe? Astronomy provides an external reference: the same galaxy can be observed with different telescopes and through different modalities, while physical properties provide a way to judge what the representations actually capture. This makes it possible to compare similarity with scientific usefulness.",
-                      ],
-                      [
-                        "Frozen representations and physical properties",
-                        "Matched telescope images and spectra allow comparisons across eleven foundation-model families without changing their weights. Probes test how well the frozen representations encode redshift, stellar mass, and other physical properties. Local neighborhood similarity and global geometric alignment provide two different ways to compare representations across architectures, training approaches, and capacities.",
-                      ],
-                      [
-                        "The takeaway",
-                        "Model capacity predicts physical-property performance, while local alignment tracks that performance better than global geometric alignment in the studied comparisons. Observations of the same physical objects create a useful testbed for distinguishing shared representation structure from information that supports scientific prediction.",
-                      ],
-                    ]}
-                  />
-                </article>
-              ),
-            },
-          ],
-        },
-        {
           id: "project-builds",
           headingId: "projects-heading",
           title: "Projects",
@@ -1359,6 +1245,121 @@ export function ProjectsContent() {
                       [
                         "The takeaway",
                         "Reported evaluation scores are 0.990 mAP50 and 0.794 mAP50-95, with 70 test images processed in 13.2 seconds. The stricter overlap metric tests how precisely predicted boxes match annotations, not just whether a cell is roughly located. These results support a screening prototype on the evaluated data, not a validated clinical diagnostic system.",
+                      ],
+                    ]}
+                  />
+                </article>
+              ),
+            },
+          ],
+        },
+        {
+          id: "project-acknowledgements",
+          headingId: "acknowledgements-heading",
+          title: "Acknowledgements",
+          entries: [
+            {
+              id: "platonic-universe-acknowledgement",
+              searchText:
+                "09/2025 The Platonic Universe: Do Foundation Models See the Same Sky? UniverseTBD Machine Learning and the Physical Sciences Workshop · NeurIPS 2025 Acknowledged for discussions and comments that improved the paper. GitHub arXiv The idea Do models trained on different data learn a shared picture of the same physical universe? Astronomy provides an external reference: the same galaxy can be observed with different telescopes and through different modalities, while physical properties provide a way to judge what the representations actually capture. This makes it possible to compare similarity with scientific usefulness. Frozen representations and physical properties Matched telescope images and spectra allow comparisons across eleven foundation-model families without changing their weights. Probes test how well the frozen representations encode redshift, stellar mass, and other physical properties. Local neighborhood similarity and global geometric alignment provide two different ways to compare representations across architectures, training approaches, and capacities. The takeaway Model capacity predicts physical-property performance, while local alignment tracks that performance better than global geometric alignment in the studied comparisons. Observations of the same physical objects create a useful testbed for distinguishing shared representation structure from information that supports scientific prediction.",
+              className: "paper-showcase",
+              content: (
+                <article className={"paper-row"}>
+                  <a
+                    href={"https://arxiv.org/abs/2509.19453"}
+                    className={"paper-thumbnail"}
+                    target={"_blank"}
+                    rel={"noopener"}
+                    aria-label={
+                      "Read paper: The Platonic Universe: Do Foundation Models See the Same Sky?"
+                    }
+                  >
+                    <Image
+                      src={
+                        "/assets/paper-previews/platonic-universe-acknowledgement.webp"
+                      }
+                      alt={
+                        "First page of The Platonic Universe: Do Foundation Models See the Same Sky?"
+                      }
+                      loading={"lazy"}
+                      width={480}
+                      height={622}
+                      sizes="(max-width: 600px) 64px, 100px"
+                    />
+                  </a>
+                  <div className={"paper-info"}>
+                    <strong>
+                      {
+                        "The Platonic Universe: Do Foundation Models See the Same Sky?"
+                      }
+                    </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date" dateTime="2025-09">
+                        Sep 2025
+                      </time>
+                      <em>
+                        {
+                          "Machine Learning and the Physical Sciences Workshop, NeurIPS 2025"
+                        }
+                      </em>
+                    </div>
+
+                    <span className={"project-affiliation"}>
+                      <img
+                        src={"/assets/logos/universetbd-square.webp"}
+                        alt={""}
+                        loading="lazy"
+                        width={16}
+                        height={16}
+                      />
+                      <a
+                        href={"https://universetbd.org/"}
+                        target={"_blank"}
+                        rel={"noopener"}
+                      >
+                        {"UniverseTBD"}
+                      </a>
+                    </span>
+
+                    <span className={"project-description"}>
+                      {
+                        "Acknowledged for discussions and comments that improved the paper."
+                      }
+                    </span>
+                  </div>
+                  <Explanation
+                    links={
+                      <>
+                        <a
+                          href={
+                            "https://github.com/UniverseTBD/platonic-universe"
+                          }
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"GitHub"}
+                        </a>
+                        <a
+                          href={"https://arxiv.org/abs/2509.19453"}
+                          target={"_blank"}
+                          rel={"noopener"}
+                        >
+                          {"arXiv"}
+                        </a>
+                      </>
+                    }
+                    sections={[
+                      [
+                        "The idea",
+                        "Do models trained on different data learn a shared picture of the same physical universe? Astronomy provides an external reference: the same galaxy can be observed with different telescopes and through different modalities, while physical properties provide a way to judge what the representations actually capture. This makes it possible to compare similarity with scientific usefulness.",
+                      ],
+                      [
+                        "Frozen representations and physical properties",
+                        "Matched telescope images and spectra allow comparisons across eleven foundation-model families without changing their weights. Probes test how well the frozen representations encode redshift, stellar mass, and other physical properties. Local neighborhood similarity and global geometric alignment provide two different ways to compare representations across architectures, training approaches, and capacities.",
+                      ],
+                      [
+                        "The takeaway",
+                        "Model capacity predicts physical-property performance, while local alignment tracks that performance better than global geometric alignment in the studied comparisons. Observations of the same physical objects create a useful testbed for distinguishing shared representation structure from information that supports scientific prediction.",
                       ],
                     ]}
                   />
