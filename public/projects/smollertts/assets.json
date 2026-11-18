@@ -1,11 +1,11 @@
 {
   "name": "SmollerTTS",
   "parameters": 2808792,
-  "build": "0b8a8584919b",
+  "build": "370842fc0871",
   "files": {
     "architecture.mjs": {
       "bytes": 13811,
-      "sha256": "30e5b43213454557bb5e520bff2c20fa91fc7c833267a13666876d4ad5c88d90"
+      "sha256": "f5b1bd01edc81980462cfe3fdd41fd9a2bb2cbb2d1f8134d10cfc33757d7da9d"
     },
     "audio.mjs": {
       "bytes": 2038,
@@ -21,7 +21,7 @@
     },
     "benchmark.mjs": {
       "bytes": 18152,
-      "sha256": "52426e642e9d833bcf3a973ec4f3d00fc676b4834d25cd0ee5ca278eb033b774"
+      "sha256": "e38bc5ef5d570826086082f66847bde4afafbcbc6afb955d520bc6c17b6f8abb"
     },
     "controls.mjs": {
       "bytes": 2199,
@@ -29,7 +29,7 @@
     },
     "credits.html": {
       "bytes": 4777,
-      "sha256": "e93ae96e43e87af77ad1a4882684ca4fd361fc3581d93fc78bfe253f3348def9"
+      "sha256": "52adfab300fc65eafc32e840376724f0f5d7dd4066ece1b17085d266c6db614d"
     },
     "disclosures.mjs": {
       "bytes": 1625,
@@ -45,7 +45,7 @@
     },
     "engine.mjs": {
       "bytes": 3749,
-      "sha256": "056979356ef29acaaceda77757c9c711715ed4f872258b1ae16c61ad1d66915c"
+      "sha256": "7a152086611fcb6c9caa81e45f05cf4aa06a0428cef548129d2c5e870679e0eb"
     },
     "frames.onnx": {
       "bytes": 2592343,
@@ -60,8 +60,8 @@
       "sha256": "f9e0294b1589fa16c978cc3d67d6ae39a7e10fa8438c54bff14432fa94ed51ef"
     },
     "index.html": {
-      "bytes": 13179,
-      "sha256": "d3fa40dd33ce06b02a64aec1bf04443b84d7972c24f4e5de3b8dc785a7de37fb"
+      "bytes": 13244,
+      "sha256": "26dc4d0c88799e2b55f288aa4ab2d3c7a4e8db8168a5b35dba899e455fdfdd8e"
     },
     "lexicon.mjs": {
       "bytes": 1837,
@@ -75,6 +75,10 @@
       "bytes": 1066,
       "sha256": "0ad4f960fbd63366ce1b1ab7a87b73c56bb2d00864e8a420cdba899642c57376"
     },
+    "logo.png": {
+      "bytes": 9079,
+      "sha256": "6865c0914a5a2332a185915bae779de1d6a87cea93423f1c1b33f9d805a336ef"
+    },
     "mark.svg": {
       "bytes": 238,
       "sha256": "f96ddfc26616f620bd3792a336c957ad87ed1471e0fd1d6436cee4fdf5c8fac6"
@@ -85,7 +89,7 @@
     },
     "model.json": {
       "bytes": 1235,
-      "sha256": "24396501f6aae9f03295c84d5fd0fb85cf11f40127ea383a3c2d9610a6518884"
+      "sha256": "9bb977ae49a8d74d19f9906de8128931d5a33fb8c4835e1e94229d11a961e685"
     },
     "punctuation.mjs": {
       "bytes": 2079,
@@ -95,13 +99,17 @@
       "bytes": 4490,
       "sha256": "a0aac5857b04e3fdb714074f1fa2997c6bdf696b4260bdde46e43818d31e79fb"
     },
+    "social.png": {
+      "bytes": 14078,
+      "sha256": "c2a7faf7f48c7a7ee91d4d3eb187e863fd27ec9aa40a176925ab9425168539ac"
+    },
     "studio.css": {
       "bytes": 29454,
       "sha256": "cd682d7d80b8c87e3a097d69d618d89a1092437ad3219afc2903a4669c22a800"
     },
     "studio.mjs": {
       "bytes": 14804,
-      "sha256": "fb64483e22b845d158590e23551a28aed56a9bf1adcf2f48d2698666a1838c68"
+      "sha256": "f54af3d7909287823f47731674666063b20c7080868b041ba4197a8903e8a219"
     },
     "THIRD_PARTY.md": {
       "bytes": 2117,
@@ -113,7 +121,7 @@
     },
     "worker.mjs": {
       "bytes": 4871,
-      "sha256": "57461aecaee0b6414d9ce799e2a516138aa63ac382c0fe7857af7bd56711bf4c"
+      "sha256": "08e81f344f68adb893282330533cb3b7c6c7bc92b0678d332a462cfa06b6bdf7"
     },
     "ort/ort-wasm-simd-threaded.mjs": {
       "bytes": 24738,

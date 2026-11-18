@@ -1,10 +1,10 @@
-import {PRESETS, validateControls} from './controls.mjs?h=0b8a8584919b';
-import {wavBlob, SAMPLE_RATE} from './audio.mjs?h=0b8a8584919b';
-import {animateDisclosures} from './disclosures.mjs?h=0b8a8584919b';
+import {PRESETS, validateControls} from './controls.mjs?h=370842fc0871';
+import {wavBlob, SAMPLE_RATE} from './audio.mjs?h=370842fc0871';
+import {animateDisclosures} from './disclosures.mjs?h=370842fc0871';
 // The optional comparison chart must not hold up the speech editor.
-void import('./benchmark.mjs?h=0b8a8584919b');
-void import('./links.mjs?h=0b8a8584919b');
-void import('./architecture.mjs?h=0b8a8584919b');
+void import('./benchmark.mjs?h=370842fc0871');
+void import('./links.mjs?h=370842fc0871');
+void import('./architecture.mjs?h=370842fc0871');
 animateDisclosures();
 
 const $ = id => document.getElementById(id);
@@ -178,7 +178,7 @@ function startWorker() {
   worker?.terminate(); clearTimeout(loadingTimer); window.ready = false; window.failure = null; document.body.dataset.ready = 'false';
   $('retry').hidden = true; setBusy(false); status('Preparing the model for this device. The first visit downloads about 30 MB.');
   const fail = message => {clearTimeout(loadingTimer); window.failure = message; window.ready = false; document.body.dataset.ready = 'false'; failed(message); $('retry').hidden = false; $('state-label').textContent = 'Could not load the voice';};
-  try {worker = new Worker(new URL('./worker.mjs?h=0b8a8584919b', import.meta.url), {type: 'module'});}
+  try {worker = new Worker(new URL('./worker.mjs?h=370842fc0871', import.meta.url), {type: 'module'});}
   catch {fail('This browser could not start the voice. Try a current Chrome, Edge, Firefox or Safari.'); return;}
   loadingTimer = setTimeout(() => {worker.terminate(); fail('Loading took too long. Check your connection and retry.');}, 180000);
   worker.onerror = () => fail('The voice could not run in this browser. Retry loading, or try another browser.');

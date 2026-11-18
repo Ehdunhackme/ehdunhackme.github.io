@@ -1,8 +1,8 @@
-import {loadEngine} from './engine.mjs?h=0b8a8584919b';
-import {pronounceEnglish} from './frontend.bundle.mjs?h=0b8a8584919b';
-import {Lexicon} from './lexicon.mjs?h=0b8a8584919b';
-import {validateControls} from './controls.mjs?h=0b8a8584919b';
-import {AudioCache, audioKey} from './audio.mjs?h=0b8a8584919b';
+import {loadEngine} from './engine.mjs?h=370842fc0871';
+import {pronounceEnglish} from './frontend.bundle.mjs?h=370842fc0871';
+import {Lexicon} from './lexicon.mjs?h=370842fc0871';
+import {validateControls} from './controls.mjs?h=370842fc0871';
+import {AudioCache, audioKey} from './audio.mjs?h=370842fc0871';
 
 let engine, lexicon, vocabulary, active = null;
 const audioCache = new AudioCache();
@@ -11,7 +11,7 @@ const send = (type, data = {}, transfer = []) => self.postMessage({type, ...data
 async function initialize() {
   const started = performance.now(); let cache;
   try {cache = await caches.open('smollertts-model');} catch { /* Storage denial must not prevent generation. */ }
-  const response = await fetch(new URL('./assets.json?h=0b8a8584919b', import.meta.url));
+  const response = await fetch(new URL('./assets.json?h=370842fc0871', import.meta.url));
   if (!response.ok) throw new Error('Could not load the model manifest. Check your connection and retry.');
   const manifest = await response.json(); let cachedBytes = 0, networkBytes = 0;
   async function asset(name) {

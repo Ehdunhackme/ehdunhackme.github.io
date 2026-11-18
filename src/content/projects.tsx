@@ -914,30 +914,18 @@ export function ProjectsContent() {
               className: "paper-showcase",
               content: (
                 <article className="paper-row">
-                  <a
-                    className="paper-thumbnail project-thumbnail"
-                    href="/projects/smollertts/"
-                    aria-label="Try the SmollerTTS browser speech demo"
-                  >
+                  <div className="paper-thumbnail project-thumbnail">
                     <Image
-                      src="/assets/project-previews/smollertts-architecture.png"
-                      alt="SmollerTTS architecture: text encoder, acoustic features and waveform decoder"
-                      width={2000}
-                      height={1780}
+                      src="/projects/smollertts/logo.png"
+                      alt="SmollerTTS logo"
+                      width={400}
+                      height={400}
                       loading="lazy"
                       sizes="(max-width: 600px) 64px, 100px"
                     />
-                  </a>
+                  </div>
                   <div className="paper-info">
-                    <strong>
-                      <a
-                        className="project-title-link"
-                        href="/projects/smollertts/"
-                      >
-                        SmollerTTS
-                      </a>
-                      {" — compact browser text to speech"}
-                    </strong>
+                    <strong>SmollerTTS</strong>
                     <div className="paper-meta">
                       <time className="paper-date">2026</time>
                     </div>

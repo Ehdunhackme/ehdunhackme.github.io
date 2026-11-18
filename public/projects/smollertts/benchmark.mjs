@@ -1,4 +1,4 @@
-import {METRICS, hasMetric, formatMetric, promptValues, bounds, frontier} from './benchmark-metrics.mjs?h=0b8a8584919b';
+import {METRICS, hasMetric, formatMetric, promptValues, bounds, frontier} from './benchmark-metrics.mjs?h=370842fc0871';
 const $ = id => document.getElementById(id);
 const svg = (tag, attrs, text) => {
   const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -49,7 +49,7 @@ reducedMotion.addEventListener('change', () => {
 });
 
 try {
-  const response = await fetch(new URL('./benchmark.json?h=0b8a8584919b', import.meta.url));
+  const response = await fetch(new URL('./benchmark.json?h=370842fc0871', import.meta.url));
   if (!response.ok) throw new Error('Benchmark unavailable');
   const snapshot = await response.json(), data = snapshot.cohorts?.published || snapshot;
   const own = data.models.find(m => m.local), tooltip = $('chart-tooltip');
@@ -227,7 +227,7 @@ try {
   for(const text of notes){const p=document.createElement('p');p.textContent=text;$('benchmark-method').append(p);}
   const sources=document.createElement('div');sources.className='benchmark-sources';sources.setAttribute('aria-label','Benchmark sources');
   for(const source of [...data.sources,{name:'UTMOS paper',url:'https://arxiv.org/abs/2204.02152'}]) sources.append(sourceLink(source.url,source.name==='Sizes'?'Parameter counts':source.name));
-  if(own.wer_provenance) sources.append(sourceLink('./smollertts-wer.json?h=0b8a8584919b','Our WER report'));
+  if(own.wer_provenance) sources.append(sourceLink('./smollertts-wer.json?h=370842fc0871','Our WER report'));
   $('benchmark-method').append(sources);renderTable();draw();document.fonts.ready.then(()=>draw());
 }catch(error){
   $('model-count').textContent='Chart unavailable';$('chart-selection').classList.remove('sr-only');$('chart-selection').textContent='Could not load the comparison. Reload to try again.';console.error(error);

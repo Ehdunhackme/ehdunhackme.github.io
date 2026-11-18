@@ -123,7 +123,7 @@ function select(data,pan=false){
 }
 select(nodes[0]);
 try{
-  const response=await fetch(new URL('./model-size.json?h=0b8a8584919b',import.meta.url));if(!response.ok)throw new Error('Size metadata unavailable');
+  const response=await fetch(new URL('./model-size.json?h=370842fc0871',import.meta.url));if(!response.ok)throw new Error('Size metadata unavailable');
   const size=await response.json();
   $('weight-size').textContent=(size.weight_bytes/1e6).toFixed(2)+' MB';$('voice-size').textContent=(size.voice_asset_bytes/1e6).toFixed(2)+' MB';
   $('voice-size').title=size.units;$('weight-size').title=`${size.weight_bytes.toLocaleString()} bytes · ${(size.weight_bytes/1048576).toFixed(2)} MiB`;
