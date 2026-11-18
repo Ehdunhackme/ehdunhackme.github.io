@@ -916,10 +916,10 @@ export function ProjectsContent() {
                 <article className="paper-row">
                   <div className="paper-thumbnail project-thumbnail">
                     <Image
-                      src="/projects/smollertts/logo.png"
-                      alt="SmollerTTS logo"
-                      width={400}
-                      height={400}
+                      src="/assets/project-previews/smollertts-architecture.png"
+                      alt="SmollerTTS architecture: text encoder, acoustic features and waveform decoder"
+                      width={2000}
+                      height={1780}
                       loading="lazy"
                       sizes="(max-width: 600px) 64px, 100px"
                     />
