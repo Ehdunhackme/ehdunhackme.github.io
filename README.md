@@ -50,6 +50,18 @@ project, import only its website files with
 `npm run sync:midterms -- /path/to/US-election`. This is an optional publishing
 step, not part of the website build. Live results come directly from civicAPI.
 
+## SmollerTTS demo
+
+The browser-only speech demo lives at `/projects/smollertts/`. Its standalone
+HTML, scripts, ONNX weights, pronunciation files and WebAssembly runtime are
+in `public/projects/smollertts/`. A Next.js rewrite serves its index at the clean
+URL. It runs without an inference server or external model downloads.
+
+To publish a new build, first build the [SmollerTTS source](https://github.com/Ehdunhackme/SmollerTTS),
+then run `npm run sync:smollertts -- /path/to/SmollerTTS`. The importer checks
+the build's SHA-256 manifest before copying its files and architecture thumbnail.
+This is a manual publishing step; the portfolio build is self-contained.
+
 ## Verify
 
 ```sh

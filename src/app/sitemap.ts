@@ -9,5 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/writings/my-opinionated-guide-to-starting-research-early/",
     "/contact/",
     "/projects/chert/",
+    "/projects/smollertts/",
   ].map((path) => ({ url: "https://dunlichan.com" + path }));
 }

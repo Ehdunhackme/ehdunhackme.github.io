@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff"><meta name="description" content="Papers, data and open-source work behind SmollerTTS.">
+<title>Credits — SmollerTTS</title><link rel="icon" href="./mark.svg" type="image/svg+xml">
+<link rel="preload" href="./fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./studio.css?h=0b8a8584919b">
+</head><body class="credits-page">
+<a class="skip" href="#credits">Skip to credits</a>
+<div class="shell">
+<header class="nav">
+<a class="brand" href="./"><img src="./mark.svg" width="28" height="28" alt=""><span>SmollerTTS</span></a>
+<nav class="nav-links" aria-label="Project links">
+<a class="repo-link" href="https://huggingface.co/dunli5107/SmollerTTS" target="_blank" rel="noopener noreferrer"><img class="source-logo" src="./icons/huggingface.svg" width="16" height="16" alt=""><span>Hugging Face</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+<a class="repo-link" href="https://github.com/Ehdunhackme/SmollerTTS" target="_blank" rel="noopener noreferrer"><img class="source-logo" src="./icons/github.svg" width="16" height="16" alt=""><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</nav>
+</header>
+
+<main id="credits" class="credits-content">
+<h1>Credits</h1>
+<p class="credits-intro">SmollerTTS pairs our acoustic model with the pretrained HiFi-GAN LJ_V2 vocoder. These are the papers, data and tools behind it.</p>
+<section aria-labelledby="papers-title">
+<h2 id="papers-title">Papers &amp; data</h2>
+<ul class="references">
+<li><a href="https://arxiv.org/abs/2010.05646" target="_blank" rel="noopener noreferrer">HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis</a><p>Jungil Kong, Jaehyeon Kim and Jaekyoung Bae. NeurIPS, 2020.</p><p>Our waveform generator uses the published LJ_V2 weights.</p></li>
+<li><a href="https://arxiv.org/abs/2006.04558" target="_blank" rel="noopener noreferrer">FastSpeech 2: Fast and High-Quality End-to-End Text to Speech</a><p>Yi Ren et al. ICLR, 2021.</p><p>Architectural reference for duration, pitch and energy conditioning.</p></li>
+<li><a href="https://www.isca-archive.org/interspeech_2017/mcauliffe17_interspeech.html" target="_blank" rel="noopener noreferrer">Montreal Forced Aligner: Trainable Text-Speech Alignment Using Kaldi</a><p>Michael McAuliffe et al. Interspeech, 2017.</p><p>Alignment tools used to prepare training targets.</p></li>
+<li><a href="https://arxiv.org/abs/2204.02152" target="_blank" rel="noopener noreferrer">UTMOS: UTokyo-SaruLab System for VoiceMOS Challenge 2022</a><p>Takaaki Saeki et al. Interspeech, 2022.</p><p>The automatic quality estimator used in the comparison chart.</p></li>
+<li><a href="https://keithito.com/LJ-Speech-Dataset/" target="_blank" rel="noopener noreferrer">The LJ Speech Dataset</a><p>The English recordings used to train our acoustic model.</p></li>
+</ul>
+</section>
+<section aria-labelledby="software-title">
+<h2 id="software-title">Software &amp; sources</h2>
+<p><a href="https://onnxruntime.ai/" target="_blank" rel="noopener noreferrer">ONNX Runtime</a> runs inference in the browser. Pronunciation uses <a href="https://mfa-models.readthedocs.io/" target="_blank" rel="noopener noreferrer">MFA dictionaries</a> and <a href="https://github.com/hans00/phonemize" target="_blank" rel="noopener noreferrer">phonemize</a>; number reading uses <a href="https://github.com/mastermunj/to-words" target="_blank" rel="noopener noreferrer">to-words</a>.</p>
+<p>Published comparison results come from <a href="https://github.com/5uck1ess/tts-bench/tree/1dd3a81a50dd21fb2f4bce89df27eada996ba57f" target="_blank" rel="noopener noreferrer">tts-bench</a>. Our separate 48-sentence test compares SmollerTTS with <a href="https://huggingface.co/n4ze3m/tiny-voca/tree/e5f9b11651a4db525fb207a56a91e4df2d1dd387" target="_blank" rel="noopener noreferrer">Tiny Voca</a>, using UTMOS and <a href="https://github.com/SYSTRAN/faster-whisper" target="_blank" rel="noopener noreferrer">faster-whisper</a>. The interface uses the <a href="https://github.com/vercel/geist-font" target="_blank" rel="noopener noreferrer">Geist</a> typeface.</p>
+<p><a href="./THIRD_PARTY.md">Full attribution and license notes</a></p>
+</section>
+</main>
+<footer><span>SmollerTTS</span><div><a href="./credits.html">Credits</a><a href="https://dunlichan.com/" target="_blank" rel="noopener noreferrer">Dun Li Chan ↗</a></div></footer>
+
+</div>
+<script type="module" src="./links.mjs?h=0b8a8584919b"></script></body></html>

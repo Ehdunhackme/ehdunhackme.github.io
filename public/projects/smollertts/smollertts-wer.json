@@ -1,0 +1,78 @@
+{
+  "recognizer": "openai/whisper-large-v3",
+  "revision": "06f233fe06e710322aca913c1bc4249a0d71fce1",
+  "weight_sha256": "a8e94b85976e5864ba3e9525c7e6c83b2a1eca42d4b797a0c7c24d778e40fd95",
+  "scorer_source_sha256": "7afd506d94cd629d5f017320b5e4609b9deff68e5ada65798cd58a691052232c",
+  "source_revision": "1dd3a81a50dd21fb2f4bce89df27eada996ba57f",
+  "device": "CPU",
+  "dtype": "float32",
+  "precision_note": "CPU FP32; the checkpoint is pinned. Published peer checkpoint and package revisions are not all pinned.",
+  "threads": 2,
+  "preprocessing": "librosa 16kHz mono float32, full waveform; WhisperProcessor default feature extraction then features cast to model FP32; no trimming or loudness normalization",
+  "generation": {
+    "language": "english",
+    "task": "transcribe",
+    "other_options": "pinned generation_config defaults"
+  },
+  "normalization": "Whisper tokenizer English normalizer, as in pinned tts-bench scorer; no custom post-hoc fixes",
+  "aggregation": "unweighted arithmetic mean of four prompt WERs, matching published overview",
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "5.13.1",
+    "librosa": "0.11.0",
+    "jiwer": "4.0.0",
+    "huggingface_hub": "1.23.0"
+  },
+  "records": [
+    {
+      "prompt_id": 1,
+      "text": "Open the browser and read my email.",
+      "wav": "benchmark-1.wav",
+      "wav_sha256": "fc8e12cd6e72f001f4fa43a1dc6100b578be41a42aaabe4002093d4dcecb07f1",
+      "transcript": "open the browser and read my email.",
+      "normalized_reference": "open the browser and read my email",
+      "normalized_transcript": "open the browser and read my email",
+      "wer": 0.0,
+      "head_dropped": false,
+      "seconds": 57.914098499997635
+    },
+    {
+      "prompt_id": 2,
+      "text": "I'll start a new git branch, push the changes, and open a pull request when the tests pass.",
+      "wav": "benchmark-2.wav",
+      "wav_sha256": "1323fb5f6030ef3c45055cb16fbb6fde9e4eea51c046f63c38b403c39b98f311",
+      "transcript": "I'll start a new git branch, push the changes, and open a pull request when the tests pass.",
+      "normalized_reference": "i will start a new git branch push the changes and open a pull request when the tests pass",
+      "normalized_transcript": "i will start a new git branch push the changes and open a pull request when the tests pass",
+      "wer": 0.0,
+      "head_dropped": false,
+      "seconds": 35.216409399999975
+    },
+    {
+      "prompt_id": 3,
+      "text": "The Parakeet TDT zero point six billion parameter model achieves one point six nine percent word error rate on LibriSpeech test-clean, beating Whisper Large V3 at two point seven percent while running at over two thousand times realtime on a single GPU.",
+      "wav": "benchmark-3.wav",
+      "wav_sha256": "cc15f7c51cc812e11a89663fe41a51c680bdc904936d5f21f65838db98468af6",
+      "transcript": "the parakeet tdt zero point six billion parameter model achieves one point six nine per cent word error rate on a libre speech test clean beating whisper large free at two point seven per cent while running at over two thousand times real time on a single gpu",
+      "normalized_reference": "the parakeet tdt 600000000 parameter model achieves one.69% word error rate on librispeech test clean beating whisper large v 3 at 2.7% while running at over 2000 times realtime on a single gpu",
+      "normalized_transcript": "the parakeet tdt 600000000 parameter model achieves one.69% word error rate on a libre speech test clean beating whisper large free at 2.7% while running at over 2000 times real time on a single gpu",
+      "wer": 0.21212121212121213,
+      "head_dropped": false,
+      "seconds": 38.1426876000005
+    },
+    {
+      "prompt_id": 4,
+      "text": "Run pytest tests slash test underscore voice dot py with verbose flag and capture flag set to no.",
+      "wav": "benchmark-4.wav",
+      "wav_sha256": "0ee9de4cb64fdf5e4e6cf1a87da9ba929c7e0047a8636825c8da28873fe1ea39",
+      "transcript": "Run pytest test slash test underscore voice dot py with verbose flag and capture flag set to no.",
+      "normalized_reference": "run pytest tests slash test underscore voice dot py with verbose flag and capture flag set to no",
+      "normalized_transcript": "run pytest test slash test underscore voice dot py with verbose flag and capture flag set to no",
+      "wer": 0.05555555555555555,
+      "head_dropped": false,
+      "seconds": 41.984587800001464
+    }
+  ],
+  "wer": 0.06691919191919192,
+  "n": 4
+}

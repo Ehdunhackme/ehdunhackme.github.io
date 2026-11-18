@@ -3,6 +3,21 @@ import Image from "next/image";
 import { Directory } from "@/components/directory";
 import { Explanation } from "@/components/explanation";
 
+const smollerttsExplanation = [
+  [
+    "The idea",
+    "SmollerTTS explores how small a useful text-to-speech model can be. It generates an English voice directly on the browser’s CPU, with 2.81 million neural parameters and 11.34 MB of weights. After the voice files load, synthesis happens on the device without sending the text to an inference server.",
+  ],
+  [
+    "From text to speech",
+    "A pronunciation frontend converts text into phonemes and expands dates, money and common units. A custom acoustic model, trained from scratch on LJSpeech, predicts durations, pitch, voicing, energy and mel features. A pretrained HiFi-GAN V2 vocoder turns those features into a waveform. Three ONNX graphs run through WebAssembly, with chunked playback and controls for speed, pitch and energy.",
+  ],
+  [
+    "The takeaway",
+    "The project brings a small speech model into a working browser demo, with downloadable weights, an interactive architecture diagram and evaluation recordings. It uses one English voice and makes a deliberate trade-off between size and naturalness: unfamiliar words and long passages can still sound uneven. The published quality and word-error comparisons are exploratory, rather than a claim to outperform larger models.",
+  ],
+];
+
 const chertExplanation = [
   [
     "The idea",
@@ -891,6 +906,71 @@ export function ProjectsContent() {
           headingId: "projects-heading",
           title: "Projects",
           entries: [
+            {
+              id: "smollertts",
+              searchText:
+                "2026 SmollerTTS compact browser text to speech 2.81M English CPU ONNX Demo GitHub Hugging Face " +
+                smollerttsExplanation.flat().join(" "),
+              className: "paper-showcase",
+              content: (
+                <article className="paper-row">
+                  <a
+                    className="paper-thumbnail project-thumbnail"
+                    href="/projects/smollertts/"
+                    aria-label="Try the SmollerTTS browser speech demo"
+                  >
+                    <Image
+                      src="/assets/project-previews/smollertts-architecture.png"
+                      alt="SmollerTTS architecture: text encoder, acoustic features and waveform decoder"
+                      width={2000}
+                      height={1780}
+                      loading="lazy"
+                      sizes="(max-width: 600px) 64px, 100px"
+                    />
+                  </a>
+                  <div className="paper-info">
+                    <strong>
+                      <a
+                        className="project-title-link"
+                        href="/projects/smollertts/"
+                      >
+                        SmollerTTS
+                      </a>
+                      {" — compact browser text to speech"}
+                    </strong>
+                    <div className="paper-meta">
+                      <time className="paper-date">2026</time>
+                    </div>
+                    <span className="project-description">
+                      A 2.81M-parameter English voice running on your browser’s
+                      CPU.
+                    </span>
+                  </div>
+                  <Explanation
+                    links={
+                      <>
+                        <a href="/projects/smollertts/">Demo</a>
+                        <a
+                          href="https://github.com/Ehdunhackme/SmollerTTS"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          GitHub
+                        </a>
+                        <a
+                          href="https://huggingface.co/dunli5107/SmollerTTS"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          Hugging Face
+                        </a>
+                      </>
+                    }
+                    sections={smollerttsExplanation}
+                  />
+                </article>
+              ),
+            },
             {
               id: "chert",
               searchText:

@@ -1,0 +1,36 @@
+{
+  "name": "SmollerTTS",
+  "parameters": 2808792,
+  "acoustic_parameters": 1882807,
+  "vocoder_parameters": 925985,
+  "sample_rate": 22050,
+  "hop": 256,
+  "graphs": {
+    "encoder": {
+      "bytes": 5002113,
+      "sha256": "0872d67a5ebb0e3fb64e225f0c551c7f41dae65d5b97c1e7814da21163e40a22"
+    },
+    "frames": {
+      "bytes": 2592343,
+      "sha256": "7177cd29420ca1a65aa30bc79f33cd11f5ca26b96a6d0052fc80b961bc01784b"
+    },
+    "vocoder": {
+      "bytes": 3743259,
+      "sha256": "fad5accf376f23db956395fee1523f9cf1ffd99d53b5b0dbc4666d3f1b9ae743"
+    }
+  },
+  "checkpoint_sha256": "46d728f6b8cc8721d7c41607f63780016ed8c04d694dbcf9cc9863709c07399e",
+  "arithmetic": "Unfused PyTorch CPU reference (MKLDNN disabled); ONNX Runtime graph optimizations disabled in Python and WASM",
+  "architecture": "Duration-regulated acoustic model with HiFi-GAN V2",
+  "language": "en",
+  "speakers": 1,
+  "precision": "FP32",
+  "acoustic_initialization": "Random initialization; trained on LJSpeech",
+  "vocoder": {
+    "repository": "https://github.com/jik876/hifi-gan",
+    "variant": "LJ_V2",
+    "pretrained": true,
+    "generator_sha256": "3fac378c5918fb2c102733f21eeaa8e9a4ca6cda24dbfddc55bbb947c78d562f"
+  },
+  "build": "0b8a8584919b"
+}

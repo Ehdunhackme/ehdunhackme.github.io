@@ -1,0 +1,25 @@
+{
+  "parameters": 2808792,
+  "acoustic_parameters": 1882807,
+  "vocoder_parameters": 925985,
+  "weight_bytes": 11337715,
+  "voice_asset_bytes": 30144300,
+  "files": {
+    "encoder.onnx": 5002113,
+    "frames.onnx": 2592343,
+    "vocoder.onnx": 3743259,
+    "en.lex": 1796819,
+    "frontend.json": 1248,
+    "frontend.bundle.mjs": 2064430,
+    "lexicon.mjs": 1837,
+    "engine.mjs": 3749,
+    "worker.mjs": 4871,
+    "audio.mjs": 2038,
+    "punctuation.mjs": 2079,
+    "controls.mjs": 2199,
+    "ort/ort.wasm.min.mjs": 53725,
+    "ort/ort-wasm-simd-threaded.mjs": 24738,
+    "ort/ort-wasm-simd-threaded.wasm": 14848852
+  },
+  "units": "Decimal MB; uncompressed file sizes. HTTP compression, page assets and benchmark files are excluded. This is not RAM usage."
+}

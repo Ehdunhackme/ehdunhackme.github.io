@@ -1,0 +1,171 @@
+{
+  "name": "SmollerTTS",
+  "parameters": 2808792,
+  "build": "0b8a8584919b",
+  "files": {
+    "architecture.mjs": {
+      "bytes": 13811,
+      "sha256": "30e5b43213454557bb5e520bff2c20fa91fc7c833267a13666876d4ad5c88d90"
+    },
+    "audio.mjs": {
+      "bytes": 2038,
+      "sha256": "98a8c416d21ee9f06d49078d3e88321865cb2d7a0414b7f4b48fb69a7cddd600"
+    },
+    "benchmark-metrics.mjs": {
+      "bytes": 1702,
+      "sha256": "2c70f5f4ac6f10ad3465d867b72c6d527679f96b89bb6b9db5d8723e2ad738d0"
+    },
+    "benchmark.json": {
+      "bytes": 154724,
+      "sha256": "e69e2f807d81c1f128a9b23bce1d5a96a8e04c8f4fdf65f9bf25f47b42e63b76"
+    },
+    "benchmark.mjs": {
+      "bytes": 18152,
+      "sha256": "52426e642e9d833bcf3a973ec4f3d00fc676b4834d25cd0ee5ca278eb033b774"
+    },
+    "controls.mjs": {
+      "bytes": 2199,
+      "sha256": "32b2c21f6dcb167ccc8d9425cb091f5ff40a358699a6be05be97c648d05e109f"
+    },
+    "credits.html": {
+      "bytes": 4777,
+      "sha256": "e93ae96e43e87af77ad1a4882684ca4fd361fc3581d93fc78bfe253f3348def9"
+    },
+    "disclosures.mjs": {
+      "bytes": 1625,
+      "sha256": "71b4f5218b70a977ba830a1f088c22ff4272afee0af29584942b62930fc01d1c"
+    },
+    "en.lex": {
+      "bytes": 1796819,
+      "sha256": "5af81452f8fad10e1d13d9c58d0a5d07ab8eaff678f68b078d8e11ce00405a4b"
+    },
+    "encoder.onnx": {
+      "bytes": 5002113,
+      "sha256": "0872d67a5ebb0e3fb64e225f0c551c7f41dae65d5b97c1e7814da21163e40a22"
+    },
+    "engine.mjs": {
+      "bytes": 3749,
+      "sha256": "056979356ef29acaaceda77757c9c711715ed4f872258b1ae16c61ad1d66915c"
+    },
+    "frames.onnx": {
+      "bytes": 2592343,
+      "sha256": "7177cd29420ca1a65aa30bc79f33cd11f5ca26b96a6d0052fc80b961bc01784b"
+    },
+    "frontend.bundle.mjs": {
+      "bytes": 2064430,
+      "sha256": "9b2925a9b8a2b884ea836a28faeec29f22e3c5173a402973fe85ffca527d2c4d"
+    },
+    "frontend.json": {
+      "bytes": 1248,
+      "sha256": "f9e0294b1589fa16c978cc3d67d6ae39a7e10fa8438c54bff14432fa94ed51ef"
+    },
+    "index.html": {
+      "bytes": 13179,
+      "sha256": "d3fa40dd33ce06b02a64aec1bf04443b84d7972c24f4e5de3b8dc785a7de37fb"
+    },
+    "lexicon.mjs": {
+      "bytes": 1837,
+      "sha256": "955490d6418fe8c3a050da9b66501990be6a92c1ba39256112a0bc78506cffe7"
+    },
+    "LICENSE": {
+      "bytes": 1068,
+      "sha256": "612548d433aca55a5a7a3d8045b391546d9e91ed54a0fcce13405765a60bc351"
+    },
+    "links.mjs": {
+      "bytes": 1066,
+      "sha256": "0ad4f960fbd63366ce1b1ab7a87b73c56bb2d00864e8a420cdba899642c57376"
+    },
+    "mark.svg": {
+      "bytes": 238,
+      "sha256": "f96ddfc26616f620bd3792a336c957ad87ed1471e0fd1d6436cee4fdf5c8fac6"
+    },
+    "model-size.json": {
+      "bytes": 762,
+      "sha256": "29e7c47dcf7da42e9ed18df4fa14023266410836ef66b6f3fead56497553f8cf"
+    },
+    "model.json": {
+      "bytes": 1235,
+      "sha256": "24396501f6aae9f03295c84d5fd0fb85cf11f40127ea383a3c2d9610a6518884"
+    },
+    "punctuation.mjs": {
+      "bytes": 2079,
+      "sha256": "cf95560d884f90345ceb696f6ca390b71cfe552687277e6ae80d45763619a7de"
+    },
+    "smollertts-wer.json": {
+      "bytes": 4490,
+      "sha256": "a0aac5857b04e3fdb714074f1fa2997c6bdf696b4260bdde46e43818d31e79fb"
+    },
+    "studio.css": {
+      "bytes": 29454,
+      "sha256": "cd682d7d80b8c87e3a097d69d618d89a1092437ad3219afc2903a4669c22a800"
+    },
+    "studio.mjs": {
+      "bytes": 14804,
+      "sha256": "fb64483e22b845d158590e23551a28aed56a9bf1adcf2f48d2698666a1838c68"
+    },
+    "THIRD_PARTY.md": {
+      "bytes": 2117,
+      "sha256": "cd1f1d71972b95d7424268f33aac34a332f027e0aadcd5f333cf9fc61ea5ebb6"
+    },
+    "vocoder.onnx": {
+      "bytes": 3743259,
+      "sha256": "fad5accf376f23db956395fee1523f9cf1ffd99d53b5b0dbc4666d3f1b9ae743"
+    },
+    "worker.mjs": {
+      "bytes": 4871,
+      "sha256": "57461aecaee0b6414d9ce799e2a516138aa63ac382c0fe7857af7bd56711bf4c"
+    },
+    "ort/ort-wasm-simd-threaded.mjs": {
+      "bytes": 24738,
+      "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3"
+    },
+    "ort/ort-wasm-simd-threaded.wasm": {
+      "bytes": 14848852,
+      "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d"
+    },
+    "ort/ort.wasm.min.mjs": {
+      "bytes": 53725,
+      "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234"
+    },
+    "model/assets.lock.json": {
+      "bytes": 1239,
+      "sha256": "1f0f8813473683a4bc18ed9d8d4e3ee1d1b5aba2bb55941054a2380941c8d0d1"
+    },
+    "licenses/Geist-LICENSE.txt": {
+      "bytes": 4486,
+      "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+    },
+    "licenses/HIFIGAN-LICENSE.txt": {
+      "bytes": 1067,
+      "sha256": "5eec017ce442989e01a46cd9cd6aeb13cd0aa3b3943f681577bda00475afaa23"
+    },
+    "licenses/ONNXRUNTIME-LICENSE.txt": {
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    "licenses/PHONEMIZE-LICENSE.txt": {
+      "bytes": 1061,
+      "sha256": "5162b31ceb965e5a5fb2e144dd968790279f927cd4fdf3c2512d1f814f16d84b"
+    },
+    "licenses/TO-WORDS-LICENSE.txt": {
+      "bytes": 1072,
+      "sha256": "b4d406ca7d8cd6489bed8db86c9988b78dae6f4ab1b0ca90c9a7c7de62505b37"
+    },
+    "icons/github.svg": {
+      "bytes": 959,
+      "sha256": "6a9577cd4f7fa6b75bde1025af85b944e9dd1388373b55ccba6e9f80ac2eae60"
+    },
+    "icons/huggingface.svg": {
+      "bytes": 4634,
+      "sha256": "3613c73f07ccae19118bfe6d2f8cd127183d08cf99468a708e090953e116ed0a"
+    },
+    "fonts/geist-latin-wght-normal.woff2": {
+      "bytes": 29400,
+      "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+    },
+    "fonts/Geist-LICENSE.txt": {
+      "bytes": 4486,
+      "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+    }
+  }
+}

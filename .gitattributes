@@ -1,0 +1,5 @@
+# This self-contained build verifies its files by SHA-256 in the browser.
+# Preserve exact bytes across Windows and Linux checkouts.
+public/projects/smollertts/** -text linguist-vendored
+*.onnx binary
+*.wasm binary

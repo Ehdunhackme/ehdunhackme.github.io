@@ -16,7 +16,7 @@ test("project sections switch like About and retain history and deep links", asy
 
   for (const [label, id, count] of [
     ["Acknowledgements", "project-acknowledgements", 1],
-    ["Projects", "project-builds", 5],
+    ["Projects", "project-builds", 6],
   ] as const) {
     await index.getByRole("link", { name: label, exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`#${id}$`));
@@ -83,7 +83,7 @@ test("section switching preserves summaries and global search reaches all groups
   await search.fill("platonic");
   await expect(page.locator(".directory-group:visible")).toHaveCount(2);
   await expect(page.locator(".paper-list > li:visible")).toHaveCount(2);
-  await expect(page.getByRole("status")).toHaveText("2 of 16 entries");
+  await expect(page.getByRole("status")).toHaveText("2 of 17 entries");
   await expect(index.locator("[aria-current]")).toHaveCount(0);
   await search.press("Escape");
   await expect(index.locator("[aria-current]")).toHaveText("Projects");

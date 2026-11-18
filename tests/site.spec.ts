@@ -53,7 +53,7 @@ test("project content is pre-rendered, searchable, and explanations animate both
   await page.goto("/projects/");
   await page.waitForLoadState("networkidle");
   const entries = page.locator(".paper-list > li");
-  await expect(entries).toHaveCount(16);
+  await expect(entries).toHaveCount(17);
   const search = page.getByRole("searchbox");
   await search.fill("chert");
   await expect(page.locator(".paper-list > li:visible")).toHaveCount(1);

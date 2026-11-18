@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ffffff"><meta name="description" content="A 2.81M-parameter English voice TTS model that runs on your browser’s CPU.">
+<link rel="canonical" href="https://dunlichan.com/projects/smollertts/">
+<meta property="og:type" content="website"><meta property="og:title" content="SmollerTTS — Text to speech">
+<meta property="og:description" content="A 2.81M-parameter English voice TTS model that runs on your browser’s CPU.">
+<meta property="og:url" content="https://dunlichan.com/projects/smollertts/">
+<meta property="og:image" content="https://dunlichan.com/assets/project-previews/smollertts-architecture.png">
+<meta property="og:image:alt" content="SmollerTTS architecture: text encoder, acoustic features and waveform decoder">
+<meta name="twitter:card" content="summary_large_image">
+<title>SmollerTTS — Text to speech</title><link rel="icon" href="./mark.svg" type="image/svg+xml">
+<link rel="preload" href="./fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./studio.css?h=0b8a8584919b">
+</head><body>
+<a class="skip" href="#text">Skip to editor</a>
+<div class="shell">
+<header class="nav">
+<a class="brand" href="./"><img src="./mark.svg" width="28" height="28" alt=""><span>SmollerTTS</span></a>
+<nav class="nav-links" aria-label="Project links">
+<a class="repo-link" href="https://huggingface.co/dunli5107/SmollerTTS" target="_blank" rel="noopener noreferrer"><img class="source-logo" src="./icons/huggingface.svg" width="16" height="16" alt=""><span>Hugging Face</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+<a class="repo-link" href="https://github.com/Ehdunhackme/SmollerTTS" target="_blank" rel="noopener noreferrer"><img class="source-logo" src="./icons/github.svg" width="16" height="16" alt=""><span>GitHub</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</nav>
+</header>
+
+<main>
+<div class="page-heading">
+<h1 id="editor-title">SmollerTTS Text to speech</h1>
+
+</div>
+<p class="model-description">A 2.81M-parameter English voice TTS model that runs on your browser’s CPU.</p>
+<section class="editor" aria-labelledby="editor-title">
+<label class="sr-only" for="text">Text to read aloud</label>
+<textarea id="text" placeholder="Write something to hear it…" spellcheck="true">The meeting moved to 3:30 pm on March 14th, so we have about 45 minutes left. It costs $12.99.</textarea>
+<div class="editor-bottom">
+<div class="editor-tools">
+<button id="settings-toggle" type="button" class="settings-button" aria-controls="advanced" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h8m4 0h4M4 17h3m4 0h9"/><circle cx="14" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>Settings</span><svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></button>
+<div class="text-tools">
+<button id="example" type="button" class="text-button" aria-label="Try an example" title="Try an example"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 14 4 4-4 4M18 2l4 4-4 4M2 18h2c5 0 7-12 12-12h6M2 6h2c1.5 0 2.8 1.1 4 3M14 15c1.2 1.9 2.5 3 4 3h4"/></svg><span>Try an example</span></button>
+<button id="clear" type="button" class="icon-button" aria-label="Clear text" title="Clear text"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V3h6v4"/></svg></button>
+</div>
+</div>
+<div class="model-state sr-only"><span id="state-dot"></span><span id="state-label">Loading</span></div>
+<div class="actions">
+<button id="cancel" class="secondary" type="button" hidden>Stop</button>
+<button id="generate" class="primary" type="button" disabled aria-keyshortcuts="Control+Enter Meta+Enter" title="Generate speech (Ctrl / ⌘ + Enter)"><span class="activity-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="generate-label">Loading voice</span><kbd id="shortcut" class="shortcut" aria-hidden="true">Ctrl ↵</kbd></button>
+</div>
+</div>
+<div id="advanced" hidden>
+<div class="advanced-grid">
+<fieldset id="voice-controls" disabled>
+<legend class="sr-only">Delivery</legend>
+<div class="preset-row"><label for="style">Delivery <select id="style"><option value="natural">Natural</option><option value="relaxed">Relaxed</option><option value="bright">Bright</option><option value="lower">Lower</option><option value="custom" disabled>Custom</option></select></label><button id="reset-voice" class="text-button" type="button">Reset</button></div>
+<div class="sliders">
+<label for="speed">Speed <output id="speed-value">1.00×</output><input id="speed" type="range" min="0.85" max="1.15" step="0.01" value="1"></label>
+<label for="pitch">Pitch <output id="pitch-value">0 st</output><input id="pitch" type="range" min="-2" max="2" step="0.25" value="0"></label>
+<label for="energy">Energy <output id="energy-value">0 dB</output><input id="energy" type="range" min="-1.5" max="1.5" step="0.25" value="0"></label>
+</div>
+<label class="check stream-setting"><input id="stream" type="checkbox" checked> Play as speech is generated</label>
+<label class="check punctuation-setting"><input id="punctuation" type="checkbox" checked autocomplete="off"> Follow punctuation</label>
+</fieldset>
+<div class="pronunciation-settings">
+<label for="pronunciations">Pronunciation dictionary</label>
+<textarea id="pronunciations" maxlength="2000" placeholder="name = spoken parts" aria-describedby="pronunciation-help"></textarea>
+<p id="pronunciation-help">Add a pronunciation, one per line.</p>
+<label class="check"><input id="split-compounds" type="checkbox" checked autocomplete="off"> Split unfamiliar compound words</label>
+<p class="setting-hint">Only tested words are changed.</p>
+</div>
+</div>
+</div>
+</section>
+<p id="status" role="status" aria-live="polite">Loading the voice…</p><button id="retry" type="button" class="secondary" hidden>Retry loading</button>
+<section id="result" class="result" aria-label="Generated audio" hidden>
+<div class="result-heading"><span id="result-meta"></span><a id="download" download="smollertts.wav">Download WAV <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg></a></div>
+<div class="player">
+<button id="play" type="button" class="play" aria-label="Play audio"><span id="play-symbol" aria-hidden="true"><svg class="play-icon" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg><svg class="pause-icon" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg></span></button>
+<div class="wave-area"><canvas id="waveform" width="1200" height="96" aria-hidden="true"></canvas><label class="sr-only" for="seek">Seek through audio</label><input id="seek" type="range" min="0" max="100" value="0" step="0.1"></div><span id="time">0:00 / 0:00</span>
+</div>
+<audio id="audio" preload="metadata"></audio>
+<details id="spoken"><summary>Pronunciation details <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></summary><div class="disclosure-content"><p id="spoken-text"></p><p id="pronunciation-note" hidden></p></div></details>
+</section>
+<section class="bench" aria-labelledby="benchmark-title">
+<div class="section-heading"><h2 id="benchmark-title">Speech quality vs. model size (rough)</h2><div class="chart-range" role="group" aria-label="Model size range" data-active="all"><span class="range-indicator" aria-hidden="true"></span><button type="button" data-range="all" aria-pressed="true">All models</button><button type="button" data-range="small" aria-pressed="false">Under 10M</button></div></div>
+<div class="metric-toolbar">
+<div class="metric-tabs" role="group" aria-label="Benchmark metric">
+<button type="button" data-metric="utmos" aria-pressed="true">Quality <span>UTMOS ↑</span></button>
+<button type="button" data-metric="wer" aria-pressed="false">Word errors <span>WER ↓</span></button>
+</div>
+<label class="spread-toggle"><input id="show-spread" type="checkbox"> Show prompt range</label>
+</div>
+<p class="metric-note" id="metric-note"></p>
+<div class="chart-head"><div class="legend"><span><i class="own"></i>SmollerTTS</span><span><i class="small"></i>Under 10M</span><span><i class="medium"></i>10–100M</span><span><i class="large"></i>100M+</span></div><span id="model-count"></span></div>
+<div class="chart-metric" id="chart-metric">UTMOS ↑</div>
+<div id="chart" class="chart" aria-label="Interactive chart of UTMOS score against reported model parameter count"><svg id="chart-grid" aria-hidden="true"></svg><div id="chart-points"></div><div id="chart-labels" aria-hidden="true"></div><div id="chart-tooltip" role="tooltip" hidden></div></div>
+<div class="chart-axis">Parameters <span>· log scale</span></div>
+<div id="chart-selection" class="sr-only" role="status" aria-live="polite"></div>
+<details class="method"><summary><span>Method &amp; sources</span><svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="disclosure-content"><p id="benchmark-note"></p><div id="benchmark-method"></div><a href="./benchmark.json?h=0b8a8584919b" download="smollertts-benchmark.json" class="data-link" id="data-download">Download data ↓</a></div></details>
+<details class="results-table"><summary><span>All results <span id="results-total"></span></span><svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="disclosure-content">
+<div class="table-toolbar"><label class="sr-only" for="model-search">Search models</label><input id="model-search" type="search" placeholder="Search models" autocomplete="off"><span id="table-count" role="status" aria-live="polite"></span></div>
+<div class="table-scroll"><table><caption class="sr-only">Model results. Select a column heading to sort.</caption><colgroup><col class="model-column"><col class="size-column"><col class="score-column"><col class="wer-column"><col class="runtime-column"><col class="source-column"></colgroup><thead><tr><th scope="col"><button type="button" data-sort="name">Model <span aria-hidden="true">↕</span></button></th><th scope="col"><button type="button" data-sort="parameters_m">Parameters <span aria-hidden="true">↕</span></button></th><th scope="col" aria-sort="descending"><button type="button" data-sort="utmos">UTMOS <span aria-hidden="true">↓</span></button></th><th scope="col"><button type="button" data-sort="wer">WER <span aria-hidden="true">↕</span></button></th><th scope="col"><button type="button" data-sort="runtime">Runtime <span aria-hidden="true">↕</span></button></th><th scope="col" class="source-heading">Source</th></tr></thead><tbody id="benchmark-table"></tbody></table></div>
+</div></details>
+</section>
+<section class="architecture" aria-labelledby="architecture-title">
+<div class="section-heading"><h2 id="architecture-title">Inside SmollerTTS</h2></div>
+<p class="architecture-intro">From phonemes to a waveform. Select a block to explore.</p>
+<p class="pan-hint">Swipe the diagram to see all three columns.</p>
+<div id="architecture-scroll" class="architecture-scroll" tabindex="0" role="region" aria-label="Model architecture. Scroll horizontally on small screens."><div id="architecture-diagram"></div></div>
+<div class="architecture-detail" aria-live="polite"><div><span id="architecture-step"></span><h3 id="architecture-block-title"></h3><p id="architecture-shape"></p></div><p id="architecture-explanation"></p></div>
+</section>
+<section class="model-details" aria-labelledby="model-details-title">
+<div class="section-heading"><h2 id="model-details-title">Model details</h2></div>
+<div class="model-details-body">
+<div class="model-details-copy"><p>A phoneme-based acoustic model predicts an 80-band mel spectrogram. HiFi-GAN V2 turns it into speech.</p><p>Our acoustic weights were trained on LJSpeech. The vocoder uses pretrained LJ_V2 weights.</p><a href="./credits.html">References &amp; credits ↗</a></div>
+<dl class="model-specs">
+<div><dt>Voice</dt><dd><span>English</span><small>Single speaker</small></dd></div>
+<div><dt>Parameters</dt><dd><span>2.81M</span><small>1.88M acoustic + 0.93M vocoder</small></dd></div>
+<div><dt>Audio output</dt><dd><span>22.05 kHz</span><small>Mono · WAV download</small></dd></div>
+<div><dt>Inference</dt><dd><span>Browser CPU</span><small>ONNX Runtime · WebAssembly</small></dd></div>
+<div><dt>Weight files</dt><dd><span id="weight-size">11.34 MB</span><small>FP32 · ONNX</small></dd></div>
+<div><dt>Browser files</dt><dd><span id="voice-size">—</span><small>Includes runtime &amp; pronunciation</small></dd></div>
+</dl>
+</div>
+</section>
+</main>
+<footer><span>SmollerTTS</span><div><a href="./credits.html">Credits</a><a href="https://dunlichan.com/" target="_blank" rel="noopener noreferrer">Dun Li Chan ↗</a></div></footer>
+
+</div><script type="module" src="./studio.mjs?h=0b8a8584919b"></script>
+</body></html>

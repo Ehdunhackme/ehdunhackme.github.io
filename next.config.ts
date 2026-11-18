@@ -5,6 +5,14 @@ const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   images: { formats: ["image/webp"], minimumCacheTTL: 86400 },
+  async rewrites() {
+    return [
+      {
+        source: "/projects/smollertts/",
+        destination: "/projects/smollertts/index.html",
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },

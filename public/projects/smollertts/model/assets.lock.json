@@ -1,0 +1,38 @@
+{
+  "repository": "dunli5107/SmollerTTS",
+  "revision": "a4b7e512938dabffc2e0f6fc5d14dc43882a1599",
+  "files": {
+    "encoder.onnx": {
+      "bytes": 5002113,
+      "sha256": "0872d67a5ebb0e3fb64e225f0c551c7f41dae65d5b97c1e7814da21163e40a22"
+    },
+    "frames.onnx": {
+      "bytes": 2592343,
+      "sha256": "7177cd29420ca1a65aa30bc79f33cd11f5ca26b96a6d0052fc80b961bc01784b"
+    },
+    "vocoder.onnx": {
+      "bytes": 3743259,
+      "sha256": "fad5accf376f23db956395fee1523f9cf1ffd99d53b5b0dbc4666d3f1b9ae743"
+    },
+    "en.lex": {
+      "bytes": 1796819,
+      "sha256": "5af81452f8fad10e1d13d9c58d0a5d07ab8eaff678f68b078d8e11ce00405a4b"
+    },
+    "frontend.json": {
+      "bytes": 1248,
+      "sha256": "f9e0294b1589fa16c978cc3d67d6ae39a7e10fa8438c54bff14432fa94ed51ef"
+    },
+    "ort/ort.wasm.min.mjs": {
+      "bytes": 53725,
+      "sha256": "c21d9c326d453a4a61398270c804d5979e118540597cb0c07f7b3d64e6098234"
+    },
+    "ort/ort-wasm-simd-threaded.mjs": {
+      "bytes": 24738,
+      "sha256": "30ed0b5cd1182ede931fea448afb567d4dc705ec957af09f108a2be5f770dac3"
+    },
+    "ort/ort-wasm-simd-threaded.wasm": {
+      "bytes": 14848852,
+      "sha256": "4b884c203b0fa48d057be3332c65513ff85aa3c5bddd6946acc0fab7ecda001d"
+    }
+  }
+}
