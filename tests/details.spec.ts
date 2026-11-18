@@ -3,15 +3,26 @@ import { test, expect } from "@playwright/test";
 test("every explanation has readable headings, section spacing and unclipped content", async ({
   page,
 }) => {
-  // This checks 28 animated interactions across all entries, including mobile WebKit.
+  // Open and close every summary across all sections, including mobile WebKit.
   test.setTimeout(120000);
   await page.goto("/projects/");
   await page.evaluate(() => document.fonts.ready);
   const explanations = page.locator(".paper-explanation");
-  await expect(explanations).toHaveCount(14);
+  await expect(explanations).toHaveCount(15);
 
   for (const explanation of await explanations.all()) {
     const toggle = explanation.getByRole("button", { name: "AI summary" });
+    if (!(await toggle.isVisible())) {
+      const section = await explanation.evaluate(
+        (el) =>
+          el.closest<HTMLElement>("[data-project-section]")!.dataset
+            .projectSection!,
+      );
+      await page
+        .getByRole("navigation", { name: "Project sections" })
+        .locator(`[aria-controls="${section}"]`)
+        .click();
+    }
     await toggle.click();
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     await explanation.evaluate(async (el) => {
