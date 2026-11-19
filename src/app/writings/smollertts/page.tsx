@@ -16,13 +16,18 @@ export const metadata: Metadata = {
     url: "/writings/smollertts/",
     publishedTime: "2026-11-19",
     authors: ["Dun Li Chan"],
-    images: [{ url: "/assets/writings/smollertts/architecture.png", alt: "SmollerTTS architecture" }],
+    images: [{
+      url: "/assets/writings/smollertts/architecture-flow-preview.png",
+      width: 584,
+      height: 714,
+      alt: "SmollerTTS flow from text and phonemes to acoustic features and a speech waveform",
+    }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/assets/writings/smollertts/architecture.png"],
+    images: ["/assets/writings/smollertts/architecture-flow-preview.png"],
   },
 };
 
