@@ -917,10 +917,10 @@ export function ProjectsContent() {
                 <article className="paper-row">
                   <div className="paper-thumbnail project-thumbnail">
                     <Image
-                      src="/assets/writings/smollertts/architecture-flow-preview.png"
-                      alt="SmollerTTS flow from text and phonemes to acoustic features and a speech waveform"
-                      width={584}
-                      height={714}
+                      src="/assets/project-previews/smollertts-flow-square.png"
+                      alt="SmollerTTS acoustic pipeline: text encoder, length regulator, frame decoder and HiFi-GAN"
+                      width={800}
+                      height={800}
                       loading="lazy"
                       sizes="(max-width: 600px) 64px, 100px"
                     />

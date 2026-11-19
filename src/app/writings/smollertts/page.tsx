@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     publishedTime: "2026-11-19",
     authors: ["Dun Li Chan"],
     images: [{
-      url: "/assets/writings/smollertts/architecture-flow-preview.png",
-      width: 584,
-      height: 714,
+      url: "/assets/writings/smollertts/architecture-flow-clean.png",
+      width: 1200,
+      height: 1511,
       alt: "SmollerTTS flow from text and phonemes to acoustic features and a speech waveform",
     }],
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/assets/writings/smollertts/architecture-flow-preview.png"],
+    images: ["/assets/writings/smollertts/architecture-flow-clean.png"],
   },
 };
 
