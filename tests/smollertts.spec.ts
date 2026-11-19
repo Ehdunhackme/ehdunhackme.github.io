@@ -17,7 +17,7 @@ test("SmollerTTS leads Projects and opens the standalone demo", async ({
   await expect(
     entry.getByRole("link", { name: "Hugging Face" }),
   ).toHaveAttribute("href", "https://huggingface.co/dunli5107/SmollerTTS");
-  await entry.getByRole("button", { name: "AI summary" }).click();
+  await entry.getByRole("button", { name: "LLM explanation" }).click();
   await expect(entry.locator(".paper-explanation-panel")).toBeVisible();
   await expect(entry.locator(".paper-explanation-body")).toContainText(
     "pretrained HiFi-GAN V2",
@@ -27,6 +27,11 @@ test("SmollerTTS leads Projects and opens the standalone demo", async ({
   await expect(
     page.getByRole("heading", { name: "SmollerTTS Text to speech" }),
   ).toBeVisible();
+  const header = await page.locator("header.nav").boundingBox();
+  const heading = await page.locator(".page-heading").boundingBox();
+  const projectLinks = await page.getByRole("navigation", { name: "Project links" }).boundingBox();
+  expect(projectLinks!.y + projectLinks!.height).toBeLessThanOrEqual(header!.y + header!.height);
+  expect(heading!.y - (header!.y + header!.height)).toBeGreaterThanOrEqual(16);
   await expect(page.locator("#architecture-diagram svg")).toBeAttached();
   await expect(
     page.getByRole("navigation", { name: "Main navigation" }),
@@ -49,5 +54,9 @@ test("SmollerTTS leads Projects and opens the standalone demo", async ({
   expect(manifest.name).toBe("SmollerTTS");
   expect(manifest.parameters).toBe(2808792);
   expect(manifest.files["vocoder.onnx"].bytes).toBe(3743259);
+  await page.getByRole("navigation", { name: "Project links" })
+    .getByRole("link", { name: "Technical blog", exact: true }).click();
+  await expect(page).toHaveURL(/\/writings\/smollertts\/$/);
+  await expect(page.locator("article h1")).toContainText("SmollerTTS");
   expect(errors).toEqual([]);
 });

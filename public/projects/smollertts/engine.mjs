@@ -1,7 +1,7 @@
 // Keep unfused FP32 arithmetic to preserve the released waveform output.
-import * as ort from './ort/ort.wasm.min.mjs?h=370842fc0871';
-import {validateControls, adjustDurations, adjustProsody} from './controls.mjs?h=370842fc0871';
-import {applyPunctuation} from './punctuation.mjs?h=370842fc0871';
+import * as ort from './ort/ort.wasm.min.mjs?h=41a51497074d';
+import {validateControls, adjustDurations, adjustProsody} from './controls.mjs?h=41a51497074d';
+import {applyPunctuation} from './punctuation.mjs?h=41a51497074d';
 
 export async function loadEngine(models, wasmBinary) {
   ort.env.wasm.numThreads = 1;

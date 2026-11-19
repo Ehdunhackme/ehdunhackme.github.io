@@ -1,0 +1,3255 @@
+{
+  "samples": [
+    {
+      "id": "everyday",
+      "label": "Everyday speech",
+      "text": "Open the browser and read my email.",
+      "src": "/assets/writings/smollertts/everyday.wav",
+      "duration": 2.4613,
+      "peaks": [
+        0.1258,
+        0.1088,
+        0.0832,
+        0.0605,
+        0.1737,
+        0.3996,
+        0.6767,
+        0.9065,
+        1.0,
+        0.9272,
+        0.7136,
+        0.4483,
+        0.2401,
+        0.2402,
+        0.4215,
+        0.6107,
+        0.7203,
+        0.7232,
+        0.6767,
+        0.6533,
+        0.6744,
+        0.6753,
+        0.599,
+        0.4385,
+        0.2676,
+        0.2448,
+        0.4552,
+        0.7199,
+        0.9246,
+        0.9986,
+        0.9878,
+        0.9383,
+        0.9029,
+        0.859,
+        0.8142,
+        0.7558,
+        0.6982,
+        0.6358,
+        0.5769,
+        0.5434,
+        0.537,
+        0.5801,
+        0.611,
+        0.6263,
+        0.611,
+        0.5958,
+        0.5759,
+        0.5494,
+        0.5287,
+        0.5165,
+        0.4902,
+        0.4399,
+        0.3849,
+        0.3873,
+        0.4655,
+        0.5832,
+        0.6921,
+        0.7509,
+        0.7613,
+        0.7333,
+        0.6626,
+        0.555,
+        0.3962,
+        0.2557,
+        0.192,
+        0.2742,
+        0.4019,
+        0.523,
+        0.6062,
+        0.667,
+        0.6892,
+        0.6899,
+        0.6642,
+        0.6408,
+        0.6217,
+        0.6102,
+        0.5957,
+        0.5776,
+        0.5638,
+        0.5617,
+        0.5467,
+        0.5053,
+        0.4551,
+        0.4417,
+        0.4763,
+        0.5189,
+        0.5447,
+        0.5435,
+        0.5212,
+        0.4859,
+        0.4426,
+        0.4049,
+        0.3659,
+        0.319,
+        0.2571,
+        0.1819,
+        0.1137,
+        0.062,
+        0.04,
+        0.0323
+      ],
+      "sha256": "fc8e12cd6e72f001f4fa43a1dc6100b578be41a42aaabe4002093d4dcecb07f1"
+    },
+    {
+      "id": "numbers",
+      "label": "Dates, times and money",
+      "text": "The meeting moved to 3:30 pm on March 14th, so we have about 45 minutes left. It costs $12.99.",
+      "src": "/assets/writings/smollertts/numbers.wav",
+      "duration": 10.0078,
+      "peaks": [
+        0.3897,
+        0.6356,
+        0.8171,
+        0.9039,
+        0.885,
+        0.8884,
+        0.8641,
+        0.8084,
+        0.6178,
+        0.4417,
+        0.3123,
+        0.3483,
+        0.4351,
+        0.5399,
+        0.6355,
+        0.6858,
+        0.7322,
+        0.7012,
+        0.6417,
+        0.5711,
+        0.6217,
+        0.6803,
+        0.7108,
+        0.6547,
+        0.6533,
+        0.6865,
+        0.7234,
+        0.6613,
+        0.5503,
+        0.4987,
+        0.5194,
+        0.5642,
+        0.5519,
+        0.5351,
+        0.471,
+        0.3646,
+        0.2203,
+        0.1008,
+        0.1876,
+        0.4313,
+        0.7011,
+        0.8857,
+        0.9084,
+        0.8668,
+        0.8046,
+        0.8278,
+        0.8376,
+        0.8246,
+        0.7464,
+        0.6694,
+        0.6716,
+        0.692,
+        0.6987,
+        0.6842,
+        0.7186,
+        0.7312,
+        0.717,
+        0.6743,
+        0.6679,
+        0.6348,
+        0.6247,
+        0.5889,
+        0.5585,
+        0.4243,
+        0.2816,
+        0.1361,
+        0.1718,
+        0.2351,
+        0.503,
+        0.751,
+        1.0,
+        0.988,
+        0.8746,
+        0.6539,
+        0.6429,
+        0.6726,
+        0.7971,
+        0.8523,
+        0.9077,
+        0.8949,
+        0.8179,
+        0.7191,
+        0.6316,
+        0.6112,
+        0.6317,
+        0.6576,
+        0.6721,
+        0.6523,
+        0.6338,
+        0.6317,
+        0.6335,
+        0.6526,
+        0.6485,
+        0.6599,
+        0.5948,
+        0.527,
+        0.4191,
+        0.3652,
+        0.2736,
+        0.1871
+      ],
+      "sha256": "e865808729753d1551f9f324614845abca113668c4d89008d6e34daf52d4616b"
+    },
+    {
+      "id": "technical",
+      "label": "Technical words",
+      "text": "I'll start a new git branch, push the changes, and open a pull request when the tests pass.",
+      "src": "/assets/writings/smollertts/technical.wav",
+      "duration": 6.4668,
+      "peaks": [
+        0.2522,
+        0.532,
+        0.8287,
+        0.98,
+        0.984,
+        0.8795,
+        0.84,
+        0.8632,
+        0.9676,
+        1.0,
+        0.95,
+        0.8136,
+        0.7165,
+        0.7448,
+        0.821,
+        0.8446,
+        0.7979,
+        0.7014,
+        0.631,
+        0.5011,
+        0.3782,
+        0.3447,
+        0.4599,
+        0.5892,
+        0.6022,
+        0.5307,
+        0.4294,
+        0.3473,
+        0.2971,
+        0.2274,
+        0.1553,
+        0.0788,
+        0.125,
+        0.2934,
+        0.4787,
+        0.6256,
+        0.6558,
+        0.63,
+        0.5466,
+        0.5128,
+        0.5429,
+        0.6574,
+        0.7721,
+        0.7751,
+        0.7164,
+        0.6395,
+        0.6366,
+        0.6362,
+        0.5936,
+        0.5058,
+        0.3627,
+        0.2226,
+        0.0897,
+        0.0541,
+        0.2217,
+        0.3893,
+        0.5407,
+        0.5903,
+        0.6301,
+        0.6342,
+        0.6495,
+        0.6217,
+        0.6223,
+        0.5673,
+        0.4731,
+        0.4514,
+        0.5806,
+        0.753,
+        0.8104,
+        0.7247,
+        0.5838,
+        0.4646,
+        0.4985,
+        0.5954,
+        0.6295,
+        0.5471,
+        0.4475,
+        0.4396,
+        0.5404,
+        0.5598,
+        0.5298,
+        0.4653,
+        0.5036,
+        0.5898,
+        0.639,
+        0.5975,
+        0.5072,
+        0.3942,
+        0.3401,
+        0.3411,
+        0.4376,
+        0.54,
+        0.5662,
+        0.5096,
+        0.4176,
+        0.3721,
+        0.3595,
+        0.3103,
+        0.2183,
+        0.1114
+      ],
+      "sha256": "1323fb5f6030ef3c45055cb16fbb6fde9e4eea51c046f63c38b403c39b98f311"
+    }
+  ],
+  "models": [
+    {
+      "id": "auroratts",
+      "name": "AuroraTTS-100K",
+      "parameters_m": 0.09559999999999999,
+      "utmos": 3.085425,
+      "wer": 0.1158,
+      "local": false,
+      "source": "https://huggingface.co/AuroraAI-Research/AuroraTTS-100K",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "2.7395",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.2025",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.2034",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.1963",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "sanotts_amy",
+      "name": "sanoTTS Amy",
+      "parameters_m": 1.46,
+      "utmos": 3.8205999999999998,
+      "wer": 0.066925,
+      "local": false,
+      "source": "https://huggingface.co/ampixa/sanoTTS",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1379",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7211",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.7677",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6557",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "smollertts",
+      "name": "SmollerTTS",
+      "parameters_m": 2.808792,
+      "utmos": 3.553914248943329,
+      "wer": 0.06691919191919192,
+      "local": true,
+      "source": "https://github.com/Ehdunhackme/SmollerTTS",
+      "runtime": "Browser CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": 1,
+          "utmos": 3.4720206260681152,
+          "wer": 0.0
+        },
+        {
+          "prompt_id": 2,
+          "utmos": 4.107442378997803,
+          "wer": 0.0
+        },
+        {
+          "prompt_id": 3,
+          "utmos": 2.6406402587890625,
+          "wer": 0.21212121212121213
+        },
+        {
+          "prompt_id": 4,
+          "utmos": 3.995553731918335,
+          "wer": 0.05555555555555555
+        }
+      ]
+    },
+    {
+      "id": "inflect_nano",
+      "name": "Inflect-Nano v2",
+      "parameters_m": 3.96,
+      "utmos": 4.4332,
+      "wer": 0.053025,
+      "local": false,
+      "source": "https://huggingface.co/owensong/Inflect-Nano-v2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4638",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4645",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3446",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4599",
+          "wer": "0.0000"
+        }
+      ]
+    },
+    {
+      "id": "tinyvoca",
+      "name": "tiny-voca",
+      "parameters_m": 4.5,
+      "utmos": 4.403675,
+      "wer": 0.06565,
+      "local": false,
+      "source": "https://huggingface.co/n4ze3m/tiny-voca",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3633",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4631",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3803",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4080",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "vaniq",
+      "name": "Vaniq-Edge",
+      "parameters_m": 8.91,
+      "utmos": 4.272325,
+      "wer": 0.09342500000000001,
+      "local": false,
+      "source": "https://huggingface.co/Abiray/Vaniq-Edge",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3223",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3753",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2767",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1150",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "inflect_micro",
+      "name": "Inflect-Micro v2",
+      "parameters_m": 9.36,
+      "utmos": 4.444625,
+      "wer": 0.0303,
+      "local": false,
+      "source": "https://huggingface.co/owensong/Inflect-Micro-v2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3869",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4371",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4897",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4648",
+          "wer": "0.0000"
+        }
+      ]
+    },
+    {
+      "id": "kittentts08",
+      "name": "KittenTTS Nano 0.8",
+      "parameters_m": 15.0,
+      "utmos": 4.2857,
+      "wer": 0.0442,
+      "local": false,
+      "source": "https://huggingface.co/KittenML/kitten-tts-nano-0.8",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1598",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4692",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0874",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4264",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "piper",
+      "name": "Piper",
+      "parameters_m": 15.0,
+      "utmos": 4.31135,
+      "wer": 0.0442,
+      "local": false,
+      "source": "https://github.com/OHF-Voice/piper1-gpl",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3353",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4154",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0490",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4457",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "steertts_noflow",
+      "name": "SteerTTS (no refiner)",
+      "parameters_m": 23.1,
+      "utmos": 3.95445,
+      "wer": 0.064925,
+      "local": false,
+      "source": "https://huggingface.co/WhissleAI/steer-tts",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.7814",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3457",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.7720",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.9187",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "woof",
+      "name": "Underdog Woof",
+      "parameters_m": 38.2,
+      "utmos": 4.445,
+      "wer": 0.08965,
+      "local": false,
+      "source": "https://huggingface.co/ConwayResearch/Underdog-Woof",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2935",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4858",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5055",
+          "wer": "0.3030"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4952",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "steertts",
+      "name": "SteerTTS",
+      "parameters_m": 40.8,
+      "utmos": 4.0767,
+      "wer": 0.064925,
+      "local": false,
+      "source": "https://huggingface.co/WhissleAI/steer-tts",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8180",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4333",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.6707",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3848",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "linnet",
+      "name": "LinnetTTS",
+      "parameters_m": 41.4,
+      "utmos": 4.178075,
+      "wer": 0.08837500000000001,
+      "local": false,
+      "source": "https://huggingface.co/VoxRT/linnet-en-35m",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9120",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.0723",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2736",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4544",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "supratts",
+      "name": "SupraTTS 0.1 Beta",
+      "parameters_m": 43.5,
+      "utmos": 3.3011749999999997,
+      "wer": 0.058075,
+      "local": false,
+      "source": "https://huggingface.co/SupraLabs/SupraTTS-0.1-Beta",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "2.8303",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.4602",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.3621",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.5521",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "melotts",
+      "name": "MeloTTS",
+      "parameters_m": 52.0,
+      "utmos": 3.7640000000000002,
+      "wer": 0.152025,
+      "local": false,
+      "source": "https://huggingface.co/myshell-ai/MeloTTS-English",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5850",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.1920",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.6638",
+          "wer": "0.3333"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6152",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "ribt",
+      "name": "ribt",
+      "parameters_m": 54.0,
+      "utmos": 4.254825,
+      "wer": 0.071975,
+      "local": false,
+      "source": "https://huggingface.co/municipal-robotics/ribt",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3675",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4508",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.1811",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0199",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "soprano",
+      "name": "Soprano 1.1 80M",
+      "parameters_m": 80.0,
+      "utmos": 4.032675,
+      "wer": 0.051775,
+      "local": false,
+      "source": "https://huggingface.co/ekwek/Soprano-1.1-80M",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2369",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2407",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8958",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.7573",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "kokoro",
+      "name": "Kokoro",
+      "parameters_m": 82.0,
+      "utmos": 4.504925,
+      "wer": 0.08080000000000001,
+      "local": false,
+      "source": "https://huggingface.co/hexgrad/Kokoro-82M",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4325",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.5182",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5426",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.5264",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "hojo_40m",
+      "name": "Hojo-TTS-Light 40M",
+      "parameters_m": 84.5,
+      "utmos": 4.3623,
+      "wer": 0.118675,
+      "local": false,
+      "source": "https://huggingface.co/HojoAI/Hojo-TTS-Light-40M",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9049",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4878",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5397",
+          "wer": "0.3636"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.5168",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "supertonic",
+      "name": "Supertonic 3",
+      "parameters_m": 99.0,
+      "utmos": 4.4632000000000005,
+      "wer": 0.0745,
+      "local": false,
+      "source": "https://huggingface.co/Supertone/supertonic-3",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4221",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4389",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5159",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4759",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "moss_tts_nano",
+      "name": "MOSS-TTS-Nano",
+      "parameters_m": 100.0,
+      "utmos": 4.098025,
+      "wer": 0.05935,
+      "local": false,
+      "source": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0145",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2648",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0897",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0231",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "openvoice",
+      "name": "OpenVoice v2",
+      "parameters_m": 100.0,
+      "utmos": 4.1025,
+      "wer": 0.13725,
+      "local": false,
+      "source": "https://huggingface.co/myshell-ai/OpenVoiceV2",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1181",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2812",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.1417",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8690",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "pocket",
+      "name": "Pocket-TTS v4",
+      "parameters_m": 100.0,
+      "utmos": 4.32515,
+      "wer": 0.053025,
+      "local": false,
+      "source": "https://github.com/kyutai-labs/pocket-tts",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3870",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4290",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4457",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0389",
+          "wer": "0.0000"
+        }
+      ]
+    },
+    {
+      "id": "sopro",
+      "name": "Sopro V2 Turbo",
+      "parameters_m": 120.0,
+      "utmos": 4.00075,
+      "wer": 0.08007500000000001,
+      "local": false,
+      "source": "https://huggingface.co/samuel-vitorino/sopro-v2-turbo",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8414",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.1550",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.1992",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8074",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "sopro_streaming",
+      "name": "Sopro V2 Turbo (streaming)",
+      "parameters_m": 120.0,
+      "utmos": 3.637925,
+      "wer": 0.0745,
+      "local": false,
+      "source": "https://huggingface.co/samuel-vitorino/sopro-v2-turbo",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.4262",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.8630",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.9167",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.3458",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "luxtts",
+      "name": "LuxTTS",
+      "parameters_m": 123.0,
+      "utmos": 2.303125,
+      "wer": 0.611025,
+      "local": false,
+      "source": "https://github.com/ysharma3501/LuxTTS",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "1.4784",
+          "wer": "1.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "2.0887",
+          "wer": "0.3684"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.1240",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "2.5214",
+          "wer": "0.8333"
+        }
+      ]
+    },
+    {
+      "id": "zipvoice",
+      "name": "ZipVoice",
+      "parameters_m": 123.0,
+      "utmos": 4.008900000000001,
+      "wer": 0.071975,
+      "local": false,
+      "source": "https://huggingface.co/k2-fsa/ZipVoice",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8373",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3268",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2281",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6434",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "scyllasband",
+      "name": "Scylla's Band",
+      "parameters_m": 131.0,
+      "utmos": 4.15975,
+      "wer": 0.02905,
+      "local": false,
+      "source": "https://huggingface.co/spybyscript/scyllasband",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9200",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3353",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0143",
+          "wer": "0.0606"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3694",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "styletts2",
+      "name": "StyleTTS 2",
+      "parameters_m": 148.0,
+      "utmos": 4.3717749999999995,
+      "wer": 0.176575,
+      "local": false,
+      "source": "https://github.com/yl4579/StyleTTS2",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3054",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4536",
+          "wer": "0.1053"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4350",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2931",
+          "wer": "0.3889"
+        }
+      ]
+    },
+    {
+      "id": "hojo_80m",
+      "name": "Hojo-TTS-Light 80M",
+      "parameters_m": 167.0,
+      "utmos": 4.3414,
+      "wer": 0.066925,
+      "local": false,
+      "source": "https://huggingface.co/HojoAI/Hojo-TTS-Light",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0738",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4999",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3094",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4825",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "audio8_01b",
+      "name": "Audio8 TTS Preview 0.1B",
+      "parameters_m": 170.0,
+      "utmos": 4.40105,
+      "wer": 0.113275,
+      "local": false,
+      "source": "https://huggingface.co/Audio8/Audio8-TTS-Preview-0.1b",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4641",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3816",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4993",
+          "wer": "0.0909"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2592",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "neutts_nano",
+      "name": "NeuTTS Nano",
+      "parameters_m": 229.0,
+      "utmos": 4.116474999999999,
+      "wer": 0.272725,
+      "local": false,
+      "source": "https://huggingface.co/neuphonic/neutts-nano-q4-gguf",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.7968",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2645",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3744",
+          "wer": "0.7576"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0302",
+          "wer": "0.3333"
+        }
+      ]
+    },
+    {
+      "id": "f5tts",
+      "name": "F5-TTS v1",
+      "parameters_m": 330.0,
+      "utmos": 4.02095,
+      "wer": 0.21407500000000002,
+      "local": false,
+      "source": "https://huggingface.co/SWivid/F5-TTS",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9900",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.1206",
+          "wer": "0.1579"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0163",
+          "wer": "0.3333"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.9569",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "magpie",
+      "name": "Magpie-TTS",
+      "parameters_m": 357.0,
+      "utmos": 4.38325,
+      "wer": 0.07955,
+      "local": false,
+      "source": "https://huggingface.co/nvidia/magpie_tts_multilingual_357m",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3280",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3856",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4122",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4072",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "vibevoice",
+      "name": "VibeVoice Realtime 0.5B",
+      "parameters_m": 500.0,
+      "utmos": 4.21515,
+      "wer": 0.101,
+      "local": false,
+      "source": "https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1683",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4197",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0974",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1752",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "cosyvoice",
+      "name": "CosyVoice 3 0.5B",
+      "parameters_m": 500.0,
+      "utmos": 3.9748,
+      "wer": 0.05935,
+      "local": false,
+      "source": "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.7331",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.8639",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.9281",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3741",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "fish_15",
+      "name": "Fish Speech 1.5",
+      "parameters_m": 500.0,
+      "utmos": 3.8691500000000003,
+      "wer": 0.16465,
+      "local": false,
+      "source": "https://huggingface.co/fishaudio/fish-speech-1.5",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0609",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.6815",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8263",
+          "wer": "0.2727"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.9079",
+          "wer": "0.3333"
+        }
+      ]
+    },
+    {
+      "id": "miratts",
+      "name": "MiraTTS",
+      "parameters_m": 500.0,
+      "utmos": 3.803,
+      "wer": 0.09975,
+      "local": false,
+      "source": "https://huggingface.co/YatharthS/MiraTTS",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5780",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.8460",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0782",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.7098",
+          "wer": "0.2778"
+        }
+      ]
+    },
+    {
+      "id": "qwentts_06b_custom",
+      "name": "Qwen3-TTS 0.6B CustomVoice",
+      "parameters_m": 600.0,
+      "utmos": 4.372450000000001,
+      "wer": 0.087125,
+      "local": false,
+      "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2107",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3728",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4724",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4339",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "audio8_fast",
+      "name": "Audio8 TTS 0.6B (compiled)",
+      "parameters_m": 601.0,
+      "utmos": 4.4254750000000005,
+      "wer": 0.058075,
+      "local": false,
+      "source": "https://huggingface.co/scrappylabsai/audio8-tts-fastpath",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3451",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4513",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4998",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4057",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "audio8",
+      "name": "Audio8 TTS Preview 0.6B",
+      "parameters_m": 601.0,
+      "utmos": 4.4285499999999995,
+      "wer": 0.087125,
+      "local": false,
+      "source": "https://huggingface.co/Audio8/Audio8-TTS-Preview-0.6b",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3567",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4186",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4959",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4430",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "audio8_realistic",
+      "name": "Audio8 TTS Realistic 0.6B",
+      "parameters_m": 601.0,
+      "utmos": 4.5062,
+      "wer": 0.02905,
+      "local": false,
+      "source": "https://huggingface.co/Edge0/Audio8-TTS-Realistic-0.6b",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4905",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.5252",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5124",
+          "wer": "0.0606"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4967",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "chatterbox_turbo",
+      "name": "ChatterBox Turbo",
+      "parameters_m": 744.0,
+      "utmos": 4.26075,
+      "wer": 0.0745,
+      "local": false,
+      "source": "https://huggingface.co/ResembleAI/chatterbox-turbo",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0068",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4538",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.1424",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4400",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "neutts_air",
+      "name": "NeuTTS Air",
+      "parameters_m": 748.0,
+      "utmos": 3.78545,
+      "wer": 0.138875,
+      "local": false,
+      "source": "https://huggingface.co/neuphonic/neutts-air",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.7506",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7299",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0194",
+          "wer": "0.3333"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6419",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "coqui",
+      "name": "Coqui XTTS-v2",
+      "parameters_m": 750.0,
+      "utmos": 4.1856,
+      "wer": 0.1127,
+      "local": false,
+      "source": "https://huggingface.co/coqui/XTTS-v2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8860",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4112",
+          "wer": "0.1579"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2566",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1886",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "zonos3_mini",
+      "name": "ZONOS3-Mini (ggml Q4)",
+      "parameters_m": 800.0,
+      "utmos": 3.932375,
+      "wer": 0.08080000000000001,
+      "local": false,
+      "source": "https://huggingface.co/Zyphra/ZONOS3-Mini",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5970",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.9750",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3312",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8263",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "parler",
+      "name": "Parler-TTS Mini v1",
+      "parameters_m": 878.0,
+      "utmos": 3.5500249999999998,
+      "wer": 0.1533,
+      "local": false,
+      "source": "https://huggingface.co/parler-tts/parler-tts-mini-v1",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5439",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.5356",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.0563",
+          "wer": "0.3939"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0643",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "indextts25",
+      "name": "IndexTTS-2.5",
+      "parameters_m": 970.0,
+      "utmos": 3.768975,
+      "wer": 0.15315,
+      "local": false,
+      "source": "https://huggingface.co/IndexTeam/IndexTTS-2.5",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5103",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7695",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8551",
+          "wer": "0.3030"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.9410",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "outetts",
+      "name": "OuteTTS 1.0 1B",
+      "parameters_m": 1000.0,
+      "utmos": 4.4265,
+      "wer": 0.08585000000000001,
+      "local": false,
+      "source": "https://huggingface.co/OuteAI/Llama-OuteTTS-1.0-1B",
+      "runtime": "Linux CUDA",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4685",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4144",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4717",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3514",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "omnivoice",
+      "name": "OmniVoice",
+      "parameters_m": 1000.0,
+      "utmos": 4.268975,
+      "wer": 0.042925000000000005,
+      "local": false,
+      "source": "https://huggingface.co/k2-fsa/OmniVoice",
+      "runtime": "Linux CPU",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4385",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3471",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3990",
+          "wer": "0.0606"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8913",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "sesame",
+      "name": "Sesame CSM-1B",
+      "parameters_m": 1000.0,
+      "utmos": 4.18685,
+      "wer": 0.19175,
+      "local": false,
+      "source": "https://huggingface.co/sesame/csm-1b",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9686",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.1180",
+          "wer": "0.1053"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2514",
+          "wer": "0.6061"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4094",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "chatterbox",
+      "name": "ChatterBox",
+      "parameters_m": 1200.0,
+      "utmos": 4.438725,
+      "wer": 0.0505,
+      "local": false,
+      "source": "https://huggingface.co/ResembleAI/chatterbox",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4098",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4091",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4992",
+          "wer": "0.0909"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4368",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "mars5",
+      "name": "Mars5-TTS",
+      "parameters_m": 1200.0,
+      "utmos": 3.52955,
+      "wer": 0.34125,
+      "local": false,
+      "source": "https://huggingface.co/Camb-ai/mars5-tts",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9009",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3533",
+          "wer": "0.1579"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "1.5930",
+          "wer": "0.8182"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2710",
+          "wer": "0.3889"
+        }
+      ]
+    },
+    {
+      "id": "metavoice",
+      "name": "MetaVoice-1B",
+      "parameters_m": 1200.0,
+      "utmos": 3.79555,
+      "wer": 0.33725,
+      "local": false,
+      "source": "https://huggingface.co/metavoiceio/metavoice-1B-v0.1",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.6144",
+          "wer": "0.2857"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7250",
+          "wer": "0.3158"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0111",
+          "wer": "0.6364"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8317",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "longcat_1b",
+      "name": "LongCat-AudioDiT 1B",
+      "parameters_m": 1420.0,
+      "utmos": 4.0535499999999995,
+      "wer": 0.09342500000000001,
+      "local": false,
+      "source": "https://huggingface.co/meituan-longcat/LongCat-AudioDiT-1B",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.4646",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.9753",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3970",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3773",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "ming",
+      "name": "Ming-3.0-TTS 0.5B",
+      "parameters_m": 1480.0,
+      "utmos": 4.038275,
+      "wer": 0.073225,
+      "local": false,
+      "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-0.5B",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4233",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2494",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8584",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6220",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "lfm2_audio",
+      "name": "LFM2.5-Audio 1.5B",
+      "parameters_m": 1500.0,
+      "utmos": 4.367925,
+      "wer": 0.0947,
+      "local": false,
+      "source": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2467",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4225",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4603",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3422",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "indextts",
+      "name": "IndexTTS-2",
+      "parameters_m": 1500.0,
+      "utmos": 3.754575,
+      "wer": 0.0947,
+      "local": false,
+      "source": "https://huggingface.co/IndexTeam/IndexTTS-2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.6888",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7228",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0602",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.5465",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "vibevoice_15b",
+      "name": "VibeVoice 1.5B",
+      "parameters_m": 1500.0,
+      "utmos": 3.7057,
+      "wer": 0.168075,
+      "local": false,
+      "source": "https://huggingface.co/microsoft/VibeVoice-1.5B",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.6124",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "2.7570",
+          "wer": "0.2632"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.1351",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3183",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "auk_base",
+      "name": "AuK",
+      "parameters_m": 1530.0,
+      "utmos": 4.160275,
+      "wer": 0.063125,
+      "local": false,
+      "source": "https://huggingface.co/tencent/AuK",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9453",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2577",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2045",
+          "wer": "0.0303"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2336",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "auk_flash",
+      "name": "AuK-Flash",
+      "parameters_m": 1530.0,
+      "utmos": 4.2747,
+      "wer": 0.056825,
+      "local": false,
+      "source": "https://huggingface.co/tencent/AuK-Flash",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.9827",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3673",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4303",
+          "wer": "0.0606"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3185",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "dia",
+      "name": "Dia 1.6B-0626",
+      "parameters_m": 1600.0,
+      "utmos": 3.02715,
+      "wer": 0.101525,
+      "local": false,
+      "source": "https://huggingface.co/nari-labs/Dia-1.6B-0626",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "2.2590",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "2.5041",
+          "wer": "0.0526"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8012",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.5443",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "zonos",
+      "name": "Zonos v0.1",
+      "parameters_m": 1600.0,
+      "utmos": 4.103125,
+      "wer": 0.0745,
+      "local": false,
+      "source": "https://huggingface.co/Zyphra/Zonos-v0.1-transformer",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1991",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.0869",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.9078",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2187",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "kittentts2",
+      "name": "KittenTTS 2",
+      "parameters_m": 1700.0,
+      "utmos": 4.5058,
+      "wer": 0.1414,
+      "local": false,
+      "source": "https://huggingface.co/KittenML/kitten-tts-2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4832",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.5312",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4853",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.5235",
+          "wer": "0.4444"
+        }
+      ]
+    },
+    {
+      "id": "kittentts2_cpp",
+      "name": "KittenTTS 2 (C++ CPU)",
+      "parameters_m": 1700.0,
+      "utmos": 4.51105,
+      "wer": 0.058075,
+      "local": false,
+      "source": "https://github.com/KittenML/kitten-tts-2-cpp",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4502",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.5086",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5553",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.5301",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "qwentts",
+      "name": "Qwen3-TTS 1.7B Base",
+      "parameters_m": 1700.0,
+      "utmos": 4.10515,
+      "wer": 0.08080000000000001,
+      "local": false,
+      "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8649",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2956",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3935",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.8666",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "qwentts_fast",
+      "name": "Qwen3-TTS 1.7B (CUDA-graph)",
+      "parameters_m": 1700.0,
+      "utmos": 4.3022,
+      "wer": 0.134175,
+      "local": false,
+      "source": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2891",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2680",
+          "wer": "0.1579"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3549",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2968",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "lfm3_audio",
+      "name": "LFM3-Audio 2B",
+      "parameters_m": 2000.0,
+      "utmos": 4.43565,
+      "wer": 0.036625,
+      "local": false,
+      "source": "https://huggingface.co/LiquidAI/LFM3-Audio-2B",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4556",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4739",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3632",
+          "wer": "0.0909"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4499",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "dots_tts",
+      "name": "dots.tts (soar)",
+      "parameters_m": 2000.0,
+      "utmos": 3.65415,
+      "wer": 0.073225,
+      "local": false,
+      "source": "https://huggingface.co/rednote-hilab/dots.tts-soar",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2030",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.0627",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.8071",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.5438",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "voxcpm",
+      "name": "VoxCPM2",
+      "parameters_m": 2000.0,
+      "utmos": 4.029125,
+      "wer": 0.042925000000000005,
+      "local": false,
+      "source": "https://huggingface.co/openbmb/VoxCPM2",
+      "runtime": "Linux CPU",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.5886",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3816",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4548",
+          "wer": "0.0606"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.6915",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "firered3",
+      "name": "FireRedTTS3",
+      "parameters_m": 2120.0,
+      "utmos": 4.13225,
+      "wer": 0.102275,
+      "local": false,
+      "source": "https://huggingface.co/FireRedTeam/FireRedTTS3",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8036",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2154",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3135",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1965",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "echo",
+      "name": "Echo-TTS",
+      "parameters_m": 2800.0,
+      "utmos": 4.211925,
+      "wer": 0.0745,
+      "local": false,
+      "source": "https://huggingface.co/jordand/echo-tts-base",
+      "runtime": "Linux CUDA",
+      "approximate": true,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0375",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3128",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3427",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1547",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "maya1",
+      "name": "Maya1",
+      "parameters_m": 3000.0,
+      "utmos": 4.4685749999999995,
+      "wer": 0.0505,
+      "local": false,
+      "source": "https://huggingface.co/maya-research/maya1",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4692",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4683",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5015",
+          "wer": "0.0909"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4353",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "orpheus",
+      "name": "Orpheus TTS",
+      "parameters_m": 3000.0,
+      "utmos": 4.0049,
+      "wer": 0.102275,
+      "local": false,
+      "source": "https://huggingface.co/canopylabs/orpheus-3b-0.1-ft",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8070",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.9797",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0710",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1619",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "step_editx",
+      "name": "Step-Audio-EditX",
+      "parameters_m": 3000.0,
+      "utmos": 4.2334000000000005,
+      "wer": 0.10137499999999999,
+      "local": false,
+      "source": "https://huggingface.co/stepfun-ai/Step-Audio-EditX",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8416",
+          "wer": "0.1429"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2529",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4287",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4104",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "dramabox",
+      "name": "DramaBox",
+      "parameters_m": 3300.0,
+      "utmos": 4.228949999999999,
+      "wer": 0.09342500000000001,
+      "local": false,
+      "source": "https://github.com/resemble-ai/DramaBox",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1697",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2881",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.0977",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3603",
+          "wer": "0.2222"
+        }
+      ]
+    },
+    {
+      "id": "longcat_3p5b",
+      "name": "LongCat-AudioDiT 3.5B",
+      "parameters_m": 3830.0,
+      "utmos": 4.340725,
+      "wer": 0.07955,
+      "local": false,
+      "source": "https://huggingface.co/meituan-longcat/LongCat-AudioDiT-3.5B",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.2103",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3602",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4081",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3843",
+          "wer": "0.1667"
+        }
+      ]
+    },
+    {
+      "id": "fish_s2",
+      "name": "Fish Speech S2-Pro",
+      "parameters_m": 4000.0,
+      "utmos": 4.310375,
+      "wer": 0.08837500000000001,
+      "local": false,
+      "source": "https://huggingface.co/fishaudio/s2-pro",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1783",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.3286",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3987",
+          "wer": "0.2424"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3359",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "higgs_v3",
+      "name": "Higgs Audio v3 TTS",
+      "parameters_m": 4000.0,
+      "utmos": 4.483025,
+      "wer": 0.08080000000000001,
+      "local": false,
+      "source": "https://huggingface.co/bosonai/higgs-audio-v3-tts-4b",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.4372",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4652",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5407",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4890",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "vibevoice_7b",
+      "name": "VibeVoice 7B",
+      "parameters_m": 7000.0,
+      "utmos": 3.495075,
+      "wer": 0.083675,
+      "local": false,
+      "source": "https://huggingface.co/vibevoice/VibeVoice-7B",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "2.6372",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "3.7261",
+          "wer": "0.1579"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.6232",
+          "wer": "0.1212"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "3.9938",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "moss_tts",
+      "name": "MOSS-TTS v1.0",
+      "parameters_m": 8000.0,
+      "utmos": 4.21845,
+      "wer": 0.071775,
+      "local": false,
+      "source": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.0163",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.2720",
+          "wer": "0.1053"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.4158",
+          "wer": "0.1818"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.1697",
+          "wer": "0.0000"
+        }
+      ]
+    },
+    {
+      "id": "moss_tts_v15",
+      "name": "MOSS-TTS v1.5",
+      "parameters_m": 8000.0,
+      "utmos": 4.222075,
+      "wer": 0.08080000000000001,
+      "local": false,
+      "source": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "3.8375",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4165",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.3630",
+          "wer": "0.2121"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.2713",
+          "wer": "0.1111"
+        }
+      ]
+    },
+    {
+      "id": "miso",
+      "name": "Miso TTS 8B",
+      "parameters_m": 8200.0,
+      "utmos": 4.0718,
+      "wer": 0.396575,
+      "local": false,
+      "source": "https://huggingface.co/MisoLabs/MisoTTS",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.1318",
+          "wer": "0.2857"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4568",
+          "wer": "0.3158"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "3.6810",
+          "wer": "0.4848"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.0176",
+          "wer": "0.5000"
+        }
+      ]
+    },
+    {
+      "id": "ming_tiny",
+      "name": "Ming-3.0-TTS tiny",
+      "parameters_m": 8980.0,
+      "utmos": 4.357225,
+      "wer": 0.051775,
+      "local": false,
+      "source": "https://huggingface.co/inclusionAI/Ming-3.0-tts-tiny",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3370",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4003",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.2952",
+          "wer": "0.1515"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.3964",
+          "wer": "0.0556"
+        }
+      ]
+    },
+    {
+      "id": "drama3",
+      "name": "Fish Audio Drama 3 (ComfyUI port)",
+      "parameters_m": 35900.0,
+      "utmos": 4.462350000000001,
+      "wer": 0.0505,
+      "local": false,
+      "source": "https://github.com/PedroMarinhoDev/ComfyUI-Drama3",
+      "runtime": "Linux CUDA",
+      "approximate": false,
+      "n": 4,
+      "per_prompt": [
+        {
+          "prompt_id": "1",
+          "utmos": "4.3715",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "2",
+          "utmos": "4.4675",
+          "wer": "0.0000"
+        },
+        {
+          "prompt_id": "3",
+          "utmos": "4.5239",
+          "wer": "0.0909"
+        },
+        {
+          "prompt_id": "4",
+          "utmos": "4.4865",
+          "wer": "0.1111"
+        }
+      ]
+    }
+  ],
+  "matched": [
+    {
+      "name": "SmollerTTS",
+      "voice": "LJ",
+      "parameters_m": 2.808792,
+      "utmos": 3.7713205963373184,
+      "wer": 0.009186351706036745,
+      "raw_wer": 0.01706036745406824,
+      "completed": 48
+    },
+    {
+      "name": "tiny-voca F2",
+      "voice": "F2",
+      "parameters_m": 4.537291,
+      "utmos": 4.434707373380661,
+      "wer": 0.0026246719160104987,
+      "raw_wer": 0.010498687664041995,
+      "completed": 48
+    },
+    {
+      "name": "tiny-voca M2",
+      "voice": "M2",
+      "parameters_m": 4.537291,
+      "utmos": 4.32538814842701,
+      "wer": 0.003937007874015748,
+      "raw_wer": 0.011811023622047244,
+      "completed": 48
+    }
+  ]
+}

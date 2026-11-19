@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Directory } from "@/components/directory";
 import { Explanation } from "@/components/explanation";
+import { ResourceLink } from "@/components/resource-link";
 
 const smollerttsExplanation = [
   [
@@ -197,27 +198,27 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={"https://github.com/ksd3/layerwise-analysis"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://openreview.net/forum?id=Xw72C0uPBw"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"OpenReview"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2610.04130"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -299,7 +300,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/emilyzfliu/decoding-robustness"
                           }
@@ -307,14 +308,14 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2609.03322"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -394,7 +395,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/MarkoKarbevski/beyond_query_linearity_community"
                           }
@@ -402,14 +403,14 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://openreview.net/forum?id=M8z9uMfxk5"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"OpenReview"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -481,13 +482,13 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2608.08029"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -571,7 +572,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://drive.google.com/file/d/1KwlyPhz1iGwa_f1jHtaqDN6pFNm_c75P/view?usp=sharing"
                           }
@@ -579,7 +580,7 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"Paper"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -658,13 +659,13 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2604.11490"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -748,7 +749,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/aramasethu/low_resource_language_translation"
                           }
@@ -756,8 +757,8 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={
                             "https://aclanthology.org/2026.loresmt-1.14.pdf"
                           }
@@ -765,15 +766,15 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"Official"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2603.16660"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={
                             "https://drive.google.com/file/d/1zf_y5IH0pocmyJOfAnTqMxEvWU9k10_D/view?usp=sharing"
                           }
@@ -781,7 +782,7 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"Poster"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -863,7 +864,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://music-ir.org/mirex/wiki/2025:Symbolic_Music_Generation_Results"
                           }
@@ -871,14 +872,14 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"Official"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2509.12267"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -909,7 +910,7 @@ export function ProjectsContent() {
             {
               id: "smollertts",
               searchText:
-                "2026 SmollerTTS compact browser text to speech 2.81M English CPU ONNX Demo GitHub Hugging Face " +
+                "2026 SmollerTTS compact browser text to speech 2.81M English CPU ONNX Demo Blog GitHub Hugging Face " +
                 smollerttsExplanation.flat().join(" "),
               className: "paper-showcase",
               content: (
@@ -937,21 +938,22 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a href="/projects/smollertts/">Demo</a>
-                        <a
+                        <ResourceLink href="/projects/smollertts/">Demo</ResourceLink>
+                        <ResourceLink href="/writings/smollertts/">Blog</ResourceLink>
+                        <ResourceLink
                           href="https://github.com/Ehdunhackme/SmollerTTS"
                           target="_blank"
                           rel="noopener"
                         >
                           GitHub
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href="https://huggingface.co/dunli5107/SmollerTTS"
                           target="_blank"
                           rel="noopener"
                         >
                           Hugging Face
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={smollerttsExplanation}
@@ -1009,14 +1011,14 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <Link href={"/projects/chert/"}>{"Demo"}</Link>
-                        <a
+                        <ResourceLink href={"/projects/chert/"}>{"Demo"}</ResourceLink>
+                        <ResourceLink
                           href={"https://github.com/cherthq/realtime-research"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={chertExplanation}
@@ -1075,7 +1077,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://drive.google.com/file/d/1BrebBET4nnph5qcTX73HPzpekXX5UH98/view?usp=sharing"
                           }
@@ -1083,14 +1085,14 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"Proposal"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://github.com/bunchofcellulose/bl4s2026"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -1156,7 +1158,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/Ehdunhackme/Magnetic-Field-of-Cylindrical-Axially-Magnetized-Ring"
                           }
@@ -1164,7 +1166,7 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -1226,7 +1228,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/Ehdunhackme/Chaotic-Behavior-of-Double-Pendulum"
                           }
@@ -1234,7 +1236,7 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -1292,13 +1294,13 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={"https://github.com/Ehdunhackme/EPECscan"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[
@@ -1398,7 +1400,7 @@ export function ProjectsContent() {
                   <Explanation
                     links={
                       <>
-                        <a
+                        <ResourceLink
                           href={
                             "https://github.com/UniverseTBD/platonic-universe"
                           }
@@ -1406,14 +1408,14 @@ export function ProjectsContent() {
                           rel={"noopener"}
                         >
                           {"GitHub"}
-                        </a>
-                        <a
+                        </ResourceLink>
+                        <ResourceLink
                           href={"https://arxiv.org/abs/2509.19453"}
                           target={"_blank"}
                           rel={"noopener"}
                         >
                           {"arXiv"}
-                        </a>
+                        </ResourceLink>
                       </>
                     }
                     sections={[

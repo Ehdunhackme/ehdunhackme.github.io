@@ -17,6 +17,7 @@ test("midterm article is searchable and has complete responsive figures", async 
   );
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/writings/");
+  await page.waitForLoadState("networkidle");
   await page.getByRole("searchbox").fill("poll baseline blend");
   await expect(page.locator(".writing-section-link:visible")).toHaveCount(1);
   await page.getByRole("link", { name: /Modelling the 2026 US Midterm Elections/ }).click();

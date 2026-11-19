@@ -69,7 +69,7 @@ test("section switching preserves summaries and global search reaches all groups
   const index = page.getByRole("navigation", { name: "Project sections" });
   const summary = page
     .locator("#chert")
-    .getByRole("button", { name: "AI summary" });
+    .getByRole("button", { name: "LLM explanation" });
   await summary.click();
   await index.getByRole("link", { name: "Publications", exact: true }).click();
   await expect(

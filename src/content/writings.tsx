@@ -20,6 +20,26 @@ export function WritingsContent() {
           id: "writing-results",
           entries: [
             {
+              id: "writing-smollertts",
+              searchText:
+                "SmollerTTS a 2.81M-parameter voice in the browser English text to speech TTS small model architecture training LJSpeech HiFi-GAN ONNX CPU 19 Nov 2026",
+              content: (
+                <Link className="writing-section-link" href="/writings/smollertts/">
+                  <span className="writing-year" aria-hidden="true">2026</span>
+                  <span className="writing-entry-content">
+                    <span className="writing-section-title">SmollerTTS, a 2.81M-parameter English TTS model</span>
+                    <span className="writing-section-description">Building a small English TTS model, from the training recipe to browser audio and the results so far.</span>
+                  </span>
+                  <span className="writing-section-side">
+                    <time className="writing-date" dateTime="2026-11-19">
+                      <span className="writing-date-full">19 Nov 2026</span>
+                      <span className="writing-date-short" aria-hidden="true">11/19</span>
+                    </time>
+                  </span>
+                </Link>
+              ),
+            },
+            {
               id: "writing-midterms-2026",
               searchText:
                 "Modelling the 2026 US Midterm Elections House Senate polling elections statistics benchmark 13 models poll baseline blend all 50 states historical validation uncertainty 8 Nov 2026",

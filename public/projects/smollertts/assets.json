@@ -1,11 +1,31 @@
 {
   "name": "SmollerTTS",
   "parameters": 2808792,
-  "build": "370842fc0871",
+  "build": "41a51497074d",
   "files": {
+    "architecture-animation.mjs": {
+      "bytes": 743,
+      "sha256": "91c53a96f157898766aef3b90baf7f8949c06bbe953f9e66492f3627cc466c58"
+    },
+    "architecture-embed.css": {
+      "bytes": 7098,
+      "sha256": "eba434b77fd9f709212effef6e2720cd761e18c09c1f6d12d1475abfa2aa8e87"
+    },
+    "architecture-peaks.json": {
+      "bytes": 684,
+      "sha256": "a869571e702a0c57ad7ca43021ae83e5107e1f85c1a5196ecf3171180beb6e89"
+    },
+    "architecture-renderer.mjs": {
+      "bytes": 28689,
+      "sha256": "1ede1d2746e3ee933ce5aad6edcef8e083e8f061f84cb2dcecd0aabf69cf924b"
+    },
     "architecture.mjs": {
       "bytes": 13811,
-      "sha256": "f5b1bd01edc81980462cfe3fdd41fd9a2bb2cbb2d1f8134d10cfc33757d7da9d"
+      "sha256": "d63c089faacf94ba3d262c6767108d0dc4a6a2d2d2a4d7db5a5e4ed7680ca9b4"
+    },
+    "arrows.mjs": {
+      "bytes": 887,
+      "sha256": "41a906f4e8fc2b113c4e25268484c32a54fffed9b6fe20fe422addeb88c06dde"
     },
     "audio.mjs": {
       "bytes": 2038,
@@ -20,16 +40,16 @@
       "sha256": "e69e2f807d81c1f128a9b23bce1d5a96a8e04c8f4fdf65f9bf25f47b42e63b76"
     },
     "benchmark.mjs": {
-      "bytes": 18152,
-      "sha256": "e38bc5ef5d570826086082f66847bde4afafbcbc6afb955d520bc6c17b6f8abb"
+      "bytes": 18318,
+      "sha256": "ab522d3aaab8e28911ed29b6f60301af9832f70575ca0743a260e60772e0b14d"
     },
     "controls.mjs": {
       "bytes": 2199,
       "sha256": "32b2c21f6dcb167ccc8d9425cb091f5ff40a358699a6be05be97c648d05e109f"
     },
     "credits.html": {
-      "bytes": 4777,
-      "sha256": "52adfab300fc65eafc32e840376724f0f5d7dd4066ece1b17085d266c6db614d"
+      "bytes": 5347,
+      "sha256": "eef75e761bb6eb038dcb08fe1e9dd62a0fae8d1af0fb4da3e1f286edeb1ffd2c"
     },
     "disclosures.mjs": {
       "bytes": 1625,
@@ -45,7 +65,7 @@
     },
     "engine.mjs": {
       "bytes": 3749,
-      "sha256": "7a152086611fcb6c9caa81e45f05cf4aa06a0428cef548129d2c5e870679e0eb"
+      "sha256": "43868be46659be37cd2335d94650593930a7658645d02e67be6648444d8a695f"
     },
     "frames.onnx": {
       "bytes": 2592343,
@@ -60,8 +80,8 @@
       "sha256": "f9e0294b1589fa16c978cc3d67d6ae39a7e10fa8438c54bff14432fa94ed51ef"
     },
     "index.html": {
-      "bytes": 13244,
-      "sha256": "26dc4d0c88799e2b55f288aa4ab2d3c7a4e8db8168a5b35dba899e455fdfdd8e"
+      "bytes": 16682,
+      "sha256": "1310b0adaccb7bda7166d0edd2ffe8fda08ffc8ecf5250a18b9962b969558ab3"
     },
     "lexicon.mjs": {
       "bytes": 1837,
@@ -89,7 +109,7 @@
     },
     "model.json": {
       "bytes": 1235,
-      "sha256": "9bb977ae49a8d74d19f9906de8128931d5a33fb8c4835e1e94229d11a961e685"
+      "sha256": "4c6743c3c81d55ab959c695d000dab18cea3d505840606cecc582452050f577d"
     },
     "punctuation.mjs": {
       "bytes": 2079,
@@ -104,16 +124,16 @@
       "sha256": "c2a7faf7f48c7a7ee91d4d3eb187e863fd27ec9aa40a176925ab9425168539ac"
     },
     "studio.css": {
-      "bytes": 29454,
-      "sha256": "cd682d7d80b8c87e3a097d69d618d89a1092437ad3219afc2903a4669c22a800"
+      "bytes": 30501,
+      "sha256": "4bceb06f15836a7d7f55c7d5eb51b901fcda462a7f9ce131f6ff7e8b56aea802"
     },
     "studio.mjs": {
-      "bytes": 14804,
-      "sha256": "f54af3d7909287823f47731674666063b20c7080868b041ba4197a8903e8a219"
+      "bytes": 14864,
+      "sha256": "5b6349764b2d03afe21e49e76ce5492e2f98a08f2b06bfef0a343856a28b9672"
     },
     "THIRD_PARTY.md": {
-      "bytes": 2117,
-      "sha256": "cd1f1d71972b95d7424268f33aac34a332f027e0aadcd5f333cf9fc61ea5ebb6"
+      "bytes": 2797,
+      "sha256": "38eb0c3c1b90de1ae8d18fbb9990d353cc3d43540837c819b732eeca468857b4"
     },
     "vocoder.onnx": {
       "bytes": 3743259,
@@ -121,7 +141,7 @@
     },
     "worker.mjs": {
       "bytes": 4871,
-      "sha256": "08e81f344f68adb893282330533cb3b7c6c7bc92b0678d332a462cfa06b6bdf7"
+      "sha256": "bc4b23016a3b2d1a2e21d839f73aaf6ce191022f921f3adfa246a2ff0ef813de"
     },
     "ort/ort-wasm-simd-threaded.mjs": {
       "bytes": 24738,

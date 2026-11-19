@@ -25,11 +25,11 @@ button:active:not(:disabled) {transform: scale(.98)}
 :focus-visible {outline: 2px solid var(--ink); outline-offset: 4px}
 .icon {width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0}
 .shell {max-width: 1088px; margin: 0 auto; padding: 0 48px}
-.nav {height: 88px; display: flex; align-items: center; justify-content: space-between; font-size: 13px}
+.nav {min-height: 88px; display: flex; flex-wrap: wrap; gap: 4px 24px; align-items: center; justify-content: space-between; padding: 16px 0; font-size: 13px}
 .brand {display: flex; gap: 10px; align-items: center; font-size: 18px; font-weight: 600; letter-spacing: -.4px}
 .brand:hover {text-decoration: none}
-.nav-links {display: flex; align-items: center; gap: 24px}
-.repo-link {display:flex; align-items:center; gap:6px; color:var(--ink); padding:8px 0 8px 12px; font-weight:500}
+.nav-links {display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px}
+.repo-link {display:flex; align-items:center; gap:6px; color:var(--ink); padding:8px 0; font-weight:500; white-space:nowrap}
 .repo-link .icon {width: 16px; height: 16px}
 .repo-link:hover {color: var(--ink); text-decoration: none}
 main {animation: workspace-in .4s var(--ease) both}
@@ -233,7 +233,10 @@ footer>div {display: flex; gap: 24px}
 @keyframes tooltip-in {from {opacity: 0; transform: translateY(4px)} to {opacity: 1; transform: none}}
 @keyframes working {from {transform: scaleY(.35)} to {transform: scaleY(1)}}
 @media(max-width:720px) {
-  .shell {padding: 0 24px} .nav {height: 72px} .brand {font-size: 17px}
+  .shell {padding: 0 24px} .nav {height: auto; min-height: 72px} .brand {font-size: 17px}
+  .nav-links {gap: 4px 12px}
+  .repo-link {gap: 4px; font-size: 12px}
+  .repo-link .icon,.repo-link .source-logo {width: 14px; height: 14px}
   .page-heading {margin: 24px 0 20px; flex-wrap: wrap} h1 {font-size: 28px}
   .text-tools {gap: 0} .text-tools .text-button {padding: 8px; font-size: 12px}
   .text-tools .text-button .icon {display: none}
@@ -261,7 +264,6 @@ footer>div {display: flex; gap: 24px}
 }
 @media(max-width:420px) {
   .nav {height: auto; min-height: 72px; flex-wrap: wrap; gap: 4px 16px; padding: 16px 0}
-  .nav-links {gap: 16px; margin-left: auto}
   .repo-link {padding-left: 0; font-size: 12px}
   .shell {padding: 0 20px} .page-heading {gap: 8px} h1 {font-size: 26px}
   #text {padding: 20px; min-height: 260px; font-size: 17px}
@@ -294,6 +296,14 @@ footer>div {display: flex; gap: 24px}
 .prompt-range {fill:none; stroke:var(--large); stroke-width:1; opacity:.22}
 .prompt-range.small {stroke:var(--small)} .prompt-range.medium {stroke:var(--medium)} .prompt-range.own {stroke:var(--accent); opacity:.7; stroke-width:1.5}
 .architecture {margin:72px 0 32px}
+.architecture-panel {margin-top:24px; border:1px solid #d8d8d8; border-radius:8px; overflow:hidden}
+.architecture-full {margin:0; padding:0 18px; border-top:1px solid #d8d8d8}
+.architecture-full>summary {display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:60px; padding:18px 0; font-size:13px; font-weight:500; cursor:pointer; list-style:none}
+.architecture-full>summary::-webkit-details-marker {display:none}
+.architecture-full>summary .chevron {transition:transform .24s ease}
+.architecture-full>summary[aria-expanded=true] .chevron {transform:rotate(180deg)}
+.architecture-full .disclosure-content {padding:4px 0 12px}
+.architecture-full .architecture-scroll {border:0; border-radius:0}
 .architecture-intro {font-size:13px; color:var(--muted); margin:12px 0 24px}
 .pan-hint {display:none; color:var(--muted); font-size:11px; margin:0 0 16px}
 .architecture-scroll {overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; scrollbar-color:#d4d4d4 transparent; border:1px solid var(--line); border-radius:12px; padding:20px 0 16px; scroll-margin-top:16px}
@@ -378,3 +388,5 @@ footer>div {display: flex; gap: 24px}
   .benchmark-sources {grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce) {*, *::before, *::after {animation: none !important; transition: none !important; scroll-behavior: auto !important}}
+
+.ui-arrow{display:inline-block;flex-shrink:0;width:14px;height:14px;vertical-align:-2px;margin-left:3px;overflow:visible}

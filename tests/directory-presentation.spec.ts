@@ -25,7 +25,7 @@ test("directory metadata and separators stay consistent", async ({ page }) => {
   }
   await index.getByRole("link", { name: "Publications", exact: true }).click();
   const entry = page.locator("#platonic-representation");
-  await entry.getByRole("button", { name: "AI summary" }).click();
+  await entry.getByRole("button", { name: "LLM explanation" }).click();
   await expect(entry.locator(".paper-explanation-body")).toHaveCSS(
     "border-top-width",
     "0px",
@@ -68,7 +68,7 @@ test("directory metadata and separators stay consistent", async ({ page }) => {
   await expect(entries.nth(1)).toHaveCSS("border-top-width", "0px");
 });
 
-test("AI summary actions stay anchored through opening and closing", async ({
+test("LLM explanation actions stay anchored through opening and closing", async ({
   page,
 }) => {
   test.setTimeout(60000);
@@ -156,7 +156,7 @@ test("writing uses the original page entrance and leaves the header still", asyn
       "data-writing-transition",
     );
     await page.goBack();
-    await expect(page.locator(".writing-section-link")).toHaveCount(2);
+    await expect(page.locator(".writing-section-link")).toHaveCount(3);
   }
   expect(errors).toEqual([]);
 });

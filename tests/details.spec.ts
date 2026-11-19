@@ -11,7 +11,7 @@ test("every explanation has readable headings, section spacing and unclipped con
   await expect(explanations).toHaveCount(15);
 
   for (const explanation of await explanations.all()) {
-    const toggle = explanation.getByRole("button", { name: "AI summary" });
+    const toggle = explanation.getByRole("button", { name: "LLM explanation" });
     if (!(await toggle.isVisible())) {
       const section = await explanation.evaluate(
         (el) =>

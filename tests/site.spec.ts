@@ -73,7 +73,7 @@ test("project content is pre-rendered, searchable, and explanations animate both
   await search.press("Escape");
   await expect(page.locator(".paper-list > li:visible")).toHaveCount(10);
   const details = page.locator("#platonic-representation .paper-explanation");
-  const toggle = details.getByRole("button", { name: "AI summary" });
+  const toggle = details.getByRole("button", { name: "LLM explanation" });
   const panel = details.locator(".paper-explanation-panel");
   await toggle.focus();
   await toggle.press("Enter");
@@ -179,16 +179,16 @@ test("directory views preserve search and keep summaries accessible", async ({
   await expect(compact).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".writing-card-list > li:visible")).toHaveCount(1);
   await expect(
-    page.locator(".writing-section-description").first(),
+    page.locator(".writing-card-list > li:visible .writing-section-description").first(),
   ).toBeHidden();
-  await expect(page.locator(".writing-date-short").first()).toBeVisible();
+  await expect(page.locator(".writing-card-list > li:visible .writing-date-short").first()).toBeVisible();
   await detailed.click();
   await expect(search).toHaveValue("election");
   await expect(
-    page.locator(".writing-section-description").first(),
+    page.locator(".writing-card-list > li:visible .writing-section-description").first(),
   ).toBeVisible();
   await search.press("Escape");
-  await expect(page.locator(".writing-card-list > li:visible")).toHaveCount(2);
+  await expect(page.locator(".writing-card-list > li:visible")).toHaveCount(3);
 
   await page.goto("/projects/");
   await page.waitForLoadState("networkidle");
@@ -197,7 +197,7 @@ test("directory views preserve search and keep summaries accessible", async ({
   await expect(page.locator(".paper-list > li:visible")).toHaveCount(1);
   const project = page.locator("#platonic-representation");
   await expect(project.locator(".paper-thumbnail")).toBeHidden();
-  const summary = project.getByRole("button", { name: "AI summary" });
+  const summary = project.getByRole("button", { name: "LLM explanation" });
   await summary.click();
   await expect(summary).toHaveAttribute("aria-expanded", "true");
   await expect(
@@ -327,7 +327,7 @@ test("writings search and dark layouts at viewport width", async ({ page }) => {
     page.getByRole("heading", { name: "No matching writings" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear", exact: true }).click();
-  await expect(page.locator(".writing-section-link")).toHaveCount(2);
+  await expect(page.locator(".writing-section-link")).toHaveCount(3);
   await expect(page.locator(".writing-section-link").first()).toBeVisible();
   await page.evaluate(() => localStorage.setItem("theme", "light"));
   await page.reload();

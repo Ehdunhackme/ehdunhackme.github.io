@@ -22,7 +22,7 @@ export function Explanation({
           aria-controls={`${id}-panel`}
           onClick={() => setOpen((previous) => !previous)}
         >
-          AI summary <span aria-hidden="true">{open ? "−" : "+"}</span>
+          LLM explanation <span aria-hidden="true">{open ? "−" : "+"}</span>
         </button>
       </div>
       <div

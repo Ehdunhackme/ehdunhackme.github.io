@@ -1,0 +1,166 @@
+import { test, expect } from "@playwright/test";
+import { readFile } from "node:fs/promises";
+
+const path = "/writings/smollertts/";
+test.setTimeout(90000);
+
+test("article has the live demo, visible citation, animated walkthrough and full benchmark table", async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/writings/");
+  await page.waitForLoadState("networkidle");
+  await page.getByRole("searchbox").fill("SmollerTTS");
+  await expect(page.locator(".writing-section-link:visible")).toHaveCount(1);
+  await page.getByRole("link", { name: /SmollerTTS, a 2.81M/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${path}$`));
+  await expect(page.locator('.site-header [aria-current="page"]')).toHaveText("Writings");
+  await expect(page.getByRole("textbox", {name: "Give it something to say"})).toBeVisible();
+  await expect(page.getByRole("button", {name: "Generate speech", exact: true})).toBeEnabled({timeout: 60000});
+  await expect(page.getByText('Ready. Runs on your CPU.',{exact:true})).toHaveCount(0);
+  await expect(page.getByRole('button',{name:'Replay',exact:true})).toHaveCount(0);
+  const text = await page.locator("article").innerText();
+  expect(text).not.toMatch(/Kyutai|\u2014/);
+  expect(text).toContain("pretrained HiFi-GAN V2 vocoder");
+  await expect(page.getByRole("region", {name: "Cite this post"}).locator("pre")).toBeVisible();
+  await expect(page.getByRole("group", {name: "Length regulation"}).locator(".katex math")).toHaveCount(1);
+  await expect(page.getByRole("group", {name: "Acoustic training objective"}).locator(".katex math")).toHaveCount(1);
+  await expect(page.getByRole("group", {name: "Compact frame decoder block"}).locator(".katex math")).toHaveCount(1);
+  await expect(page.getByRole("group", {name: "Mel normalization and waveform synthesis"}).locator(".katex math")).toHaveCount(1);
+  await expect(page.locator(".katex-error")).toHaveCount(0);
+  await page.getByRole("group", {name: "Acoustic training objective"}).screenshot({path:testInfo.outputPath("equation.png"),scale:"css"});
+  await expect(page.locator('h1')).toHaveText('SmollerTTS, a 2.81M-parameter English TTS model');
+  await expect(page.getByRole('link', {name:'send me an email'})).toHaveAttribute('href','mailto:dunlinmy88@gmail.com');
+  await expect(page.locator('#ref-hifigan')).toContainText('Jungil Kong');
+  const resources = page.getByRole("navigation", {name:"SmollerTTS resources"});
+  await expect(resources.locator('a > svg:last-child')).toHaveCount(4);
+  await expect(resources.getByRole('link',{name:'Demo',exact:true})).toHaveAttribute('href','/projects/smollertts/');
+  await expect(page.locator('#ref-evaluation')).toHaveCount(0);
+  await expect(page.getByRole('region',{name:'Cite this post'})).toContainText('English text-to-speech model');
+  expect(text).toContain('interested in helping out');
+  expect(await resources.innerText()).not.toMatch(/[↗↑↓↕]/);
+  expect(await resources.locator("img").evaluateAll(nodes => nodes.every(node => (node as HTMLImageElement).complete && (node as HTMLImageElement).naturalWidth > 0))).toBe(true);
+  await expect(page.getByRole("cell", {name: "Random; seed 2718"})).toBeVisible();
+  await expect(page.getByRole("region", { name: "Separate 48-prompt comparison" }).getByRole("row").nth(1)).toHaveText(/SmollerTTS.*2.81M.*3.77.*0.92%/);
+
+  const chart = page.getByRole("figure").filter({ has: page.getByRole("group", { name: "Benchmark metric" }) });
+  await expect(chart).toHaveCSS("background-color", "rgb(26, 26, 26)");
+  await expect(chart.locator("figcaption")).toHaveCount(0);
+  await chart.scrollIntoViewIfNeeded();
+  await expect(chart.getByRole("group", {name:"Interactive chart of UTMOS against reported model parameter count",exact:true})).toBeVisible();
+  await expect(chart.locator(".frontier")).toHaveCount(1);
+  await expect(chart.locator(".peer-label", {hasText:"tiny-voca"})).toBeVisible();
+  await expect(chart.locator(".own-callout")).toContainText("3.55 UTMOS");
+  await expect(chart.locator('[aria-live="polite"]')).toContainText("3.55 UTMOS");
+  await chart.getByRole("button", { name: "Word errors WER ↓" }).click();
+  await expect(chart.getByRole("group", {name:"Interactive chart of WER against reported model parameter count",exact:true})).toBeVisible();
+  await expect(chart.locator(".own-callout")).toContainText("6.69% WER");
+  await expect(chart.locator('[aria-live="polite"]')).toContainText("6.69% WER");
+  const table = page.getByRole("region", {name: "Full benchmark results"});
+  await expect(table.locator("tbody tr")).toHaveCount(85);
+  await table.getByRole("button", {name: /UTMOS/}).click();
+  await expect(table.locator("thead th").nth(2)).toHaveAttribute("aria-sort", "descending");
+  const scores = await table.locator("tbody tr td:nth-child(3)").allTextContents();
+  expect(scores.map(Number)).toEqual(scores.map(Number).sort((a, b) => b - a));
+  await page.getByRole("searchbox", {name: "Search benchmark models"}).fill("SmollerTTS");
+  await expect(table.locator("tbody tr")).toHaveCount(1);
+  await expect(table.getByRole("link", {name: "SmollerTTS source"})).toHaveAttribute("href", "https://github.com/Ehdunhackme/SmollerTTS");
+  await page.getByRole("searchbox", {name: "Search benchmark models"}).fill("");
+  await chart.getByRole("button", {name: "Under 10M", exact:true}).click();
+  expect(await table.locator("tbody tr").count()).toBeLessThan(15);
+  await chart.getByRole("button", {name: "All models", exact:true}).click();
+  await chart.getByRole("button", { name: "Quality UTMOS ↑" }).click();
+  await chart.evaluate(el => Promise.all(el.getAnimations({subtree:true}).map(animation => animation.finished.catch(() => {}))));
+  await page.screenshot({path:testInfo.outputPath("benchmark.png")});
+  await table.scrollIntoViewIfNeeded();
+  await page.screenshot({path:testInfo.outputPath("table.png")});
+
+  const walk = page.getByRole("region", {name: "Animated model architecture",exact:true});
+  await walk.scrollIntoViewIfNeeded();
+  await walk.getByRole("button", {name:"Inspect length regulator", exact:true}).click();
+  await expect(walk.getByRole("heading", {name: "Duration & length"})).toBeVisible();
+  await walk.getByRole("button", {name:"Play animation", exact:true}).click();
+  await expect(walk.getByRole("button", {name:"Inspect acoustic decoder", exact:true})).toHaveAttribute("aria-pressed","true",{timeout:6000});
+  await walk.getByRole("button", {name:"Pause animation", exact:true}).click();
+  await walk.getByRole("button", {name:"Inspect text encoder",exact:true}).press("Enter");
+  await expect(walk.getByRole("button", {name:"Inspect text encoder",exact:true})).toHaveAttribute("aria-pressed","true");
+  const fullArchitecture = page.getByRole("link", {name:"Open the full SmollerTTS architecture diagram"});
+  await expect(fullArchitecture).toBeHidden();
+  await page.getByText('View full architecture',{exact:true}).click();
+  await expect(fullArchitecture).toBeVisible();
+  await page.locator('details').filter({has:fullArchitecture}).evaluate(el=>Promise.all(el.getAnimations({subtree:true}).map(a=>a.finished.catch(()=>{}))));
+  const sizes = await Promise.all([chart, page.getByRole('group',{name:'SmollerTTS architecture',exact:true}), page.getByRole("region",{name:"Released model file sizes"})].map(locator => locator.boundingBox()));
+  for (const bounds of sizes) {
+    expect(Math.abs(bounds!.x - sizes[0]!.x)).toBeLessThanOrEqual(1);
+    expect(Math.abs(bounds!.width - sizes[0]!.width)).toBeLessThanOrEqual(1);
+  }
+  await page.screenshot({path:testInfo.outputPath("walkthrough.png")});
+  await walk.getByRole("button", {name:"Inspect acoustic decoder",exact:true}).click();
+  await walk.screenshot({path:testInfo.outputPath("architecture.png"),scale:"css"});
+
+  const architecture = page.getByRole("link", {name:"Open the full SmollerTTS architecture diagram"});
+  await architecture.scrollIntoViewIfNeeded();
+  await architecture.hover();
+  await expect(architecture).toHaveCSS("background-color", "rgb(26, 26, 26)");
+  await expect.poll(() => architecture.locator("img").evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth === 1000)).toBe(true);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole("heading", {level:1}).scrollIntoViewIfNeeded();
+  await page.screenshot({path:testInfo.outputPath("article.png"),fullPage:true,scale:"css"});
+  expect(errors).toEqual([]);
+});
+
+test("embedded demo generates the released waveform and supports playback and download", async ({ page, context }, testInfo) => {
+  const requests: string[] = [];
+  context.on("request", request => requests.push(request.url()));
+  await page.goto(path);
+  const generate = page.getByRole("button", {name:"Generate speech",exact:true});
+  await expect(generate).toBeEnabled({timeout:60000});
+  await page.getByRole("textbox", {name:"Give it something to say"}).fill("Open the browser and read my email.");
+  await generate.click();
+  await expect(page.getByRole("link", {name:"Download WAV"})).toBeVisible({timeout:60000});
+  if (await page.evaluate(() => typeof AudioContext !== 'undefined')) {
+    await expect(page.getByRole("slider", {name:"Seek Generated speech"})).toBeEnabled();
+    const bars = page.locator("[data-sample] svg g rect");
+    const heights = await bars.evaluateAll(nodes => nodes.map(node => node.getAttribute("height")));
+    await page.getByRole("button", {name:"Play Generated speech",exact:true}).click();
+    await expect.poll(() => page.getByRole("slider", {name:"Seek Generated speech"}).evaluate((element: HTMLInputElement) => element.valueAsNumber)).toBeGreaterThan(0);
+    await page.getByRole("button", {name:"Pause Generated speech",exact:true}).click();
+    expect(await bars.evaluateAll(nodes => nodes.map(node => node.getAttribute("height")))).toEqual(heights);
+    await page.getByRole("slider", {name:"Seek Generated speech"}).fill("1");
+  } else {
+    testInfo.annotations.push({type:"playback coverage", description:"This browser build has no Web Audio API. Verified the download fallback; in-page playback requires a real Safari device check."});
+    await expect(page.getByRole("button", {name:"Play Generated speech",exact:true})).toBeDisabled();
+    await expect(page.getByText("Audio playback is unavailable in this browser.")).toBeVisible();
+  }
+  await page.getByRole("heading", {level:1}).scrollIntoViewIfNeeded();
+  await page.screenshot({path:testInfo.outputPath("live-demo.png")});
+  const downloadEvent = page.waitForEvent("download");
+  await page.getByRole("link", {name:"Download WAV"}).click();
+  const download = await downloadEvent;
+  const generated = await readFile((await download.path())!);
+  const reference = await readFile("public/assets/writings/smollertts/everyday.wav");
+  expect(generated.readUInt32LE(24)).toBe(22050);
+  expect(generated.length).toBe(reference.length);
+  let maxDifference = 0;
+  for(let i=44; i<generated.length; i+=2) maxDifference = Math.max(maxDifference, Math.abs(generated.readInt16LE(i) - reference.readInt16LE(i)));
+  expect(maxDifference).toBeLessThanOrEqual(2);
+  expect(new Set(requests.filter(url => /\.onnx(?:\?|$)/.test(url)).map(url => new URL(url).pathname)).size).toBe(3);
+  expect(requests.filter(url => /\.wav(?:\?|$)/.test(url))).toEqual([]);
+});
+
+test("model load failures can be retried and reduced motion keeps the walkthrough still", async ({page}) => {
+  await page.emulateMedia({reducedMotion:"reduce"});
+  await page.route("**/projects/smollertts/assets.json*", route => route.fulfill({status:503,body:"Unavailable"}));
+  await page.goto(path);
+  await expect(page.getByRole("button", {name:"Retry loading"})).toBeVisible({timeout:15000});
+  await expect(page.getByRole('region',{name:'Try SmollerTTS in this article'}).getByRole('alert')).toBeVisible();
+  await page.unroute("**/projects/smollertts/assets.json*");
+  await page.getByRole("button", {name:"Retry loading"}).click();
+  await expect(page.getByRole("button", {name:"Generate speech",exact:true})).toBeEnabled({timeout:60000});
+  await expect(page.getByRole('region',{name:'Try SmollerTTS in this article'}).getByRole('alert')).toHaveCount(0);
+  const walk = page.getByRole("region", {name:"Animated model architecture",exact:true});
+  await walk.scrollIntoViewIfNeeded();
+  await expect(walk).toHaveAttribute("data-playing","false");
+  await walk.getByRole("button",{name:"Inspect length regulator",exact:true}).click();
+  const animations = await walk.evaluate(el => el.getAnimations({subtree:true}).filter(animation=>animation.playState==='running').length);
+  expect(animations).toBe(0);
+});

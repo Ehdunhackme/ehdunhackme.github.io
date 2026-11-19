@@ -1,0 +1,13 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-underline-offset: .22em;
+}
+.label {line-height: 1.5;}
+.icon {display: block; width: 16px; height: 16px; flex: 0 0 16px; object-fit: contain; margin: 0; border-radius: 2px;}
+.arrow {display: block; width: 12px; height: 12px; flex: 0 0 12px; margin-left: -3px; opacity: .7;}
+:global(html.dark) .monochrome {filter: brightness(0) invert(1);}
+.link:hover .arrow,.link:focus-visible .arrow {opacity: 1;}

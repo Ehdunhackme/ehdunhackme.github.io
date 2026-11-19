@@ -1,4 +1,5 @@
-import {METRICS, hasMetric, formatMetric, promptValues, bounds, frontier} from './benchmark-metrics.mjs?h=370842fc0871';
+import {arrowIcon} from './arrows.mjs?h=41a51497074d';
+import {METRICS, hasMetric, formatMetric, promptValues, bounds, frontier} from './benchmark-metrics.mjs?h=41a51497074d';
 const $ = id => document.getElementById(id);
 const svg = (tag, attrs, text) => {
   const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -49,7 +50,7 @@ reducedMotion.addEventListener('change', () => {
 });
 
 try {
-  const response = await fetch(new URL('./benchmark.json?h=370842fc0871', import.meta.url));
+  const response = await fetch(new URL('./benchmark.json?h=41a51497074d', import.meta.url));
   if (!response.ok) throw new Error('Benchmark unavailable');
   const snapshot = await response.json(), data = snapshot.cohorts?.published || snapshot;
   const own = data.models.find(m => m.local), tooltip = $('chart-tooltip');
@@ -168,7 +169,8 @@ try {
       }
     }
     $('model-count').textContent=`${visible.length} configurations`;
-    $('chart-metric').textContent=`${METRICS[metric].label} ${METRICS[metric].direction}${spread?' · bars show min–max, not confidence':''}`;
+    $('chart-metric').replaceChildren(document.createTextNode(METRICS[metric].label+' '),arrowIcon(metric==='utmos'?'up':'down'));
+    if(spread)$('chart-metric').append(document.createTextNode(' · bars show min–max, not confidence'));
     $('metric-note').textContent=METRICS[metric].note;
     chart.setAttribute('aria-label',`Interactive chart of ${METRICS[metric].label} against reported model parameter count`);
     for(const name of ['own','small','medium','large']) document.querySelector(`.legend .${name}`).parentElement.hidden=!visible.some(row=>group(row)===name);
@@ -210,7 +212,7 @@ try {
     document.querySelectorAll('[data-sort]').forEach(button=>{
       const active=button.dataset.sort===sortKey;button.parentElement.removeAttribute('aria-sort');
       if(active)button.parentElement.setAttribute('aria-sort',sortDirection===1?'ascending':'descending');
-      button.querySelector('span').textContent=active?sortDirection===1?'↑':'↓':'↕';
+      button.querySelector('span').replaceChildren(arrowIcon(active?sortDirection===1?'up':'down':'sort'));
     });
   }
   $('results-total').textContent=data.models.length;$('model-search').addEventListener('input',renderTable);
@@ -227,7 +229,7 @@ try {
   for(const text of notes){const p=document.createElement('p');p.textContent=text;$('benchmark-method').append(p);}
   const sources=document.createElement('div');sources.className='benchmark-sources';sources.setAttribute('aria-label','Benchmark sources');
   for(const source of [...data.sources,{name:'UTMOS paper',url:'https://arxiv.org/abs/2204.02152'}]) sources.append(sourceLink(source.url,source.name==='Sizes'?'Parameter counts':source.name));
-  if(own.wer_provenance) sources.append(sourceLink('./smollertts-wer.json?h=370842fc0871','Our WER report'));
+  if(own.wer_provenance) sources.append(sourceLink('./smollertts-wer.json?h=41a51497074d','Our WER report'));
   $('benchmark-method').append(sources);renderTable();draw();document.fonts.ready.then(()=>draw());
 }catch(error){
   $('model-count').textContent='Chart unavailable';$('chart-selection').classList.remove('sr-only');$('chart-selection').textContent='Could not load the comparison. Reload to try again.';console.error(error);

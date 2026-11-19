@@ -5,6 +5,17 @@ The pretrained HiFi-GAN LJ_V2 vocoder and adapted generator definition retain
 Jungil Kong's MIT license in [HIFIGAN-LICENSE.txt](licenses/HIFIGAN-LICENSE.txt).
 Source: https://github.com/jik876/hifi-gan . Original generator SHA-256:
 3fac378c5918fb2c102733f21eeaa8e9a4ca6cda24dbfddc55bbb947c78d562f.
+The native magnitude-mel extraction in `smollertts/features.py` also follows
+HiFi-GAN's frontend conventions, adapted for current PyTorch/librosa APIs.
+
+Optional training preparation uses separately installed Montreal Forced Aligner
+and its English IPA models, eSpeak NG for stress labels, and PyWORLD/WORLD for
+pitch estimation. These tools are not included in the browser model; their
+own licenses and model/dictionary terms apply:
+https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner ·
+https://mfa-models.readthedocs.io/ · https://github.com/espeak-ng/espeak-ng ·
+https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder ·
+https://github.com/mmorise/World
 
 ONNX Runtime Web 1.31.1: Microsoft, MIT; [license](licenses/ONNXRUNTIME-LICENSE.txt).
 https://github.com/microsoft/onnxruntime
