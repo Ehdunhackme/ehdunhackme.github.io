@@ -19,6 +19,20 @@ const smollerttsExplanation = [
   ],
 ];
 
+function NeurIPSOfficialLink({ href }: { href: string }) {
+  return (
+    <ResourceLink
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Official NeurIPS page"
+      title="Official NeurIPS page"
+    >
+      Official
+    </ResourceLink>
+  );
+}
+
 const chertExplanation = [
   [
     "The idea",
@@ -139,7 +153,7 @@ export function ProjectsContent() {
             {
               id: "platonic-representation",
               searchText:
-                "Sep 2026 Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy UniverseTBD NeurIPS 2026 Interpretability for Discovery Workshop with Kshitij Duraphe et al. GitHub OpenReview arXiv The idea Two models can group the same galaxies similarly without encoding the same useful physics. Nearby points in representation space may reflect shared visual features rather than redshift or other physical properties. Genuine interchangeability requires more than similar geometry: a predictor trained on one survey should also remain useful when transferred to another. Layerwise alignment and transfer Matched optical images, infrared images, and spectra provide a common set of astronomical objects for comparing 36 pretrained models. Across 139 model-survey comparisons, neighborhood alignment measures agreement at different depths. Cross-survey prediction then compares layers chosen for geometric similarity with layers chosen for their ability to predict the target physical property. The takeaway Local alignment appears somewhere in every comparison, but does not generally increase with depth. Geometry-selected layers underperform label-selected layers in the image-transfer tests, and aligned final representations can still fail at redshift transfer. Similar neighborhoods therefore do not establish shared physical information; direct prediction and transfer tests remain necessary.",
+                "Sep 2026 Shared Geometry Is Not Shared Physics: A Layerwise Test of the Platonic Representation Hypothesis in Astronomy UniverseTBD NeurIPS 2026 Interpretability for Discovery Workshop with Kshitij Duraphe et al. GitHub Official OpenReview arXiv The idea Two models can group the same galaxies similarly without encoding the same useful physics. Nearby points in representation space may reflect shared visual features rather than redshift or other physical properties. Genuine interchangeability requires more than similar geometry: a predictor trained on one survey should also remain useful when transferred to another. Layerwise alignment and transfer Matched optical images, infrared images, and spectra provide a common set of astronomical objects for comparing 36 pretrained models. Across 139 model-survey comparisons, neighborhood alignment measures agreement at different depths. Cross-survey prediction then compares layers chosen for geometric similarity with layers chosen for their ability to predict the target physical property. The takeaway Local alignment appears somewhere in every comparison, but does not generally increase with depth. Geometry-selected layers underperform label-selected layers in the image-transfer tests, and aligned final representations can still fail at redshift transfer. Similar neighborhoods therefore do not establish shared physical information; direct prediction and transfer tests remain necessary.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -205,6 +219,7 @@ export function ProjectsContent() {
                         >
                           {"GitHub"}
                         </ResourceLink>
+                        <NeurIPSOfficialLink href="https://neurips.cc/virtual/2026/loc/atlanta/164232" />
                         <ResourceLink
                           href={"https://openreview.net/forum?id=Xw72C0uPBw"}
                           target={"_blank"}
@@ -242,7 +257,7 @@ export function ProjectsContent() {
             {
               id: "perturbation-robustness",
               searchText:
-                "Sep 2026 How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models EleutherAI NeurIPS 2026 Interpscience Workshop with Emily Liu et al. GitHub arXiv The idea A typo changes the form of individual words, while shuffling changes their order and context. Both can hurt predictions, but the disruption can begin at different depths and affect different attention functions. Tracking the path from altered input to hidden states to output reveals distinctions that a final accuracy or loss score misses. Tracing disruption through the model Six perturbations, including character edits, token substitutions, and shuffling, are evaluated through output behavior, layerwise representations, and attention-head function. Behavioral comparisons span four GPT-2 and two Qwen2.5 checkpoints; head-level analysis focuses on GPT-2. Gradient-guided HotFlip substitutions are compared with random substitutions at the same edit rate to separate targeted disruption from the amount of corruption. The takeaway Different perturbations leave different internal signatures, and HotFlip is more disruptive than matched random edits in the tested settings. Patterns are only partly consistent across checkpoints. Robustness is therefore better understood through complementary behavioral and internal measurements than through a single output score or representation metric.",
+                "Sep 2026 How Perturbations Propagate: A Multi-Level Analysis of Robustness in Large Language Models EleutherAI NeurIPS 2026 Interpscience Workshop with Emily Liu et al. GitHub Official arXiv The idea A typo changes the form of individual words, while shuffling changes their order and context. Both can hurt predictions, but the disruption can begin at different depths and affect different attention functions. Tracking the path from altered input to hidden states to output reveals distinctions that a final accuracy or loss score misses. Tracing disruption through the model Six perturbations, including character edits, token substitutions, and shuffling, are evaluated through output behavior, layerwise representations, and attention-head function. Behavioral comparisons span four GPT-2 and two Qwen2.5 checkpoints; head-level analysis focuses on GPT-2. Gradient-guided HotFlip substitutions are compared with random substitutions at the same edit rate to separate targeted disruption from the amount of corruption. The takeaway Different perturbations leave different internal signatures, and HotFlip is more disruptive than matched random edits in the tested settings. Patterns are only partly consistent across checkpoints. Robustness is therefore better understood through complementary behavioral and internal measurements than through a single output score or representation metric.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -309,6 +324,7 @@ export function ProjectsContent() {
                         >
                           {"GitHub"}
                         </ResourceLink>
+                        <NeurIPSOfficialLink href="https://neurips.cc/virtual/2026/loc/sydney/166043" />
                         <ResourceLink
                           href={"https://arxiv.org/abs/2609.03322"}
                           target={"_blank"}
@@ -339,7 +355,7 @@ export function ProjectsContent() {
             {
               id: "nonlinear-queries",
               searchText:
-                "Sep 2026 Beyond Query Linearity: The Case for Nonlinear Queries. EleutherAI NeurIPS 2026 SLM-Agents Workshop · Poster with Marko Karbevski et al. GitHub OpenReview The idea Attention uses queries to decide which information to retrieve. A learned linear query projection can be partly redundant with surrounding transformations: it may change coordinates without adding a genuinely new function. A nonlinear query pathway can break that symmetry, offering a way to spend a similar parameter budget on a richer computation instead. Nonlinear query projections A residual bottleneck network replaces the usual linear query projection, adding a nonlinear transformation before attention scores are computed. Matched-parameter linear baselines help isolate the effect of the query function rather than extra model capacity. Varying the learning-rate schedule tests how much of the benefit depends on the optimization setup. The takeaway In the reported 124M-model experiments, validation log-loss improves by roughly 0.3% to 2.4%, depending on the learning-rate schedule. A small change to the query pathway can therefore improve how a fixed parameter budget is used. The schedule dependence also makes training configuration an important part of evaluating the architecture.",
+                "Sep 2026 Beyond Query Linearity: The Case for Nonlinear Queries. EleutherAI NeurIPS 2026 SLM-Agents Workshop · Poster with Marko Karbevski et al. GitHub Official OpenReview The idea Attention uses queries to decide which information to retrieve. A learned linear query projection can be partly redundant with surrounding transformations: it may change coordinates without adding a genuinely new function. A nonlinear query pathway can break that symmetry, offering a way to spend a similar parameter budget on a richer computation instead. Nonlinear query projections A residual bottleneck network replaces the usual linear query projection, adding a nonlinear transformation before attention scores are computed. Matched-parameter linear baselines help isolate the effect of the query function rather than extra model capacity. Varying the learning-rate schedule tests how much of the benefit depends on the optimization setup. The takeaway In the reported 124M-model experiments, validation log-loss improves by roughly 0.3% to 2.4%, depending on the learning-rate schedule. A small change to the query pathway can therefore improve how a fixed parameter budget is used. The schedule dependence also makes training configuration an important part of evaluating the architecture.",
               className: "paper-showcase",
               content: (
                 <article className={"paper-row"}>
@@ -404,6 +420,7 @@ export function ProjectsContent() {
                         >
                           {"GitHub"}
                         </ResourceLink>
+                        <NeurIPSOfficialLink href="https://neurips.cc/virtual/2026/loc/paris/171253" />
                         <ResourceLink
                           href={"https://openreview.net/forum?id=M8z9uMfxk5"}
                           target={"_blank"}

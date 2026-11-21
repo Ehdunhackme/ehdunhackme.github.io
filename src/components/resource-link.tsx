@@ -2,12 +2,13 @@ import type {AnchorHTMLAttributes} from "react";
 import Link from "next/link";
 import styles from "./resource-link.module.css";
 
-type ResourceKind = "github" | "huggingface" | "smollertts" | "chert" | "document" | "code" | "web";
+type ResourceKind = "github" | "huggingface" | "smollertts" | "chert" | "neurips" | "document" | "code" | "web";
 
 function resourceKind(href: string): ResourceKind {
   if (href.includes("github.com") && /\/blob\/.*\.(md|py|json)/.test(href)) return "code";
   if (href.includes("github.com")) return "github";
   if (href.includes("huggingface.co")) return "huggingface";
+  if (href.startsWith("https://neurips.cc/")) return "neurips";
   if (href.startsWith("/projects/smollertts/")) return "smollertts";
   if (href.startsWith("/projects/chert/")) return "chert";
   if (/arxiv\.org|openreview\.net|drive\.google\.com|\.pdf(?:[?#]|$)|^\/writings\//.test(href)) return "document";
@@ -20,6 +21,7 @@ function ResourceIcon({kind}: {kind: ResourceKind}) {
     huggingface: "/assets/icons/huggingface.svg",
     smollertts: "/projects/smollertts/mark.svg",
     chert: "/assets/logos/chert-square.webp",
+    neurips: "/assets/logos/neurips.svg",
   };
   if (kind in logos) {
     return <img className={`${styles.icon} ${kind === "github" ? styles.monochrome : ""}`} src={logos[kind as keyof typeof logos]} width="16" height="16" alt="" />;
