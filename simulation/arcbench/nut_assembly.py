@@ -48,8 +48,8 @@ def layout(seed):
 
 
 class Assembly:
-    def __init__(self, seed=2026, clearance=3, estimate_error=5):
-        start, self.yaw, peg, self.peg_yaw = layout(seed)
+    def __init__(self, seed=2026, clearance=3, estimate_error=5, fixtures=(), placement=None):
+        start, self.yaw, peg, self.peg_yaw = layout(seed) if placement is None else placement
         self.start = np.r_[start, DECK + HALF_HEIGHT]
         self.goal = np.r_[peg, DECK + HALF_HEIGHT]
         angle = np.random.default_rng(seed + 4081).uniform(-np.pi, np.pi)
@@ -80,6 +80,10 @@ class Assembly:
             quat=vec([np.cos(self.peg_yaw / 2), 0, 0, np.sin(self.peg_yaw / 2)]),
             **common,
         )
+        for item in fixtures:
+            ET.SubElement(world, "geom", name=item["name"], type="box",
+                          pos=vec(item["center"]), size=vec(item["half"]),
+                          euler=vec([0, 0, item["yaw"]]), **common)
         nut = ET.SubElement(
             world,
             "body",
@@ -203,6 +207,14 @@ class Assembly:
         ]
         times = np.array([s[0] for s in stages])
         cmds = np.array([np.r_[q, jaw] for _, q, jaw in stages])
+        preview = []
+        if detailed:
+            for a,b in zip(cmds,cmds[1:]):
+                for q in np.linspace(a,b,10):
+                    self.ik.qpos[:6] = q
+                    mujoco.mj_kinematics(m,self.ik)
+                    pt = self.ik.xpos[self.grip] + self.ik.xmat[self.grip].reshape(3,3) @ PINCH
+                    preview.append(pt.round(5).tolist())
         d.qpos[:6] = cmds[0]
         d.ctrl[:] = cmds[0]
         mujoco.mj_forward(m, d)
@@ -273,6 +285,7 @@ class Assembly:
             seated_s=round(release_time, 3),
             seconds=times[-1],
             frames=frames,
+            **({"preview":preview} if detailed else {}),
         )
 
 

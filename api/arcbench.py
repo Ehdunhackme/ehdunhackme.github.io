@@ -26,8 +26,12 @@ def simulate(query):
             raise ValueError(f"Choose {key} between {low} and {high}.")
         return value
 
-    family = integer("family", 4, 0, 5)
+    family = integer("family", 4, 0, 7)
     seed = integer("seed", 2402, 0, 2**31 - 1)
+    if family in (6,7):
+        from gripper_courses import course_replay
+        level = integer("rail",52,38,62) if family==6 else integer("bias",8,0,10)
+        return course_replay("transfer" if family==6 else "relay",seed,integer("clearance",2,1,4),level)
     if family == 5:
         from nut_assembly import assembly_replay
         return assembly_replay(seed, integer("clearance", 3, 1, 4), integer("error", 5, 0, 8))

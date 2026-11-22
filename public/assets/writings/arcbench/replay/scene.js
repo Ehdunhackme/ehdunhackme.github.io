@@ -56,8 +56,9 @@ export async function buildScene(container) {
     mesh.castShadow=mesh.receiveShadow=true;bodies[g.body].add(mesh);
   }
   const overlay=new T.Group();scene.add(overlay);const v=p=>new T.Vector3(...p);
-  let removable=[],sectionOn=true,learnedLine,fixedLine,directLine,hitMarker,movingPart,tool;
-  let pathsOn=false,currentRoute='learned';
+  let removable=[],sectionOn=true,hitMarker,movingPart,tool;
+  const routeLines=new Map();
+  let pathsOn=true,currentRoute='learned';
   function clearOverlay(){overlay.traverse(o=>{o.geometry?.dispose();if(o.material){o.material.map?.dispose();o.material.dispose();}});overlay.clear();removable=[];}
   function cutaway(on){
     sectionOn=on;
@@ -83,14 +84,6 @@ export async function buildScene(container) {
     callout.hidden=!points;if(points)noteText.textContent=caption;
     witness.visible=Boolean(points);if(points){for(let i=0;i<2;i++){ends[i].position.fromArray(points[i]);bar.geometry.attributes.position.setXYZ(i,...points[i]);}bar.geometry.attributes.position.needsUpdate=true;bar.geometry.computeBoundingSphere();}dirty=true;
   }
-  function line(points,color,dash=false,radius=.002) {
-    const verts=points.map(v);
-    if(dash){const obj=new T.Line(new T.BufferGeometry().setFromPoints(verts),new T.LineDashedMaterial({color,dashSize:.009,gapSize:.005}));obj.computeLineDistances();overlay.add(obj);return obj;}
-    if(verts.length<2||verts[0].distanceTo(verts.at(-1))<.0001)return;
-    const curve=new T.CatmullRomCurve3(verts);
-    const obj=new T.Mesh(new T.TubeGeometry(curve,Math.max(35,verts.length),radius,6,false),new T.MeshBasicMaterial({color}));
-    overlay.add(obj);return obj;
-  }
   function marker(pt){
     const group=new T.Group();group.position.fromArray(pt);
     for(let p=0;p<2;p++){
@@ -103,7 +96,15 @@ export async function buildScene(container) {
     dirty=true;
     clearOverlay();
     if(tool){tool.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});tool.removeFromParent();tool=null;}
-    movingPart=learnedLine=fixedLine=directLine=hitMarker=null;
+    movingPart=hitMarker=null;
+    routeLines.clear();
+    for(const [key,method] of Object.entries(run)){
+      if(!Array.isArray(method?.preview)||method.preview.length<2)continue;
+      const points=method.preview.map(v).filter((p,i,arr)=>i===0 || p.distanceToSquared(arr[i-1])>1e-10);
+      if(points.length<2)continue;
+      const path=new T.Line(new T.BufferGeometry().setFromPoints(points),new T.LineBasicMaterial({color:0x007c82}));
+      path.visible=pathsOn && key===currentRoute;overlay.add(path);routeLines.set(key,path);
+    }
     gap(null);
     const changed=assemblyMode!==Boolean(run.assembly)||shelfMode!==Boolean(run.panels)||puckMode!==Boolean(run.puck);
     assemblyMode=Boolean(run.assembly);shelfMode=Boolean(run.panels);puckMode=Boolean(run.puck);
@@ -119,6 +120,10 @@ export async function buildScene(container) {
       const peg=block(overlay,[run.goal[0],run.goal[1],spec.deck+spec.peg_height/2],
         [spec.peg_half,spec.peg_half,spec.peg_height/2],0x385fa7);
       peg.rotation.z=spec.peg_yaw;
+      for(const item of run.fixtures ?? []){
+        const color=item.name==="rail"?0x98765b:0x527c68;
+        block(overlay,item.center,item.half,color).rotation.z=item.yaw;
+      }
       movingPart=new T.Group();overlay.add(movingPart);
       for(const [center,half] of spec.boxes)block(movingPart,center,half,0xc27935);
       return;
@@ -164,9 +169,6 @@ export async function buildScene(container) {
     box.position.set(x,y,z);box.receiveShadow=true;overlay.add(box);
     const edge=new T.LineSegments(new T.EdgesGeometry(shape),new T.LineBasicMaterial({color:0x555e88}));edge.position.copy(box.position);overlay.add(edge);
     }
-    directLine=line(run.direct.preview,0xb85d44,true);learnedLine=line(run.learned.preview,0x007c82,false,.0016);
-    fixedLine=run.fixed && run.fixed.choice!==run.learned.choice ? line(run.fixed.preview,0x007c82,false,.0016) : null;
-    if(fixedLine)fixedLine.visible=false;
     if(!shelfMode)marker(run.goal);
     if(run.direct.contact_point){
       hitMarker=new T.Mesh(new T.SphereGeometry(.005,12,10),new T.MeshBasicMaterial({color:0xb85d44}));hitMarker.position.fromArray(run.direct.contact_point);overlay.add(hitMarker);
@@ -191,9 +193,7 @@ export async function buildScene(container) {
   renderer.setAnimationLoop(now=>{if(!container.clientHeight||container.offsetParent===null||now-rendered<28)return;controls.update();if(dirty){renderer.render(scene,camera);positionNote();dirty=false;rendered=now;}});
   function showRoute(name=currentRoute){
     currentRoute=name;
-    if(learnedLine)learnedLine.visible=pathsOn && (!fixedLine || name!=='fixed');
-    if(fixedLine)fixedLine.visible=pathsOn && name==='fixed';
-    if(directLine)directLine.visible=pathsOn;
+    for(const [key,path] of routeLines)path.visible=pathsOn && key===name;
     if(hitMarker)hitMarker.visible=pathsOn && name==='direct';
     dirty=true;
   }

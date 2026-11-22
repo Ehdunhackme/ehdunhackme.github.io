@@ -7,6 +7,8 @@ import styles from "./arcbench.module.css";
 
 const assets = "/assets/writings/arcbench";
 const clips = {
+  relay: ["Two-peg relay","Both runs start with the same placement. Watch the fingers during the second pickup."],
+  transfer: ["Rail transfer","Both runs start on the green peg. Compare how high the nut travels as it crosses the rail."],
   assembly: [
     "Nut on peg",
     "Same grasp, same 5 mm error in the initial peg estimate. Watch what happens when the arm uses the peg’s exact position for the final approach.",
@@ -27,6 +29,8 @@ const clips = {
 type Task = keyof typeof clips;
 
 const comparisons: Record<Task, readonly [string, string]> = {
+  relay: ["Estimated regrasp","Measured regrasp"],
+  transfer: ["Low carry","Clear the rail"],
   assembly: ["Initial peg estimate", "Recheck peg position"],
   reach: ["Direct reach", "Learned route"],
   shelf: ["Direct reach", "Learned route"],
@@ -229,7 +233,7 @@ function ComparisonFilm({ task }: { task: Task }) {
 }
 
 export function Replays() {
-  const [task, setTask] = useState<Task>("assembly");
+  const [task, setTask] = useState<Task>("relay");
   const [orbit, setOrbit] = useState(true);
   return (
     <figure
@@ -265,7 +269,7 @@ export function Replays() {
               value={task}
               onChange={(e) => setTask(e.target.value as Task)}
             >
-              {(["assembly", "reach", "shelf", "puck"] as const).map((k) => (
+              {(["relay", "transfer", "assembly", "reach", "shelf", "puck"] as const).map((k) => (
                 <option value={k} key={k}>
                   {clips[k][0]}
                 </option>

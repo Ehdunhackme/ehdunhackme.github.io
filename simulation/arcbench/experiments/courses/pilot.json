@@ -1,0 +1,1474 @@
+[
+  {
+    "task": "transfer",
+    "seed": 751000,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 67.6,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 121.22,
+      "lift_mm": 67.6,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 26.7,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 130.32,
+      "lift_mm": 26.7,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751001,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 64.2,
+          "seated_s": 1.288,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 1.23,
+      "lift_mm": 64.2,
+      "seated_s": 1.288
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.8,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 43.87,
+      "lift_mm": 27.8,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751002,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 64.0,
+          "seated_s": 1.28,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 1.08,
+      "lift_mm": 64.0,
+      "seated_s": 1.28
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.3,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 145.61,
+      "lift_mm": 27.3,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751003,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 70.9,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 136.08,
+      "lift_mm": 70.9,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.1,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 139.78,
+      "lift_mm": 27.1,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751004,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 63.6,
+          "seated_s": 1.284,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 0.81,
+      "lift_mm": 63.6,
+      "seated_s": 1.284
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.8,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 131.31,
+      "lift_mm": 27.8,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751005,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 69.9,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 30.71,
+      "lift_mm": 69.9,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.4,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 142.72,
+      "lift_mm": 27.4,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751006,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 63.7,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 4.58,
+      "lift_mm": 63.7,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.1,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 133.33,
+      "lift_mm": 27.1,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751007,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 69.7,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 129.35,
+      "lift_mm": 69.7,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 26.9,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 141.0,
+      "lift_mm": 26.9,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751008,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 70.0,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 130.72,
+      "lift_mm": 70.0,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.4,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 136.63,
+      "lift_mm": 27.4,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751009,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 62.9,
+          "seated_s": 1.276,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 0.98,
+      "lift_mm": 62.9,
+      "seated_s": 1.276
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.6,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 136.61,
+      "lift_mm": 27.6,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751010,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 69.4,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 111.39,
+      "lift_mm": 69.4,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 54.5,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 100.61,
+      "lift_mm": 54.5,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751011,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 64.5,
+          "seated_s": 1.286,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 1.05,
+      "lift_mm": 64.5,
+      "seated_s": 1.286
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 26.9,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 124.6,
+      "lift_mm": 26.9,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751012,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 63.4,
+          "seated_s": 1.27,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 0.8,
+      "lift_mm": 63.4,
+      "seated_s": 1.27
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.3,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 149.87,
+      "lift_mm": 27.3,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751013,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 69.2,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 47.59,
+      "lift_mm": 69.2,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.7,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 114.4,
+      "lift_mm": 27.7,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751014,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 63.7,
+          "seated_s": 1.274,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 1.09,
+      "lift_mm": 63.7,
+      "seated_s": 1.274
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 26.8,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 152.46,
+      "lift_mm": 26.8,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "transfer",
+    "seed": 751015,
+    "clearance_mm": 2,
+    "difficulty_mm": 52,
+    "scripted": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 65.4,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 49.0,
+      "lift_mm": 65.4,
+      "seated_s": 0.0
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": false,
+          "lift_mm": 27.4,
+          "seated_s": 0.0,
+          "rail_hit": true
+        }
+      ],
+      "completed": 0,
+      "required": 1,
+      "seconds": 9.05,
+      "error_mm": 55.42,
+      "lift_mm": 27.4,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751000,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.4,
+          "seated_s": 1.276,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.5,
+          "seated_s": 1.286,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.18,
+      "lift_mm": 59.4,
+      "seated_s": 1.286
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.4,
+          "seated_s": 1.276,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.2,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 35.14,
+      "lift_mm": 59.4,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751001,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.0,
+          "seated_s": 1.292,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.29,
+      "lift_mm": 60.0,
+      "seated_s": 1.292
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 42.0,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 33.12,
+      "lift_mm": 60.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751002,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.27,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.3,
+          "seated_s": 1.284,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.0,
+      "lift_mm": 60.0,
+      "seated_s": 1.284
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.27,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.8,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 30.65,
+      "lift_mm": 60.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751003,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.4,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.1,
+          "seated_s": 1.272,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.12,
+      "lift_mm": 59.4,
+      "seated_s": 1.272
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.4,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.8,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 32.69,
+      "lift_mm": 59.4,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751004,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 61.2,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.6,
+          "seated_s": 1.278,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.15,
+      "lift_mm": 61.2,
+      "seated_s": 1.278
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 61.2,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.2,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 38.59,
+      "lift_mm": 61.2,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751005,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.8,
+          "seated_s": 1.292,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 56.3,
+          "seated_s": 1.268,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.27,
+      "lift_mm": 60.8,
+      "seated_s": 1.268
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.8,
+          "seated_s": 1.292,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.1,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 40.37,
+      "lift_mm": 60.8,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751006,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.6,
+          "seated_s": 1.278,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 56.4,
+          "seated_s": 1.286,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.38,
+      "lift_mm": 59.6,
+      "seated_s": 1.286
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.6,
+          "seated_s": 1.278,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.4,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 19.1,
+      "lift_mm": 59.6,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751007,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.268,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.7,
+          "seated_s": 1.284,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.08,
+      "lift_mm": 60.0,
+      "seated_s": 1.284
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.268,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.6,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 32.81,
+      "lift_mm": 60.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751008,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.266,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.3,
+          "seated_s": 1.268,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.19,
+      "lift_mm": 60.0,
+      "seated_s": 1.268
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.266,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.9,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 34.95,
+      "lift_mm": 60.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751009,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.3,
+          "seated_s": 1.278,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.0,
+          "seated_s": 1.286,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 0.97,
+      "lift_mm": 60.3,
+      "seated_s": 1.286
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.3,
+          "seated_s": 1.278,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.9,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 33.15,
+      "lift_mm": 60.3,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751010,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 61.0,
+          "seated_s": 1.296,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 54.8,
+          "seated_s": 1.29,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.32,
+      "lift_mm": 61.0,
+      "seated_s": 1.29
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 61.0,
+          "seated_s": 1.296,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 42.1,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 32.89,
+      "lift_mm": 61.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751011,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.2,
+          "seated_s": 1.284,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 56.4,
+          "seated_s": 1.272,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.05,
+      "lift_mm": 59.2,
+      "seated_s": 1.272
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.2,
+          "seated_s": 1.284,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.1,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 32.69,
+      "lift_mm": 59.2,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751012,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.6,
+          "seated_s": 1.276,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 0.97,
+      "lift_mm": 60.0,
+      "seated_s": 1.276
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.0,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.8,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 34.94,
+      "lift_mm": 60.0,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751013,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.8,
+          "seated_s": 1.28,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.6,
+          "seated_s": 1.284,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.38,
+      "lift_mm": 60.8,
+      "seated_s": 1.284
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.8,
+          "seated_s": 1.28,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.4,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 11.82,
+      "lift_mm": 60.8,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751014,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.7,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.9,
+          "seated_s": 1.278,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.23,
+      "lift_mm": 59.7,
+      "seated_s": 1.278
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 59.7,
+          "seated_s": 1.272,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.4,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 40.72,
+      "lift_mm": 59.7,
+      "seated_s": 0.0
+    }
+  },
+  {
+    "task": "relay",
+    "seed": 751015,
+    "clearance_mm": 2,
+    "difficulty_mm": 8,
+    "scripted": {
+      "outcome": "reached",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.5,
+          "seated_s": 1.276,
+          "rail_hit": false
+        },
+        {
+          "complete": true,
+          "lift_mm": 55.5,
+          "seated_s": 1.286,
+          "rail_hit": false
+        }
+      ],
+      "completed": 2,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 1.4,
+      "lift_mm": 60.5,
+      "seated_s": 1.286
+    },
+    "nominal": {
+      "outcome": "miss",
+      "stages": [
+        {
+          "complete": true,
+          "lift_mm": 60.5,
+          "seated_s": 1.276,
+          "rail_hit": false
+        },
+        {
+          "complete": false,
+          "lift_mm": 41.5,
+          "seated_s": 0.0,
+          "rail_hit": false
+        }
+      ],
+      "completed": 1,
+      "required": 2,
+      "seconds": 18.1,
+      "error_mm": 45.57,
+      "lift_mm": 60.5,
+      "seated_s": 0.0
+    }
+  }
+]

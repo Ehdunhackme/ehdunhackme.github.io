@@ -12,7 +12,7 @@ export const description =
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
 const code =
-  "https://github.com/Ehdunhackme/ehdunhackme.github.io/tree/main/simulation/arcbench";
+  "https://github.com/Ehdunhackme/robot-learning/tree/main/projects/so101-path-learning";
 const trace = readFileSync(
   join(
     process.cwd(),
@@ -44,10 +44,28 @@ export function ArcbenchArticle() {
         <p className={styles.lead}>
           I started by teaching the arm to find a way around a fence. Then I
           realised it could do the whole task with its jaws open. So I gave it a
-          square nut to pick up and a peg to fit it onto. Try the same run with
-          the jaws held open and watch what happens.
+          square nut to pick up. In the relay below, watch the second pickup.
+          Both runs put the nut on the middle peg. Only one gets it back off.
         </p>
         <Replays />
+
+        <h2 id="gripper-courses">Can the arm pick it up twice?</h2>
+        <p>
+          In the two-peg relay, the arm has to let go on the green peg and
+          grip the handle again before it can move the nut to the blue peg.
+          I tried 16 layouts with 2 mm of clearance per side. When the second
+          grasp used the nut’s pose from MuJoCo, it finished all 16. With the
+          second grasp estimate shifted 8 mm sideways, it finished none.
+          Both controllers follow scripted waypoints.
+        </p>
+        <p>
+          Try <strong>Rail transfer</strong> for the harder one. The nut starts
+          on a peg and there’s a 52 mm rail in the way. Touching it with the arm
+          or the nut costs the run. The high carry clears it in the featured
+          replay, but it touched the rail on all 16 test layouts. Seven nuts
+          still ended up seated. Looking at the final position alone would
+          have missed those collisions.
+        </p>
 
         <h2 id="assembly">Getting the nut onto the peg</h2>
         <p>
@@ -106,9 +124,7 @@ export function ArcbenchArticle() {
         </div>
         <p>
           At 1 mm, both gripping controllers still lifted all 32 nuts. The
-          difference showed up when they tried to put them down. The next thing
-          I’d try is estimating the peg position from a camera. Right now the
-          recheck gets a measurement that a real arm wouldn’t have.
+          difference showed up when they tried to put them down. For the recheck I gave the arm an exact peg position from MuJoCo.
         </p>
 
         <h2 id="training">How the arm learned to choose a path</h2>
@@ -356,16 +372,6 @@ export function ArcbenchArticle() {
           on the site’s Linux server.
         </p>
 
-        <h2 id="next">The next thing I’d try</h2>
-        <p>
-          I’d put a gate between the puck and its target. With a 40 mm puck and
-          a 60 mm gate, there’s only 10 mm to spare on either side. I’d move the
-          target off to one side so the arm has to push through the gate, come
-          around the puck and push again. If the first push lands a little wide,
-          can it recover on the second? For the nut, I’d run the same 1 mm test
-          using a camera estimate and see how close it gets to the
-          exact-position result.
-        </p>
         <p className={styles.sourceLinks}>
           <a href={code}>Simulation, training code and recorded results</a>
         </p>

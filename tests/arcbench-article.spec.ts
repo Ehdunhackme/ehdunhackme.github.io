@@ -44,7 +44,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await page.getByRole("button", {name:"Show full run"}).click();
   await expect(page.getByRole("heading",{name:"Cite this post"})).toBeVisible();
   await expect(page.locator("#ref-planning a")).toHaveText(/MotionBenchMaker/);
-  await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("assembly");
+  await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("relay");
   await page
     .getByRole("combobox", { name: "Task", exact: true })
     .selectOption("shelf");
@@ -53,6 +53,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   const frame = page.frameLocator("iframe");
   await expect(frame.locator("#stage")).toBeVisible();
   await frame.getByText("Advanced settings", {exact:true}).click();
+  await expect(frame.getByRole("checkbox",{name:"Show planned paths"})).toBeChecked();
   await expect(frame.getByRole("slider", {name:/Opening width/})).toHaveValue("110");
   await expect(frame.getByRole("slider", {name:/Inspection depth/})).toHaveValue("75");
   await expect(frame.getByRole("combobox", {name:"Camera",exact:true})).toBeVisible();

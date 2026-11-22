@@ -103,6 +103,12 @@ def simulate(bench, start, goal, correction=(0., 0.), detailed=True):
     for xy, height in points:
         poses.append(bench.pose(xy, height, poses[-1] if poses else None))
     commands = phased(np.array(poses), np.array([0., .29, .80, 1.]), 1401)
+    preview = []
+    if detailed:
+        for command in commands[::20]:
+            bench.ik.tip_at(command)
+            wrist = bench.ik.d.body("gripper")
+            preview.append((wrist.xpos + wrist.xmat.reshape(3,3) @ bench.local_probe).round(5).tolist())
     mujoco.mj_resetData(m, d)
     d.qpos[:6] = commands[0]
     d.qpos[6:9] = [*start, z+.00005]
@@ -143,7 +149,8 @@ def simulate(bench, start, goal, correction=(0., 0.), detailed=True):
                 seconds=round(.002*step,3),error_mm=round(gap*1000,2),frames=frames,
                 contact_point=hit.tolist() if hit is not None else None,first_touch=first_contact,
                 finish=final.tolist(),settled=bool(settled),
-                distance_mm=round(1000*np.linalg.norm(final-start),1))
+                distance_mm=round(1000*np.linalg.norm(final-start),1),
+                **({"preview":preview} if detailed else {}))
 
 
 @lru_cache(maxsize=1)

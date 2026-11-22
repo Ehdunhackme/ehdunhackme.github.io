@@ -20,7 +20,7 @@
 <div class="settings">
 <button id="random" disabled>Randomize layout</button>
 <details><summary>Advanced settings</summary>
-<div class="options">
+<div class="options disclosure-body">
   <fieldset><legend>Layout</legend>
     <label for="seed">Layout seed</label><input type="number" id="seed" min="0" max="2147483647" step="1" required>
     <div id="example-row" hidden><label for="example">Shelf example</label><select id="example"><option value="">Custom</option><option value="720001,110,75">Roof clearance</option><option value="610002,180,102">Learned route succeeds</option><option value="610014,125,97">Fixed route succeeds</option></select></div>
@@ -30,7 +30,7 @@
   <fieldset><legend>Playback and camera</legend>
     <label for="speed">Playback speed</label><select id="speed"><option value=".5">0.5×</option><option selected value="1">1×</option><option value="2">2×</option></select>
     <label for="camera">Camera</label><select id="camera"><option value="work">Workcell</option><option value="top">Overhead</option></select>
-    <label class="check" id="path-row"><input id="paths" type="checkbox"> Show planned paths</label>
+    <label class="check" id="path-row"><input id="paths" type="checkbox" checked> Show planned paths</label>
     <label class="check" id="cut-row"><input id="cut" type="checkbox" checked> Cutaway shelf</label>
     <button id="reset">Reset camera</button>
   </fieldset>

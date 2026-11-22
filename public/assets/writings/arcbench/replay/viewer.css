@@ -24,7 +24,6 @@ summary { display:flex; align-items:center; gap:9px; width:fit-content; font-siz
 summary::-webkit-details-marker { display:none; }
 summary::after { content:""; width:5px; height:5px; border:solid currentColor; border-width:0 1px 1px 0; transform:translateY(-1px) rotate(45deg); transition:transform .18s; }
 details[open] summary::after { transform:translateY(2px) rotate(225deg); }
-@media(prefers-reduced-motion:no-preference){details[open] .options{animation:options-in .18s ease-out;} @keyframes options-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}}
 .options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; border-top:1px solid var(--line); padding:16px; }
 fieldset { min-width:0; border:0; padding:0; margin:0; }
 legend { font-size:13px; font-weight:600; padding:0; margin-bottom:8px; }
@@ -40,3 +39,4 @@ dl,dd { margin:0; } dd { font-size:13px; font-variant-numeric:tabular-nums; }
 .surface-note span { display:block; width:max-content; max-width:145px; color:white; border-radius:4px; padding:3px 5px; font-size:11px; background:#24272a; }
 .surface-note.flip span { transform:translateX(-100%); }
 @media (max-width:510px) { .options{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px} fieldset:last-child{grid-column:1/-1} dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px} dt,dd{margin:0} }
+details.is-animating {overflow:hidden;}

@@ -1,5 +1,9 @@
 const $ = (id) => document.getElementById(id);
+import {mountDisclosure} from "./disclosure.mjs";
+mountDisclosure(document.querySelector("details"));
 const tasks = {
+  relay: {seed:2026,family:7,sliders:[["clearance","Side clearance",1,4,2,"mm"],["bias","Regrasp estimate error",0,10,8,"mm"]],methods:[["scripted","Measured regrasp"],["nominal","Estimated regrasp"]]},
+  transfer: {seed:2040,family:6,sliders:[["clearance","Side clearance",1,4,2,"mm"],["rail","Rail height",38,62,52,"mm"]],methods:[["scripted","Clear the rail"],["nominal","Low carry"]]},
   assembly: {seed:2026, family:5, sliders:[["clearance","Side clearance",1,4,3,"mm"],["error","Peg estimate error",0,8,5,"mm"]], methods:[["scripted","Recheck peg"],["nominal","Initial estimate"],["open","Jaws open"]]},
   puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"]]},
   shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
@@ -50,7 +54,7 @@ function prepareControls() {
   }
   for(const [key,name] of config.methods)mode.add(new Option(name,key));
   $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
-  $("cut-row").hidden=!shelf; $("closest").hidden=!shelf; $("path-row").hidden=task==="puck" || task==="assembly";
+  $("cut-row").hidden=!shelf; $("closest").hidden=!shelf;
   if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
   $("seed").oninput=updateExamples;updateExamples();
 }
@@ -84,9 +88,11 @@ function tick(now){
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
   draw();
-  const p=route(),result=p.outcome==="reached"?({assembly:"Seated and released",puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
+  const p=route(),result=p.outcome==="reached"?({relay:"Both placements complete",transfer:"Rail cleared and nut seated",assembly:"Seated and released",puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
   const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"]];
-  if(task==="assembly") entries.push(["Peak lift",p.lift_mm+" mm"],["Seated after release",p.seated_s+" s"]);
+  if(p.stages) entries.push(["Placements",p.completed+" / "+p.required]);
+  if(task==="transfer") entries.push(["Rail contact",p.stages[0].rail_hit?"Yes":"No"]);
+  if(run.assembly) entries.push(["Peak lift",p.lift_mm+" mm"],["Seated after release",p.seated_s+" s"]);
   else entries.push([task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]);
   if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
   if(task==="puck")entries.push(["First contact",p.first_touch==null?"None":p.first_touch.toFixed(2)+" s"]);
