@@ -117,8 +117,13 @@ export function TrainingCurve({ samples }: { samples: LossSample[] }) {
           aria-label="Inspect training update"
           aria-valuetext={valueText}
           onChange={(e) => setIndex(Number(e.target.value))}
+          onKeyDown={(e) => {
+            if (e.key !== "Home" && e.key !== "End") return;
+            e.preventDefault();
+            setIndex(e.key === "Home" ? first : last);
+          }}
           onPointerMove={(e) => {
-            if (e.pointerType !== "mouse") return;
+            if (e.pointerType !== "mouse" || (!e.movementX && !e.movementY)) return;
             const box = e.currentTarget.getBoundingClientRect();
             setIndex(
               Math.max(

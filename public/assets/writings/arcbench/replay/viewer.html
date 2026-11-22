@@ -9,9 +9,10 @@
 <main>
 <div id="stage" aria-label="Robot workcell">
   <div class="stage-tools">
-    <button id="grip-view" type="button" aria-pressed="false" hidden disabled>Gripper view</button>
+    <button id="mask-toggle" type="button" aria-controls="model-input" aria-pressed="false" hidden disabled>Model input</button>
     <button id="random" type="button" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h2c3 0 5 8 8 8h2m-2-2 2 2-2 2M2 12h2c1.5 0 2.5-1.7 3.2-3M9 6c1-1.5 2-2 3-2h2m-2-2 2 2-2 2"/></svg>Randomize layout</button>
   </div>
+  <div id="model-input" hidden><canvas id="mask-image" aria-label="Overhead segmentation mask used for pose prediction"></canvas><output id="mask-size"></output></div>
   <div id="loading" role="status">Loading the arm…</div>
 </div>
   <div class="so-playerbar">

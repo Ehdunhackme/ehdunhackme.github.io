@@ -173,21 +173,23 @@ class Assembly:
             )
         return fit.x
 
-    def rollout(self, close=True, detailed=False, recheck=True):
+    def rollout(self, close=True, detailed=False, recheck=True, grasp_pose=None,
+                place_pose=None, pickup_only=False):
         m, d = self.m, self.d
         mujoco.mj_resetData(m, d)
         guess = [0.0, -0.6, 0.7, 0.9, 0.0]
         destination = self.goal if recheck else self.estimated_goal
+        source, grasp_yaw = (self.start, self.yaw) if grasp_pose is None else grasp_pose
+        approach, place_yaw = self.estimated_goal, self.peg_yaw
+        if place_pose is not None:
+            approach, place_yaw = place_pose
+            destination = approach
+        targets = [(source, grasp_yaw, h) for h in (0.062, 0.012, 0.069)]
+        if not pickup_only:
+            targets += [(approach, place_yaw, 0.069), (destination, place_yaw, 0.069),
+                        (destination, place_yaw, 0.012), (destination, place_yaw, 0.069)]
         waypoints = []
-        for center, yaw, h in [
-            (self.start, self.yaw, 0.062),
-            (self.start, self.yaw, 0.012),
-            (self.start, self.yaw, 0.069),
-            (self.estimated_goal, self.peg_yaw, 0.069),
-            (destination, self.peg_yaw, 0.069),
-            (destination, self.peg_yaw, 0.012),
-            (destination, self.peg_yaw, 0.069),
-        ]:
+        for center, yaw, h in targets:
             guess = self.pose(self.target(center, yaw, h), yaw, guess)
             waypoints.append(guess)
         shut = -0.10 if close else 0.60
@@ -197,14 +199,19 @@ class Assembly:
             (1.15, waypoints[1], 0.60),
             (2.15, waypoints[1], shut),
             (3.25, waypoints[2], shut),
-            (4.7, waypoints[3], shut),
-            (5.25, waypoints[4], shut),
-            (6.35, waypoints[5], shut),
-            (6.65, waypoints[5], shut),
-            (7.35, waypoints[5], 0.60),
-            (8.35, waypoints[6], 0.60),
-            (9.05, waypoints[6], 0.60),
         ]
+        if pickup_only:
+            stages.append((4.05, waypoints[2], shut))
+        else:
+            stages += [
+                (4.7, waypoints[3], shut),
+                (5.25, waypoints[4], shut),
+                (6.35, waypoints[5], shut),
+                (6.65, waypoints[5], shut),
+                (7.35, waypoints[5], 0.60),
+                (8.35, waypoints[6], 0.60),
+                (9.05, waypoints[6], 0.60),
+            ]
         times = np.array([s[0] for s in stages])
         cmds = np.array([np.r_[q, jaw] for _, q, jaw in stages])
         preview = []
@@ -223,6 +230,7 @@ class Assembly:
         lifted = False
         peak = 0
         release_time = 0.0
+        held_time = 0.0
         nut = m.body("nut").id
         deck_geom = m.geom("assembly_deck").id
         for i in range(round(times[-1] / m.opt.timestep) + 1):
@@ -248,6 +256,9 @@ class Assembly:
                 pinched = True
                 if height > 0.035:
                     lifted = True
+            if pickup_only:
+                held = height > 0.035 and self.grip in contacts and self.jaw in contacts
+                held_time = held_time + m.opt.timestep if held else 0.0
             if t > 7.35:
                 R = d.xmat[nut].reshape(3, 3)
                 local = R.T @ (self.goal - p)
@@ -277,7 +288,8 @@ class Assembly:
                     ]
                 )
         return dict(
-            reached=bool(pinched and lifted and release_time >= 0.5),
+            reached=bool(held_time >= 0.5 if pickup_only else pinched and lifted and release_time >= 0.5),
+            held_s=round(held_time, 3),
             pinched=pinched,
             lifted=lifted,
             lift_mm=round(peak * 1000, 1),

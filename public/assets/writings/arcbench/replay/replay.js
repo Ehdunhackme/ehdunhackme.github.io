@@ -2,12 +2,13 @@ const $ = (id) => document.getElementById(id);
 import {mountDisclosure} from "./disclosure.mjs";
 mountDisclosure(document.querySelector("details"));
 const tasks = {
-  puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"],["release","Release paddle"]]},
+  pickup: {seed:813009, family:8, sliders:[["pixels","Mask width",48,128,96,"px"]], methods:[["learned","Predicted grasp"],["direct","Fixed grasp"]]},
+  placement: {seed:813000, family:9, sliders:[["pixels","Mask width",48,128,96,"px"],["clearance","Peg clearance",1,4,2,"mm"]], methods:[["learned","Predicted peg pose"],["direct","Fixed peg pose"]]},
   shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
   reach: {seed:700000, family:0, sliders:[["offset","Fixture offset",-55,55,0,"mm"],["angle","Target rotation",-18,18,0,"°"]], methods:[["learned","Learned route"],["direct","Direct reach"]]}
 };
 const requested=new URLSearchParams(location.search).get("task");
-const task=Object.hasOwn(tasks,requested)?requested:"puck";
+const task=Object.hasOwn(tasks,requested)?requested:"reach";
 const config=tasks[task], shelf=task==="shelf";
 const mode=$("mode"), play=$("play"), scrub=$("time");
 let view, run, elapsed=0, playing=false, last=0, animation=0, inspecting=false, busy=false;
@@ -52,10 +53,7 @@ function prepareControls() {
   for(const [key,name] of config.methods)mode.add(new Option(name,key));
   $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
   $("cut-row").hidden=!shelf; $("closest").hidden=!shelf;
-  if(task==="puck"){
-    $("camera").add(new Option("Gripper view","grip"));
-    $("grip-view").hidden=false;
-  }
+  $("mask-toggle").hidden=task!=="pickup" && task!=="placement";
   if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
   $("seed").oninput=updateExamples;updateExamples();
 }
@@ -90,26 +88,37 @@ function tick(now){
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
   draw();
-  const p=route(),result=p.outcome==="reached"?({puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?(mode.value==="release"?"Paddle dropped":"Collision"):"Outside tolerance";
-  $("finish").textContent=mode.value==="release"?result:result+" · "+p.error_mm.toFixed(1)+" mm";
-  const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"]];
-  entries.push([task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]);
+  const p=route();
+  const success={pickup:"Lift held",placement:"Seated and released",shelf:"Inspection complete",reach:"Target reached"};
+  const result=p.outcome==="reached"?success[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
+  const error=task==="pickup"?p.pose_error_mm:p.error_mm;
+  $("finish").textContent=result+" · "+error.toFixed(1)+" mm";
+  const entries=[["Layout seed",run.seed],["Outcome",result],["Gripper travel",p.distance_mm+" mm"]];
+  if(run.observation)entries.push(["Pose estimate error",p.pose_error_mm+" mm"],["Peak lift",p.lift_mm+" mm"],
+    task==="pickup"?["Held above 35 mm",p.held_s+" s"]:["Seated after release",p.seated_s+" s"]);
+  if(task!=="pickup")entries.push(["Final error",p.error_mm+" mm"]);
   if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
-  if(task==="puck")entries.push(["First contact",p.first_touch==null?"None":p.first_touch.toFixed(2)+" s"]);
-  if(p.push_steps>0)entries.push(["Both jaws held during push",(100*p.gripped_push_steps/p.push_steps).toFixed(1)+"%"]);
   $("metrics").replaceChildren();
   for(const [name,value] of entries){const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=name;dd.textContent=value;$("metrics").append(dt,dd);}
 }
+function drawMask({size,mask}){
+  const canvas=$("mask-image");
+  canvas.width=canvas.height=size;
+  const ctx=canvas.getContext("2d"),image=ctx.createImageData(size,size);
+  const palette=[[237,239,239,255],[186,113,47,255],[61,91,156,255]],bytes=atob(mask);
+  for(let i=0;i<bytes.length;i++)image.data.set(palette[bytes.charCodeAt(i)],4*i);
+  ctx.putImageData(image,0,0);
+  $("mask-size").textContent=size+" × "+size+" px";
+}
 function pending(on){
   busy=on;
-  for(const id of ["random","grip-view","apply","play","time","mode","closest","family","seed","example",...config.sliders.map(s=>s[0])])$(id).disabled=on || !view;
+  for(const id of ["random","mask-toggle","apply","play","time","mode","closest","family","seed","example",...config.sliders.map(s=>s[0])])$(id).disabled=on || !view;
   $("loading").hidden=!on;
 }
 async function simulate(initial=false){
   if(busy || !$("seed").reportValidity())return;
   pause();pending(true);notice();
   const query=new URLSearchParams({family:task==="reach"?$("family").value:config.family,seed:$("seed").value});
-  if(task==="puck")query.set("tool","grasp-v1");
   for(const [id] of config.sliders)query.set(id,$(id).value);
   const key=query.toString();
   const featured=Number($("seed").value)===config.seed && Number(query.get("family"))===config.family &&
@@ -118,18 +127,17 @@ async function simulate(initial=false){
   try {
     let next=cache.get(key);
     if(!next){
-      const response=await fetch(featured?"./"+task+".json"+(task==="puck"?"?tool=grasp-v1":""):"/api/arcbench/?"+query);
+      const response=await fetch(featured?"./"+task+".json":"/api/arcbench/?"+query);
       if(!response.ok){
         const reason=await response.json().catch(()=>({}));
         throw Error(reason.error || "The simulator could not run this layout. Try again.");
       }
       next=await response.json();
       if(!next[config.methods[0][0]]?.frames?.length)throw Error("Incomplete simulation response. Try again.");
-      if(task==="puck" && !next.release?.frames?.length)throw Error("The paddle replay could not load. Try again.");
       if(cache.size>=8)cache.delete(cache.keys().next().value);
       cache.set(key,next);
     }
-    run=next;view.setup(run);view.cameraView($("camera").value);view.cutaway($("cut").checked);pick();
+    run=next;if(run.observation)drawMask(run.observation);view.setup(run);view.cameraView($("camera").value);view.cutaway($("cut").checked);pick();
   }catch(error){
     if(initial)throw error;
     notice(error.message+(run?" Showing layout "+run.seed+".":""));
@@ -147,10 +155,13 @@ try {
   $("example").onchange=()=>{if(!$("example").value)return;const [seed,width,depth]=$("example").value.split(",");setValue("seed",seed);setValue("width",width);setValue("depth",depth);simulate();};
   function setCamera(value){
     $("camera").value=value;view.cameraView(value);
-    $("grip-view").setAttribute("aria-pressed",String(value==="grip"));
   }
   $("camera").onchange=()=>setCamera($("camera").value);
-  $("grip-view").onclick=()=>setCamera($("camera").value==="grip"?"work":"grip");
+  $("mask-toggle").onclick=()=>{
+    const panel=$("model-input");
+    panel.hidden=!panel.hidden;
+    $("mask-toggle").setAttribute("aria-pressed",String(!panel.hidden));
+  };
   $("reset").onclick=()=>setCamera("work");
   $("paths").onchange=()=>view.paths($("paths").checked);$("cut").onchange=()=>view.cutaway($("cut").checked);
   $("closest").onclick=()=>{const p=route();if(!p.gaps)return;const i=p.gaps.reduce((best,g,index)=>g.mm<p.gaps[best].mm?index:best,0);elapsed=p.frames[i][0];wantsPlayback=false;pause();inspecting=true;draw();};

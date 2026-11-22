@@ -2,12 +2,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { TrainingCurve } from "./so101-training-curve";
 import { Equation } from "./article-equation";
-import { PushPaths, Replays, SurfaceTrials } from "./arcbench-interactive";
+import { ResourceLink } from "@/components/resource-link";
+import { Replays } from "./arcbench-interactive";
 import styles from "./smollertts.module.css";
 
-export const title = "Robot path learning with an SO-101 arm";
+export const title = "Teaching an SO-101 arm with supervised learning";
 export const description =
-  "I trained an SO-101 arm to choose paths around obstacles and into a shelf, then tested whether it could pick a better stroke for pushing a puck.";
+  "I used MuJoCo to label paths and object poses, then trained an SO-101 arm to reach around obstacles, inspect a shelf, pick up a part and seat it on a peg.";
 
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
@@ -36,34 +37,32 @@ export function ArcbenchArticle() {
       >
         <header className={styles.header}>
           <h1>{title}</h1>
-          <div className={styles.meta}>
-            <time dateTime="2026-11-22">22 Nov 2026</time>
-            <span>Dun Li Chan</span>
+          <div className={styles.headerBottom}>
+            <div className={styles.meta}>
+              <time dateTime="2026-11-22">22 Nov 2026</time>
+              <span>Dun Li Chan</span>
+            </div>
+            <nav className={styles.resources} aria-label="Project code">
+              <ResourceLink href={code}>GitHub</ResourceLink>
+            </nav>
           </div>
         </header>
         <p className={styles.lead}>
-          How does a robot arm decide where to push a puck? I gave it seven
-          strokes and let it try each one from different starting positions.
-          Hit <em>Randomize layout</em> to see which stroke it picks from a
-          new starting position. I also trained the arm to choose a path around
-          a fence and reach inside a shelf without hitting the roof.
+          I put a fence between a robot arm and its target. Going straight
+          worked on 18 of 96 layouts. Could the arm look at a layout and pick a
+          better path before it moved? I used a simulated SO-101 so I could try
+          every route, record which ones hit the fence and train on those answers.{" "}
+          <sup><a href="#ref-arm" aria-label="Reference 1">[1]</a></sup>
         </p>
         <Replays />
 
-        <h2 id="training">How the arm learned to choose a path</h2>
+        <h2 id="training">Where the labels came from</h2>
         <p>
-          For obstacle reach and shelf inspection, I trained a separate network
-          for each task to score the possible paths. For puck pushing, the arm
-          picks a stroke by looking up what worked on similar layouts. All three
-          use the same simulated SO-101 arm.{" "}
-          <sup><a href="#ref-arm" aria-label="Reference 1">[1]</a></sup>
-        </p>
-        <p>
-          For the obstacle task I wrote 13 routes and trained a network to
-          predict which ones would hit something. I checked 81 positions along
-          each route in MuJoCo. That gave me 53,248 labeled paths from 4,096
-          layouts. I used supervised learning for this, so I didn’t need
-          reinforcement learning or DPO.
+          I gave the arm 13 ways to reach the same target. For each layout,
+          MuJoCo checked 81 positions along each route. A collision got a 1
+          and a clear path got a 0. Across 4,096 layouts that gave me 53,248
+          labeled examples. The network takes the layout and a candidate route
+          and predicts how likely that route is to hit something.
         </p>
         <h3 id="training-curve">Obstacle reach training curve</h3>
         <TrainingCurve samples={trace} />
@@ -95,7 +94,14 @@ export function ArcbenchArticle() {
           this rule. Going straight worked 18 times.
         </p>
 
-        <h3>Training settings</h3>
+        <h2 id="reaching">Does the same idea work inside a shelf?</h2>
+        <p>
+          Getting around a fence only takes one reach. Inside a shelf the arm
+          has to enter, hold its tip within 8 mm of the target for 0.4 seconds,
+          then get back out. I trained a second path scorer and added six routes
+          that let the elbow fold before the gripper goes in.
+        </p>
+        <h3>Training the two path scorers</h3>
         <div className={styles.tableScroll}>
           <table aria-label="Path model training settings">
             <thead>
@@ -146,26 +152,13 @@ export function ArcbenchArticle() {
           smaller network did better on validation.
         </p>
 
-        <h2 id="reaching">What helped on the shelf?</h2>
         <p>
-          For this task the gripper had to hold within 8 mm of a target inside
-          the shelf for 0.4 seconds and get back out without a collision. I ran
-          each controller on the same 96 layouts at every opening width,
-          following the comparison approach in MotionBenchMaker.{" "}
-          <sup>
-            <a href="#ref-planning" aria-label="Reference 3">
-              [3]
-            </a>
-          </sup>
+          I tested all three controllers on the same 96 layouts at each shelf
+          width, following the matched comparisons in MotionBenchMaker. On the
+          narrowest opening, always taking the best route from validation tied
+          the network. Both finished the same 74 inspections.{" "}
+          <sup><a href="#ref-planning" aria-label="Reference 3">[3]</a></sup>
         </p>
-        <p>
-          I added six routes that let the arm fold up before reaching inside. On
-          the 90 mm opening, the learned controller finished 74 of 96
-          inspections. Picking one route on the validation set and using it
-          every time finished the exact same 74. Giving the arm a better way in
-          mattered more here than how it picked the route.
-        </p>
-
         <div className={styles.tableScroll}>
           <table aria-label="Completed shelf inspections out of 96">
             <thead>
@@ -199,122 +192,59 @@ export function ArcbenchArticle() {
           spare in this simulation.
         </p>
 
-        <h2 id="pushing">What worked for the puck?</h2>
+        <h2 id="grasp">Where should the fingers close?</h2>
         <p>
-          For the original push experiment I fixed a paddle to the wrist and used a 40 g puck. The paddle always
-          starts from behind the puck, but I can move the end of its stroke to
-          either side. Try −24 mm and +24 mm below. On this layout, one push
-          stops about 5 mm from the center and the other misses by 37 mm.
-        </p>
-        <PushPaths />
-        <h2 id="learning">How the arm picks a push</h2>
-        <p>
-          For the puck I used nearest neighbors. I tried all seven pushes on
-          each of 192 layouts, so I had 1,344 examples of where the puck
-          actually ended up. I scored each push by how far it missed the target
-          in millimeters, capped that at 100, and added another 100 if the arm
-          collided with the bench, the pad or itself.
-        </p>
-        <Equation
-          label="Puck training cost, in millimeters"
-          latex={String.raw`c_i(a)=\min(e_i(a),100)+100\,\mathbf{1}_{\mathrm{collision}}`}
-        />
-        <p>
-          When the arm sees a new layout, it looks up similar ones from
-          training. I used four numbers for that lookup. Two tell me where the
-          puck starts on the pad, one tells me which direction the target is in,
-          and one tells me how far away it is. I scaled them before comparing
-          layouts. For each push I take a weighted average of the earlier costs,
-          giving the closest layouts more say. The arm picks one stroke before
-          the paddle touches the puck.
-        </p>
-        <Equation
-          label="Nearest-neighbor push selection"
-          latex={String.raw`\begin{aligned}
-          w_i&=\frac{1}{\lVert x-x_i\rVert_2^2+0.01},\\
-          a^*&=\arg\min_a\frac{\sum_{i\in N_3(x)}w_i\,c_i(a)}{\sum_{i\in N_3(x)}w_i}.
-        \end{aligned}`}
-        />
-        <p>
-          Why three neighbors in the equation? I tried different counts on 48
-          validation layouts and three gave me the lowest average cost. I used
-          those same layouts to pick one push to use every time as a comparison.
-          The best fixed choice was to push straight.
+          The shelf task came with a target position. For <a href="?task=pickup#replays">Handle pickup</a>,
+          I made the arm work that out from an image. Each layout starts with
+          a square nut turned a little differently on the bench. The arm has
+          to pinch its handle, lift it more than 35 mm and hold it between
+          both jaws for the final half second. MuJoCo handles the finger
+          contacts and friction.{" "}
+          <sup><a href="#ref-contact" aria-label="Reference 2">[2]</a></sup>
         </p>
         <p>
-          With the wrist-mounted paddle, I tested both on the same 64 new layouts. The learned controller got{" "}
-          <strong>45 out of 64</strong> pucks on target. Pushing straight got
-          18. The average distance from the target went from 20.1 mm to 12.0 mm.
-          There were also three layouts where pushing straight worked and the
-          learned push missed.
+          Open <em>Model input</em> to see the mask the arm uses before it
+          moves. I generated a clean overhead silhouette for each layout and
+          used its x and y coordinates and rotation from the simulator as labels.
+          I trained on 1,024 layouts
+          and used another 256 to choose the regularization strength. The image
+          center of mass and its shape moments describe where the pixels are
+          and how they’re spread out. I fit a ridge regression to those features on CPU.
+        </p>
+        <Equation label="Supervised pose regression" latex={String.raw`\hat{\mathbf p}=W\,\phi(M)+\mathbf b,\qquad \mathbf p=(x,y,\theta)`} />
+        <p>
+          Here <var>M</var> is the mask, and <var>φ(M)</var> is its feature
+          vector. The model predicts the pose of the part. The controller uses
+          the known handle offset to position the jaws, then runs the same
+          approach, close and lift sequence for both methods.
         </p>
 
+        <h2 id="placement">Can it put the part back down?</h2>
         <p>
-          In the 3D demo the paddle is loose. It starts between the fingers,
-          and the jaws squeeze the handle through the push.{" "}
-          <sup><a href="#ref-contact" aria-label="Reference 2">[2]</a></sup>{" "}
-          Switch to <em>Gripper
-          view</em> to see it up close, or try <em>Release paddle</em> and it
-          drops. On the featured puck layout, pushing straight actually wins. Across
-          the same 64 test layouts, the original selector landed 21 pucks on
-          target with the new grip. Pushing straight landed 7.
+          In <a href="?task=placement#replays">Peg placement</a>, both runs start
+          with the same predicted grasp. I changed only where the arm tries to
+          put the nut. One controller always aims at the average peg pose from
+          training. The other uses a second regressor trained on the peg mask.
+          The peg has 2 mm of clearance on each side. I count a placement when
+          the nut sits around the peg, supported by the board, for half a
+          second after the fingers let go.
         </p>
-
-        <h2 id="surface">What if I change the surface?</h2>
-        <p>
-          For this test I went back to the wrist-mounted paddle. All the training pushes were on the same surface. What happens if I
-          make the pad more slippery? I took the same 64 layouts and had both
-          controllers repeat the exact strokes they’d already picked. The only
-          thing I changed was the sliding friction between the puck and the pad.
-        </p>
-        <SurfaceTrials />
         <div className={styles.tableScroll}>
-          <table aria-label="Puck results across sliding friction settings">
-            <thead>
-              <tr>
-                <th>Sliding friction</th>
-                <th>Learned successes</th>
-                <th>Straight successes</th>
-                <th>Learned mean error</th>
-              </tr>
-            </thead>
+          <table aria-label="Gripper results on 32 held-out layouts">
+            <thead><tr><th>Task</th><th>Training-mean pose</th><th>Predicted pose</th><th>Mean XY error of prediction</th></tr></thead>
             <tbody>
-              <tr>
-                <th scope="row">0.16</th>
-                <td>32/64</td>
-                <td>15/64</td>
-                <td>12.5 mm</td>
-              </tr>
-              <tr>
-                <th scope="row">0.48 (training)</th>
-                <td>45/64</td>
-                <td>18/64</td>
-                <td>12.0 mm</td>
-              </tr>
-              <tr>
-                <th scope="row">0.80</th>
-                <td>39/64</td>
-                <td>18/64</td>
-                <td>14.6 mm</td>
-              </tr>
+              <tr><th scope="row">Handle pickup</th><td>24/32</td><td>32/32</td><td>0.15 mm</td></tr>
+              <tr><th scope="row">Peg placement</th><td>2/32</td><td>32/32</td><td>0.22 mm</td></tr>
             </tbody>
           </table>
         </div>
         <p>
-          On the slippery pad the model went from 45 successes to 32. If you
-          just look at the average error, it barely moves, from 12.0 to 12.5 mm.
-          I used a 10 mm cutoff for success, so a puck that stops 11 mm from the
-          center goes in the same column as one that misses by 40 mm.
-        </p>
-        <p className={styles.note}>
-          The scores and clips come from the recorded simulations. A seed
-          reproduces the layout, but contact outcomes can vary across machines.
-          On one 69 mm push the puck missed by 7.10 mm on Windows and 21.03 mm
-          on the site’s Linux server.
-        </p>
-
-        <p className={styles.sourceLinks}>
-          <a href={code}>Simulation, training code and recorded results</a>
+          A rough guess was often close enough for the jaws to catch the handle.
+          It rarely lined up the square hole with the peg. I halved the mask
+          width from 96 to 48 pixels and repeated the same 32 layouts. Mean peg
+          position error rose from 0.22 to 0.61 mm, and all 32 parts still
+          seated. These were clean silhouettes from a fixed overhead view.
+          A real camera would also have to find the part with the arm in view.
         </p>
 
         <section className={styles.references} aria-labelledby="references">
@@ -334,7 +264,7 @@ export function ArcbenchArticle() {
                   Contact parameters
                 </a>
                 . How friction and contact settings work when the fingers meet
-                the handle or the puck slides across the pad.
+                the handle and the nut settles on the board.
               </p>
             </li>
             <li id="ref-planning">
@@ -353,7 +283,7 @@ export function ArcbenchArticle() {
           <h2 id="citation">Cite this post</h2>
           <pre>
             <code>{`@misc{chan2026so101paths,
-  title = {Robot path learning with an {SO-101} arm},
+  title = {Teaching an {SO-101} arm with supervised learning},
   author = {Chan, Dun Li},
   year = {2026},
   month = {nov},

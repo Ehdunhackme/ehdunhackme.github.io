@@ -1,0 +1,1612 @@
+{
+  "train": 1024,
+  "validation": 256,
+  "test": 32,
+  "ridge_penalties": [
+    1.0,
+    1.0
+  ],
+  "resolution": 96,
+  "coarse_resolution": 48,
+  "clearance_mm": 2,
+  "scores": {
+    "pickup": {
+      "learned": {
+        "success": 32,
+        "mean_pose_error_mm": 0.15
+      },
+      "direct": {
+        "success": 24,
+        "mean_pose_error_mm": 8.6
+      },
+      "coarse": {
+        "success": 32,
+        "mean_pose_error_mm": 0.5
+      }
+    },
+    "placement": {
+      "learned": {
+        "success": 32,
+        "mean_pose_error_mm": 0.22
+      },
+      "direct": {
+        "success": 2,
+        "mean_pose_error_mm": 8.99
+      },
+      "coarse": {
+        "success": 32,
+        "mean_pose_error_mm": 0.61
+      }
+    }
+  },
+  "episodes": [
+    {
+      "seed": 813000,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.15,
+          "lift_mm": 49.2,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 10.61,
+          "lift_mm": 47.7,
+          "held_s": 1.18,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.37,
+          "lift_mm": 49.4,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 5.54,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.35,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 1.3
+        }
+      }
+    },
+    {
+      "seed": 813001,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.33,
+          "lift_mm": 49.7,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 6.68,
+          "lift_mm": 49.7,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.32,
+          "lift_mm": 49.3,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.2,
+          "lift_mm": 49.7,
+          "held_s": 0.0,
+          "seated_s": 1.308
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 7.09,
+          "lift_mm": 49.7,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.46,
+          "lift_mm": 49.3,
+          "held_s": 0.0,
+          "seated_s": 1.308
+        }
+      }
+    },
+    {
+      "seed": 813002,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.58,
+          "lift_mm": 49.6,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 5.99,
+          "lift_mm": 51.7,
+          "held_s": 1.222,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.16,
+          "lift_mm": 50.0,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.3,
+          "lift_mm": 49.6,
+          "held_s": 0.0,
+          "seated_s": 1.304
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 5.58,
+          "lift_mm": 49.6,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.51,
+          "lift_mm": 50.0,
+          "held_s": 0.0,
+          "seated_s": 1.304
+        }
+      }
+    },
+    {
+      "seed": 813003,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.09,
+          "lift_mm": 48.9,
+          "held_s": 1.192,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 8.56,
+          "lift_mm": 50.5,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.48,
+          "lift_mm": 48.5,
+          "held_s": 1.188,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.36,
+          "lift_mm": 48.9,
+          "held_s": 0.0,
+          "seated_s": 1.304
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 11.16,
+          "lift_mm": 48.9,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.36,
+          "lift_mm": 48.5,
+          "held_s": 0.0,
+          "seated_s": 1.314
+        }
+      }
+    },
+    {
+      "seed": 813004,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.14,
+          "lift_mm": 49.5,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 13.16,
+          "lift_mm": 43.4,
+          "held_s": 1.126,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.36,
+          "lift_mm": 49.4,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.02,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.292
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 4.37,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.05,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        }
+      }
+    },
+    {
+      "seed": 813005,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.2,
+          "lift_mm": 50.3,
+          "held_s": 1.208,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 7.68,
+          "lift_mm": 45.1,
+          "held_s": 1.15,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.57,
+          "lift_mm": 50.5,
+          "held_s": 1.21,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.16,
+          "lift_mm": 50.3,
+          "held_s": 0.0,
+          "seated_s": 1.292
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 12.08,
+          "lift_mm": 50.3,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.28,
+          "lift_mm": 50.5,
+          "held_s": 0.0,
+          "seated_s": 1.288
+        }
+      }
+    },
+    {
+      "seed": 813006,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.1,
+          "lift_mm": 49.4,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 5.92,
+          "lift_mm": 51.9,
+          "held_s": 1.222,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.43,
+          "lift_mm": 49.8,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.09,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 1.31
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.24,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 49.8,
+          "held_s": 0.0,
+          "seated_s": 1.3
+        }
+      }
+    },
+    {
+      "seed": 813007,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.1,
+          "lift_mm": 49.5,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 15.11,
+          "lift_mm": 42.3,
+          "held_s": 1.11,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.15,
+          "lift_mm": 49.3,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.17,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.306
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.24,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.7,
+          "lift_mm": 49.3,
+          "held_s": 0.0,
+          "seated_s": 1.292
+        }
+      }
+    },
+    {
+      "seed": 813008,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 49.8,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 11.57,
+          "lift_mm": 44.1,
+          "held_s": 1.136,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.74,
+          "lift_mm": 49.5,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.33,
+          "lift_mm": 49.8,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 10.1,
+          "lift_mm": 49.8,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.12,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.312
+        }
+      }
+    },
+    {
+      "seed": 813009,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.06,
+          "lift_mm": 51.0,
+          "held_s": 1.214,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 11.61,
+          "lift_mm": 6.4,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.42,
+          "lift_mm": 50.9,
+          "held_s": 1.214,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.19,
+          "lift_mm": 51.0,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 2.69,
+          "lift_mm": 51.0,
+          "held_s": 0.0,
+          "seated_s": 1.3
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.68,
+          "lift_mm": 50.9,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        }
+      }
+    },
+    {
+      "seed": 813010,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 50.1,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 12.27,
+          "lift_mm": 50.9,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.54,
+          "lift_mm": 50.3,
+          "held_s": 1.208,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.32,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 8.02,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.68,
+          "lift_mm": 50.3,
+          "held_s": 0.0,
+          "seated_s": 1.306
+        }
+      }
+    },
+    {
+      "seed": 813011,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.06,
+          "lift_mm": 49.1,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 11.41,
+          "lift_mm": 50.7,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.39,
+          "lift_mm": 49.1,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.292
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.36,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.33,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.324
+        }
+      }
+    },
+    {
+      "seed": 813012,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.14,
+          "lift_mm": 49.6,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 12.18,
+          "lift_mm": 44.0,
+          "held_s": 1.136,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.33,
+          "lift_mm": 49.5,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.07,
+          "lift_mm": 49.6,
+          "held_s": 0.0,
+          "seated_s": 1.298
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 14.93,
+          "lift_mm": 49.6,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.35,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.298
+        }
+      }
+    },
+    {
+      "seed": 813013,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.02,
+          "lift_mm": 51.0,
+          "held_s": 1.216,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 5.51,
+          "lift_mm": 43.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.56,
+          "lift_mm": 51.2,
+          "held_s": 1.216,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.06,
+          "lift_mm": 51.0,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 11.63,
+          "lift_mm": 51.0,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 51.2,
+          "held_s": 0.0,
+          "seated_s": 1.292
+        }
+      }
+    },
+    {
+      "seed": 813014,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.06,
+          "lift_mm": 49.2,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 5.86,
+          "lift_mm": 49.7,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.42,
+          "lift_mm": 49.0,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.47,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 1.318
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 10.86,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.68,
+          "lift_mm": 49.0,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        }
+      }
+    },
+    {
+      "seed": 813015,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.25,
+          "lift_mm": 50.2,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 7.72,
+          "lift_mm": 43.4,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.34,
+          "lift_mm": 50.2,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.65,
+          "lift_mm": 50.2,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 13.14,
+          "lift_mm": 50.2,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.54,
+          "lift_mm": 50.2,
+          "held_s": 0.0,
+          "seated_s": 1.308
+        }
+      }
+    },
+    {
+      "seed": 813016,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.09,
+          "lift_mm": 50.1,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 13.05,
+          "lift_mm": 5.6,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.37,
+          "lift_mm": 50.3,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.22,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.44,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.53,
+          "lift_mm": 50.3,
+          "held_s": 0.0,
+          "seated_s": 1.288
+        }
+      }
+    },
+    {
+      "seed": 813017,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.09,
+          "lift_mm": 49.0,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 5.32,
+          "lift_mm": 49.3,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.65,
+          "lift_mm": 49.0,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.07,
+          "lift_mm": 49.0,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 12.62,
+          "lift_mm": 49.0,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.4,
+          "lift_mm": 49.0,
+          "held_s": 0.0,
+          "seated_s": 1.31
+        }
+      }
+    },
+    {
+      "seed": 813018,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.17,
+          "lift_mm": 49.1,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 4.27,
+          "lift_mm": 48.4,
+          "held_s": 1.188,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.15,
+          "lift_mm": 49.2,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.34,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.2,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.34,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        }
+      }
+    },
+    {
+      "seed": 813019,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.12,
+          "lift_mm": 49.4,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 6.79,
+          "lift_mm": 50.0,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.29,
+          "lift_mm": 49.5,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 1.312
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 5.66,
+          "lift_mm": 49.4,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.64,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.29
+        }
+      }
+    },
+    {
+      "seed": 813020,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.1,
+          "lift_mm": 50.6,
+          "held_s": 1.21,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 15.05,
+          "lift_mm": 5.3,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.54,
+          "lift_mm": 50.7,
+          "held_s": 1.212,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 50.6,
+          "held_s": 0.0,
+          "seated_s": 1.282
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 7.32,
+          "lift_mm": 50.6,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.86,
+          "lift_mm": 50.7,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        }
+      }
+    },
+    {
+      "seed": 813021,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.08,
+          "lift_mm": 50.2,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 7.33,
+          "lift_mm": 50.1,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.36,
+          "lift_mm": 50.3,
+          "held_s": 1.208,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.24,
+          "lift_mm": 50.2,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 13.44,
+          "lift_mm": 50.2,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.87,
+          "lift_mm": 50.3,
+          "held_s": 0.0,
+          "seated_s": 1.282
+        }
+      }
+    },
+    {
+      "seed": 813022,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.06,
+          "lift_mm": 48.7,
+          "held_s": 1.19,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 6.93,
+          "lift_mm": 49.7,
+          "held_s": 1.202,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 48.7,
+          "held_s": 1.19,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.23,
+          "lift_mm": 48.7,
+          "held_s": 0.0,
+          "seated_s": 1.308
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 6.88,
+          "lift_mm": 48.7,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.85,
+          "lift_mm": 48.7,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        }
+      }
+    },
+    {
+      "seed": 813023,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 49.5,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 5.18,
+          "lift_mm": 48.4,
+          "held_s": 1.188,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.55,
+          "lift_mm": 49.2,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.29,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 13.46,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.3,
+          "lift_mm": 49.2,
+          "held_s": 0.0,
+          "seated_s": 1.288
+        }
+      }
+    },
+    {
+      "seed": 813024,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.11,
+          "lift_mm": 48.9,
+          "held_s": 1.192,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 10.21,
+          "lift_mm": 50.3,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.41,
+          "lift_mm": 48.8,
+          "held_s": 1.19,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.18,
+          "lift_mm": 48.9,
+          "held_s": 0.0,
+          "seated_s": 1.298
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 7.68,
+          "lift_mm": 48.9,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.5,
+          "lift_mm": 48.8,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        }
+      }
+    },
+    {
+      "seed": 813025,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 50.1,
+          "held_s": 1.206,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 7.02,
+          "lift_mm": 43.0,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.47,
+          "lift_mm": 50.4,
+          "held_s": 1.208,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.19,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 4.92,
+          "lift_mm": 50.1,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.77,
+          "lift_mm": 50.4,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        }
+      }
+    },
+    {
+      "seed": 813026,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.15,
+          "lift_mm": 49.1,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 8.32,
+          "lift_mm": 52.4,
+          "held_s": 1.23,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.54,
+          "lift_mm": 49.6,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.09,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 3.93,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.38,
+          "lift_mm": 49.6,
+          "held_s": 0.0,
+          "seated_s": 1.294
+        }
+      }
+    },
+    {
+      "seed": 813027,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.21,
+          "lift_mm": 49.9,
+          "held_s": 1.204,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 7.01,
+          "lift_mm": 50.2,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.93,
+          "lift_mm": 49.7,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.22,
+          "lift_mm": 49.9,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 6.73,
+          "lift_mm": 49.9,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.18,
+          "lift_mm": 49.7,
+          "held_s": 0.0,
+          "seated_s": 1.314
+        }
+      }
+    },
+    {
+      "seed": 813028,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.02,
+          "lift_mm": 49.3,
+          "held_s": 1.198,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 4.86,
+          "lift_mm": 52.0,
+          "held_s": 1.224,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.58,
+          "lift_mm": 49.1,
+          "held_s": 1.194,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.01,
+          "lift_mm": 49.3,
+          "held_s": 0.0,
+          "seated_s": 1.302
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 13.84,
+          "lift_mm": 49.3,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.41,
+          "lift_mm": 49.1,
+          "held_s": 0.0,
+          "seated_s": 1.3
+        }
+      }
+    },
+    {
+      "seed": 813029,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.12,
+          "lift_mm": 50.9,
+          "held_s": 1.214,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 4.84,
+          "lift_mm": 10.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.18,
+          "lift_mm": 50.9,
+          "held_s": 1.214,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.51,
+          "lift_mm": 50.9,
+          "held_s": 0.0,
+          "seated_s": 1.298
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.38,
+          "lift_mm": 50.9,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.24,
+          "lift_mm": 50.9,
+          "held_s": 0.0,
+          "seated_s": 1.3
+        }
+      }
+    },
+    {
+      "seed": 813030,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.12,
+          "lift_mm": 50.4,
+          "held_s": 1.208,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 5.55,
+          "lift_mm": 42.6,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.56,
+          "lift_mm": 50.5,
+          "held_s": 1.21,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.25,
+          "lift_mm": 50.4,
+          "held_s": 0.0,
+          "seated_s": 1.296
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.06,
+          "lift_mm": 50.4,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.34,
+          "lift_mm": 50.5,
+          "held_s": 0.0,
+          "seated_s": 1.286
+        }
+      }
+    },
+    {
+      "seed": 813031,
+      "pickup": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.26,
+          "lift_mm": 49.5,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        },
+        "direct": {
+          "outcome": "reached",
+          "pose_error_mm": 11.52,
+          "lift_mm": 50.4,
+          "held_s": 1.2,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 0.72,
+          "lift_mm": 49.3,
+          "held_s": 1.196,
+          "seated_s": 0.0
+        }
+      },
+      "placement": {
+        "learned": {
+          "outcome": "reached",
+          "pose_error_mm": 0.23,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 1.298
+        },
+        "direct": {
+          "outcome": "miss",
+          "pose_error_mm": 9.2,
+          "lift_mm": 49.5,
+          "held_s": 0.0,
+          "seated_s": 0.0
+        },
+        "coarse": {
+          "outcome": "reached",
+          "pose_error_mm": 1.41,
+          "lift_mm": 49.3,
+          "held_s": 0.0,
+          "seated_s": 1.288
+        }
+      }
+    }
+  ]
+}

@@ -26,8 +26,12 @@ def simulate(query):
             raise ValueError(f"Choose {key} between {low} and {high}.")
         return value
 
-    family = integer("family", 4, 0, 7)
+    family = integer("family", 0, 0, 9)
     seed = integer("seed", 2402, 0, 2**31 - 1)
+    if family in (8, 9):
+        from visual_pose import visual_replay
+        return visual_replay("pickup" if family==8 else "placement", seed,
+                             integer("pixels",96,48,128), integer("clearance",2,1,4))
     if family in (6,7):
         from gripper_courses import course_replay
         level = integer("rail",52,38,62) if family==6 else integer("bias",8,0,10)

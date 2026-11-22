@@ -13,7 +13,7 @@ body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.5 Geist,Aria
 #finish { position:absolute; right:14px; top:10px; max-width:55%; color:var(--fg); font-size:12px; font-variant-numeric:tabular-nums; }
 [hidden] { display:none!important; }
 #stage { position:relative; height:clamp(335px,64vw,480px); overflow:hidden; background:#e8e9eb; isolation:isolate; }
-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; cursor:grab; }
+#stage > canvas { position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; cursor:grab; }
 canvas:active { cursor:grabbing; }
 #loading { position:absolute; }
 #loading { inset:0; display:grid; place-content:center; text-align:center; padding:22px; background:#e8e9ebed; color:#242629; z-index:2; }
@@ -44,3 +44,7 @@ dl,dd { margin:0; } dd { font-size:13px; font-variant-numeric:tabular-nums; }
 .surface-note.flip span { transform:translateX(-100%); }
 @media (max-width:510px) { .options{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px} fieldset:last-child{grid-column:1/-1} dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px} dt,dd{margin:0} }
 details.is-animating {overflow:hidden;}
+
+#model-input { position:absolute; left:12px; bottom:12px; z-index:1; padding:5px; border:1px solid #bcc3c6; background:#fff; color:#303638; border-radius:5px; text-align:center; pointer-events:none; }
+#mask-image { display:block; width:clamp(76px,15vw,112px); height:auto; image-rendering:pixelated; }
+#mask-size { display:block; font-size:11px; font-variant-numeric:tabular-nums; }

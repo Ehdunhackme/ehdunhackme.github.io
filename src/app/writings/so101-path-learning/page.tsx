@@ -6,7 +6,7 @@ const image = {
   url: "/assets/writings/arcbench/social.jpg",
   width: 1200,
   height: 630,
-  alt: "A black SO-101 arm pushing a blue puck with a paddle in simulation",
+  alt: "A black SO-101 arm carrying a square nut toward a peg in simulation",
 };
 
 export const metadata: Metadata = {
