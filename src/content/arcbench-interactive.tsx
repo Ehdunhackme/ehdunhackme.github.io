@@ -90,7 +90,7 @@ export function Replays() {
         {!orbit && <ComparisonFilm key={task} task={task} />}
       </div>
       <figcaption>{orbit
-        ? "Drag to orbit, or randomize the layout to give both controllers the same new task."
+        ? "Drag to rotate the view. Pick a new layout to see how both controllers handle it."
         : clips[task][1]}</figcaption>
     </figure>
   );
@@ -173,8 +173,7 @@ export function PushPaths() {
       </svg>
       <figcaption>
         Each line follows the puck’s center in the same layout. The dot marks
-        where the selected push ends. The target accepts any center inside the
-        dashed circle.
+        where the selected push ends. The dashed circle shows the 10 mm tolerance around the target.
       </figcaption>
     </figure>
   );

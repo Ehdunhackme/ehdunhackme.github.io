@@ -6,7 +6,7 @@ import styles from "./smollertts.module.css";
 
 export const title = "Robot path learning with an SO-101 arm";
 export const description =
-  "How I trained an SO-101 arm to choose a path around obstacles, reach into a shelf and push a puck. Try the controllers on your own simulated layouts.";
+  "I trained a simulated SO-101 to pick a path around a fence, then tried a shelf and a puck. You can move things around and try all three tasks here.";
 const trialData = "/assets/writings/arcbench/puck-trials.csv";
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
@@ -34,45 +34,39 @@ export function ArcbenchArticle() {
           </div>
         </header>
         <p className={styles.lead}>
-          I built Arcbench to see how a robot arm learns which path to take.
-          Move the fence and watch how the SO-101 tries to reach around it.
-          The other two tasks ask it to reach inside a shelf and push a puck
-          into place.
+          I wanted to see if I could teach a robot arm to pick its own path. So I put
+          a fence between an SO-101 and the spot I wanted it to reach. If I move
+          the fence, can the arm still get there? Try it in the simulator below.
         </p>
         <Replays />
 
-        <h2 id="reaching">Getting the wrist through the shelf</h2>
+        <h2 id="reaching">Around a fence and into a shelf</h2>
         <p>
-          I started Arcbench with a simpler question. If the gripper can reach a
-          point, can the rest of the arm get there too? I put a fence between
-          two poses and drove the joints from one pose to the other. The target
-          was reachable. The arm hit the fence on the way.
+          I started by moving each joint from its starting angle to its final angle.
+          On paper that puts the gripper right on the target. In the simulator
+          the arm hit something on 78 of the 96 test layouts.
         </p>
         <p>
-          I gave the controller 13 possible routes and trained it to weigh
-          collision risk against extra joint travel. On 96 held-out obstacle
-          layouts, the selected route reached the target 87 times. A direct
-          reach made it 18 times. Then I put the target inside a shelf. A route
-          that got the gripper past the side wall could still catch the moving
-          jaw on the roof.
+          I wrote 13 possible routes between the same two poses. What the model
+          learned was which one to pick when I moved the obstacle. It got to the
+          target on 87 of those 96 layouts. The direct route only managed 18.
         </p>
         <p>
-          The shelf replay shows the difference at about three seconds. The
-          direct reach has already hit the right wall. The other route lines up
-          with the opening before entering. At its closest recorded pass, the
-          simulated jaw clears the roof by 0.75 mm. That measurement comes from
-          the model’s collision surfaces. I haven’t tried that clearance on a
-          physical arm.
+          Then I put the target inside a shelf. Try the shelf replay and pause it
+          at about three seconds. The direct route has already hit the right wall.
+          On the learned route, the arm lines up with the opening first. Watch the
+          moving jaw as it goes in. At its closest it clears the roof by 0.75 mm
+          in MuJoCo. I haven’t tried that on a real arm.
         </p>
         <ArticleDisclosure
           className={styles.disclosure}
           summary="How much did learning help on the shelf?"
         >
           <p>
-            I added six routes that fold and align the arm at the shelf mouth.
-            Each controller faced the same 96 layouts at each width. To finish,
-            the arm had to hold within 8 mm of the inspection point for 0.4
-            seconds and return home without contact.
+            I added six routes that let the arm fold up before it enters the shelf.
+            I tried the same 96 layouts at each opening width. To count as a success,
+            the gripper had to stay within 8 mm of the target for 0.4 seconds, then
+            get back out and return home without hitting anything.
           </p>
           <div className={styles.tableScroll}>
             <table aria-label="Completed shelf inspections out of 96">
@@ -101,36 +95,41 @@ export function ArcbenchArticle() {
             </table>
           </div>
           <p>
-            At 90 mm, only three layouts had a clear inward path among the
-            original 13. With the extra routes, a single route chosen on
-            validation finished exactly the same 74 layouts as the learned
-            controller. Giving the arm a better way into the shelf accounted for
-            most of the improvement.
+            The 90 mm opening is the one I’d look at. With the original 13 routes,
+            only three layouts had a clear way in. Once I added the six new routes,
+            I could pick one on the validation set and use it every time. That one
+            route finished exactly the same 74 layouts as the learned model. A lot
+            of the gain here came from giving the arm a better way into the shelf.
           </p>
         </ArticleDisclosure>
 
         <h2 id="training">How I trained the arm to choose a path</h2>
         <p>
-          I used supervised learning. MuJoCo supplied the labels. For each
-          obstacle layout I generated 13 joint-space paths between the same two
-          poses and checked the arm for collisions at 81 points along each path.
-          That gave me 53,248 labeled paths from 4,096 training layouts.
-          The network’s job was to estimate the chance that a candidate path
-          would hit something. A position servo followed the path it picked.
+          I used supervised learning for the reach and shelf tasks. I didn’t use
+          reinforcement learning (RL) or direct preference optimization (DPO).
+          I could try every path in MuJoCo and check whether the arm hit anything,
+          so I already had an answer to train on for each one.
+        </p>
+        <p>
+          For the fence task, I checked 81 positions along each of the 13 paths.
+          Across 4,096 training layouts that gave me 53,248 paths labeled
+          clear or collision. I trained a network to predict the chance of a
+          collision using this loss.
         </p>
         <Equation label="Collision classification loss" latex={String.raw`\mathcal L=-\frac{1}{N}\sum_{i=1}^{N}\big[y_i\log p_i+(1-y_i)\log(1-p_i)\big]`} />
         <p>
-          Here <var>yᵢ</var> is 1 when path <var>i</var> hits something, and <var>pᵢ</var> is the
-          model’s predicted collision probability. A confident prediction that
-          a colliding path is clear incurs a large loss. At run time I also
-          wanted to avoid long detours. I gave a collision a cost of 1 and a
-          clear path a smaller cost based on its extra joint travel.
+          <var>yᵢ</var> is 1 if the arm hits something on path <var>i</var>.{" "}
+          <var>pᵢ</var> is how likely the model thinks that is. If it gives a path
+          a 1% chance of collision and the arm hits the fence, it gets a big penalty.
+          But suppose two paths both look safe. I’d still want the arm to take the
+          shorter one.
         </p>
         <Equation label="Route choice" latex={String.raw`r^*=\arg\min_r\left[p_r+(1-p_r)\,\ell_r\right]`} />
         <p>
-          The length penalty <var>ℓᵣ</var> starts at zero for the direct route and
-          caps at 0.45. Of two equally short paths the model prefers the safer
-          one. Once both look clear, a shorter route can win.
+          That’s what <var>ℓᵣ</var> does. It measures how much extra joint travel
+          a route takes. The direct route gets a penalty of zero and the longest
+          detours can get up to 0.45. A collision costs 1. The controller picks the
+          path with the lowest estimated cost, then the servos follow it.
         </p>
         <ArticleDisclosure className={styles.disclosure} summary="Training settings and model selection">
           <div className={styles.tableScroll}><table aria-label="Path model training settings">
@@ -144,81 +143,72 @@ export function ArcbenchArticle() {
               <tr><th scope="row">GPU</th><td colSpan={2}>One NVIDIA A100, 40 GB</td></tr>
             </tbody>
           </table></div>
-          <p>I compared six obstacle-reach training runs on the same validation
-            layouts. A network that shared its weights across candidate paths
-            brought the average validation cost from 0.1779 for the first model
-            to 0.1421. For the shelf, I compared hidden widths of 48 and 96.
-            The smaller model had the lower validation cost.</p>
+          <p>
+            I tried six versions of the reach model on the same validation layouts.
+            The first one got an average cost of 0.1779. The best one used the same
+            network to score each possible route and got that down to 0.1421. For
+            the shelf I tried 48 and 96 units per hidden layer. The smaller network
+            did better on validation.
+          </p>
           <p><a href="https://github.com/Ehdunhackme/ehdunhackme.github.io/tree/main/simulation/arcbench">Training code, commands and trial log</a></p>
         </ArticleDisclosure>
-        <p>
-          I used neither direct preference optimization (DPO) nor reinforcement learning (RL) for these experiments.
-          DPO would need pairs of preferred and rejected decisions. Here I
-          could test every candidate directly in simulation and give it its
-          own collision label. For the puck, I used the measured error for each
-          push as the training signal.
-        </p>
 
-        <h2 id="pushing">Letting contact do the work</h2>
+        <h2 id="pushing">What changes when the arm has to push?</h2>
         <p>
-          In the shelf task, touching something ends the run. For the puck,
-          contact is how the arm gets anything done. I attached a small paddle
-          to the wrist and let MuJoCo handle what happened after it touched the
-          40 g puck. The puck could slide, turn, or keep moving after the paddle
-          came away.
+          I wanted a harder task where the arm had to move something else as well.
+          I put a little paddle on its wrist and gave it a 40 g puck to push
+          into a circle. The arm can finish its move exactly where I told it
+          to and the puck can still slide right past the target.
         </p>
         <p>
-          I kept the decision small. The arm approaches from behind the puck,
-          pushes, then lifts. It can finish its stroke at one of seven sideways
-          offsets, from −36 to +36 mm in 12 mm steps. The figure follows the
-          puck’s center for all seven actions on the same 60 mm push. Try +24 mm
-          after −24 mm. The two offsets have the same size, but one misses by
-          more than 37 mm.
+          I let the arm change one thing about the push. It always comes up behind
+          the puck, but the end of the stroke can move left or right in 12 mm steps,
+          up to 36 mm either way. Try −24 mm and +24 mm in the figure. Same puck,
+          same target 60 mm away. One push stops about 5 mm from the center and
+          the other misses by 37 mm.
         </p>
         <PushPaths />
 
-        <h2 id="learning">Choosing a push from earlier runs</h2>
+        <h2 id="learning">How the arm picks a push</h2>
         <p>
-          I ran all seven pushes on each of 192 training layouts. For a new
-          layout, the controller looks up earlier ones with similar starting
-          positions, push directions and distances. It gives closer matches more
-          weight and picks the action with the lowest estimated cost. That cost
-          uses the puck’s final error, capped at 100 mm, plus a penalty for an
-          arm collision. It commits to one stroke before touching the puck.
+          For the puck I used nearest neighbors. I tried all seven pushes on each
+          of 192 layouts, so I had 1,344 examples of where the puck actually
+          ended up. I scored each push by how far it missed the target in
+          millimeters, capped that at 100, and added another 100 if the arm collided
+          with the bench, the pad or itself.
         </p>
         <Equation label="Puck training cost, in millimeters" latex={String.raw`c_i(a)=\min(e_i(a),100)+100\,\mathbf{1}_{\mathrm{collision}}`} />
         <p>
-          I stored 1,344 simulated pushes, seven for each training layout.
-          The four inputs describe the puck’s starting x and y, the target
-          direction, and its distance. I scaled those inputs before measuring
-          the distance between layouts. For each action I averaged the costs
-          from the three closest layouts and took the cheapest action.
+          When the arm sees a new layout, it looks up similar ones from training.
+          I used four numbers for that lookup. Two tell me where the puck starts
+          on the pad, one tells me which direction the target is in, and one tells
+          me how far away it is. I scaled them before comparing layouts. For each
+          push I take a weighted average of the earlier costs, giving the closest
+          layouts more say. The arm picks one stroke before the paddle touches the puck.
         </p>
         <Equation label="Nearest-neighbor push selection" latex={String.raw`\begin{aligned}
           w_i&=\frac{1}{\lVert x-x_i\rVert_2^2+0.01},\\
           a^*&=\arg\min_a\frac{\sum_{i\in N_3(x)}w_i\,c_i(a)}{\sum_{i\in N_3(x)}w_i}.
         \end{aligned}`} />
         <p>
-          I used 48 separate layouts to choose how many neighbors to consult.
-          Three worked best. I also used validation to choose the best single
-          offset for a controller that always makes the same push. It chose
-          zero, so the straight push was also the strongest fixed baseline under
-          that selection rule.
+          Why three neighbors in the equation? I tried different counts on 48
+          validation layouts and three gave me the lowest average cost. I used
+          those same layouts to pick one push to use every time as a comparison.
+          The best fixed choice was to push straight.
         </p>
         <p>
-          On 64 new layouts, the learned selector finished{" "}
-          <strong>45 pushes inside the target</strong>. The straight push
-          finished 18. The average final error went from 20.1 to 12.0 mm. Three
-          layouts went the other way and succeeded only with the straight push.
+          I tested both on the same 64 new layouts. The learned controller got{" "}
+          <strong>45 out of 64</strong> pucks on target. Pushing straight got 18.
+          The average distance from the target went from 20.1 mm to 12.0 mm. There were also
+          three layouts where pushing straight worked and the learned push missed.
         </p>
 
-        <h2 id="surface">Changing the surface under the puck</h2>
+        <h2 id="surface">What if I change the surface?</h2>
         <p>
-          The controller learned all of that on one surface. I wanted to know
-          what would happen if the positions looked familiar but the puck slid
-          differently. I kept the trained selector, the 64 layouts and both
-          controllers’ chosen strokes fixed. I reran them with lower and higher
-          sliding friction between the puck and the pad.
+          All the training pushes were on the same surface. What happens if I make
+          the pad more slippery? I took the same 64 layouts and had both controllers
+          repeat the exact strokes they’d already picked. The only thing I changed
+          was the sliding friction between the puck and the pad.
         </p>
         <SurfaceTrials />
         <div className={styles.tableScroll}>
@@ -254,56 +244,50 @@ export function ArcbenchArticle() {
           </table>
         </div>
         <p>
-          The slippery surface cost the learned controller 13 successes even
-          though its average error rose by only half a millimeter. The two
-          measures answer different questions. A puck that stops 11 mm from the
-          target counts as a miss just as surely as one that stops 40 mm away.
+          On the slippery pad the model went from 45 successes to 32. If you just
+          look at the average error, it barely moves, from 12.0 to 12.5 mm. I used
+          a 10 mm cutoff for success, so a puck that stops 11 mm from the center
+          goes in the same column as one that misses by 40 mm.
         </p>
         <ArticleDisclosure
           className={styles.disclosure}
           summary="Scoring and trial data"
         >
           <p>
-            The puck has a 20 mm radius. I scored its center after the paddle
-            withdrew. A success required arm-to-puck contact, a final error of
-            at most 10 mm, puck translation below 5 mm/s, and no arm collision
-            with the bench, pad or itself. The solver advanced in 2 ms steps.
+            I measured from the center of the puck, which has a 20 mm radius. To
+            count, the arm had to touch the puck and leave it within 10 mm of the
+            target center, moving slower than 5 mm/s. Hitting the bench, the pad
+            or the arm itself also ended the run. MuJoCo advanced 2 ms at a time.
           </p>
           <p>
-            The three friction settings give 384 controller runs. The 0.48 rerun
-            reproduced every stored outcome and endpoint error to the recorded
-            precision. The paired layouts measure how this particular controller
-            responds to a changed surface in simulation.{" "}
-            <a href={trialData} download>
-              Download the per-run CSV.
-            </a>
+            Two controllers, 64 layouts and three surfaces gave me 384 runs. When
+            I set the friction back to 0.48, I got the original outcome and final
+            error on every layout, down to the precision I’d saved.{" "}
+            <a href={trialData} download>Download the per-run CSV.</a>
           </p>
           <p>
-            The videos, figures and CSV use the original recorded runs. New layouts
-            run on the website’s Linux server. In one cross-platform check with
-            the same starting pose and 69 mm push, the puck stopped 7.10 mm from
-            the target on my Windows machine and 21.03 mm away on the server.
-            The seed reproduces the layout. Contact outcomes can vary across builds.
+            I recorded the clips and plots on Windows. Custom layouts run on the
+            site’s Linux server. I tried the same seed and the same 69 mm push on
+            both. The puck started in the same spot, but it finished 7.10 mm from
+            the target on my machine and 21.03 mm away on the server.
           </p>
         </ArticleDisclosure>
 
         <h2 id="next">Two pushes through a gate</h2>
         <p>
-          The harder task I’d try next is to put a 60 mm gate in front of this
-          40 mm puck and place the target off to one side behind it. That leaves
-          10 mm of clearance per side on a centered pass. I’d choose layouts
-          where a straight line to the target intersects a post, so the arm has
-          to push through the opening, come around the puck, then push in a new
-          direction.
+          Next I’d try a 60 mm gate with the target off to one side behind it.
+          The puck is 40 mm across, so even dead center it only has 10 mm to
+          spare on each side. I’d set it up so a straight push towards the target
+          hits a post. The arm would have to push the puck through the gate,
+          come around it and push again.
         </p>
         <p>
-          The interesting decision is where to begin that second push. One
-          controller could use the puck position it expected after the first
-          stroke. Another could look at where the puck actually stopped and plan
-          from there. I’d score gate crossings, post contacts and final
-          placements separately. That would tell me whether an error starts at
-          the gate or when the arm tries to recover. This is the next experiment
-          I’d run.
+          What I want to know is whether it helps to look again between pushes.
+          I’d have one controller start its second push from where it expected
+          the puck to stop. The other gets to see where the puck actually stopped.
+          I’d score getting through the gate, clipping a post and reaching the target
+          separately. The run I’d want to watch is one where the first push goes
+          a bit sideways. Can the arm still save it on the second?
         </p>
 
         <section
@@ -315,8 +299,8 @@ export function ArcbenchArticle() {
             <li>
               <p>
                 TheRobotStudio.{" "}
-                <a href={robot}>SO-101 follower simulation model</a>. The robot
-                geometry and actuator definitions used in Arcbench.
+                <a href={robot}>SO-101 follower simulation model</a>. I used the geometry and
+                actuator settings from this model.
               </p>
             </li>
             <li>
@@ -333,8 +317,8 @@ export function ArcbenchArticle() {
               <p>
                 Constantinos Chamzas and colleagues.{" "}
                 <a href="https://arxiv.org/abs/2112.06402">MotionBenchMaker</a>.
-                I used the same idea of comparing planners on shared,
-                procedurally varied scenes for the shelf study.
+                I borrowed the idea of testing different planners on the same
+                generated layouts for the shelf experiment.
               </p>
             </li>
           </ol>

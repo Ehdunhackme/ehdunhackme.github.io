@@ -27,7 +27,7 @@ export function WritingsContent() {
                   <span className="writing-year" aria-hidden="true">2026</span>
                   <span className="writing-entry-content">
                     <span className="writing-section-title">Robot path learning with an SO-101 arm</span>
-                    <span className="writing-section-description">Training a simulated robot arm to choose a route, reach into a shelf and push a puck.</span>
+                    <span className="writing-section-description">I started with a fence in the way of a robot arm. Then I tried a shelf and a puck.</span>
                   </span>
                   <span className="writing-section-side">
                     <time className="writing-date" dateTime="2026-11-22">
