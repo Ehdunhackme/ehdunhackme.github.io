@@ -1,0 +1,19 @@
+{
+  "tag": "shared-risk",
+  "recipe": "shared",
+  "width": 96,
+  "depth": 2,
+  "loss": "bce_logits",
+  "updates": 1000,
+  "batch": 256,
+  "seed": 6401,
+  "device": "NVIDIA A100-SXM4-40GB",
+  "seconds": 4.27,
+  "validation": {
+    "cost": 0.1421075019508315,
+    "success": 0.896875,
+    "mean_joint_length_rad": 2.5067365677043787,
+    "tasks": 640
+  },
+  "source_hash": "8745521e93e392c3f3c8a4de90374fd5230657ba609151f663bb036febd00bc9"
+}

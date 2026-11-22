@@ -9,3 +9,4 @@ playwright-report/
 test-results/
 .migration/
 .env*.local
+__pycache__/

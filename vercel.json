@@ -2,5 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "buildCommand": "npm run build",
-  "installCommand": "npm ci"
+  "installCommand": "npm ci",
+  "functions": {
+    "api/arcbench.py": {
+      "excludeFiles": "{public/**,node_modules/**,.next/**,src/**,tests/**,scripts/**,docs/**}",
+      "maxDuration": 60
+    }
+  }
 }

@@ -1,0 +1,64 @@
+{
+  "test_seeds": 96,
+  "method_case_comparisons": 864,
+  "distinct_servo_runs": 688,
+  "fixed": 15,
+  "by_width": [
+    {
+      "width": 180,
+      "n": 96,
+      "legacy_feasible": 60,
+      "feasible": 84,
+      "median_candidates": 5.0,
+      "direct": 0,
+      "fixed": 75,
+      "learned": 81
+    },
+    {
+      "width": 125,
+      "n": 96,
+      "legacy_feasible": 19,
+      "feasible": 75,
+      "median_candidates": 4.0,
+      "direct": 0,
+      "fixed": 75,
+      "learned": 73
+    },
+    {
+      "width": 90,
+      "n": 96,
+      "legacy_feasible": 3,
+      "feasible": 74,
+      "median_candidates": 4.0,
+      "direct": 0,
+      "fixed": 74,
+      "learned": 74
+    }
+  ],
+  "learned_minus_fixed": {
+    "mean": 0.013888888888888888,
+    "interval95": [
+      -0.010416666666666666,
+      0.03819444444444445
+    ],
+    "bootstrap_seed": 9374,
+    "resamples": 20000
+  },
+  "selection": {
+    "winner": 48,
+    "seed": 7231,
+    "device": "NVIDIA A100-SXM4-40GB",
+    "trials": [
+      {
+        "width": 48,
+        "cost": 0.4189491271972656,
+        "goals": 187
+      },
+      {
+        "width": 96,
+        "cost": 0.4226813018321991,
+        "goals": 185
+      }
+    ]
+  }
+}
