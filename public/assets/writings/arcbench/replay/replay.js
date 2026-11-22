@@ -2,13 +2,12 @@ const $ = (id) => document.getElementById(id);
 import {mountDisclosure} from "./disclosure.mjs";
 mountDisclosure(document.querySelector("details"));
 const tasks = {
-  pickup: {seed:813009, family:8, sliders:[["pixels","Mask width",48,128,96,"px"]], methods:[["learned","Predicted grasp"],["direct","Fixed grasp"]]},
   placement: {seed:813000, family:9, sliders:[["pixels","Mask width",48,128,96,"px"],["clearance","Peg clearance",1,4,2,"mm"]], methods:[["learned","Predicted peg pose"],["direct","Fixed peg pose"]]},
   shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
   reach: {seed:700000, family:0, sliders:[["offset","Fixture offset",-55,55,0,"mm"],["angle","Target rotation",-18,18,0,"°"]], methods:[["learned","Learned route"],["direct","Direct reach"]]}
 };
 const requested=new URLSearchParams(location.search).get("task");
-const task=Object.hasOwn(tasks,requested)?requested:"reach";
+const task=requested==="pickup"?"placement":Object.hasOwn(tasks,requested)?requested:"reach";
 const config=tasks[task], shelf=task==="shelf";
 const mode=$("mode"), play=$("play"), scrub=$("time");
 let view, run, elapsed=0, playing=false, last=0, animation=0, inspecting=false, busy=false;
@@ -53,7 +52,7 @@ function prepareControls() {
   for(const [key,name] of config.methods)mode.add(new Option(name,key));
   $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
   $("cut-row").hidden=!shelf; $("closest").hidden=!shelf;
-  $("mask-toggle").hidden=task!=="pickup" && task!=="placement";
+  $("mask-toggle").hidden=task!=="placement";
   if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
   $("seed").oninput=updateExamples;updateExamples();
 }
@@ -89,14 +88,13 @@ function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
   draw();
   const p=route();
-  const success={pickup:"Lift held",placement:"Seated and released",shelf:"Inspection complete",reach:"Target reached"};
+  const success={placement:"Seated and released",shelf:"Inspection complete",reach:"Target reached"};
   const result=p.outcome==="reached"?success[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
-  const error=task==="pickup"?p.pose_error_mm:p.error_mm;
-  $("finish").textContent=result+" · "+error.toFixed(1)+" mm";
+  $("finish").textContent=result+" · "+p.error_mm.toFixed(1)+" mm";
   const entries=[["Layout seed",run.seed],["Outcome",result],["Gripper travel",p.distance_mm+" mm"]];
   if(run.observation)entries.push(["Pose estimate error",p.pose_error_mm+" mm"],["Peak lift",p.lift_mm+" mm"],
-    task==="pickup"?["Held above 35 mm",p.held_s+" s"]:["Seated after release",p.seated_s+" s"]);
-  if(task!=="pickup")entries.push(["Final error",p.error_mm+" mm"]);
+    ["Seated after release",p.seated_s+" s"]);
+  entries.push(["Final error",p.error_mm+" mm"]);
   if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
   $("metrics").replaceChildren();
   for(const [name,value] of entries){const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=name;dd.textContent=value;$("metrics").append(dt,dd);}

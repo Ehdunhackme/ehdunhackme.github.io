@@ -7,6 +7,13 @@ test("a retired task link opens the supervised reach replay", async ({page}) => 
   await expect(page.locator("#replays iframe")).toHaveAttribute("src", /task=reach$/);
 });
 
+test("an old handle pickup link opens peg placement", async ({page}) => {
+  await page.goto("/writings/so101-path-learning/?task=pickup#replays");
+  await expect(page).toHaveURL(/task=placement#replays$/);
+  await expect(page.getByRole("combobox", {name:"Task", exact:true})).toHaveValue("placement");
+  await expect(page.locator("#replays iframe")).toHaveAttribute("src", /task=placement$/);
+});
+
 test("the article exposes its recorded comparisons, matched trials and study data", async ({
   page,
   request,
@@ -42,15 +49,13 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(page.locator("#ref-planning a")).toHaveText(/MotionBenchMaker/);
   const tasks = page.getByRole("combobox", {name:"Task", exact:true});
   await expect(tasks).toHaveValue("reach");
-  await expect(tasks.locator("option")).toHaveText(["Obstacle reach", "Shelf inspection", "Handle pickup", "Peg placement"]);
+  await expect(tasks.locator("option")).toHaveText(["Obstacle reach", "Shelf inspection", "Peg placement"]);
   expect(await tasks.locator("optgroup").evaluateAll(groups => groups.map(g => g.getAttribute("label"))))
     .toEqual(["Supervised path scoring", "Supervised pose estimation"]);
-  for (const task of ["pickup","placement"]) {
-    const data = await (await request.get("/assets/writings/arcbench/replay/"+task+".json")).json();
-    expect(data.observation.size).toBe(96);
-    expect(data.learned.outcome).toBe("reached");
-    expect(data.direct.outcome).toBe("miss");
-  }
+  const data = await (await request.get("/assets/writings/arcbench/replay/placement.json")).json();
+  expect(data.observation.size).toBe(96);
+  expect(data.learned.outcome).toBe("reached");
+  expect(data.direct.outcome).toBe("miss");
   await page
     .getByRole("combobox", { name: "Task", exact: true })
     .selectOption("shelf");

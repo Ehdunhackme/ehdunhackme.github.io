@@ -6,18 +6,17 @@ import styles from "./arcbench.module.css";
 
 const assets = "/assets/writings/arcbench";
 const taskNames = {
-  reach: "Obstacle reach", shelf: "Shelf inspection", pickup: "Handle pickup", placement: "Peg placement",
+  reach: "Obstacle reach", shelf: "Shelf inspection", placement: "Peg placement",
 } as const;
 const taskGroups = [
   { name: "Supervised path scoring", tasks: ["reach", "shelf"] },
-  { name: "Supervised pose estimation", tasks: ["pickup", "placement"] },
+  { name: "Supervised pose estimation", tasks: ["placement"] },
 ] as const;
 type Task = keyof typeof taskNames;
 
 const comparisons: Record<Task, readonly [string, string]> = {
   reach: ["Direct reach", "Learned route"],
   shelf: ["Direct reach", "Learned route"],
-  pickup: ["Fixed grasp", "Predicted grasp"],
   placement: ["Fixed peg pose", "Predicted peg pose"],
 };
 
@@ -221,6 +220,7 @@ export function Replays() {
   const [orbit, setOrbit] = useState(true);
   useEffect(() => {
     const url = new URL(window.location.href);
+    if (url.searchParams.get("task") === "pickup") url.searchParams.set("task", "placement");
     const requested = url.searchParams.get("task");
     if (requested && Object.prototype.hasOwnProperty.call(taskNames, requested)) {
       setTask(requested as Task);

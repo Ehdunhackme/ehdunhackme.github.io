@@ -21,7 +21,7 @@ export function WritingsContent() {
           entries: [
             {
               id: "writing-arcbench",
-              searchText: "SO-101 supervised learning robotics MuJoCo shelf obstacle reach handle pickup peg placement regression motion planning 22 Nov 2026",
+              searchText: "SO-101 supervised learning robotics MuJoCo shelf obstacle reach peg placement regression motion planning 22 Nov 2026",
               content: (
                 <Link className="writing-section-link" href="/writings/so101-path-learning/">
                   <span className="writing-year" aria-hidden="true">2026</span>

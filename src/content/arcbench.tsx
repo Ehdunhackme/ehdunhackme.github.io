@@ -8,7 +8,7 @@ import styles from "./smollertts.module.css";
 
 export const title = "Teaching an SO-101 arm with supervised learning";
 export const description =
-  "I trained four small models for a simulated SO-101 arm. Two choose a path around obstacles. The other two use an overhead image to pick up a square nut and fit it onto a peg.";
+  "I trained a simulated SO-101 arm to reach around an obstacle, inspect a shelf and fit a square nut onto a peg.";
 
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
@@ -48,9 +48,10 @@ export function ArcbenchArticle() {
           </div>
         </header>
         <p className={styles.lead}>
-          I trained four small models for a simulated SO-101 arm. Two choose a
-          path around obstacles. The other two use an overhead image to pick up a
-          square nut and fit it onto a peg. You can try all four tasks below.{" "}
+          I trained a simulated SO-101 arm to reach around an obstacle, inspect
+          a shelf and fit a square nut onto a peg. For the first two tasks it
+          learns which path to take. For the last one it learns where the nut
+          and peg are from an overhead image.{" "}
           <sup><a href="#ref-arm" aria-label="Reference 1">[1]</a></sup>
         </p>
         <Replays />
@@ -193,39 +194,31 @@ export function ArcbenchArticle() {
           the moving jaw clears the roof by 0.75 mm.
         </p>
 
-        <h2 id="grasp">Finding the handle in an image</h2>
-        <p>
-          For the first two tasks I gave the arm the target position. For{" "}
-          <a href="?task=pickup#replays">pickup</a>, I moved a square nut around
-          the bench and changed its angle. The arm had to find its handle in an
-          overhead image, close both jaws on it and lift it more than 35 mm.
-          I counted a pickup if both jaws still held the handle for the final
-          half second. MuJoCo simulated contact and friction between the fingers and the part.{" "}
+        <h2 id="placement">Fitting the nut onto a peg</h2>
+        <p id="grasp">
+          For <a href="?task=placement#replays">peg placement</a>, I moved a
+          square nut and a matching peg around the bench and varied their angles.
+          The arm has to grip the handle, carry the nut over the peg and lower
+          it. The square hole leaves just 2 mm of clearance on each side.
+          MuJoCo simulates friction between the fingers and the handle.{" "}
           <sup><a href="#ref-contact" aria-label="Reference 2">[2]</a></sup>
         </p>
         <p>
-          The camera input was a 96 × 96 silhouette. Its center of mass gives a
-          rough position, and the way its pixels spread around that center helps
-          recover the angle. I fit a ridge regression on CPU using those features
-          and the nut’s true position and angle from MuJoCo. I used 1,024 layouts
+          The camera input was a 96 × 96 image with a silhouette for each part.
+          Each silhouette’s center of mass gives a rough position, and the way its
+          pixels spread around that center helps recover the angle. I fit separate
+          ridge regressions for the nut and peg on CPU using their true positions
+          and angles from MuJoCo. I used 1,024 layouts
           for training and 256 to choose the regularization strength.
         </p>
         <Equation label="Supervised pose regression" latex={String.raw`\hat{\mathbf p}=W\,\phi(M)+\mathbf b,\qquad \mathbf p=(x,y,\theta)`} />
         <p>
           The regression maps the image features <var>φ(M)</var> to a position
           and angle. The handle is a known distance from the center of the nut,
-          so the controller can work out where to close the jaws. I kept the
-          same approach and lift sequence in both runs. Always aiming for the
-          average training pose picked up 24 of 32 nuts. Using the image picked up all 32.
-        </p>
-
-        <h2 id="placement">Fitting the nut onto a peg</h2>
-        <p>
-          The hole in the nut leaves 2 mm of clearance on each side of the peg.
-          In the <a href="?task=placement#replays">placement replay</a>, both
-          arms pick up the nut using the same predicted grasp. I changed only
-          where they put it down. One aims at the average peg pose from training.
-          The other uses a second regression fitted to the peg silhouette.
+          so the controller can work out where to close the jaws. Both arms use
+          this same grasp. I changed only where they put the nut down. One aims at
+          the average peg pose from training. The other uses the pose predicted
+          from the peg’s silhouette.
           A placement counts if the board supports the nut around the peg for
           half a second after the fingers open.
         </p>
@@ -233,7 +226,6 @@ export function ArcbenchArticle() {
           <table aria-label="Gripper results on 32 held-out layouts">
             <thead><tr><th>Task</th><th>Training-mean pose</th><th>Predicted pose</th><th>Mean XY error of prediction</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Handle pickup</th><td>24/32</td><td>32/32</td><td>0.15 mm</td></tr>
               <tr><th scope="row">Peg placement</th><td>2/32</td><td>32/32</td><td>0.22 mm</td></tr>
             </tbody>
           </table>
