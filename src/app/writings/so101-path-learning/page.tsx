@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { ArcbenchArticle, title, description } from "@/content/arcbench";
 
-const path = "/writings/arcbench/";
+const path = "/writings/so101-path-learning/";
 const image = {
   url: "/assets/writings/arcbench/social.jpg",
   width: 1200,
   height: 630,
-  alt: "The SO-101 paddle pushing a blue puck toward a target ring in Arcbench",
+  alt: "A black SO-101 arm holding a square nut over a blue peg in simulation",
 };
 
 export const metadata: Metadata = {

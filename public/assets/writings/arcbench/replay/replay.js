@@ -1,5 +1,6 @@
 const $ = (id) => document.getElementById(id);
 const tasks = {
+  assembly: {seed:2026, family:5, sliders:[["clearance","Side clearance",1,4,3,"mm"],["error","Peg estimate error",0,8,5,"mm"]], methods:[["scripted","Recheck peg"],["nominal","Initial estimate"],["open","Jaws open"]]},
   puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"]]},
   shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
   reach: {seed:700000, family:0, sliders:[["offset","Fixture offset",-55,55,0,"mm"],["angle","Target rotation",-18,18,0,"°"]], methods:[["learned","Learned route"],["direct","Direct reach"]]}
@@ -48,7 +49,7 @@ function prepareControls() {
   }
   for(const [key,name] of config.methods)mode.add(new Option(name,key));
   $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
-  $("cut-row").hidden=!shelf; $("closest").hidden=!shelf; $("path-row").hidden=task==="puck";
+  $("cut-row").hidden=!shelf; $("closest").hidden=!shelf; $("path-row").hidden=task==="puck" || task==="assembly";
   if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
   $("seed").oninput=updateExamples;updateExamples();
 }
@@ -70,8 +71,10 @@ function tick(now){
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
   draw();
-  const p=route(),result=p.outcome==="reached"?({puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
-  const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"],[task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]];
+  const p=route(),result=p.outcome==="reached"?({assembly:"Seated and released",puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
+  const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"]];
+  if(task==="assembly") entries.push(["Peak lift",p.lift_mm+" mm"],["Seated after release",p.seated_s+" s"]);
+  else entries.push([task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]);
   if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
   if(task==="puck")entries.push(["First contact",p.first_touch==null?"None":p.first_touch.toFixed(2)+" s"]);
   $("metrics").replaceChildren();
@@ -100,7 +103,7 @@ async function simulate(initial=false){
         throw Error(reason.error || "The simulator could not run this layout. Try again.");
       }
       next=await response.json();
-      if(!next.learned?.frames?.length)throw Error("Incomplete simulation response. Try again.");
+      if(!next[config.methods[0][0]]?.frames?.length)throw Error("Incomplete simulation response. Try again.");
       if(cache.size>=8)cache.delete(cache.keys().next().value);
       cache.set(key,next);
     }

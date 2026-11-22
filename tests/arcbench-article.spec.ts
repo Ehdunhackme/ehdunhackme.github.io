@@ -5,7 +5,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   request,
 }) => {
   await page.goto("/writings/");
-  await page.getByRole("searchbox").fill("arcbench");
+  await page.getByRole("searchbox").fill("SO-101");
   await page.getByRole("link", { name: /Robot path learning with an SO-101 arm/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Robot path learning with an SO-101 arm",
@@ -27,12 +27,11 @@ test("the article exposes its recorded comparisons, matched trials and study dat
       .locator("figure[aria-label='Paired outcomes by surface friction'] li")
       .nth(1),
   ).toHaveText("Learned only19");
-  await page
-    .getByText("How much did learning help on the shelf?", { exact: true })
-    .click();
-  await expect(
-    page.getByRole("table", { name: /Completed shelf inspections/ }),
-  ).toBeVisible();
+  await expect(page).toHaveURL(/so101-path-learning/);
+  await expect(page.getByRole("table", {name:"Nuts seated and released on 32 layouts"})).toBeVisible();
+  await expect(page.locator("article details")).toHaveCount(0);
+  await expect(page.getByRole("img",{name:/Reach classifier loss/})).toBeVisible();
+  await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("assembly");
   await page
     .getByRole("combobox", { name: "Task", exact: true })
     .selectOption("shelf");
@@ -45,8 +44,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(frame.getByRole("slider", {name:/Inspection depth/})).toHaveValue("75");
   await expect(frame.getByRole("combobox", {name:"Camera",exact:true})).toBeVisible();
   await expect(frame.getByRole("button", {name:"Randomize layout"})).toBeAttached();
-  await expect(page.getByRole("group",{name:"Collision classification loss"})).toBeAttached();
-  await expect(page.getByRole("group",{name:"Nearest-neighbor push selection"})).toBeAttached();
+  await expect(page.getByRole("group",{name:"Route choice"})).toBeAttached();
   await page.getByRole("button", { name: "Video", exact:true }).click();
   await page.getByRole("button", { name: "Play Shelf inspection comparison" }).click();
   await expect(page.locator("video source")).toHaveAttribute("src",/shelf\.mp4$/);

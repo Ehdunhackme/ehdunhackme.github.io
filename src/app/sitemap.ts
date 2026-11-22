@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about/",
     "/projects/",
     "/writings/",
-    "/writings/arcbench/",
+    "/writings/so101-path-learning/",
     "/writings/smollertts/",
     "/writings/2026-us-midterm-election-model/",
     "/writings/my-opinionated-guide-to-starting-research-early/",

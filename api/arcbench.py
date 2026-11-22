@@ -26,8 +26,11 @@ def simulate(query):
             raise ValueError(f"Choose {key} between {low} and {high}.")
         return value
 
-    family = integer("family", 4, 0, 4)
+    family = integer("family", 4, 0, 5)
     seed = integer("seed", 2402, 0, 2**31 - 1)
+    if family == 5:
+        from nut_assembly import assembly_replay
+        return assembly_replay(seed, integer("clearance", 3, 1, 4), integer("error", 5, 0, 8))
     if family == 4:
         return puck_replay(seed, integer("distance", 60, 45, 77))
     if family == 3:

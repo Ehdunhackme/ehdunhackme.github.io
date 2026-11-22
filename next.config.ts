@@ -29,6 +29,7 @@ const config: NextConfig = {
         destination: "/projects/#papers-heading",
         permanent: true,
       },
+      { source: "/writings/arcbench/", destination: "/writings/so101-path-learning/", permanent: true },
       { source: "/work", destination: "/projects/", permanent: true },
     ];
   },

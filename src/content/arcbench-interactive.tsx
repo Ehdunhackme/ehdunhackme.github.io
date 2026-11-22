@@ -6,6 +6,10 @@ import styles from "./arcbench.module.css";
 
 const assets = "/assets/writings/arcbench";
 const clips = {
+  assembly: [
+    "Nut on peg",
+    "Same grasp, same 5 mm error in the initial peg estimate. Watch what happens when the arm uses the peg’s exact position for the final approach.",
+  ],
   puck: [
     "Puck push",
     "Recorded layout 2402. The puck starts 60 mm from the target in both runs. Watch where it settles after the paddle lifts.",
@@ -63,7 +67,7 @@ function ComparisonFilm({ task }: { task: Task }) {
 }
 
 export function Replays() {
-  const [task, setTask] = useState<Task>("reach");
+  const [task, setTask] = useState<Task>("assembly");
   const [orbit, setOrbit] = useState(true);
   return (
     <figure
@@ -79,7 +83,7 @@ export function Replays() {
           </div>
           <label className={styles.task}>Task
             <select value={task} onChange={(e) => setTask(e.target.value as Task)}>
-              {(["reach", "shelf", "puck"] as const).map(k => <option value={k} key={k}>{clips[k][0]}</option>)}
+              {(["assembly", "reach", "shelf", "puck"] as const).map(k => <option value={k} key={k}>{clips[k][0]}</option>)}
             </select>
           </label>
         </div>
@@ -90,7 +94,7 @@ export function Replays() {
         {!orbit && <ComparisonFilm key={task} task={task} />}
       </div>
       <figcaption>{orbit
-        ? "Drag to rotate the view. Pick a new layout to see how both controllers handle it."
+        ? "Drag to rotate the view. Randomize the layout to try a new starting position."
         : clips[task][1]}</figcaption>
     </figure>
   );

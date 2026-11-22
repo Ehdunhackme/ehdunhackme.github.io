@@ -1,5 +1,6 @@
 """Editable autoresearch experiment. The evaluator, task distribution and splits are fixed."""
 import argparse
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -16,7 +17,9 @@ UPDATES = 1000
 BATCH = 256
 
 
-def train(tag,recipe,width,depth,loss_kind):
+def train(tag,recipe,width,depth,loss_kind,trace=False):
+    if trace and recipe != "shared":
+        raise ValueError("The collision-loss trace requires the shared classifier.")
     started=time.monotonic()
     base=ROOT/"experiments"
     dest=base/tag
@@ -39,6 +42,20 @@ def train(tag,recipe,width,depth,loss_kind):
         if i<depth: parts.append(nn.ReLU())
     model=nn.Sequential(*parts).to(device)
     optimizer=torch.optim.AdamW(model.parameters(),lr=.002)
+    if trace:
+        validation_x = torch.tensor((features(val["tasks"], recipe) - mean) / scale, device=device)
+        validation_y = torch.tensor(~val["clear"], dtype=torch.float32, device=device)
+        train_y = (y > .9).float()
+        rows = []
+
+        @torch.no_grad()
+        def record(update):
+            def full_loss(inputs, targets):
+                logits = model(inputs)[..., 0]
+                return nn.functional.binary_cross_entropy_with_logits(logits, targets).item()
+            rows.append((update, full_loss(X, train_y), full_loss(validation_x, validation_y)))
+
+        record(0)
     for step in range(UPDATES):
         ix=torch.randint(len(X),(BATCH,),device=device)
         output=model(X[ix])
@@ -52,6 +69,13 @@ def train(tag,recipe,width,depth,loss_kind):
         else:
             loss=(output-y[ix]).square().mean()
         optimizer.zero_grad();loss.backward();optimizer.step()
+        if trace and (step + 1) % 25 == 0:
+            record(step + 1)
+    if trace:
+        with (dest / "curve.csv").open("w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["update", "train_bce", "validation_bce"])
+            writer.writerows(rows)
     weights=dict(recipe=np.array(recipe),mean=mean,scale=scale,layers=np.array(len(dims)-1))
     for i,layer in enumerate(m for m in parts if isinstance(m,nn.Linear)):
         weights[f"w{i}"]=layer.weight.detach().cpu().numpy().T
@@ -92,5 +116,6 @@ if __name__=="__main__":
     p.add_argument("--width",type=int,default=32)
     p.add_argument("--depth",type=int,default=1)
     p.add_argument("--loss",choices=("mse","weighted"),default="mse")
-    a=p.parse_args();train(a.tag,a.recipe,a.width,a.depth,a.loss)
+    p.add_argument("--trace", action="store_true", help="record full-split collision loss every 25 updates")
+    a=p.parse_args();train(a.tag,a.recipe,a.width,a.depth,a.loss,a.trace)
 

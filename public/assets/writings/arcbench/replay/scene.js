@@ -17,11 +17,11 @@ export async function buildScene(container) {
   let dirty=true;
   controls.addEventListener('change',()=>{dirty=true;});
   controls.target.set(.18,0,.207);
-  let shelfMode=false,puckMode=false;
+  let shelfMode=false,puckMode=false,assemblyMode=false;
   function cameraView(name='work'){
-    const focus=puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
-    const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:shelfMode?[-.29,-.91,.52]:puckMode?[.54,-.98,.88]:[.76,-.91,.64];
-    camera.position.set(...eye);camera.zoom=name==='mouth'?1.2:1;camera.updateProjectionMatrix();
+    const focus=assemblyMode?[.195,.005,.105]:puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
+    const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:assemblyMode?[.76,-.84,.79]:shelfMode?[-.29,-.91,.52]:puckMode?[.54,-.98,.88]:[.76,-.91,.64];
+    camera.position.set(...eye);camera.zoom=assemblyMode?1.34:name==='mouth'?1.2:1;camera.updateProjectionMatrix();
     controls.target.set(...focus);controls.update();dirty=true;
   }
   const reset=()=>cameraView();
@@ -56,7 +56,7 @@ export async function buildScene(container) {
     mesh.castShadow=mesh.receiveShadow=true;bodies[g.body].add(mesh);
   }
   const overlay=new T.Group();scene.add(overlay);const v=p=>new T.Vector3(...p);
-  let removable=[],sectionOn=true,learnedLine,fixedLine,directLine,hitMarker,puck,tool;
+  let removable=[],sectionOn=true,learnedLine,fixedLine,directLine,hitMarker,movingPart,tool;
   let pathsOn=false,currentRoute='learned';
   function clearOverlay(){overlay.traverse(o=>{o.geometry?.dispose();if(o.material){o.material.map?.dispose();o.material.dispose();}});overlay.clear();removable=[];}
   function cutaway(on){
@@ -103,11 +103,26 @@ export async function buildScene(container) {
     dirty=true;
     clearOverlay();
     if(tool){tool.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});tool.removeFromParent();tool=null;}
-    puck=learnedLine=fixedLine=directLine=hitMarker=null;
+    movingPart=learnedLine=fixedLine=directLine=hitMarker=null;
     gap(null);
-    const changed=shelfMode!==Boolean(run.panels)||puckMode!==Boolean(run.puck);
-    shelfMode=Boolean(run.panels);puckMode=Boolean(run.puck);
+    const changed=assemblyMode!==Boolean(run.assembly)||shelfMode!==Boolean(run.panels)||puckMode!==Boolean(run.puck);
+    assemblyMode=Boolean(run.assembly);shelfMode=Boolean(run.panels);puckMode=Boolean(run.puck);
     if(changed)reset();
+    if(assemblyMode){
+      const block=(parent,center,half,color)=>{
+        const mesh=new T.Mesh(new T.BoxGeometry(...half.map(x=>x*2)),material(color,.53,.18));
+        mesh.position.fromArray(center);mesh.castShadow=mesh.receiveShadow=true;
+        parent.add(mesh);return mesh;
+      };
+      const spec=run.assembly;
+      block(overlay,run.board.slice(0,3),run.board.slice(3),0xb5bdc4);
+      const peg=block(overlay,[run.goal[0],run.goal[1],spec.deck+spec.peg_height/2],
+        [spec.peg_half,spec.peg_half,spec.peg_height/2],0x385fa7);
+      peg.rotation.z=spec.peg_yaw;
+      movingPart=new T.Group();overlay.add(movingPart);
+      for(const [center,half] of spec.boxes)block(movingPart,center,half,0xc27935);
+      return;
+    }
     if(puckMode){
       const [x,y,z,a,b,c]=run.pad, spec=run.puck;
       const pad=new T.Mesh(new T.BoxGeometry(2*a,2*b,2*c),material(0xb7bdc1,.7,.12));
@@ -117,11 +132,11 @@ export async function buildScene(container) {
       ring.position.fromArray(run.goal);overlay.add(ring);
       const center=new T.Mesh(new T.CircleGeometry(.0024,20),new T.MeshBasicMaterial({color:0x296b51}));
       center.position.copy(ring.position);overlay.add(center);
-      puck=new T.Group();overlay.add(puck);
+      movingPart=new T.Group();overlay.add(movingPart);
       const disc=new T.Mesh(new T.CylinderGeometry(spec.radius,spec.radius,2*spec.half,48),material(0x314fba,.42,.18));
-      disc.rotation.x=Math.PI/2;disc.castShadow=disc.receiveShadow=true;puck.add(disc);
+      disc.rotation.x=Math.PI/2;disc.castShadow=disc.receiveShadow=true;movingPart.add(disc);
       const dot=new T.Mesh(new T.CircleGeometry(.0028,24),new T.MeshBasicMaterial({color:0xe6edff}));
-      dot.position.z=spec.half+.0001;puck.add(dot);
+      dot.position.z=spec.half+.0001;movingPart.add(dot);
       tool=new T.Group();bodies[manifest.bodies.indexOf('gripper')].add(tool);
       for(const [first,second] of [[spec.mount,spec.probe],spec.blade]){
         const u=v(first),w=v(second),axis=w.clone().sub(u);
@@ -159,7 +174,7 @@ export async function buildScene(container) {
   }
   function pose(frame){
     dirty=true;
-    if(puck && frame[4]){const q=frame[4];puck.position.fromArray(q);puck.quaternion.set(q[4],q[5],q[6],q[3]);}
+    if(movingPart && frame[4]){const q=frame[4];movingPart.position.fromArray(q);movingPart.quaternion.set(q[4],q[5],q[6],q[3]);}
     const values=frame[2];
     for(let i=1;i<=7;i++){const j=7*(i-1);bodies[i].position.fromArray(values,j);bodies[i].quaternion.set(values[j+4],values[j+5],values[j+6],values[j+3]);}
   }
