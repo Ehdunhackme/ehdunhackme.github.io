@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arcbench 3D replay</title>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px/1.4 system-ui,sans-serif;background:#e1e6df;color:#23382d}body{display:flex;flex-direction:column}#stage{position:relative;flex:1;min-height:0;touch-action:none}canvas{display:block;width:100%;height:100%;cursor:grab}#loading{position:absolute;inset:0;display:grid;place-content:center;padding:1em;text-align:center;z-index:1;background:#e1e6df}#loading[hidden]{display:none}#loading a{color:inherit}footer{background:#f7faf6;border-top:1px solid #cbd3ca;padding:9px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}button,select{font:inherit;color:inherit;border:1px solid #a3b0a4;border-radius:4px;background:white;padding:5px 8px}button{cursor:pointer;min-width:59px}input{width:60px;min-width:45px;flex:1;accent-color:#375846}output{font:12px/1.2 system-ui;font-variant-numeric:tabular-nums}select{max-width:34%} :focus-visible{outline:2px solid #815115;outline-offset:2px}
+</style></head><body>
+<div id="stage"><div id="loading" role="status">Loading the recorded motion…</div></div>
+<footer><button id="play" disabled>Play</button><input aria-label="Replay position" id="time" type="range" min="0" max="1000" value="0" disabled><output id="clock">0.00 s</output><select id="mode" aria-label="Controller" disabled><option value="learned">Learned</option><option value="direct">Direct</option></select></footer>
+<script type="module" src="./replay.js"></script></body></html>

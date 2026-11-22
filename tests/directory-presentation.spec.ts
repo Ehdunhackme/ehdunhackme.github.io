@@ -156,7 +156,7 @@ test("writing uses the original page entrance and leaves the header still", asyn
       "data-writing-transition",
     );
     await page.goBack();
-    await expect(page.locator(".writing-section-link")).toHaveCount(3);
+    await expect(page.locator(".writing-section-link")).toHaveCount(4);
   }
   expect(errors).toEqual([]);
 });

@@ -20,6 +20,25 @@ export function WritingsContent() {
           id: "writing-results",
           entries: [
             {
+              id: "writing-arcbench",
+              searchText: "Arcbench teaching an SO-101 arm where to push robotics MuJoCo puck shelf contact friction motion planning 22 Nov 2026",
+              content: (
+                <Link className="writing-section-link" href="/writings/arcbench/">
+                  <span className="writing-year" aria-hidden="true">2026</span>
+                  <span className="writing-entry-content">
+                    <span className="writing-section-title">Teaching an SO-101 arm where to push</span>
+                    <span className="writing-section-description">Learning to push a puck in simulation, then testing the same controller on a different surface.</span>
+                  </span>
+                  <span className="writing-section-side">
+                    <time className="writing-date" dateTime="2026-11-22">
+                      <span className="writing-date-full">22 Nov 2026</span>
+                      <span className="writing-date-short" aria-hidden="true">11/22</span>
+                    </time>
+                  </span>
+                </Link>
+              ),
+            },
+            {
               id: "writing-smollertts",
               searchText:
                 "SmollerTTS a 2.81M-parameter voice in the browser English text to speech TTS small model architecture training LJSpeech HiFi-GAN ONNX CPU 19 Nov 2026",

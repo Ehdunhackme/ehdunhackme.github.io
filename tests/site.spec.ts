@@ -188,7 +188,7 @@ test("directory views preserve search and keep summaries accessible", async ({
     page.locator(".writing-card-list > li:visible .writing-section-description").first(),
   ).toBeVisible();
   await search.press("Escape");
-  await expect(page.locator(".writing-card-list > li:visible")).toHaveCount(3);
+  await expect(page.locator(".writing-card-list > li:visible")).toHaveCount(4);
 
   await page.goto("/projects/");
   await page.waitForLoadState("networkidle");
@@ -327,7 +327,7 @@ test("writings search and dark layouts at viewport width", async ({ page }) => {
     page.getByRole("heading", { name: "No matching writings" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear", exact: true }).click();
-  await expect(page.locator(".writing-section-link")).toHaveCount(3);
+  await expect(page.locator(".writing-section-link")).toHaveCount(4);
   await expect(page.locator(".writing-section-link").first()).toBeVisible();
   await page.evaluate(() => localStorage.setItem("theme", "light"));
   await page.reload();

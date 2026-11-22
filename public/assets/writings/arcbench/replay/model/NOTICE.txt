@@ -1,0 +1,5 @@
+The SO-101 follower geometry is adapted from TheRobotStudio's SO-ARM100 model,
+Simulation/SO101, revision 141aea7bcac2744d92998e30268c413202a56f96.
+Arcbench converts the original visual meshes to indexed browser geometry
+with vertex clustering at 0.60 mm. The accompanying LICENSE is Apache 2.0.
+Three.js and its controls are distributed under the MIT license in ../vendor/LICENSE.
