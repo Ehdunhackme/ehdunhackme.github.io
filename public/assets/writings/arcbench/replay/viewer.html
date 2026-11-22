@@ -3,20 +3,22 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SO-101 path simulator</title>
 <link rel="stylesheet" href="./viewer.css">
+<link rel="stylesheet" href="../player.css">
 <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
 </head><body>
 <main>
 <div id="stage" aria-label="Robot workcell">
   <div id="loading" role="status">Loading the arm…</div>
-  <button id="random" class="floating" disabled>Randomize layout</button>
-  <div class="transport">
-    <button id="play" disabled>Play</button>
-    <input id="time" type="range" min="0" max="1000" value="0" aria-label="Replay position" disabled>
+</div>
+  <div class="so-playerbar">
+    <button id="play" class="so-play" aria-label="Play replay" disabled></button>
+    <input id="time" class="so-seek" type="range" min="0" max="1000" value="0" aria-label="Replay position" disabled>
     <output id="clock">0.00 s</output>
     <select id="mode" aria-label="Controller" disabled></select>
   </div>
-</div>
 <p id="notice" role="status" hidden></p>
+<div class="settings">
+<button id="random" disabled>Randomize layout</button>
 <details><summary>Advanced settings</summary>
 <div class="options">
   <fieldset><legend>Layout</legend>
@@ -35,5 +37,5 @@
   <fieldset><legend>Run details</legend>
     <dl id="metrics"></dl><button id="closest" hidden>Inspect closest pass</button>
   </fieldset>
-</div></details>
+</div></details></div>
 </main><script type="module" src="./replay.js"></script></body></html>

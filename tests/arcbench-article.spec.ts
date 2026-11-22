@@ -30,7 +30,20 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(page).toHaveURL(/so101-path-learning/);
   await expect(page.getByRole("table", {name:"Nuts seated and released on 32 layouts"})).toBeVisible();
   await expect(page.locator("article details")).toHaveCount(0);
-  await expect(page.getByRole("img",{name:/Reach classifier loss/})).toBeVisible();
+  const curve = page.getByRole("slider", {name:"Inspect training update"});
+  await curve.focus();
+  await curve.press("Home");
+  await expect(curve).toHaveAttribute("aria-valuetext", /Update 0, training 0.7036/);
+  await curve.press("ArrowRight");
+  await expect(curve).toHaveAttribute("aria-valuetext", /Update 25, training 0.2171/);
+  await curve.press("End");
+  await expect(curve).toHaveAttribute("aria-valuetext", /Update 1000, training 0.0358, validation 0.0718/);
+  await page.getByRole("button", {name:"Zoom to last 500"}).click();
+  await curve.press("Home");
+  await expect(curve).toHaveAttribute("aria-valuetext", /Update 500, training 0.0548/);
+  await page.getByRole("button", {name:"Show full run"}).click();
+  await expect(page.getByRole("heading",{name:"Cite this post"})).toBeVisible();
+  await expect(page.locator("#ref-planning a")).toHaveText(/MotionBenchMaker/);
   await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("assembly");
   await page
     .getByRole("combobox", { name: "Task", exact: true })
@@ -46,8 +59,8 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(frame.getByRole("button", {name:"Randomize layout"})).toBeAttached();
   await expect(page.getByRole("group",{name:"Route choice"})).toBeAttached();
   await page.getByRole("button", { name: "Video", exact:true }).click();
-  await page.getByRole("button", { name: "Play Shelf inspection comparison" }).click();
   await expect(page.locator("video source")).toHaveAttribute("src",/shelf\.mp4$/);
+  await expect(page.getByRole("slider",{name:"Video position"})).toBeVisible();
   await explorer.click();
   await expect(frame.getByRole("slider", {name:/Opening width/})).toBeVisible();
   const data = await request.get("/assets/writings/arcbench/puck-trials.csv");

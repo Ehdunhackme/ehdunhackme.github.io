@@ -19,9 +19,9 @@ export async function buildScene(container) {
   controls.target.set(.18,0,.207);
   let shelfMode=false,puckMode=false,assemblyMode=false;
   function cameraView(name='work'){
-    const focus=assemblyMode?[.195,.005,.105]:puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
+    const focus=assemblyMode?[.195,.005,.118]:puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
     const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:assemblyMode?[.76,-.84,.79]:shelfMode?[-.29,-.91,.52]:puckMode?[.54,-.98,.88]:[.76,-.91,.64];
-    camera.position.set(...eye);camera.zoom=assemblyMode?1.34:name==='mouth'?1.2:1;camera.updateProjectionMatrix();
+    camera.position.set(...eye);camera.zoom=assemblyMode?1.20:name==='mouth'?1.2:1;camera.updateProjectionMatrix();
     controls.target.set(...focus);controls.update();dirty=true;
   }
   const reset=()=>cameraView();
@@ -172,11 +172,17 @@ export async function buildScene(container) {
       hitMarker=new T.Mesh(new T.SphereGeometry(.005,12,10),new T.MeshBasicMaterial({color:0xb85d44}));hitMarker.position.fromArray(run.direct.contact_point);overlay.add(hitMarker);
     }
   }
-  function pose(frame){
+  const nextPosition=new T.Vector3(), nextRotation=new T.Quaternion();
+  function transform(object,start,end,j,alpha){
+    object.position.fromArray(start,j).lerp(nextPosition.fromArray(end,j),alpha);
+    object.quaternion.set(start[j+4],start[j+5],start[j+6],start[j+3]);
+    nextRotation.set(end[j+4],end[j+5],end[j+6],end[j+3]);
+    object.quaternion.slerp(nextRotation,alpha);
+  }
+  function pose(frame,next=frame,alpha=0){
     dirty=true;
-    if(movingPart && frame[4]){const q=frame[4];movingPart.position.fromArray(q);movingPart.quaternion.set(q[4],q[5],q[6],q[3]);}
-    const values=frame[2];
-    for(let i=1;i<=7;i++){const j=7*(i-1);bodies[i].position.fromArray(values,j);bodies[i].quaternion.set(values[j+4],values[j+5],values[j+6],values[j+3]);}
+    if(movingPart && frame[4])transform(movingPart,frame[4],next[4],0,alpha);
+    for(let i=1;i<=7;i++)transform(bodies[i],frame[2],next[2],7*(i-1),alpha);
   }
   const resize=()=>{const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);
     const aspect=w/h,half=Math.max(.225,.31/aspect);camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();dirty=true;};

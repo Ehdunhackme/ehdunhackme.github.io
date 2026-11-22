@@ -12,16 +12,17 @@ const mode=$("mode"), play=$("play"), scrub=$("time");
 let view, run, elapsed=0, playing=false, last=0, animation=0, inspecting=false, busy=false;
 const route=()=>run[mode.value];
 const cache=new Map();
+const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)");
+let wantsPlayback=!reducedMotion.matches, inView=false;
 
 function theme() {
   if (!window.frameElement) return;
   const doc=parent.document, css=parent.getComputedStyle(doc.documentElement);
-  document.documentElement.classList.toggle("dark",doc.documentElement.classList.contains("dark") || css.colorScheme==="dark");
+  document.documentElement.classList.toggle("dark",doc.documentElement.classList.contains("dark"));
   for(const [local,site] of [["--bg","--bg"],["--fg","--strong"],["--muted","--muted"],["--line","--line"]]){
     const value=css.getPropertyValue(site).trim();
     if(value) document.documentElement.style.setProperty(local,value);
   }
-  document.body.style.fontFamily=parent.getComputedStyle(window.frameElement).fontFamily;
 }
 if(window.frameElement){
   theme();
@@ -55,18 +56,30 @@ function prepareControls() {
 }
 function pause(){
   cancelAnimationFrame(animation);playing=false;
-  if(run)play.textContent=elapsed>=route().seconds?"Replay":"Play";
+  play.dataset.playing="false";
+  play.setAttribute("aria-label",run && elapsed>=route().seconds?"Replay motion":"Play replay");
+}
+function syncPlayback(){
+  if(!run || busy || !inView || document.hidden || !wantsPlayback){pause();return;}
+  if(playing)return;
+  playing=true;last=performance.now();play.dataset.playing="true";
+  play.setAttribute("aria-label","Pause replay");animation=requestAnimationFrame(tick);
 }
 function draw(){
   const p=route(); let lo=0,hi=p.frames.length-1;
   while(lo<hi){const mid=Math.ceil((lo+hi)/2);if(p.frames[mid][0]<=elapsed)lo=mid;else hi=mid-1;}
-  view.pose(p.frames[lo]);scrub.value=Math.round(1000*elapsed/p.seconds);$("clock").value=elapsed.toFixed(2)+" s";
+  const current=p.frames[lo],next=p.frames[Math.min(lo+1,p.frames.length-1)];
+  const fraction=next[0]>current[0]?(elapsed-current[0])/(next[0]-current[0]):0;
+  view.pose(current,next,fraction);scrub.value=Math.round(1000*elapsed/p.seconds);
+  scrub.style.setProperty("--played",100*elapsed/p.seconds+"%");$("clock").value=elapsed.toFixed(2)+" s";
+  scrub.setAttribute("aria-valuetext",elapsed.toFixed(2)+" of "+p.seconds.toFixed(2)+" seconds");
   if(inspecting && p.gaps){const g=p.gaps[lo];view.gap(g.points,g.link.replaceAll("_"," ")+" / "+g.panel+" · "+g.mm.toFixed(2)+" mm");}
 }
 function tick(now){
   if(!playing)return;
-  elapsed=Math.min(route().seconds,elapsed+(now-last)*Number($("speed").value)/1000);last=now;
-  draw();if(elapsed>=route().seconds)pause();else animation=requestAnimationFrame(tick);
+  // A slow render or a suspended tab should not skip the whole grasp.
+  elapsed=Math.min(route().seconds,elapsed+Math.min(now-last,150)*Number($("speed").value)/1000);last=now;
+  draw();if(elapsed>=route().seconds){wantsPlayback=false;pause();}else animation=requestAnimationFrame(tick);
 }
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
@@ -111,14 +124,14 @@ async function simulate(initial=false){
   }catch(error){
     if(initial)throw error;
     notice(error.message+(run?" Showing layout "+run.seed+".":""));
-  }finally{pending(false);}
+  }finally{pending(false);syncPlayback();}
 }
 
 prepareControls();
 try {
   const {buildScene}=await import("./scene.js");
   view=await buildScene($("stage"));await simulate(true);
-  mode.onchange=pick;
+  mode.onchange=()=>{pick();wantsPlayback=!reducedMotion.matches;syncPlayback();};
   $("random").onclick=()=>{setValue("seed",crypto.getRandomValues(new Uint32Array(1))[0]%2147483648);updateExamples();simulate();};
   $("apply").onclick=()=>simulate();
   $("family").onchange=()=>simulate();
@@ -126,11 +139,12 @@ try {
   $("camera").onchange=()=>view.cameraView($("camera").value);
   $("reset").onclick=()=>{$("camera").value="work";view.reset();};
   $("paths").onchange=()=>view.paths($("paths").checked);$("cut").onchange=()=>view.cutaway($("cut").checked);
-  $("closest").onclick=()=>{const p=route();if(!p.gaps)return;const i=p.gaps.reduce((best,g,index)=>g.mm<p.gaps[best].mm?index:best,0);elapsed=p.frames[i][0];pause();inspecting=true;draw();};
-  scrub.oninput=()=>{elapsed=Number(scrub.value)*route().seconds/1000;pause();draw();};
-  play.onclick=()=>{if(playing){pause();return;}if(elapsed>=route().seconds)elapsed=0;playing=true;last=performance.now();play.textContent="Pause";animation=requestAnimationFrame(tick);};
-  document.addEventListener("visibilitychange",()=>{if(document.hidden)pause();});
-  new IntersectionObserver(e=>{if(!e[0].isIntersecting && playing)pause();}).observe($("stage"));
+  $("closest").onclick=()=>{const p=route();if(!p.gaps)return;const i=p.gaps.reduce((best,g,index)=>g.mm<p.gaps[best].mm?index:best,0);elapsed=p.frames[i][0];wantsPlayback=false;pause();inspecting=true;draw();};
+  scrub.oninput=()=>{elapsed=Number(scrub.value)*route().seconds/1000;wantsPlayback=false;pause();draw();};
+  play.onclick=()=>{wantsPlayback=!playing;if(wantsPlayback && elapsed>=route().seconds)elapsed=0;syncPlayback();};
+  document.addEventListener("visibilitychange",syncPlayback);
+  reducedMotion.addEventListener("change",()=>{if(reducedMotion.matches){wantsPlayback=false;syncPlayback();}});
+  new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;syncPlayback();}).observe($("stage"));
 }catch{
   const link=document.createElement("a");link.href="../"+task+".mp4";link.textContent="Watch the recorded comparison";
   $("loading").hidden=false;$("loading").replaceChildren("3D is unavailable on this device. ",link);

@@ -1,0 +1,140 @@
+/* Playback controls shared by the comparison film and the embedded 3D scene. */
+.so-playerbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 55px;
+  padding: 8px 14px;
+  color: var(--strong);
+  background: var(--bg);
+  font: inherit;
+  font-size: 13px;
+}
+.so-playerbar button,
+.so-playerbar select,
+.so-playerbar input {
+  font: inherit;
+}
+.so-playerbar .so-play {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: var(--strong);
+  color: var(--bg);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+.so-play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8px;
+  border-color: transparent transparent transparent currentColor;
+  margin-left: 2px;
+}
+.so-play[data-playing="true"]::before {
+  width: 7px;
+  height: 10px;
+  border-width: 0 2px;
+  border-color: currentColor;
+  margin: 0;
+  box-sizing: border-box;
+}
+.so-playerbar .so-play:hover {
+  opacity: 0.8;
+}
+.so-playerbar .so-play:active {
+  transform: scale(0.95);
+}
+.so-playerbar .so-seek {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  margin: 0;
+  height: 30px;
+  min-width: 30px;
+  width: 100%;
+  flex: 1;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+}
+.so-seek::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--strong) var(--played, 0%),
+    var(--line) var(--played, 0%)
+  );
+}
+.so-seek::-moz-range-track {
+  height: 3px;
+  background: var(--line);
+}
+.so-seek::-moz-range-progress {
+  height: 3px;
+  background: var(--strong);
+}
+.so-seek::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--strong);
+}
+.so-seek::-moz-range-thumb {
+  border: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--strong);
+}
+.so-playerbar output {
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.so-playerbar select {
+  max-width: 40%;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--strong);
+  background: var(--bg);
+  padding: 5px 0 5px 8px;
+  cursor: pointer;
+}
+.so-playerbar :disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+@media (max-width: 450px) {
+  .so-playerbar {
+    padding-inline: 10px;
+    gap: 8px;
+  }
+  .so-playerbar .so-play {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .so-playerbar .so-play {
+    transition: none;
+  }
+}

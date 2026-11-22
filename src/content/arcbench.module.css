@@ -40,65 +40,160 @@
   padding: 6px 9px;
   cursor: pointer;
 }
-.simulator { border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: var(--bg); }
-.simHeader { display: flex; justify-content: space-between; align-items: center; gap: 6px 14px; flex-wrap: wrap; padding: 8px 13px; border-bottom: 1px solid var(--line); }
-.switches, .task { display: flex; gap: 4px; align-items: center; }
-.simHeader .switches button { border: 1px solid transparent; background: transparent; color: var(--muted); padding: 7px 9px; font: inherit; font-size: .8125rem; }
-.simHeader .switches button[aria-pressed="true"] { color: var(--strong); border-color: var(--line); background: color-mix(in srgb,var(--strong) 4%,transparent); }
-.task { gap: 7px; color: var(--muted); font-size: .8125rem; }
-.task select { color: var(--strong); background: var(--bg); border: 1px solid var(--line); border-radius: 5px; font: inherit; padding: 6px; cursor: pointer; }
-.film,
+.simulator {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.simHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  min-height: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.switches,
+.task {
+  display: flex;
+  align-items: center;
+}
+.switches {
+  align-self: stretch;
+  gap: 16px;
+}
+.simHeader .switches button {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--muted);
+  padding: 0;
+  font: inherit;
+  font-size: 0.8125rem;
+  transition: color 0.18s;
+}
+.simHeader .switches button[aria-pressed="true"],
+.switches button:hover {
+  color: var(--strong);
+}
+.simHeader .switches button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.18s;
+}
+.simHeader .switches button[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+.task {
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+.task select {
+  color: var(--strong);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  padding: 5px 4px;
+  max-width: 100%;
+  cursor: pointer;
+}
 .frame {
   display: block;
   width: 100%;
+  height: clamp(435px, 73vw, 574px);
   border: 0;
-  border-radius: 0;
-  background: #e8e9eb;
+  background: var(--bg);
 }
-.film {
-  height: auto;
-}
-.poster {
-  position: relative;
-  display: block;
+.filmPlayer {
   width: 100%;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
+}
+.filmLabels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: var(--strong);
+  background: var(--bg);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.filmLabels > div {
+  padding: 8px 12px;
+}
+.filmLabels > div + div {
+  border-left: 1px solid var(--line);
+}
+.filmLabels span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.filmWindow {
+  width: 100%;
+  aspect-ratio: 1440/668;
   background: #e8e9eb;
-  border-radius: 0;
+  position: relative;
   overflow: hidden;
 }
-.poster img {
+.filmWindow[data-task="reach"] {
+  aspect-ratio: 1440/642;
+}
+.filmWindow .film {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
 }
-.poster span {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.filmPlayer:fullscreen {
   display: flex;
-  align-items: center;
-  gap: 7px;
-  border-radius: 3px;
-  background: #202226ed;
-  color: white;
-  padding: 7px 12px;
-  font:
-    500 0.8125rem/1.4 system-ui,
-    sans-serif;
+  flex-direction: column;
+  justify-content: center;
+  padding: max(12px, 3vmin);
+  background: var(--bg);
 }
-.poster span::before {
-  content: "";
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 6px solid currentColor;
+.filmPlayer:fullscreen > div {
+  width: min(100%, calc((100dvh - 160px) * 2.15));
+  margin-inline: auto;
+  flex: none;
 }
-.frame {
-  height: clamp(379px, 68vw, 527px);
+.expand {
+  display: grid;
+  place-items: center;
+  border: 0;
+  padding: 5px;
+  background: transparent;
+  color: var(--strong);
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .filmPlayer {
+    animation: film-in 0.22s ease-out;
+  }
+  @keyframes film-in {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 .figure figcaption {
   line-height: 1.55;
@@ -112,9 +207,8 @@
   background: var(--arc-field);
 }
 .plot text {
-  font:
-    12px system-ui,
-    sans-serif;
+  font-family: inherit;
+  font-size: 12px;
   fill: var(--fg);
 }
 .target {
@@ -227,4 +321,201 @@
   }
 }
 
-@media (max-width: 480px) { .simHeader { padding: 7px; } .task, .task select, .simHeader .switches button { font-size:.75rem; } }
+.curve {
+  margin: 20px 0 28px;
+  --training: #347bb1;
+  --validation: #a85b2d;
+  --gridline: color-mix(in srgb, var(--fg) 17%, transparent);
+}
+:global(html.dark) .curve {
+  --training: #91bce7;
+  --validation: #e6a077;
+}
+.curve [data-series="training"] {
+  --series: var(--training);
+}
+.curve [data-series="validation"] {
+  --series: var(--validation);
+}
+.curveStats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  border-block: 1px solid var(--line);
+  padding: 11px 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.curveStats div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.curveStats div:first-child {
+  margin-right: auto;
+}
+.curveStats strong {
+  min-width: 5ch;
+  text-align: right;
+}
+.curveStats i {
+  display: inline-block;
+  width: 16px;
+  border-top: 2px solid var(--series);
+}
+.curveStats i[data-series="validation"] {
+  border-top-style: dashed;
+}
+.yTitle,
+.xTitle,
+.xTick,
+.yTick {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.yTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 13px;
+}
+.yTitle button {
+  font: inherit;
+  color: var(--fg);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.yTitle button:hover {
+  border-color: var(--muted);
+}
+.yTick span,
+.xTick {
+  white-space: nowrap;
+  width: max-content;
+}
+.xTitle {
+  text-align: center;
+  margin: 24px 0 16px;
+}
+.curvePlot {
+  position: relative;
+  height: clamp(175px, 32vw, 245px);
+  margin: 0 17px 0 43px;
+}
+.curvePlot svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.curvePlot polyline {
+  fill: none;
+  stroke: var(--series);
+  stroke-width: 2.25;
+  stroke-linejoin: round;
+}
+.curvePlot polyline[data-series="validation"] {
+  stroke-dasharray: 6 4;
+}
+.yTick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px solid var(--gridline);
+}
+.yTick span {
+  position: absolute;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+.xTick {
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  padding-top: 4px;
+}
+.cursor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dotted var(--muted);
+  pointer-events: none;
+}
+.curveDot {
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  background: var(--bg);
+  border: 2px solid var(--series);
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.curvePlot input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+.curvePlot:has(input:focus-visible) {
+  outline: 2px solid var(--strong);
+  outline-offset: 5px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .curvePlot[data-visible="true"] svg {
+    animation: trace-in 0.65s ease-out;
+  }
+  @keyframes trace-in {
+    from {
+      clip-path: inset(-3px 100% -3px -3px);
+    }
+    to {
+      clip-path: inset(-3px);
+    }
+  }
+}
+@media (max-width: 480px) {
+  .simHeader {
+    padding-inline: 10px;
+  }
+  .switches {
+    gap: 12px;
+  }
+  .task,
+  .task select,
+  .simHeader .switches button {
+    font-size: 0.765rem;
+  }
+  .curveStats {
+    gap: 8px 12px;
+    font-size: 0.75rem;
+  }
+  .curveStats div {
+    gap: 4px;
+  }
+  .curveStats i {
+    width: 10px;
+  }
+  .filmLabels span {
+    display: block;
+    margin: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .simHeader .switches button,
+  .simHeader .switches button::after {
+    transition: none;
+  }
+}
