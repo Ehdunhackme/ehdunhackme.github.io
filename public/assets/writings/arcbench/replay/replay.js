@@ -60,7 +60,7 @@ function pause(){
   play.setAttribute("aria-label",run && elapsed>=route().seconds?"Replay motion":"Play replay");
 }
 function syncPlayback(){
-  if(!run || busy || !inView || document.hidden || !wantsPlayback){pause();return;}
+  if(!run || busy || !inView || document.hidden || !wantsPlayback || elapsed>=route().seconds){pause();return;}
   if(playing)return;
   playing=true;last=performance.now();play.dataset.playing="true";
   play.setAttribute("aria-label","Pause replay");animation=requestAnimationFrame(tick);
@@ -79,7 +79,7 @@ function tick(now){
   if(!playing)return;
   // A slow render or a suspended tab should not skip the whole grasp.
   elapsed=Math.min(route().seconds,elapsed+Math.min(now-last,150)*Number($("speed").value)/1000);last=now;
-  draw();if(elapsed>=route().seconds){wantsPlayback=false;pause();}else animation=requestAnimationFrame(tick);
+  draw();if(elapsed>=route().seconds)pause();else animation=requestAnimationFrame(tick);
 }
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
