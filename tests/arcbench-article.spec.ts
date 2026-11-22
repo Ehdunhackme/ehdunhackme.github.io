@@ -30,6 +30,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(page).toHaveURL(/so101-path-learning/);
   await expect(page.getByRole("table", {name:"Nuts seated and released on 32 layouts"})).toBeVisible();
   await expect(page.locator("article details")).toHaveCount(0);
+  await expect(page.locator("article figcaption")).toHaveCount(0);
   const curve = page.getByRole("slider", {name:"Inspect training update"});
   await curve.focus();
   await curve.press("Home");
@@ -45,6 +46,12 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await expect(page.getByRole("heading",{name:"Cite this post"})).toBeVisible();
   await expect(page.locator("#ref-planning a")).toHaveText(/MotionBenchMaker/);
   await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("relay");
+  const puck = await (await request.get("/assets/writings/arcbench/replay/puck.json")).json();
+  expect(puck.learned.frames[0][5]).toHaveLength(7);
+  expect(puck.learned.gripped_push_steps).toBe(puck.learned.push_steps);
+  expect(puck.learned.push_steps).toBeGreaterThan(0);
+  expect(puck.release.gripped_push_steps).toBe(0);
+  expect(puck.release.outcome).toBe("contact");
   await page
     .getByRole("combobox", { name: "Task", exact: true })
     .selectOption("shelf");

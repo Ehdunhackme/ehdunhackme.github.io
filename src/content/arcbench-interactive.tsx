@@ -6,27 +6,16 @@ import "../../public/assets/writings/arcbench/player.css";
 import styles from "./arcbench.module.css";
 
 const assets = "/assets/writings/arcbench";
-const clips = {
-  relay: ["Two-peg relay","Both runs start with the same placement. Watch the fingers during the second pickup."],
-  transfer: ["Rail transfer","Both runs start on the green peg. Compare how high the nut travels as it crosses the rail."],
-  assembly: [
-    "Nut on peg",
-    "Same grasp, same 5 mm error in the initial peg estimate. Watch what happens when the arm uses the peg’s exact position for the final approach.",
-  ],
-  puck: [
-    "Puck push",
-    "Recorded layout 2402. The puck starts 60 mm from the target in both runs. Watch where it settles after the paddle lifts.",
-  ],
-  shelf: [
-    "Shelf inspection",
-    "Recorded layout 720001. The direct reach stops at the right wall. The learned route reaches inside the 110 mm opening, holds, then withdraws.",
-  ],
-  reach: [
-    "Obstacle reach",
-    "Recorded comparisons for the low fence, tall post and overhead obstacle.",
-  ],
+const taskNames = {
+  relay: "Two-peg relay", transfer: "Rail transfer", assembly: "Nut on peg",
+  reach: "Obstacle reach", shelf: "Shelf inspection", puck: "Puck push",
 } as const;
-type Task = keyof typeof clips;
+const taskGroups = [
+  { name: "Scripted grips", tasks: ["relay", "transfer", "assembly"] },
+  { name: "Supervised path scoring", tasks: ["reach", "shelf"] },
+  { name: "Learned push selection", tasks: ["puck"] },
+] as const;
+type Task = keyof typeof taskNames;
 
 const comparisons: Record<Task, readonly [string, string]> = {
   relay: ["Estimated regrasp","Measured regrasp"],
@@ -105,7 +94,7 @@ function ComparisonFilm({ task }: { task: Task }) {
           Math.min(2, Math.floor(time / 4.15))
         ]
       : "";
-  const title = clips[task][0] + " comparison";
+  const title = taskNames[task] + " comparison";
   return (
     <div className={styles.filmPlayer} ref={player}>
       <div className={styles.filmLabels}>
@@ -235,6 +224,16 @@ function ComparisonFilm({ task }: { task: Task }) {
 export function Replays() {
   const [task, setTask] = useState<Task>("relay");
   const [orbit, setOrbit] = useState(true);
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("task");
+    if (requested && Object.prototype.hasOwnProperty.call(taskNames, requested)) setTask(requested as Task);
+  }, []);
+  function chooseTask(value: Task) {
+    setTask(value);
+    const url = new URL(window.location.href);
+    url.searchParams.set("task", value);
+    window.history.replaceState(window.history.state, "", url);
+  }
   return (
     <figure
       className={styles.figure}
@@ -243,6 +242,16 @@ export function Replays() {
     >
       <div className={styles.simulator}>
         <div className={styles.simHeader}>
+          <label className={styles.task}>
+            <span>Task</span>
+            <select value={task} onChange={(e) => chooseTask(e.target.value as Task)}>
+              {taskGroups.map((group) => (
+                <optgroup key={group.name} label={group.name}>
+                  {group.tasks.map((id) => <option key={id} value={id}>{taskNames[id]}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </label>
           <div
             className={styles.switches}
             role="group"
@@ -253,6 +262,7 @@ export function Replays() {
               aria-pressed={orbit}
               onClick={() => setOrbit(true)}
             >
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 14 5v6L8 14.5 2 11V5L8 1.5ZM2 5l6 3.5L14 5M8 8.5v6" /></svg>
               Explore in 3D
             </button>
             <button
@@ -260,38 +270,21 @@ export function Replays() {
               aria-pressed={!orbit}
               onClick={() => setOrbit(false)}
             >
+              <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2"/><path d="m6.5 5.5 4 2.5-4 2.5z" /></svg>
               Video
             </button>
           </div>
-          <label className={styles.task}>
-            Task
-            <select
-              value={task}
-              onChange={(e) => setTask(e.target.value as Task)}
-            >
-              {(["relay", "transfer", "assembly", "reach", "shelf", "puck"] as const).map((k) => (
-                <option value={k} key={k}>
-                  {clips[k][0]}
-                </option>
-              ))}
-            </select>
-          </label>
         </div>
         <div hidden={!orbit}>
           <iframe
             key={task}
             src={assets + "/replay/viewer.html?task=" + task}
-            title={clips[task][0] + " interactive 3D simulator"}
+            title={taskNames[task] + " interactive 3D simulator"}
             className={styles.frame}
           />
         </div>
         {!orbit && <ComparisonFilm key={task} task={task} />}
       </div>
-      <figcaption>
-        {orbit
-          ? "Drag to rotate the view. Randomize the layout to try a new starting position."
-          : clips[task][1]}
-      </figcaption>
     </figure>
   );
 }
@@ -371,10 +364,6 @@ export function PushPaths() {
           10 mm
         </text>
       </svg>
-      <figcaption>
-        Each line follows the puck’s center in the same layout. The dot marks
-        where the selected push ends. The dashed circle shows the 10 mm tolerance around the target.
-      </figcaption>
     </figure>
   );
 }
@@ -433,10 +422,6 @@ export function SurfaceTrials() {
           ))}
         </ul>
       </div>
-      <figcaption>
-        One square per layout, in the same order on every surface. Both
-        controllers get the same puck and target positions.
-      </figcaption>
     </figure>
   );
 }

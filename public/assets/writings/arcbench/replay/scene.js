@@ -17,8 +17,18 @@ export async function buildScene(container) {
   let dirty=true;
   controls.addEventListener('change',()=>{dirty=true;});
   controls.target.set(.18,0,.207);
-  let shelfMode=false,puckMode=false,assemblyMode=false;
+  let shelfMode=false,puckMode=false,assemblyMode=false,followGrip=false;
+  const tracked=new T.Vector3(), shift=new T.Vector3();
   function cameraView(name='work'){
+    followGrip=name==='grip';
+    if(followGrip && tool){
+      tracked.copy(tool.position);
+      controls.target.copy(tracked);
+      controls.target.x+=.012;controls.target.z-=.022;
+      camera.position.copy(controls.target).add(new T.Vector3(.62,-.88,.31));
+      camera.zoom=2.75;camera.updateProjectionMatrix();controls.update();dirty=true;
+      return;
+    }
     const focus=assemblyMode?[.195,.005,.118]:puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
     const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:assemblyMode?[.76,-.84,.79]:shelfMode?[-.29,-.91,.52]:puckMode?[.54,-.98,.88]:[.76,-.91,.64];
     camera.position.set(...eye);camera.zoom=assemblyMode?1.20:name==='mouth'?1.2:1;camera.updateProjectionMatrix();
@@ -57,6 +67,13 @@ export async function buildScene(container) {
   }
   const overlay=new T.Group();scene.add(overlay);const v=p=>new T.Vector3(...p);
   let removable=[],sectionOn=true,hitMarker,movingPart,tool;
+  let jawPads=[];
+  function followTool(){
+    if(!followGrip)return;
+    shift.subVectors(tool.position,tracked);
+    controls.target.add(shift);camera.position.add(shift);tracked.copy(tool.position);
+    controls.update();
+  }
   const routeLines=new Map();
   let pathsOn=true,currentRoute='learned';
   function clearOverlay(){overlay.traverse(o=>{o.geometry?.dispose();if(o.material){o.material.map?.dispose();o.material.dispose();}});overlay.clear();removable=[];}
@@ -95,6 +112,8 @@ export async function buildScene(container) {
   function setup(run){
     dirty=true;
     clearOverlay();
+    for(const pad of jawPads){pad.removeFromParent();pad.geometry.dispose();pad.material.dispose();}
+    jawPads=[];
     if(tool){tool.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});tool.removeFromParent();tool=null;}
     movingPart=hitMarker=null;
     routeLines.clear();
@@ -142,10 +161,22 @@ export async function buildScene(container) {
       disc.rotation.x=Math.PI/2;disc.castShadow=disc.receiveShadow=true;movingPart.add(disc);
       const dot=new T.Mesh(new T.CircleGeometry(.0028,24),new T.MeshBasicMaterial({color:0xe6edff}));
       dot.position.z=spec.half+.0001;movingPart.add(dot);
-      tool=new T.Group();bodies[manifest.bodies.indexOf('gripper')].add(tool);
-      for(const [first,second] of [[spec.mount,spec.probe],spec.blade]){
+      tool=new T.Group();
+      const grip=spec.held_tool;
+      (grip?scene:bodies[manifest.bodies.indexOf('gripper')]).add(tool);
+      if(grip){
+        const handle=new T.Mesh(new T.BoxGeometry(...grip.half.map(x=>2*x)),material(0xe4a65d,.59,.12));
+        handle.castShadow=handle.receiveShadow=true;tool.add(handle);
+        for(const pad of grip.pads){
+          const mesh=new T.Mesh(new T.BoxGeometry(...pad.half.map(x=>2*x)),material(0x353b40,.85));
+          const [w,x,y,z]=pad.quat;
+          mesh.quaternion.set(x,y,z,w);mesh.position.fromArray(pad.pos);
+          mesh.castShadow=true;bodies[manifest.bodies.indexOf(pad.body)].add(mesh);jawPads.push(mesh);
+        }
+      }
+      for(const [first,second] of (grip?grip.rods:[[spec.mount,spec.probe],spec.blade])){
         const u=v(first),w=v(second),axis=w.clone().sub(u);
-        const rod=new T.Mesh(new T.CapsuleGeometry(spec.probe_radius,axis.length(),6,16),material(0x46544e,.45,.45));
+        const rod=new T.Mesh(new T.CapsuleGeometry(spec.probe_radius,axis.length(),6,16),material(0x697784,.36,.48));
         rod.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),axis.normalize());rod.position.copy(u).lerp(w,.5);
         rod.castShadow=true;tool.add(rod);
       }
@@ -184,6 +215,7 @@ export async function buildScene(container) {
   function pose(frame,next=frame,alpha=0){
     dirty=true;
     if(movingPart && frame[4])transform(movingPart,frame[4],next[4],0,alpha);
+    if(tool && frame[5]){transform(tool,frame[5],next[5],0,alpha);followTool();}
     for(let i=1;i<=7;i++)transform(bodies[i],frame[2],next[2],7*(i-1),alpha);
   }
   const resize=()=>{const w=container.clientWidth,h=container.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);

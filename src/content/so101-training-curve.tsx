@@ -136,11 +136,6 @@ export function TrainingCurve({ samples }: { samples: LossSample[] }) {
         />
       </div>
       <div className={styles.xTitle}>Optimizer update</div>
-      <figcaption>
-        Move across the curve or use the arrow keys to inspect each measurement.
-        I logged both losses every 25 updates on one 40 GB A100. The final
-        weights matched the original run exactly.
-      </figcaption>
     </figure>
   );
 }

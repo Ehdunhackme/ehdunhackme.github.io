@@ -129,13 +129,20 @@ export function ArcbenchArticle() {
 
         <h2 id="training">How the arm learned to choose a path</h2>
         <p>
+          I used three setups across the six tasks. For obstacle reach and shelf
+          inspection, I trained a separate network for each task to score paths.
+          For puck pushing, I picked a stroke from similar layouts. For nut on
+          peg, rail transfer and the two-peg relay, I wrote the waypoints and
+          jaw commands myself.
+        </p>
+        <p>
           For the obstacle task I wrote 13 routes and trained a network to
           predict which ones would hit something. I checked 81 positions along
           each route in MuJoCo. That gave me 53,248 labeled paths from 4,096
           layouts. I used supervised learning for this, so I didn’t need
           reinforcement learning or DPO.
         </p>
-        <h3 id="training-curve">Training curve</h3>
+        <h3 id="training-curve">Obstacle reach training curve</h3>
         <TrainingCurve samples={trace} />
         <p>
           The curve drops fastest in the first 100 updates. By update 1,000 the
@@ -271,7 +278,7 @@ export function ArcbenchArticle() {
 
         <h2 id="pushing">What worked for the puck?</h2>
         <p>
-          I put a paddle on the wrist and gave the arm a 40 g puck. It always
+          For the original push experiment I fixed a paddle to the wrist and used a 40 g puck. The paddle always
           starts from behind the puck, but I can move the end of its stroke to
           either side. Try −24 mm and +24 mm below. On this layout, one push
           stops about 5 mm from the center and the other misses by 37 mm.
@@ -312,16 +319,25 @@ export function ArcbenchArticle() {
           The best fixed choice was to push straight.
         </p>
         <p>
-          I tested both on the same 64 new layouts. The learned controller got{" "}
+          With the wrist-mounted paddle, I tested both on the same 64 new layouts. The learned controller got{" "}
           <strong>45 out of 64</strong> pucks on target. Pushing straight got
           18. The average distance from the target went from 20.1 mm to 12.0 mm.
           There were also three layouts where pushing straight worked and the
           learned push missed.
         </p>
 
+        <p>
+          In the 3D demo the paddle is loose. It starts between the fingers,
+          and the jaws squeeze the handle through the push. Switch to <em>Gripper
+          view</em> to see it up close, or try <em>Release paddle</em> and it
+          drops. On the opening layout, pushing straight actually wins. Across
+          the same 64 test layouts, the original selector landed 21 pucks on
+          target with the new grip. Pushing straight landed 7.
+        </p>
+
         <h2 id="surface">What if I change the surface?</h2>
         <p>
-          All the training pushes were on the same surface. What happens if I
+          For this test I went back to the wrist-mounted paddle. All the training pushes were on the same surface. What happens if I
           make the pad more slippery? I took the same 64 layouts and had both
           controllers repeat the exact strokes they’d already picked. The only
           thing I changed was the sliding friction between the puck and the pad.

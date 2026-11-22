@@ -5,7 +5,7 @@ const tasks = {
   relay: {seed:2026,family:7,sliders:[["clearance","Side clearance",1,4,2,"mm"],["bias","Regrasp estimate error",0,10,8,"mm"]],methods:[["scripted","Measured regrasp"],["nominal","Estimated regrasp"]]},
   transfer: {seed:2040,family:6,sliders:[["clearance","Side clearance",1,4,2,"mm"],["rail","Rail height",38,62,52,"mm"]],methods:[["scripted","Clear the rail"],["nominal","Low carry"]]},
   assembly: {seed:2026, family:5, sliders:[["clearance","Side clearance",1,4,3,"mm"],["error","Peg estimate error",0,8,5,"mm"]], methods:[["scripted","Recheck peg"],["nominal","Initial estimate"],["open","Jaws open"]]},
-  puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"]]},
+  puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"],["release","Release paddle"]]},
   shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
   reach: {seed:700000, family:0, sliders:[["offset","Fixture offset",-55,55,0,"mm"],["angle","Target rotation",-18,18,0,"°"]], methods:[["learned","Learned route"],["direct","Direct reach"]]}
 };
@@ -55,6 +55,10 @@ function prepareControls() {
   for(const [key,name] of config.methods)mode.add(new Option(name,key));
   $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
   $("cut-row").hidden=!shelf; $("closest").hidden=!shelf;
+  if(task==="puck"){
+    $("camera").add(new Option("Gripper view","grip"));
+    $("grip-view").hidden=false;
+  }
   if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
   $("seed").oninput=updateExamples;updateExamples();
 }
@@ -77,6 +81,7 @@ function draw(){
   view.pose(current,next,fraction);scrub.value=Math.round(1000*elapsed/p.seconds);
   scrub.style.setProperty("--played",100*elapsed/p.seconds+"%");$("clock").value=elapsed.toFixed(2)+" s";
   scrub.setAttribute("aria-valuetext",elapsed.toFixed(2)+" of "+p.seconds.toFixed(2)+" seconds");
+  $("finish").hidden=elapsed<p.seconds;
   if(inspecting && p.gaps){const g=p.gaps[lo];view.gap(g.points,g.link.replaceAll("_"," ")+" / "+g.panel+" · "+g.mm.toFixed(2)+" mm");}
 }
 function tick(now){
@@ -88,7 +93,8 @@ function tick(now){
 function pick(){
   elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
   draw();
-  const p=route(),result=p.outcome==="reached"?({relay:"Both placements complete",transfer:"Rail cleared and nut seated",assembly:"Seated and released",puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
+  const p=route(),result=p.outcome==="reached"?({relay:"Both placements complete",transfer:"Rail cleared and nut seated",assembly:"Seated and released",puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?(mode.value==="release"?"Paddle dropped":"Collision"):"Outside tolerance";
+  $("finish").textContent=mode.value==="release"?result:result+" · "+p.error_mm.toFixed(1)+" mm";
   const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"]];
   if(p.stages) entries.push(["Placements",p.completed+" / "+p.required]);
   if(task==="transfer") entries.push(["Rail contact",p.stages[0].rail_hit?"Yes":"No"]);
@@ -96,18 +102,20 @@ function pick(){
   else entries.push([task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]);
   if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
   if(task==="puck")entries.push(["First contact",p.first_touch==null?"None":p.first_touch.toFixed(2)+" s"]);
+  if(p.push_steps>0)entries.push(["Both jaws held during push",(100*p.gripped_push_steps/p.push_steps).toFixed(1)+"%"]);
   $("metrics").replaceChildren();
   for(const [name,value] of entries){const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=name;dd.textContent=value;$("metrics").append(dt,dd);}
 }
 function pending(on){
   busy=on;
-  for(const id of ["random","apply","play","time","mode","closest","family","seed","example",...config.sliders.map(s=>s[0])])$(id).disabled=on || !view;
+  for(const id of ["random","grip-view","apply","play","time","mode","closest","family","seed","example",...config.sliders.map(s=>s[0])])$(id).disabled=on || !view;
   $("loading").hidden=!on;
 }
 async function simulate(initial=false){
   if(busy || !$("seed").reportValidity())return;
   pause();pending(true);notice();
   const query=new URLSearchParams({family:task==="reach"?$("family").value:config.family,seed:$("seed").value});
+  if(task==="puck")query.set("tool","grasp-v1");
   for(const [id] of config.sliders)query.set(id,$(id).value);
   const key=query.toString();
   const featured=Number($("seed").value)===config.seed && Number(query.get("family"))===config.family &&
@@ -116,13 +124,14 @@ async function simulate(initial=false){
   try {
     let next=cache.get(key);
     if(!next){
-      const response=await fetch(featured?"./"+task+".json":"/api/arcbench/?"+query);
+      const response=await fetch(featured?"./"+task+".json"+(task==="puck"?"?tool=grasp-v1":""):"/api/arcbench/?"+query);
       if(!response.ok){
         const reason=await response.json().catch(()=>({}));
         throw Error(reason.error || "The simulator could not run this layout. Try again.");
       }
       next=await response.json();
       if(!next[config.methods[0][0]]?.frames?.length)throw Error("Incomplete simulation response. Try again.");
+      if(task==="puck" && !next.release?.frames?.length)throw Error("The paddle replay could not load. Try again.");
       if(cache.size>=8)cache.delete(cache.keys().next().value);
       cache.set(key,next);
     }
@@ -142,8 +151,13 @@ try {
   $("apply").onclick=()=>simulate();
   $("family").onchange=()=>simulate();
   $("example").onchange=()=>{if(!$("example").value)return;const [seed,width,depth]=$("example").value.split(",");setValue("seed",seed);setValue("width",width);setValue("depth",depth);simulate();};
-  $("camera").onchange=()=>view.cameraView($("camera").value);
-  $("reset").onclick=()=>{$("camera").value="work";view.reset();};
+  function setCamera(value){
+    $("camera").value=value;view.cameraView(value);
+    $("grip-view").setAttribute("aria-pressed",String(value==="grip"));
+  }
+  $("camera").onchange=()=>setCamera($("camera").value);
+  $("grip-view").onclick=()=>setCamera($("camera").value==="grip"?"work":"grip");
+  $("reset").onclick=()=>setCamera("work");
   $("paths").onchange=()=>view.paths($("paths").checked);$("cut").onchange=()=>view.cutaway($("cut").checked);
   $("closest").onclick=()=>{const p=route();if(!p.gaps)return;const i=p.gaps.reduce((best,g,index)=>g.mm<p.gaps[best].mm?index:best,0);elapsed=p.frames[i][0];wantsPlayback=false;pause();inspecting=true;draw();};
   scrub.oninput=()=>{elapsed=Number(scrub.value)*route().seconds/1000;wantsPlayback=false;pause();draw();};

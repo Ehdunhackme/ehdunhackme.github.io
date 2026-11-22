@@ -48,66 +48,60 @@
 }
 .simHeader {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 0 14px;
-  min-height: 48px;
-  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding: 10px 14px;
 }
-.switches,
-.task {
-  display: flex;
-  align-items: center;
-}
-.switches {
-  align-self: stretch;
-  gap: 16px;
-}
-.simHeader .switches button {
-  position: relative;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  color: var(--muted);
-  padding: 0;
-  font: inherit;
-  font-size: 0.8125rem;
-  transition: color 0.18s;
-}
-.simHeader .switches button[aria-pressed="true"],
-.switches button:hover {
-  color: var(--strong);
-}
-.simHeader .switches button::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.18s;
-}
-.simHeader .switches button[aria-pressed="true"]::after {
-  transform: scaleX(1);
-}
-.task {
-  gap: 7px;
-  color: var(--muted);
-  font-size: 0.8125rem;
-}
+.task { display: grid; gap: 1px; min-width: 0; }
+.task span { font-size: 0.72rem; line-height: 1.2; color: var(--muted); }
 .task select {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 550;
   color: var(--strong);
   background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font: inherit;
-  padding: 5px 4px;
+  border: 0;
+  padding: 1px 4px 2px 0;
   max-width: 100%;
   cursor: pointer;
+}
+.switches {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 7px;
+  background: var(--arc-field);
+}
+.simHeader .switches button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background-color .16s, color .16s;
+}
+.simHeader .switches button[aria-pressed="true"] {
+  background: var(--strong);
+  color: var(--bg);
+}
+.switches svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linejoin: round;
 }
 .frame {
   display: block;
@@ -194,9 +188,6 @@
       opacity: 1;
     }
   }
-}
-.figure figcaption {
-  line-height: 1.55;
 }
 .plot {
   display: block;
@@ -489,11 +480,6 @@
   .simHeader {
     padding-inline: 10px;
   }
-  .switches {
-    gap: 12px;
-  }
-  .task,
-  .task select,
   .simHeader .switches button {
     font-size: 0.765rem;
   }
@@ -513,8 +499,13 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .simHeader .switches button,
-  .simHeader .switches button::after {
+  .simHeader .switches button {
     transition: none;
   }
+}
+@media (max-width: 420px) {
+  .task select { width: 118px; font-size: .86rem; }
+  .simHeader { gap: 4px; }
+  .simHeader .switches button { padding-inline: 7px; }
+  .switches svg { display: none; }
 }
