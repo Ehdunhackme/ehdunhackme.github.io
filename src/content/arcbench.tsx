@@ -92,10 +92,24 @@ export function ArcbenchArticle() {
         <p>
           The arm picks the route with the lowest score. When the predicted
           risk <var>pᵣ</var> is low, the joint travel penalty <var>ℓᵣ</var>{" "}
-          favors a shorter movement. I capped that penalty at 0.45. On 96
-          held-out layouts, the arm reached the target <strong>87 times</strong>.
-          Moving the joints straight to their target angles worked 18 times.
+          favors a shorter movement. I capped that penalty at 0.45.
         </p>
+        <h3 id="obstacle-reach-results">Obstacle reach results</h3>
+        <p>
+          I ran both methods on the same 96 held-out layouts. A reach counted
+          if the arm settled within 8 mm of the target without hitting the obstacle.
+        </p>
+        <div className={styles.tableScroll}>
+          <table aria-labelledby="obstacle-reach-results">
+            <thead>
+              <tr><th scope="col">Method</th><th scope="col">Reached target</th><th scope="col">Hit obstacle</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Direct reach</th><td>18/96 (18.8%)</td><td>78</td></tr>
+              <tr><th scope="row">Learned route</th><td>87/96 (90.6%)</td><td>9</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <h2 id="reaching">Reaching into a shelf</h2>
         <p>
