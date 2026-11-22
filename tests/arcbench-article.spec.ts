@@ -1,5 +1,12 @@
 import { expect, test } from "@playwright/test";
 
+test("a retired task link opens the learned puck replay", async ({page}) => {
+  await page.goto("/writings/so101-path-learning/?task=relay#gripper-courses");
+  await expect(page).toHaveURL(/\/so101-path-learning\/#replays$/);
+  await expect(page.getByRole("combobox", {name:"Task", exact:true})).toHaveValue("puck");
+  await expect(page.locator("#replays iframe")).toHaveAttribute("src", /task=puck$/);
+});
+
 test("the article exposes its recorded comparisons, matched trials and study data", async ({
   page,
   request,
@@ -28,7 +35,7 @@ test("the article exposes its recorded comparisons, matched trials and study dat
       .nth(1),
   ).toHaveText("Learned only19");
   await expect(page).toHaveURL(/so101-path-learning/);
-  await expect(page.getByRole("table", {name:"Nuts seated and released on 32 layouts"})).toBeVisible();
+  await expect(page.getByRole("table", {name:"Completed shelf inspections out of 96"})).toBeVisible();
   await expect(page.locator("article details")).toHaveCount(0);
   await expect(page.locator("article figcaption")).toHaveCount(0);
   const curve = page.getByRole("slider", {name:"Inspect training update"});
@@ -45,7 +52,11 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await page.getByRole("button", {name:"Show full run"}).click();
   await expect(page.getByRole("heading",{name:"Cite this post"})).toBeVisible();
   await expect(page.locator("#ref-planning a")).toHaveText(/MotionBenchMaker/);
-  await expect(page.getByRole("combobox",{name:"Task",exact:true})).toHaveValue("relay");
+  const tasks = page.getByRole("combobox", {name:"Task", exact:true});
+  await expect(tasks).toHaveValue("puck");
+  await expect(tasks.locator("option")).toHaveText(["Obstacle reach", "Shelf inspection", "Puck push"]);
+  expect(await tasks.locator("optgroup").evaluateAll(groups => groups.map(g => g.getAttribute("label"))))
+    .toEqual(["Supervised path scoring", "Learned push selection"]);
   const puck = await (await request.get("/assets/writings/arcbench/replay/puck.json")).json();
   expect(puck.learned.frames[0][5]).toHaveLength(7);
   expect(puck.learned.gripped_push_steps).toBe(puck.learned.push_steps);

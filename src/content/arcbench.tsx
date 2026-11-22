@@ -7,7 +7,7 @@ import styles from "./smollertts.module.css";
 
 export const title = "Robot path learning with an SO-101 arm";
 export const description =
-  "I trained a simulated SO-101 to pick a route, then tested what it takes to grip a square nut and fit it onto a peg. Try the arm and see the training curve.";
+  "I trained an SO-101 arm to choose paths around obstacles and into a shelf, then tested whether it could pick a better stroke for pushing a puck.";
 
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
@@ -42,98 +42,21 @@ export function ArcbenchArticle() {
           </div>
         </header>
         <p className={styles.lead}>
-          I started by teaching the arm to find a way around a fence. Then I
-          realised it could do the whole task with its jaws open. So I gave it a
-          square nut to pick up. In the relay below, watch the second pickup.
-          Both runs put the nut on the middle peg. Only one gets it back off.
+          How does a robot arm decide where to push a puck? I gave it seven
+          strokes and let it try each one from different starting positions.
+          Hit <em>Randomize layout</em> to see which stroke it picks from a
+          new starting position. I also trained the arm to choose a path around
+          a fence and reach inside a shelf without hitting the roof.
         </p>
         <Replays />
 
-        <h2 id="gripper-courses">Can the arm pick it up twice?</h2>
-        <p>
-          In the two-peg relay, the arm has to let go on the green peg and
-          grip the handle again before it can move the nut to the blue peg.
-          I tried 16 layouts with 2 mm of clearance per side. When the second
-          grasp used the nut’s pose from MuJoCo, it finished all 16. With the
-          second grasp estimate shifted 8 mm sideways, it finished none.
-          Both controllers follow scripted waypoints.
-        </p>
-        <p>
-          Try <strong>Rail transfer</strong> for the harder one. The nut starts
-          on a peg and there’s a 52 mm rail in the way. Touching it with the arm
-          or the nut costs the run. The high carry clears it in the featured
-          replay, but it touched the rail on all 16 test layouts. Seven nuts
-          still ended up seated. Looking at the final position alone would
-          have missed those collisions.
-        </p>
-
-        <h2 id="assembly">Getting the nut onto the peg</h2>
-        <p>
-          The arm has to pinch the handle, lift the nut over the peg, turn it to
-          match the square opening, then let go. I only count a run if both jaws
-          grip the nut, it lifts at least 35 mm, and it stays seated for half a
-          second after release. I used the SO-101 follower model for the arm and
-          adapted the square nut task from robosuite. The nut stays in the
-          fingers through friction in MuJoCo, so it can slip out.{" "}
-          <sup>
-            <a href="#ref-arm" aria-label="Reference 1">
-              [1]
-            </a>
-            ,{" "}
-            <a href="#ref-robosuite" aria-label="Reference 2">
-              [2]
-            </a>
-            ,{" "}
-            <a href="#ref-contact" aria-label="Reference 3">
-              [3]
-            </a>
-          </sup>
-        </p>
-        <p>
-          I scripted the gripper motions for this first test. I gave the arm a
-          peg position that was off by 5 mm. One controller used that estimate
-          all the way down. The other got the exact peg position from the
-          simulator for its final approach. I ran both on the same 32 layouts,
-          changing where the nut and peg started and which way they faced.
-        </p>
-        <div className={styles.tableScroll}>
-          <table aria-label="Nuts seated and released on 32 layouts">
-            <thead>
-              <tr>
-                <th>Clearance per side</th>
-                <th>Initial estimate</th>
-                <th>Recheck peg</th>
-                <th>Jaws open</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">3 mm</th>
-                <td>29/32</td>
-                <td>32/32</td>
-                <td>0/32</td>
-              </tr>
-              <tr>
-                <th scope="row">1 mm</th>
-                <td>5/32</td>
-                <td>32/32</td>
-                <td>0/32</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>
-          At 1 mm, both gripping controllers still lifted all 32 nuts. The
-          difference showed up when they tried to put them down. For the recheck I gave the arm an exact peg position from MuJoCo.
-        </p>
-
         <h2 id="training">How the arm learned to choose a path</h2>
         <p>
-          I used three setups across the six tasks. For obstacle reach and shelf
-          inspection, I trained a separate network for each task to score paths.
-          For puck pushing, I picked a stroke from similar layouts. For nut on
-          peg, rail transfer and the two-peg relay, I wrote the waypoints and
-          jaw commands myself.
+          For obstacle reach and shelf inspection, I trained a separate network
+          for each task to score the possible paths. For puck pushing, the arm
+          picks a stroke by looking up what worked on similar layouts. All three
+          use the same simulated SO-101 arm.{" "}
+          <sup><a href="#ref-arm" aria-label="Reference 1">[1]</a></sup>
         </p>
         <p>
           For the obstacle task I wrote 13 routes and trained a network to
@@ -230,8 +153,8 @@ export function ArcbenchArticle() {
           each controller on the same 96 layouts at every opening width,
           following the comparison approach in MotionBenchMaker.{" "}
           <sup>
-            <a href="#ref-planning" aria-label="Reference 4">
-              [4]
+            <a href="#ref-planning" aria-label="Reference 3">
+              [3]
             </a>
           </sup>
         </p>
@@ -328,9 +251,11 @@ export function ArcbenchArticle() {
 
         <p>
           In the 3D demo the paddle is loose. It starts between the fingers,
-          and the jaws squeeze the handle through the push. Switch to <em>Gripper
+          and the jaws squeeze the handle through the push.{" "}
+          <sup><a href="#ref-contact" aria-label="Reference 2">[2]</a></sup>{" "}
+          Switch to <em>Gripper
           view</em> to see it up close, or try <em>Release paddle</em> and it
-          drops. On the opening layout, pushing straight actually wins. Across
+          drops. On the featured puck layout, pushing straight actually wins. Across
           the same 64 test layouts, the original selector landed 21 pucks on
           target with the new grip. Pushing straight landed 7.
         </p>
@@ -400,15 +325,6 @@ export function ArcbenchArticle() {
                 TheRobotStudio.{" "}
                 <a href={robot}>SO-101 follower simulation model</a>. I used its
                 arm geometry and actuator settings.
-              </p>
-            </li>
-            <li id="ref-robosuite">
-              <p>
-                robosuite.{" "}
-                <a href="https://robosuite.ai/docs/modules/environments#nut-assembly">
-                  Nut Assembly
-                </a>
-                . The square nut and peg inspired the gripper task.
               </p>
             </li>
             <li id="ref-contact">

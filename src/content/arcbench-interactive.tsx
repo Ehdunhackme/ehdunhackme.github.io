@@ -7,20 +7,15 @@ import styles from "./arcbench.module.css";
 
 const assets = "/assets/writings/arcbench";
 const taskNames = {
-  relay: "Two-peg relay", transfer: "Rail transfer", assembly: "Nut on peg",
   reach: "Obstacle reach", shelf: "Shelf inspection", puck: "Puck push",
 } as const;
 const taskGroups = [
-  { name: "Scripted grips", tasks: ["relay", "transfer", "assembly"] },
   { name: "Supervised path scoring", tasks: ["reach", "shelf"] },
   { name: "Learned push selection", tasks: ["puck"] },
 ] as const;
 type Task = keyof typeof taskNames;
 
 const comparisons: Record<Task, readonly [string, string]> = {
-  relay: ["Estimated regrasp","Measured regrasp"],
-  transfer: ["Low carry","Clear the rail"],
-  assembly: ["Initial peg estimate", "Recheck peg position"],
   reach: ["Direct reach", "Learned route"],
   shelf: ["Direct reach", "Learned route"],
   puck: ["Straight push", "Learned push"],
@@ -222,11 +217,23 @@ function ComparisonFilm({ task }: { task: Task }) {
 }
 
 export function Replays() {
-  const [task, setTask] = useState<Task>("relay");
+  const [task, setTask] = useState<Task>("puck");
   const [orbit, setOrbit] = useState(true);
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("task");
-    if (requested && Object.prototype.hasOwnProperty.call(taskNames, requested)) setTask(requested as Task);
+    const url = new URL(window.location.href);
+    const requested = url.searchParams.get("task");
+    if (requested && Object.prototype.hasOwnProperty.call(taskNames, requested)) {
+      setTask(requested as Task);
+    } else if (requested) {
+      url.searchParams.delete("task");
+    }
+    if (url.hash === "#gripper-courses" || url.hash === "#assembly") {
+      url.hash = "replays";
+      document.getElementById("replays")?.scrollIntoView();
+    }
+    if (url.href !== window.location.href) {
+      window.history.replaceState(window.history.state, "", url);
+    }
   }, []);
   function chooseTask(value: Task) {
     setTask(value);
