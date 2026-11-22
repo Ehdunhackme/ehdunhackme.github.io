@@ -111,8 +111,10 @@ export function ArcbenchArticle() {
           so I already had an answer to train on for each one.
         </p>
         <p>
-          For the fence task, I checked 81 positions along each of the 13 paths.
-          Across 4,096 training layouts that gave me 53,248 paths labeled
+          I used three kinds of obstacles for the reach task. Depending on the
+          layout, the arm had to get past a low fence, a tall post or an overhead
+          block. I checked 81 positions along each of the 13 paths. Across
+          4,096 training layouts that gave me 53,248 paths labeled
           clear or collision. I trained a network to predict the chance of a
           collision using this loss.
         </p>
