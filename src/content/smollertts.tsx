@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { renderToString } from "katex";
-import "katex/dist/katex.min.css";
+import { Equation } from "./article-equation";
 import { BenchmarkFigure, LiveDemo } from "./smollertts-interactive";
 import { ArchitectureAnimation } from "./smollertts-architecture";
 import { ArticleDisclosure } from "./article-disclosure";
@@ -13,9 +12,6 @@ const repo = "https://github.com/Ehdunhackme/SmollerTTS";
 const snapshot = `${repo}/blob/6db1e7bf3a997a050c106c83e3375484bbd1f9b9`;
 const assets = "/assets/writings/smollertts";
 
-function Equation({latex, label}: {latex: string; label: string}) {
-  return <div className={styles.equation} role="group" aria-label={label} dangerouslySetInnerHTML={{__html: renderToString(latex, {displayMode: true, throwOnError: true, trust: false, output: 'htmlAndMathml'})}} />;
-}
 
 export function SmollerArticle() {
   return (

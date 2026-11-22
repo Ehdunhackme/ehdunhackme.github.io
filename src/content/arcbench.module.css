@@ -40,23 +40,20 @@
   padding: 6px 9px;
   cursor: pointer;
 }
-.switches {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-.switches button[aria-pressed="true"] {
-  background: var(--fg-strong);
-  color: var(--bg);
-  border-color: var(--fg-strong);
-}
+.simulator { border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: var(--bg); }
+.simHeader { display: flex; justify-content: space-between; align-items: center; gap: 6px 14px; flex-wrap: wrap; padding: 8px 13px; border-bottom: 1px solid var(--line); }
+.switches, .task { display: flex; gap: 4px; align-items: center; }
+.simHeader .switches button { border: 1px solid transparent; background: transparent; color: var(--muted); padding: 7px 9px; font: inherit; font-size: .8125rem; }
+.simHeader .switches button[aria-pressed="true"] { color: var(--strong); border-color: var(--line); background: color-mix(in srgb,var(--strong) 4%,transparent); }
+.task { gap: 7px; color: var(--muted); font-size: .8125rem; }
+.task select { color: var(--strong); background: var(--bg); border: 1px solid var(--line); border-radius: 5px; font: inherit; padding: 6px; cursor: pointer; }
 .film,
 .frame {
   display: block;
   width: 100%;
   border: 0;
-  border-radius: 5px;
-  background: #e1e6df;
+  border-radius: 0;
+  background: #e8e9eb;
 }
 .film {
   height: auto;
@@ -68,8 +65,8 @@
   border: 0;
   padding: 0;
   cursor: pointer;
-  background: #e1e6df;
-  border-radius: 5px;
+  background: #e8e9eb;
+  border-radius: 0;
   overflow: hidden;
 }
 .poster img {
@@ -87,7 +84,7 @@
   align-items: center;
   gap: 7px;
   border-radius: 3px;
-  background: #17221dee;
+  background: #202226ed;
   color: white;
   padding: 7px 12px;
   font:
@@ -101,7 +98,7 @@
   border-left: 6px solid currentColor;
 }
 .frame {
-  height: clamp(290px, 49vw, 394px);
+  height: clamp(379px, 68vw, 527px);
 }
 .figure figcaption {
   line-height: 1.55;
@@ -229,3 +226,5 @@
     gap: 5px;
   }
 }
+
+@media (max-width: 480px) { .simHeader { padding: 7px; } .task, .task select, .simHeader .switches button { font-size:.75rem; } }

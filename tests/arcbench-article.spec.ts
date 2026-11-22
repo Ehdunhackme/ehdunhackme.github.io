@@ -6,9 +6,9 @@ test("the article exposes its recorded comparisons, matched trials and study dat
 }) => {
   await page.goto("/writings/");
   await page.getByRole("searchbox").fill("arcbench");
-  await page.getByRole("link", { name: /Teaching an SO-101 arm/ }).click();
+  await page.getByRole("link", { name: /Robot path learning with an SO-101 arm/ }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Teaching an SO-101 arm where to push",
+    "Robot path learning with an SO-101 arm",
   );
   await expect(
     page.getByRole("combobox", { name: "Paddle offset", exact: true }),
@@ -36,23 +36,22 @@ test("the article exposes its recorded comparisons, matched trials and study dat
   await page
     .getByRole("combobox", { name: "Task", exact: true })
     .selectOption("shelf");
-  await page
-    .getByRole("button", { name: "Play Shelf inspection comparison" })
-    .click();
-  const video = page.locator("video");
-  await expect(video.locator("source")).toHaveAttribute("src", /shelf\.mp4$/);
-  await page.getByRole("button", { name: "Explore in 3D" }).click();
+  const explorer = page.getByRole("button", { name: "Explore in 3D" });
+  await expect(explorer).toHaveAttribute("aria-pressed","true");
   const frame = page.frameLocator("iframe");
   await expect(frame.locator("#stage")).toBeVisible();
-  // WebGL can be disabled on CI. The same recorded task must still be accessible there.
-  await expect(
-    frame
-      .getByRole("button", { name: "Play" })
-      .and(frame.locator(":enabled"))
-      .or(frame.getByRole("link", { name: "Watch the recorded comparison" })),
-  ).toBeVisible({ timeout: 20000 });
-  await page.getByRole("button", { name: "Comparison", exact: true }).click();
-  await expect(page.locator("iframe")).toHaveCount(0);
+  await frame.getByText("Advanced settings", {exact:true}).click();
+  await expect(frame.getByRole("slider", {name:/Opening width/})).toHaveValue("110");
+  await expect(frame.getByRole("slider", {name:/Inspection depth/})).toHaveValue("75");
+  await expect(frame.getByRole("combobox", {name:"Camera",exact:true})).toBeVisible();
+  await expect(frame.getByRole("button", {name:"Randomize layout"})).toBeAttached();
+  await expect(page.getByRole("group",{name:"Collision classification loss"})).toBeAttached();
+  await expect(page.getByRole("group",{name:"Nearest-neighbor push selection"})).toBeAttached();
+  await page.getByRole("button", { name: "Video", exact:true }).click();
+  await page.getByRole("button", { name: "Play Shelf inspection comparison" }).click();
+  await expect(page.locator("video source")).toHaveAttribute("src",/shelf\.mp4$/);
+  await explorer.click();
+  await expect(frame.getByRole("slider", {name:/Opening width/})).toBeVisible();
   const data = await request.get("/assets/writings/arcbench/puck-trials.csv");
   expect(data.ok()).toBeTruthy();
   expect((await data.text()).trim().split(/\r?\n/)).toHaveLength(385);

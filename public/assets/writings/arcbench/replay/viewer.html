@@ -1,10 +1,39 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Arcbench 3D replay</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SO-101 path simulator</title>
+<link rel="stylesheet" href="./viewer.css">
 <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
-<style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px/1.4 system-ui,sans-serif;background:#e1e6df;color:#23382d}body{display:flex;flex-direction:column}#stage{position:relative;flex:1;min-height:0;touch-action:none}canvas{display:block;width:100%;height:100%;cursor:grab}#loading{position:absolute;inset:0;display:grid;place-content:center;padding:1em;text-align:center;z-index:1;background:#e1e6df}#loading[hidden]{display:none}#loading a{color:inherit}footer{background:#f7faf6;border-top:1px solid #cbd3ca;padding:9px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}button,select{font:inherit;color:inherit;border:1px solid #a3b0a4;border-radius:4px;background:white;padding:5px 8px}button{cursor:pointer;min-width:59px}input{width:60px;min-width:45px;flex:1;accent-color:#375846}output{font:12px/1.2 system-ui;font-variant-numeric:tabular-nums}select{max-width:34%} :focus-visible{outline:2px solid #815115;outline-offset:2px}
-</style></head><body>
-<div id="stage"><div id="loading" role="status">Loading the recorded motion…</div></div>
-<footer><button id="play" disabled>Play</button><input aria-label="Replay position" id="time" type="range" min="0" max="1000" value="0" disabled><output id="clock">0.00 s</output><select id="mode" aria-label="Controller" disabled><option value="learned">Learned</option><option value="direct">Direct</option></select></footer>
-<script type="module" src="./replay.js"></script></body></html>
+</head><body>
+<main>
+<div id="stage" aria-label="Robot workcell">
+  <div id="loading" role="status">Loading the arm…</div>
+  <button id="random" class="floating" disabled>Randomize layout</button>
+  <div class="transport">
+    <button id="play" disabled>Play</button>
+    <input id="time" type="range" min="0" max="1000" value="0" aria-label="Replay position" disabled>
+    <output id="clock">0.00 s</output>
+    <select id="mode" aria-label="Controller" disabled></select>
+  </div>
+</div>
+<p id="notice" role="status" hidden></p>
+<details><summary>Advanced settings</summary>
+<div class="options">
+  <fieldset><legend>Layout</legend>
+    <label for="seed">Layout seed</label><input type="number" id="seed" min="0" max="2147483647" step="1" required>
+    <div id="example-row" hidden><label for="example">Shelf example</label><select id="example"><option value="">Custom</option><option value="720001,110,75">Roof clearance</option><option value="610002,180,102">Learned route succeeds</option><option value="610014,125,97">Fixed route succeeds</option></select></div>
+    <div id="fixture-row" hidden><label for="family">Fixture</label><select id="family"><option value="0">Low fence</option><option value="1">Tall post</option><option value="2">Overhead zone</option></select></div>
+    <div id="sliders"></div><button id="apply" disabled>Apply layout</button>
+  </fieldset>
+  <fieldset><legend>Playback and camera</legend>
+    <label for="speed">Playback speed</label><select id="speed"><option value=".5">0.5×</option><option selected value="1">1×</option><option value="2">2×</option></select>
+    <label for="camera">Camera</label><select id="camera"><option value="work">Workcell</option><option value="top">Overhead</option></select>
+    <label class="check" id="path-row"><input id="paths" type="checkbox"> Show planned paths</label>
+    <label class="check" id="cut-row"><input id="cut" type="checkbox" checked> Cutaway shelf</label>
+    <button id="reset">Reset camera</button>
+  </fieldset>
+  <fieldset><legend>Run details</legend>
+    <dl id="metrics"></dl><button id="closest" hidden>Inspect closest pass</button>
+  </fieldset>
+</div></details>
+</main><script type="module" src="./replay.js"></script></body></html>

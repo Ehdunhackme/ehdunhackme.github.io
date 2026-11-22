@@ -9,7 +9,7 @@ export async function buildScene(container) {
   renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.91;
   container.append(renderer.domElement);
   renderer.domElement.setAttribute('aria-label','Orbitable SO-101 arm on a machined tabletop');
-  scene.background=new T.Color(0xe1e6df);scene.fog=new T.Fog(0xe1e6df,1.2,2.8);
+  scene.background=new T.Color(0xe8e9eb);scene.fog=new T.Fog(0xe8e9eb,1.2,2.8);
   const camera=new T.OrthographicCamera(-.5,.5,.34,-.34,.008,6);camera.up.set(0,0,1);
   const controls=new OrbitControls(camera,renderer.domElement);
   controls.enableDamping=true;controls.enablePan=true;controls.minZoom=.65;controls.maxZoom=3.5;
@@ -19,8 +19,8 @@ export async function buildScene(container) {
   controls.target.set(.18,0,.207);
   let shelfMode=false,puckMode=false;
   function cameraView(name='work'){
-    const focus=puckMode?[.21,0,.14]:shelfMode?[.21,0,.15]:[.18,0,.20];
-    const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:shelfMode?[-.29,-.91,.52]:puckMode?[.48,-.92,.74]:[.76,-.91,.64];
+    const focus=puckMode?[.205,0,.145]:shelfMode?[.21,0,.15]:[.18,0,.20];
+    const eye=name==='top'?[.22,-.02,1.2]:name==='mouth'?[-.65,-.22,.32]:shelfMode?[-.29,-.91,.52]:puckMode?[.54,-.98,.88]:[.76,-.91,.64];
     camera.position.set(...eye);camera.zoom=name==='mouth'?1.2:1;camera.updateProjectionMatrix();
     controls.target.set(...focus);controls.update();dirty=true;
   }
@@ -35,10 +35,10 @@ export async function buildScene(container) {
   key.shadow.mapSize.set(1024,1024);key.shadow.normalBias=.0008;key.shadow.bias=-.00007;
   scene.add(key);const rim=new T.DirectionalLight(0xcaddff,1.6);rim.position.set(.45,.78,.82);scene.add(rim);
   function material(color,roughness=.55,metalness=.05){return new T.MeshStandardMaterial({color,roughness,metalness});}
-  const floor=new T.Mesh(new T.PlaneGeometry(8,8),material(0xcdd4cc,.95,0));floor.position.z=-.034;floor.receiveShadow=true;scene.add(floor);
-  const plate=new T.Mesh(new T.BoxGeometry(.80,.60,.03),material(0x9daaa2,.65,.2));
+  const floor=new T.Mesh(new T.PlaneGeometry(8,8),material(0xd9dcdf,.95,0));floor.position.z=-.034;floor.receiveShadow=true;scene.add(floor);
+  const plate=new T.Mesh(new T.BoxGeometry(.80,.60,.03),material(0xa9adb2,.65,.2));
   plate.position.set(.15,0,-.016);plate.castShadow=true;plate.receiveShadow=true;scene.add(plate);
-  const top=new T.Mesh(new T.PlaneGeometry(.80,.60),material(0xc2cbc4,.85,.10));
+  const top=new T.Mesh(new T.PlaneGeometry(.80,.60),material(0xc7cacf,.85,.10));
   top.position.set(.15,0,-.00055);top.receiveShadow=true;scene.add(top);
   const [manifest,buffer]=await Promise.all([fetch('./model/model.json').then(r=>r.json()),fetch('./model/geometry.bin').then(r=>r.arrayBuffer())]);
   if(buffer.byteLength!==manifest.bytes)throw Error('The arm mesh download was incomplete.');
@@ -49,7 +49,7 @@ export async function buildScene(container) {
     geo.setIndex(new T.BufferAttribute(new Uint32Array(buffer,...m.faces),1));
     geo.computeVertexNormals();return geo;
   });
-  const printed=material(0xf4ad2c,.36,.15),motor=material(0x29313b,.43,.37);
+  const printed=material(0x25272a,.49,.18),motor=material(0x191c22,.40,.42);
   for(const g of manifest.geoms){
     const mesh=new T.Mesh(geometry[g.mesh],g.motor?motor:printed);
     mesh.position.fromArray(g.position);const [w,x,y,z]=g.rotation;mesh.quaternion.set(x,y,z,w);
@@ -110,7 +110,7 @@ export async function buildScene(container) {
     if(changed)reset();
     if(puckMode){
       const [x,y,z,a,b,c]=run.pad, spec=run.puck;
-      const pad=new T.Mesh(new T.BoxGeometry(2*a,2*b,2*c),material(0xb6c5be,.7,.12));
+      const pad=new T.Mesh(new T.BoxGeometry(2*a,2*b,2*c),material(0xb7bdc1,.7,.12));
       pad.position.set(x,y,z);pad.castShadow=pad.receiveShadow=true;overlay.add(pad);
       const radius=spec.radius+spec.threshold;
       const ring=new T.Mesh(new T.RingGeometry(radius,radius+.002,64),new T.MeshBasicMaterial({color:0x296b51}));
@@ -176,5 +176,5 @@ export async function buildScene(container) {
     if(hitMarker)hitMarker.visible=pathsOn && name==='direct';
     dirty=true;
   }
-  return {setup,pose,reset,cutaway,cameraView,gap,showRoute,paths(on){pathsOn=on;showRoute();}};
+  return {setup,pose,render(){renderer.render(scene,camera);},reset,cutaway,cameraView,gap,showRoute,paths(on){pathsOn=on;showRoute();}};
 }

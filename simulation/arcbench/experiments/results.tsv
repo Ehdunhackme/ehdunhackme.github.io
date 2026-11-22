@@ -1,0 +1,7 @@
+trial	validation_cost	clear_rate	status
+baseline	0.177892	0.893750	keep
+capacity	0.176157	0.892188	keep
+relative	0.160764	0.898438	keep
+link-clearance	0.160452	0.900000	keep
+contact-loss	0.160595	0.900000	discard
+shared-risk	0.142108	0.896875	keep

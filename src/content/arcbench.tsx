@@ -1,11 +1,12 @@
+import { Equation } from "./article-equation";
 import { ResourceLink } from "@/components/resource-link";
 import { ArticleDisclosure } from "./article-disclosure";
 import { PushPaths, Replays, SurfaceTrials } from "./arcbench-interactive";
 import styles from "./smollertts.module.css";
 
-export const title = "Teaching an SO-101 arm where to push";
+export const title = "Robot path learning with an SO-101 arm";
 export const description =
-  "I built Arcbench to compare ways of moving a simulated robot arm. Try the replays, then see what happens when the puck slides differently.";
+  "How I trained an SO-101 arm to choose a path around obstacles, reach into a shelf and push a puck. Try the controllers on your own simulated layouts.";
 const trialData = "/assets/writings/arcbench/puck-trials.csv";
 const robot =
   "https://github.com/TheRobotStudio/SO-ARM100/tree/141aea7bcac2744d92998e30268c413202a56f96/Simulation/SO101";
@@ -24,7 +25,7 @@ export function ArcbenchArticle() {
               <span>Dun Li Chan</span>
             </div>
             <nav className={styles.resources} aria-label="Arcbench resources">
-              <ResourceLink href="#replays">Replays</ResourceLink>
+              <ResourceLink href="#training">Training</ResourceLink>
               <ResourceLink href={trialData} kind="document" download>
                 Trial data
               </ResourceLink>
@@ -33,10 +34,10 @@ export function ArcbenchArticle() {
           </div>
         </header>
         <p className={styles.lead}>
-          I gave a simulated SO-101 arm a blue puck and a target 60 mm away. A
-          straight push left the puck 12.5 mm from the center, just outside the
-          10 mm tolerance. Moving the end of the paddle stroke 24 mm to one side
-          brought the error down to 4.6 mm. You can watch both pushes below.
+          I built Arcbench to see how a robot arm learns which path to take.
+          Move the fence and watch how the SO-101 tries to reach around it.
+          The other two tasks ask it to reach inside a shelf and push a puck
+          into place.
         </p>
         <Replays />
 
@@ -108,6 +109,56 @@ export function ArcbenchArticle() {
           </p>
         </ArticleDisclosure>
 
+        <h2 id="training">How I trained the arm to choose a path</h2>
+        <p>
+          I used supervised learning. MuJoCo supplied the labels. For each
+          obstacle layout I generated 13 joint-space paths between the same two
+          poses and checked the arm for collisions at 81 points along each path.
+          That gave me 53,248 labeled paths from 4,096 training layouts.
+          The network’s job was to estimate the chance that a candidate path
+          would hit something. A position servo followed the path it picked.
+        </p>
+        <Equation label="Collision classification loss" latex={String.raw`\mathcal L=-\frac{1}{N}\sum_{i=1}^{N}\big[y_i\log p_i+(1-y_i)\log(1-p_i)\big]`} />
+        <p>
+          Here <var>yᵢ</var> is 1 when path <var>i</var> hits something, and <var>pᵢ</var> is the
+          model’s predicted collision probability. A confident prediction that
+          a colliding path is clear incurs a large loss. At run time I also
+          wanted to avoid long detours. I gave a collision a cost of 1 and a
+          clear path a smaller cost based on its extra joint travel.
+        </p>
+        <Equation label="Route choice" latex={String.raw`r^*=\arg\min_r\left[p_r+(1-p_r)\,\ell_r\right]`} />
+        <p>
+          The length penalty <var>ℓᵣ</var> starts at zero for the direct route and
+          caps at 0.45. Of two equally short paths the model prefers the safer
+          one. Once both look clear, a shorter route can win.
+        </p>
+        <ArticleDisclosure className={styles.disclosure} summary="Training settings and model selection">
+          <div className={styles.tableScroll}><table aria-label="Path model training settings">
+            <thead><tr><th>Setting</th><th>Obstacle reach</th><th>Shelf inspection</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Candidate routes</th><td>13</td><td>19</td></tr>
+              <tr><th scope="row">Train / validation layouts</th><td>4,096 / 640</td><td>1,600 / 240</td></tr>
+              <tr><th scope="row">Selected network</th><td>2 × 96 hidden units, ReLU</td><td>2 × 48 hidden units, ReLU</td></tr>
+              <tr><th scope="row">AdamW learning rate</th><td>0.002</td><td>0.0015</td></tr>
+              <tr><th scope="row">Updates × batch size</th><td>1,000 × 256 layouts</td><td>1,100 × 128 layouts</td></tr>
+              <tr><th scope="row">GPU</th><td colSpan={2}>One NVIDIA A100, 40 GB</td></tr>
+            </tbody>
+          </table></div>
+          <p>I compared six obstacle-reach training runs on the same validation
+            layouts. A network that shared its weights across candidate paths
+            brought the average validation cost from 0.1779 for the first model
+            to 0.1421. For the shelf, I compared hidden widths of 48 and 96.
+            The smaller model had the lower validation cost.</p>
+          <p><a href="https://github.com/Ehdunhackme/ehdunhackme.github.io/tree/main/simulation/arcbench">Training code, commands and trial log</a></p>
+        </ArticleDisclosure>
+        <p>
+          I used neither direct preference optimization (DPO) nor reinforcement learning (RL) for these experiments.
+          DPO would need pairs of preferred and rejected decisions. Here I
+          could test every candidate directly in simulation and give it its
+          own collision label. For the puck, I used the measured error for each
+          push as the training signal.
+        </p>
+
         <h2 id="pushing">Letting contact do the work</h2>
         <p>
           In the shelf task, touching something ends the run. For the puck,
@@ -120,7 +171,7 @@ export function ArcbenchArticle() {
           I kept the decision small. The arm approaches from behind the puck,
           pushes, then lifts. It can finish its stroke at one of seven sideways
           offsets, from −36 to +36 mm in 12 mm steps. The figure follows the
-          puck’s center for all seven actions in the opening layout. Try +24 mm
+          puck’s center for all seven actions on the same 60 mm push. Try +24 mm
           after −24 mm. The two offsets have the same size, but one misses by
           more than 37 mm.
         </p>
@@ -135,6 +186,18 @@ export function ArcbenchArticle() {
           uses the puck’s final error, capped at 100 mm, plus a penalty for an
           arm collision. It commits to one stroke before touching the puck.
         </p>
+        <Equation label="Puck training cost, in millimeters" latex={String.raw`c_i(a)=\min(e_i(a),100)+100\,\mathbf{1}_{\mathrm{collision}}`} />
+        <p>
+          I stored 1,344 simulated pushes, seven for each training layout.
+          The four inputs describe the puck’s starting x and y, the target
+          direction, and its distance. I scaled those inputs before measuring
+          the distance between layouts. For each action I averaged the costs
+          from the three closest layouts and took the cheapest action.
+        </p>
+        <Equation label="Nearest-neighbor push selection" latex={String.raw`\begin{aligned}
+          w_i&=\frac{1}{\lVert x-x_i\rVert_2^2+0.01},\\
+          a^*&=\arg\min_a\frac{\sum_{i\in N_3(x)}w_i\,c_i(a)}{\sum_{i\in N_3(x)}w_i}.
+        \end{aligned}`} />
         <p>
           I used 48 separate layouts to choose how many neighbors to consult.
           Three worked best. I also used validation to choose the best single
@@ -215,6 +278,13 @@ export function ArcbenchArticle() {
               Download the per-run CSV.
             </a>
           </p>
+          <p>
+            The videos, figures and CSV use the original recorded runs. New layouts
+            run on the website’s Linux server. In one cross-platform check with
+            the same starting pose and 69 mm push, the puck stopped 7.10 mm from
+            the target on my Windows machine and 21.03 mm away on the server.
+            The seed reproduces the layout. Contact outcomes can vary across builds.
+          </p>
         </ArticleDisclosure>
 
         <h2 id="next">Two pushes through a gate</h2>
@@ -276,7 +346,7 @@ export function ArcbenchArticle() {
           <h2 id="arcbench-citation">Cite this post</h2>
           <pre>
             <code>{`@misc{chan2026arcbench,
-  title = {Teaching an {SO-101} arm where to push},
+  title = {Robot path learning with an {SO-101} arm},
   author = {Chan, Dun Li},
   year = {2026},
   month = {nov},

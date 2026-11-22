@@ -21,13 +21,13 @@ export function WritingsContent() {
           entries: [
             {
               id: "writing-arcbench",
-              searchText: "Arcbench teaching an SO-101 arm where to push robotics MuJoCo puck shelf contact friction motion planning 22 Nov 2026",
+              searchText: "Arcbench robot path learning with an SO-101 arm supervised training robotics MuJoCo puck shelf contact friction motion planning 22 Nov 2026",
               content: (
                 <Link className="writing-section-link" href="/writings/arcbench/">
                   <span className="writing-year" aria-hidden="true">2026</span>
                   <span className="writing-entry-content">
-                    <span className="writing-section-title">Teaching an SO-101 arm where to push</span>
-                    <span className="writing-section-description">Learning to push a puck in simulation, then testing the same controller on a different surface.</span>
+                    <span className="writing-section-title">Robot path learning with an SO-101 arm</span>
+                    <span className="writing-section-description">Training a simulated robot arm to choose a route, reach into a shelf and push a puck.</span>
                   </span>
                   <span className="writing-section-side">
                     <time className="writing-date" dateTime="2026-11-22">

@@ -8,15 +8,15 @@ const assets = "/assets/writings/arcbench";
 const clips = {
   puck: [
     "Puck push",
-    "The puck starts 60 mm from the target in both runs. Watch where it settles after the paddle lifts.",
+    "Recorded layout 2402. The puck starts 60 mm from the target in both runs. Watch where it settles after the paddle lifts.",
   ],
   shelf: [
     "Shelf inspection",
-    "The direct reach stops at the right wall. The learned route reaches inside the 110 mm opening, holds, then withdraws.",
+    "Recorded layout 720001. The direct reach stops at the right wall. The learned route reaches inside the 110 mm opening, holds, then withdraws.",
   ],
   reach: [
     "Obstacle reach",
-    "The film compares three fixtures. The 3D replay opens the low-fence example.",
+    "Recorded comparisons for the low fence, tall post and overhead obstacle.",
   ],
 } as const;
 type Task = keyof typeof clips;
@@ -49,8 +49,8 @@ function ComparisonFilm({ task }: { task: Task }) {
       >
         <img
           src={file + ".webp"}
-          width="1280"
-          height={task === "puck" ? 464 : task === "shelf" ? 584 : 580}
+          width="1440"
+          height="720"
           alt=""
         />
         <span>Play comparison</span>
@@ -63,60 +63,35 @@ function ComparisonFilm({ task }: { task: Task }) {
 }
 
 export function Replays() {
-  const [task, setTask] = useState<Task>("puck");
-  const [orbit, setOrbit] = useState(false);
+  const [task, setTask] = useState<Task>("reach");
+  const [orbit, setOrbit] = useState(true);
   return (
     <figure
       className={styles.figure}
       id="replays"
-      aria-label="Recorded SO-101 simulations"
+      aria-label="SO-101 path simulator"
     >
-      <div className={styles.toolbar}>
-        <label>
-          Task{" "}
-          <select
-            value={task}
-            onChange={(e) => setTask(e.target.value as Task)}
-          >
-            {Object.entries(clips).map(([k, [name]]) => (
-              <option value={k} key={k}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className={styles.switches} role="group" aria-label="Replay view">
-          <button
-            type="button"
-            aria-pressed={!orbit}
-            onClick={() => setOrbit(false)}
-          >
-            Comparison
-          </button>
-          <button
-            type="button"
-            aria-pressed={orbit}
-            onClick={() => setOrbit(true)}
-          >
-            Explore in 3D
-          </button>
+      <div className={styles.simulator}>
+        <div className={styles.simHeader}>
+          <div className={styles.switches} role="group" aria-label="Simulation view">
+            <button type="button" aria-pressed={orbit} onClick={() => setOrbit(true)}>Explore in 3D</button>
+            <button type="button" aria-pressed={!orbit} onClick={() => setOrbit(false)}>Video</button>
+          </div>
+          <label className={styles.task}>Task
+            <select value={task} onChange={(e) => setTask(e.target.value as Task)}>
+              {(["reach", "shelf", "puck"] as const).map(k => <option value={k} key={k}>{clips[k][0]}</option>)}
+            </select>
+          </label>
         </div>
+        <div hidden={!orbit}>
+          <iframe key={task} src={assets + "/replay/viewer.html?task=" + task}
+            title={clips[task][0] + " interactive 3D simulator"} className={styles.frame} />
+        </div>
+        {!orbit && <ComparisonFilm key={task} task={task} />}
       </div>
-      {orbit ? (
-        <iframe
-          key={task}
-          src={assets + "/replay/viewer.html?task=" + task}
-          title={clips[task][0] + " interactive 3D replay"}
-          className={styles.frame}
-        />
-      ) : (
-        <ComparisonFilm key={task} task={task} />
-      )}
-      <figcaption>
-        {orbit
-          ? "Drag the scene to orbit. Select a controller and scrub the recorded motion."
-          : clips[task][1]}
-      </figcaption>
+      <figcaption>{orbit
+        ? "Drag to orbit, or randomize the layout to give both controllers the same new task."
+        : clips[task][1]}</figcaption>
     </figure>
   );
 }

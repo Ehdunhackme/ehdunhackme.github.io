@@ -1,96 +1,135 @@
-import { buildScene } from "./scene.js";
-
 const $ = (id) => document.getElementById(id);
-const requested = new URLSearchParams(location.search).get("task");
-const task = ["puck", "shelf", "reach"].includes(requested)
-  ? requested
-  : "puck";
-const mode = $("mode"),
-  play = $("play"),
-  scrub = $("time");
-let view,
-  run,
-  t = 0,
-  playing = false,
-  prev = 0;
-const path = () => run[mode.value];
+const tasks = {
+  puck: {seed:2402, family:4, sliders:[["distance","Push distance",45,77,60,"mm"]], methods:[["learned","Learned push"],["direct","Straight push"]]},
+  shelf: {seed:720001, family:3, sliders:[["width","Opening width",85,190,110,"mm"],["depth","Inspection depth",45,105,75,"mm"]], methods:[["learned","Learned route"],["fixed","Fixed route"],["direct","Direct reach"]]},
+  reach: {seed:700000, family:0, sliders:[["offset","Fixture offset",-55,55,0,"mm"],["angle","Target rotation",-18,18,0,"°"]], methods:[["learned","Learned route"],["direct","Direct reach"]]}
+};
+const requested=new URLSearchParams(location.search).get("task");
+const task=Object.hasOwn(tasks,requested)?requested:"puck";
+const config=tasks[task], shelf=task==="shelf";
+const mode=$("mode"), play=$("play"), scrub=$("time");
+let view, run, elapsed=0, playing=false, last=0, animation=0, inspecting=false, busy=false;
+const route=()=>run[mode.value];
+const cache=new Map();
 
-function draw() {
-  const p = path();
-  let lo = 0,
-    hi = p.frames.length - 1;
-  while (lo < hi) {
-    const mid = Math.ceil((hi + lo) / 2);
-    if (p.frames[mid][0] <= t) lo = mid;
-    else hi = mid - 1;
+function theme() {
+  if (!window.frameElement) return;
+  const doc=parent.document, css=parent.getComputedStyle(doc.documentElement);
+  document.documentElement.classList.toggle("dark",doc.documentElement.classList.contains("dark") || css.colorScheme==="dark");
+  for(const [local,site] of [["--bg","--bg"],["--fg","--strong"],["--muted","--muted"],["--line","--line"]]){
+    const value=css.getPropertyValue(site).trim();
+    if(value) document.documentElement.style.setProperty(local,value);
   }
-  view.pose(p.frames[lo]);
-  scrub.value = Math.round((1000 * t) / p.seconds);
-  $("clock").value = t.toFixed(2) + " s";
-  play.textContent = playing ? "Pause" : t >= p.seconds ? "Replay" : "Play";
+  document.body.style.fontFamily=parent.getComputedStyle(window.frameElement).fontFamily;
+}
+if(window.frameElement){
+  theme();
+  new MutationObserver(theme).observe(parent.document.documentElement,{attributes:true,attributeFilter:["class","style","data-theme"]});
+  new ResizeObserver(()=>{if(document.body.offsetHeight) window.frameElement.style.height=document.body.offsetHeight+"px";}).observe(document.body);
+}
+function notice(message="") { $("notice").textContent=message; $("notice").hidden=!message; }
+function updateExamples() {
+  if(!shelf)return;
+  const match=[$("seed").value,$("width").value,$("depth").value].join(",");
+  $("example").value=[...$("example").options].some(o=>o.value===match)?match:"";
+}
+function setValue(id,value) {
+  $(id).value=value;
+  if($(id+"-value")) $(id+"-value").value=value+" "+$(id).dataset.unit;
+}
+function prepareControls() {
+  $("seed").value=config.seed;
+  for(const [id,name,min,max,value,unit] of config.sliders){
+    const label=document.createElement("label"),out=document.createElement("output"),input=document.createElement("input");
+    label.htmlFor=id;label.textContent=name;out.id=id+"-value";label.append(out);
+    Object.assign(input,{id,type:"range",min,max});input.dataset.unit=unit;
+    $("sliders").append(label,input);setValue(id,value);
+    input.oninput=()=>{setValue(id,input.value);updateExamples();};
+  }
+  for(const [key,name] of config.methods)mode.add(new Option(name,key));
+  $("example-row").hidden=!shelf; $("fixture-row").hidden=task!=="reach";
+  $("cut-row").hidden=!shelf; $("closest").hidden=!shelf; $("path-row").hidden=task==="puck";
+  if(shelf)$("camera").add(new Option("Shelf opening","mouth"));
+  $("seed").oninput=updateExamples;updateExamples();
+}
+function pause(){
+  cancelAnimationFrame(animation);playing=false;
+  if(run)play.textContent=elapsed>=route().seconds?"Replay":"Play";
+}
+function draw(){
+  const p=route(); let lo=0,hi=p.frames.length-1;
+  while(lo<hi){const mid=Math.ceil((lo+hi)/2);if(p.frames[mid][0]<=elapsed)lo=mid;else hi=mid-1;}
+  view.pose(p.frames[lo]);scrub.value=Math.round(1000*elapsed/p.seconds);$("clock").value=elapsed.toFixed(2)+" s";
+  if(inspecting && p.gaps){const g=p.gaps[lo];view.gap(g.points,g.link.replaceAll("_"," ")+" / "+g.panel+" · "+g.mm.toFixed(2)+" mm");}
+}
+function tick(now){
+  if(!playing)return;
+  elapsed=Math.min(route().seconds,elapsed+(now-last)*Number($("speed").value)/1000);last=now;
+  draw();if(elapsed>=route().seconds)pause();else animation=requestAnimationFrame(tick);
+}
+function pick(){
+  elapsed=0;pause();inspecting=false;view.gap(null);view.showRoute(mode.value);view.paths($("paths").checked);
+  draw();
+  const p=route(),result=p.outcome==="reached"?({puck:"On target",shelf:"Inspection complete",reach:"Target reached"})[task]:p.outcome==="contact"?"Collision":"Outside tolerance";
+  const entries=[["Layout seed",run.seed],["Outcome",result],["Final error",p.error_mm+" mm"],[task==="puck"?"Puck travel":"Gripper travel",p.distance_mm+" mm"]];
+  if(shelf && p.gaps)entries.push(["Closest clearance",Math.min(...p.gaps.map(g=>g.mm)).toFixed(2)+" mm"]);
+  if(task==="puck")entries.push(["First contact",p.first_touch==null?"None":p.first_touch.toFixed(2)+" s"]);
+  $("metrics").replaceChildren();
+  for(const [name,value] of entries){const dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=name;dd.textContent=value;$("metrics").append(dt,dd);}
+}
+function pending(on){
+  busy=on;
+  for(const id of ["random","apply","play","time","mode","closest","family","seed","example",...config.sliders.map(s=>s[0])])$(id).disabled=on || !view;
+  $("loading").hidden=!on;
+}
+async function simulate(initial=false){
+  if(busy || !$("seed").reportValidity())return;
+  pause();pending(true);notice();
+  const query=new URLSearchParams({family:task==="reach"?$("family").value:config.family,seed:$("seed").value});
+  for(const [id] of config.sliders)query.set(id,$(id).value);
+  const key=query.toString();
+  const featured=Number($("seed").value)===config.seed && Number(query.get("family"))===config.family &&
+    config.sliders.every(([id, , , , value])=>Number(query.get(id))===value);
+  $("loading").textContent=initial?"Loading the arm…":"Simulating this layout…";
+  try {
+    let next=cache.get(key);
+    if(!next){
+      const response=await fetch(featured?"./"+task+".json":"/api/arcbench/?"+query);
+      if(!response.ok){
+        const reason=await response.json().catch(()=>({}));
+        throw Error(reason.error || "The simulator could not run this layout. Try again.");
+      }
+      next=await response.json();
+      if(!next.learned?.frames?.length)throw Error("Incomplete simulation response. Try again.");
+      if(cache.size>=8)cache.delete(cache.keys().next().value);
+      cache.set(key,next);
+    }
+    run=next;view.setup(run);view.cameraView($("camera").value);view.cutaway($("cut").checked);pick();
+  }catch(error){
+    if(initial)throw error;
+    notice(error.message+(run?" Showing layout "+run.seed+".":""));
+  }finally{pending(false);}
 }
 
-function stop() {
-  playing = false;
-  draw();
-}
-let animation = 0;
-function animate(now) {
-  if (!playing) return;
-  t = Math.min(path().seconds, t + (now - prev) / 1000);
-  prev = now;
-  playing = t < path().seconds;
-  draw();
-  if (playing) animation = requestAnimationFrame(animate);
-}
-function pause() {
-  cancelAnimationFrame(animation);
-  stop();
-}
+prepareControls();
 try {
-  const reply = await fetch("./" + task + ".json");
-  if (!reply.ok) throw Error("Missing replay");
-  run = await reply.json();
-  view = await buildScene($("stage"));
-  view.setup(run);
-  view.showRoute("learned");
-  view.paths(false);
-  mode.options[0].textContent =
-    task === "puck" ? "Learned push" : "Learned route";
-  mode.options[1].textContent =
-    task === "puck" ? "Straight push" : "Direct reach";
-  draw();
-  $("loading").hidden = true;
-  for (const el of [mode, play, scrub]) el.disabled = false;
-  mode.onchange = () => {
-    t = 0;
-    view.showRoute(mode.value);
-    pause();
-  };
-  scrub.oninput = () => {
-    t = (+scrub.value / 1000) * path().seconds;
-    pause();
-  };
-  play.onclick = () => {
-    if (playing) {
-      pause();
-      return;
-    }
-    if (t >= path().seconds) t = 0;
-    playing = true;
-    prev = performance.now();
-    draw();
-    animation = requestAnimationFrame(animate);
-  };
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) pause();
-  });
-  new IntersectionObserver((entries) => {
-    if (!entries[0].isIntersecting && playing) pause();
-  }).observe($("stage"));
-} catch {
-  const a = document.createElement("a");
-  a.href = "../" + task + ".mp4";
-  a.textContent = "Watch the recorded comparison";
-  $("loading").replaceChildren("3D replay is unavailable on this device. ", a);
+  const {buildScene}=await import("./scene.js");
+  view=await buildScene($("stage"));await simulate(true);
+  mode.onchange=pick;
+  $("random").onclick=()=>{setValue("seed",crypto.getRandomValues(new Uint32Array(1))[0]%2147483648);updateExamples();simulate();};
+  $("apply").onclick=()=>simulate();
+  $("family").onchange=()=>simulate();
+  $("example").onchange=()=>{if(!$("example").value)return;const [seed,width,depth]=$("example").value.split(",");setValue("seed",seed);setValue("width",width);setValue("depth",depth);simulate();};
+  $("camera").onchange=()=>view.cameraView($("camera").value);
+  $("reset").onclick=()=>{$("camera").value="work";view.reset();};
+  $("paths").onchange=()=>view.paths($("paths").checked);$("cut").onchange=()=>view.cutaway($("cut").checked);
+  $("closest").onclick=()=>{const p=route();if(!p.gaps)return;const i=p.gaps.reduce((best,g,index)=>g.mm<p.gaps[best].mm?index:best,0);elapsed=p.frames[i][0];pause();inspecting=true;draw();};
+  scrub.oninput=()=>{elapsed=Number(scrub.value)*route().seconds/1000;pause();draw();};
+  play.onclick=()=>{if(playing){pause();return;}if(elapsed>=route().seconds)elapsed=0;playing=true;last=performance.now();play.textContent="Pause";animation=requestAnimationFrame(tick);};
+  document.addEventListener("visibilitychange",()=>{if(document.hidden)pause();});
+  new IntersectionObserver(e=>{if(!e[0].isIntersecting && playing)pause();}).observe($("stage"));
+}catch{
+  const link=document.createElement("a");link.href="../"+task+".mp4";link.textContent="Watch the recorded comparison";
+  $("loading").hidden=false;$("loading").replaceChildren("3D is unavailable on this device. ",link);
+  for(const el of [mode,play,scrub,$("apply"),$("random")])el.disabled=true;
 }
